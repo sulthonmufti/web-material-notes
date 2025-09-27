@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi CSS: Introduction, Syntax, How To</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; padding: 20px; max-width: 800px; margin: auto; }
+        h1, h2 { color: #333; border-bottom: 2px solid #ccc; padding-bottom: 5px; }
+        code { background-color: #eee; padding: 2px 4px; border-radius: 3px; }
+        pre { background-color: #f4f4f4; padding: 15px; border-radius: 5px; overflow-x: auto; }
+        .back-link { display: block; margin-top: 30px; padding: 10px; background-color: #007bff; color: white; text-align: center; text-decoration: none; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <h1>CSS Introduction, Syntax, dan How To</h1>
+
+    <p>Selamat datang! Ini adalah langkah pertama Anda dalam menguasai CSS. CSS (Cascading Style Sheets) berfungsi untuk mengatur tampilan dan presentasi elemen-elemen HTML Anda.</p>
+
+    <h2>1. CSS Introduction (Peran CSS)</h2>
+    <p>CSS adalah bahasa yang digunakan untuk mendeskripsikan <strong>gaya</strong> dari dokumen HTML. Tanpa CSS, halaman web hanya akan terlihat seperti dokumen teks biasa.</p>
+    <ul>
+        <li>**Tugas utama CSS:** Mengatur warna, font, layout (tata letak), dan animasi.</li>
+        <li>**Prinsip Dasar:** Memisahkan konten (HTML) dari presentasi (CSS) untuk mempermudah pemeliharaan dan perubahan desain.</li>
+    </ul>
+
+    <hr>
+
+    <h2>2. CSS Syntax (Aturan Penulisan)</h2>
+    <p>Setiap aturan CSS terdiri dari dua bagian utama: **Selector** dan **Declaration Block**.</p>
+    
+    <h3>Struktur Dasar</h3>
+    <pre>
+<code>
+selector {
+    property: value;
+    property: value; 
+}
+</code>
+    </pre>
+
+    <p><strong>Penjelasan:</strong></p>
+    <ul>
+        <li>**Selector:** Menunjuk elemen HTML mana yang ingin Anda beri gaya (misalnya, <code>p</code> untuk paragraf, <code>h1</code> untuk judul).</li>
+        <li>**Declaration Block:** Berada di dalam kurung kurawal (<code>{}</code>), berisi satu atau lebih deklarasi yang dipisahkan oleh titik koma (<code>;</code>).</li>
+        <li>**Declaration:** Adalah pasangan **Property** (properti) dan **Value** (nilai) yang dipisahkan oleh titik dua (<code>:</code>).</li>
+    </ul>
+
+    <h3>Contoh Nyata</h3>
+    <p>Jika kita ingin mengubah warna semua paragraf menjadi biru dan ukuran font menjadi 16px:</p>
+    <pre>
+<code>
+p {
+    color: blue;
+    font-size: 16px;
+}
+</code>
+    </pre>
+
+    <hr>
+
+    <h2>3. CSS How To (Cara Menghubungkan CSS)</h2>
+    <p>Ada tiga cara utama untuk menerapkan CSS ke dokumen HTML Anda. **Paling direkomendasikan adalah External CSS.**</p>
+
+    <h3>1. External CSS (Paling Direkomendasikan)</h3>
+    <p>Membuat file CSS terpisah (misalnya, <code>style.css</code>) dan menautkannya di bagian <code>&lt;head&gt;</code> HTML.</p>
+    <pre>
+<code>
+&lt;head&gt;
+&lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;
+</code>
+    </pre>
+    <p class="note">Ini adalah cara yang paling bersih dan efisien untuk proyek besar.</p>
+
+    <h3>2. Internal CSS</h3>
+    <p>Menulis kode CSS langsung di dalam tag <code>&lt;style&gt;</code> di bagian <code>&lt;head&gt;</code> dokumen HTML.</p>
+    <pre>
+<code>
+&lt;head&gt;
+&lt;style&gt;
+body { background-color: lightgray; }
+&lt;/style&gt;
+&lt;/head&gt;
+</code>
+    </pre>
+
+    <h3>3. Inline CSS (Hindari untuk Styling Massal)</h3>
+    <p>Menulis gaya CSS langsung sebagai atribut pada elemen HTML menggunakan atribut <code>style</code>.</p>
+    <pre>
+<code>
+ &lt;p style="color: red; margin-left: 20px;"&gt;Paragraf merah ini menggunakan Inline CSS.&lt;/p&gt;
+</code>
+    </pre>
+
+    <p>Setelah menguasai cara menautkan CSS dan memahami sintaks dasarnya, Anda siap untuk mempelajari konsep fundamental **Box Model**!</p>
+
+    <a href="../../index.html" class="back-link">Kembali ke Menu Utama Materi</a>
+
+</body>
+</html>

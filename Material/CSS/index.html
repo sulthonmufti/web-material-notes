@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pilih Materi CSS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Pilih Materi Belajar CSS</h1>
+        
+        <div class="input-group">
+            <label for="kategori">Kategori Materi:</label>
+            <select id="kategori" onchange="updateMateri()">
+                <option value="">-- Pilih Kategori --</option>
+                <option value="wajib">Wajib</option>
+                <option value="lanjutan">Lanjutan/Mahir</option>
+                <option value="tambahan">Tambahan/Khusus</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label for="materi">Nama Materi:</label>
+            <select id="materi" disabled>
+                <option value="">-- Pilih Materi --</option>
+            </select>
+        </div>
+
+        <button id="belajarButton" onclick="goToMateri()" disabled>Belajar!</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

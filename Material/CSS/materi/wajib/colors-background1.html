@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi CSS: Colors dan Backgrounds</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; padding: 20px; max-width: 900px; margin: auto; }
+        h1 { color: #333; }
+        h2 { color: #007bff; border-bottom: 2px solid #ccc; padding-bottom: 5px; margin-top: 30px; }
+        h3 { color: #555; }
+        code { background-color: #eee; padding: 2px 4px; border-radius: 3px; }
+        pre { background-color: #f4f4f4; padding: 15px; border-radius: 5px; overflow-x: auto; margin-bottom: 20px; }
+        .back-link { display: inline-block; margin-top: 30px; padding: 10px 15px; background-color: #007bff; color: white; text-align: center; text-decoration: none; border-radius: 5px; }
+
+        /* Gaya untuk Konten Tersembunyi */
+        .materi-section { display: none; padding: 15px; border: 1px solid #ddd; border-radius: 5px; margin-top: 20px; }
+        #selector-container { margin-bottom: 25px; padding: 15px; background-color: #e9f7ff; border-radius: 5px; }
+
+        /* Contoh Visual */
+        .color-example { padding: 10px; margin: 5px 0; border: 1px solid #000; display: inline-block; width: 100%; box-sizing: border-box; }
+        .bg-example { height: 150px; border: 1px solid #ccc; margin-top: 10px; background-image: url('https://picsum.photos/400/150'); /* Ganti dengan gambar lokal jika ada */ background-repeat: no-repeat; background-size: cover; }
+        .no-repeat { background-repeat: no-repeat; background-size: auto; width: 400px; }
+
+    </style>
+</head>
+<body>
+    <h1>Colors dan Backgrounds CSS</h1>
+
+    <div id="selector-container">
+        <label for="subMateri">Pilih Sub-Materi:</label>
+        <select id="subMateri" onchange="displayMateri()">
+            <option value="">-- Pilih Sub-Materi --</option>
+            <option value="colors">Colors (Warna Teks)</option>
+            <option value="backgrounds">CSS Backgrounds (Latar Belakang)</option>
+        </select>
+    </div>
+
+    <div id="colors" class="materi-section">
+        <h2>Colors (Warna Teks)</h2>
+        <p>Properti utama untuk mengatur warna teks adalah <code>color</code>.</p>
+
+        <h3>Metode Penentuan Warna</h3>
+        <p>Ada empat cara utama untuk mendefinisikan warna di CSS:</p>
+        
+        <h4>1. Nama Warna (Color Keywords)</h4>
+        <p>Menggunakan nama standar yang mudah dibaca, misalnya <code>red</code>, <code>blue</code>, <code>tomato</code>.</p>
+        <div class="color-example" style="color: red;">Teks ini berwarna RED</div>
+        <pre><code>color: red;</code></pre>
+
+        <h4>2. Kode HEX (Hexadecimal)</h4>
+        <p>Menggunakan format <code>#RRGGBB</code>. Setiap pasangan mewakili nilai Red, Green, dan Blue dari 00 hingga FF.</p>
+        <div class="color-example" style="color: #4CAF50;">Teks ini berwarna HIJAU HEX (#4CAF50)</div>
+        <pre><code>color: #4CAF50;</code></pre>
+
+        <h4>3. Nilai RGB (Red, Green, Blue)</h4>
+        <p>Menggunakan format fungsi <code>rgb(R, G, B)</code>, dengan nilai dari 0 hingga 255.</p>
+        <div class="color-example" style="color: rgb(255, 99, 71);">Teks ini berwarna TOMATO RGB</div>
+        <pre><code>color: rgb(255, 99, 71);</code></pre>
+        
+        <h4>4. Nilai HSL (Hue, Saturation, Lightness)</h4>
+        <p>Menggunakan fungsi <code>hsl(H, S, L)</code>. Lebih intuitif untuk manusia, memisahkan rona (Hue), kejenuhan (Saturation), dan kecerahan (Lightness).</p>
+        <div class="color-example" style="color: hsl(240, 100%, 50%);">Teks ini berwarna BIRU HSL</div>
+        <pre><code>color: hsl(240, 100%, 50%);</code></pre>
+
+    </div>
+
+    <div id="backgrounds" class="materi-section">
+        <h2>CSS Backgrounds (Latar Belakang)</h2>
+        <p>Properti <code>background-*</code> digunakan untuk mengontrol latar belakang elemen.</p>
+
+        <h3>1. Background Color</h3>
+        <p>Mengatur warna latar belakang elemen. Anda dapat menggunakan semua format warna di atas (nama, HEX, RGB, HSL).</p>
+        <div style="background-color: #f0f8ff; padding: 15px; border: 1px solid #ddd;">
+            Latar belakang elemen ini berwarna biru pucat (Alice Blue).
+        </div>
+        <pre><code>background-color: #f0f8ff;</code></pre>
+
+        <h3>2. Background Image</h3>
+        <p>Menambahkan gambar sebagai latar belakang.</p>
+        <pre><code>background-image: url('jalur/ke/gambar.jpg');</code></pre>
+
+        <h3>3. Background Repeat</h3>
+        <p>Mengontrol bagaimana gambar latar belakang diulang.</p>
+        <ul>
+            <li><code>repeat</code> (default): Mengulang horizontal dan vertikal.</li>
+            <li><code>no-repeat</code>: Gambar ditampilkan sekali saja.</li>
+            <li><code>repeat-x</code>: Mengulang hanya secara horizontal.</li>
+            <li><code>repeat-y</code>: Mengulang hanya secara vertikal.</li>
+        </ul>
+        <p>Contoh <code>no-repeat</code>:</p>
+        <div class="bg-example no-repeat"></div>
+        <pre><code>background-repeat: no-repeat;</code></pre>
+
+        <h3>4. Background Attachment</h3>
+        <p>Menentukan apakah gambar latar belakang akan bergulir (*scroll*) bersama halaman atau tetap (*fixed*).</p>
+        <ul>
+            <li><code>scroll</code> (default): Gambar bergerak saat halaman digulir.</li>
+            <li><code>fixed</code>: Gambar tetap pada posisinya saat halaman digulir.</li>
+        </ul>
+        <pre><code>background-attachment: fixed;</code></pre>
+
+        <h3>5. Background Shorthand (Ringkasan)</h3>
+        <p>Cara efisien untuk mengatur semua properti latar belakang dalam satu deklarasi. Urutan tidak terlalu ketat, tetapi disarankan:</p>
+        <pre>
+<code>
+/* color image repeat attachment position */
+background: #ffffff url("gambar.png") no-repeat fixed center;
+</code>
+        </pre>
+        <p>Properti ini sangat berguna untuk menulis CSS yang lebih ringkas.</p>
+
+    </div>
+
+    <a href="../../../index.html" class="back-link">Kembali ke Menu Utama Materi</a>
+
+    <script>
+        // Logika JavaScript untuk mengontrol tampilan sub-materi
+        function displayMateri() {
+            const selector = document.getElementById('subMateri');
+            const selectedValue = selector.value;
+            
+            // Sembunyikan semua bagian materi
+            document.querySelectorAll('.materi-section').forEach(section => {
+                section.style.display = 'none';
+            });
+
+            // Tampilkan bagian yang dipilih
+            if (selectedValue) {
+                document.getElementById(selectedValue).style.display = 'block';
+            }
+        }
+
+        // Panggil fungsi saat halaman dimuat untuk memastikan tidak ada yang tampil default
+        document.addEventListener('DOMContentLoaded', displayMateri);
+    </script>
+</body>
+</html>
