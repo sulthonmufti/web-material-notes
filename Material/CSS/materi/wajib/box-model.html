@@ -109,5 +109,83 @@
         </div>
     </div>
     
+    <hr>
+
+    <h2>1. Content (Konten)</h2>
+    <ul>
+        <li>**Deskripsi:** Area tempat konten sesungguhnya (teks, gambar) berada.</li>
+        <li>**Properti:** Dikontrol oleh properti <code>width</code> (lebar) dan <code>height</code> (tinggi).</li>
+        <li>**Contoh:** Pada kode di atas, koten memiliki lebar <code>250px</code> dan tinggi <code>100px</code>.</li>
+    </ul>
+
+    <h2>2. Padding</h2>
+    <ul>
+        <li>**Deskripsi:** Jarak /ruang kosong yang berada di antara **Content** dan **Border**. Padding bersifat transparan dan mengambil warna latar belakang (*background color*) elemen.</li>
+        <li>**Properti:** <code>padding-top</code>, <code>padding-right</code>, <code>padding-bottom</code>, <code>padding-left</code>, aa=tay *shortland <code>padding</code>.</li>
+        <li>**Contoh:** <code>padding: 25px;</code> (memberi jarak 25px di semua sisi).</li>
+    </ul>
+
+    <pre>
+<code>
+/* Padding Shortland*/
+padding: 10px;                  /*Semua sisi 10px*/
+padding: 10px 20px;             /*Top/bottom 10px, left/right 20px*/
+padding: 10px 20px 30px;         /*Top 10px, left/right 20px, bottom 30px*/
+padding: 10px 20px 30px 40px;   /*Top, tight, bottom, left (searah jarum jam)/
+</code>
+    </pre>
+
+    <h2>3. Border (Garis tepi)</h2>
+    <ul>
+        <li>**Deskripsi:** Garis yang mengelilingi Padding dan Content. Border memisahkan elemen dari lingkungannya.</li>
+        <li>**Properti:** <code>border-width</code>, <code>border-style</code>, <code>border-color</code>, atau *shorthand* <code>border</code>.</li>
+        <li>**Contoh:** <code>border: 10px solid #f39c12;</code> (Ketebalan 10px, tipe solid, warna oranye).</li>
+    </ul>
+
+    <h2>4. Margin</h2>
+    <ul>
+        <li>**Deskripsi:** Ruang kosong yang berada di luar **Border**. Margin menciptakan jarak antara satu elemen dengan elemen di sekitarnya. Margin selalu transparan.</li>
+        <li>**Properti:** <code>margin-top</code>, <code>margin-right</code>, <code>margin-bottom</code>, <code>margin-left</code>, atau *shorthand* <code>margin</code>.</li>
+        <li>**Contoh:** <code>margin: 20px;</code> (Memberi jarak 20px dari elemen di sekitarnya).</li>
+    </ul>
+
+    <h3>Konsep Penting: Maegin Collapsing</h3>
+    <p>Ketika dua elemen vertikal bersebelahan, margin atas dan bawahnya akan bergabung (*collapse*), dan jarak yang diambil hanya yang terbesar. Hal ini terjadi pada margin vertikal (atas/bawah).</p>
+
+    <hr>
+
+    <h2>Box Sizing (Cara Menghitung Ukuran Total)</h2>
+    <p>Inilah bagian yang paling sering membuat pemula bingung.</p>
+
+    <h3>1. Mode Default: <code>box-sizing: content-box</code> (Model Klasik)</h3>
+
+    <pre>
+<code>
+Total Lebar = width + padding left + padding-right + border-left + border-right
+</code>
+    </pre>
+
+    <p>Contoh di atas memiliki total lebar 250px (width) + 25px (padding kiri) + 25px (padding kanan) + 10px (border kiri) + 10px (border kanan) = **320px**</p>
+
+    <h3>2. Model Modern: <code>box-sizing: border-box</code> (Model Terbaik)</h3>
+    <p>Dalam mode ini, properti <code>width</code> dan <code>height</code> sudah **termasuk ** **padding** dan **border**. Margin tetap di luar.</p>
+
+    <pre>
+<code>
+Total Lebar = width (yang sudah termasuk padding dan border)
+</code>
+    </pre>
+    <p>Dengan <code>border-box</code>, jika kita set <code>width 250px</code>, elemen akan bernar-benar selebar 250px. ini membuat penataan *layout* jauh lebih mudah dan prediktif. Hampir semua *framwork* dan proyek modern menggunakan model ini.</p>
+
+    <pre>
+<code>
+*{
+    box-sizing: border-box; /* Terapkan ini di awal CSS*/
+}
+</code>
+    </pre>
+
+    <a href="../../index.html" class="back-link">Kembali ke Menu Utama Materi</a>
+
 </body>
 </html>
