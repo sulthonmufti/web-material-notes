@@ -32,6 +32,17 @@
             overflow-x: auto;
             margin-bottom: 20px;
         }
+        .back-link{
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            width: 100%;
+        }
     </style>
 </head>
 <body>
@@ -119,7 +130,26 @@
             <li><code>font-size</code>: Ukuran teks (gunakan <code>px</code>, <code>em</code>, atau <code>rem</code>).</li>
             <li><code>font-weight</code>: Ketebalan teks (<code>normal</code>, <code>bold</code>, atau nilai angka 100-900.</li>
         </ul>
+
+        <h3>4. Google font Fonts (Custom Fonts)</h3>
+        <p>Untuk menggunakan font yang indah dan tidak standar, kita bisa mengimpor font dari layanan seperti Google Fonts:</p>
+        <ol>
+            <li>Impor font di HTML (melalui tag <code>&lt;link&gt;</code>) atau CSS (melalui <code>@import</code>).</li>
+            <li>Gunakan nama font tersebut dalam properti <code>font-family</code>.</li>
+        </ol>
+        <p class="note">Ini adalah cara tuama untuk *web design* modern.</p>
+
+        <h3>5. Font Shortland</h3>
+        <p>Menggambungkan beberapa properti font menjadi satu deklarasi, menghemat baris kode.</p>
+        <pre>
+<code>
+/*font-style | font-variant | font-wight | font-size/line-height | font-family */
+p { font: italic bold 14px/1.5 Arial, sans-serif;}
+</code>
+        </pre>
     </div>
+
+    <a href="../../index.html" class="back-link">Kembali ke Menu Utama Materi</a>
     
 </body>
 </html>
