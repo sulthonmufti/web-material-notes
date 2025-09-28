@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi CSS: The Boc Model</title>
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 900px;
+            margin: auto;
+        }
+        h1{ color: #333;}
+        h2{
+            color: #007bff;
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 5px;
+            margin-top: 30px;
+        }
+        code{
+            background-color: #eee;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+        pre{
+            background-color: #f4f4f4;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin-bottom: 20px;
+        }
+        .back-link{
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            width: 100%;
+        }
+
+        /* Gaya khusus untuk box model*/
+        .box-model-example{
+            width: 250px;
+            height: 100px;
+            padding: 25px;
+            border: 10px solid #f39c12;
+            margin: 20px;
+            background-color: #3498db;
+            color: white;
+            text-align: center;
+            box-sizing: content-box; /*default model*/
+        }
+        .box-container{
+            border: 2px dashed#e74c3c;
+            padding: 10px;
+            margin: 20px 0;
+        }
+        .box-model-parts{
+            list-style-type: none;
+            padding: 0;
+        }
+        .box-model-parts li{
+            margin-bottom: 10px;
+            padding: 8px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        .margin-label{
+            background-color: #ecf0f1;
+            color: #555;
+            border: 1px solid #bdc3c7;
+        }
+        .border-label{
+            background-color: #f1c40f;
+            color: #fff;
+        }
+        .padding-label{
+            background-color: #2ecc71;
+            color: #fff;
+        }
+        .content-label{
+            background-color: #3498db;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <h1>CSS Box Model (MOdel Kotak)</h1>
+    <p>Box Model adalah konsep paling mendasar di CSS. Setiap elemen HTML dianggap sebagai sebuah **kotak** (box). Memahami struktur kotak ini sangat penting untuk penataan layout.</p>
+
+    <h2>Komponen Dasar Box Model</h2>
+    <p>Sebuah kotak terdiri dari empat lapisan, dari dalam ke luar.</p>
+
+    <div class="box-container">
+        <ul class="box-model-parts">
+            <li class="margin-label">4. Margin (Jarak antar elemen)</li>
+            <li class="border-label">3. Border (Garis pembatas)</li>
+            <li class="padding-label">2. Padding (Jarak dari konten ke border)</li>
+            <li class="content-label">1. Content (Konten aktual: teks, gambar, dll.)</li>
+        </ul>
+        <p>Lihat contoh kotak di bawah. Semua area di luar garis putus-putus adalah **margin**.</p>
+        <div class="box-model-example">
+            CONTENT (250px x 100px)
+        </div>
+    </div>
+    
+</body>
+</html>
