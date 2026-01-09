@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi CSS: Specificity & !important</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; padding: 20px; max-width: 900px; margin: auto; }
+        h1 { color: #333; }
+        h2 { color: #c0392b; border-bottom: 2px solid #ccc; padding-bottom: 5px; margin-top: 30px; }
+        h3 { color: #444; }
+        code { background-color: #eee; padding: 2px 4px; border-radius: 3px; font-weight: bold; }
+        pre { background-color: #f4f4f4; padding: 15px; border-radius: 5px; overflow-x: auto; margin-bottom: 20px; border-left: 5px solid #c0392b; }
+        
+        .back-link { display: inline-block; margin-top: 30px; padding: 10px 15px; background-color: #007bff; color: white; text-align: center; text-decoration: none; border-radius: 5px; }
+
+        /* Dropdown Styling */
+        #selector-container { margin-bottom: 25px; padding: 15px; background-color: #f9ebea; border-radius: 5px; border: 1px solid #fadbd8; }
+        .materi-section { display: none; padding: 15px; border: 1px solid #ddd; border-radius: 5px; margin-top: 20px; background-color: #fff; }
+
+        /* Demo Styles */
+        .demo-box { padding: 15px; margin: 10px 0; border: 1px solid #ccc; }
+        
+        /* Contoh Specificity */
+        #judul-unik { color: blue; }
+        .teks-merah { color: red; }
+        p { color: green; }
+
+        /* Contoh !important */
+        .kotak-hijau { background-color: green !important; }
+        .kotak-kuning { background-color: yellow; }
+        
+        .note { background-color: #fff3cd; padding: 10px; border-left: 5px solid #ffc107; margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <h1>CSS Specificity & !important</h1>
+
+    <div id="selector-container">
+        <label for="subMateri">Pilih Sub-Materi:</label>
+        <select id="subMateri" onchange="displayMateri()">
+            <option value="">-- Pilih Sub-Materi --</option>
+            <option value="specificity">Apa itu Specificity?</option>
+            <option value="hierarchy">Hierarki Poin (0-0-0)</option>
+            <option value="important">Penggunaan !important</option>
+        </select>
+    </div>
+
+    <div id="specificity" class="materi-section">
+        <h2>Apa itu Specificity?</h2>
+        <p>Jika ada dua atau lebih aturan CSS yang bertabrakan menargetkan elemen yang sama, browser akan memilih aturan yang paling **spesifik**.</p>
+        
+        <div class="note">
+            Analogi: Jika seseorang memanggil "Halo Orang!" (General), dan orang lain memanggil "Halo Budi!" (Spesifik), maka Budi akan menoleh ke panggilan kedua.
+        </div>
+
+        <h3>Contoh Kasus:</h3>
+        <pre><code>p { color: green; }
+.teks-merah { color: red; }</code></pre>
+        <p>Jika elemennya adalah <code>&lt;p class="teks-merah"&gt;Teks ini&lt;/p&gt;</code>, maka warnanya akan <strong>MERAH</strong> karena Class lebih spesifik daripada Tag elemen.</p>
+    </div>
+
+    <div id="hierarchy" class="materi-section">
+        <h2>Hierarki Poin (Cara Menghitung)</h2>
+        <p>Browser menggunakan sistem poin untuk menentukan siapa yang menang:</p>
+        
+        <ol>
+            <li><strong>Inline Styles (1-0-0-0):</strong> Menang terhadap semua CSS di file eksternal.</li>
+            <li><strong>IDs (0-1-0-0):</strong> Sangat kuat. Menang melawan class.</li>
+            <li><strong>Classes, Attributes, Pseudo-classes (0-0-1-0):</strong> Seperti <code>.menu</code> atau <code>:hover</code>.</li>
+            <li><strong>Elements & Pseudo-elements (0-0-0-1):</strong> Seperti <code>h1</code>, <code>p</code>, <code>div</code>.</li>
+        </ol>
+
+        <div class="demo-box">
+            <p id="judul-unik" class="teks-merah">Teks ini akan tetap BIRU (ID menang melawan Class dan Tag)</p>
+        </div>
+
+        <p><strong>Aturan Tambahan:</strong> Jika poinnya sama persis (misal dua class yang berbeda warna), maka aturan yang ditulis **paling bawah (terakhir)** di file CSS yang akan menang.</p>
+    </div>
+
+    <div id="important" class="materi-section">
+        <h2>Penggunaan !important</h2>
+        <p>Kata kunci <code>!important</code> digunakan untuk memaksa suatu aturan CSS agar selalu menang, mengabaikan semua aturan Specificity.</p>
+
+        <pre><code>.kotak-kuning { background-color: yellow; }
+.kotak-hijau { background-color: green !important; }</code></pre>
+
+        <div class="demo-box kotak-kuning kotak-hijau">
+            Meskipun kuning ditulis lebih dulu atau ada aturan lain, kotak ini akan tetap HIJAU karena <code>!important</code>.
+        </div>
+
+        <div class="note" style="border-left-color: #c0392b; background-color: #f8d7da;">
+            <strong>⚠️ PERINGATAN:</strong> Hindari menggunakan <code>!important</code> kecuali benar-benar terpaksa (misal saat memperbaiki bug pihak ketiga). Terlalu banyak <code>!important</code> akan membuat CSS Anda berantakan dan sangat sulit untuk didebug di masa depan.
+        </div>
+    </div>
+
+    <a href="../../index.html" class="back-link">Kembali ke Menu Utama Materi</a>
+
+    <script>
+        function displayMateri() {
+            const selector = document.getElementById('subMateri');
+            const selectedValue = selector.value;
+            
+            document.querySelectorAll('.materi-section').forEach(section => {
+                section.style.display = 'none';
+            });
+
+            if (selectedValue) {
+                document.getElementById(selectedValue).style.display = 'block';
+            }
+        }
+        document.addEventListener('DOMContentLoaded', displayMateri);
+    </script>
+</body>
+</html>

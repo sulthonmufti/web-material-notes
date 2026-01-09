@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi CSS: List, Link, dan Tables</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; padding: 20px; max-width: 900px; margin: auto; }
+        h1 { color: #333; }
+        h2 { color: #16a085; border-bottom: 2px solid #ccc; padding-bottom: 5px; margin-top: 30px; }
+        h3 { color: #444; }
+        code { background-color: #eee; padding: 2px 4px; border-radius: 3px; font-weight: bold; }
+        pre { background-color: #f4f4f4; padding: 15px; border-radius: 5px; overflow-x: auto; margin-bottom: 20px; border-left: 5px solid #16a085; }
+        
+        .back-link { display: inline-block; margin-top: 30px; padding: 10px 15px; background-color: #007bff; color: white; text-align: center; text-decoration: none; border-radius: 5px; }
+
+        /* Dropdown Styling */
+        #selector-container { margin-bottom: 25px; padding: 15px; background-color: #e8f8f5; border-radius: 5px; border: 1px solid #a3e4d7; }
+        .materi-section { display: none; padding: 15px; border: 1px solid #ddd; border-radius: 5px; margin-top: 20px; background-color: #fff; }
+
+        /* Demo Styles untuk Link */
+        .link-demo a:link { color: #16a085; text-decoration: none; }
+        .link-demo a:visited { color: #a569bd; }
+        .link-demo a:hover { color: white; background-color: #16a085; border-radius: 4px; padding: 2px 5px; }
+        .link-demo a:active { color: red; }
+
+        /* Demo Styles untuk Tables */
+        table { border-collapse: collapse; width: 100%; margin: 15px 0; }
+        table, th, td { border: 1px solid #ddd; }
+        th, td { padding: 12px; text-align: left; }
+        th { background-color: #16a085; color: white; }
+        tr:nth-child(even) { background-color: #f2f2f2; }
+        tr:hover { background-color: #d1f2eb; }
+
+        /* List Styles */
+        .custom-list { list-style-type: square; }
+        .no-bullet { list-style-type: none; padding: 0; margin: 0; }
+        .no-bullet li { display: inline-block; margin-right: 15px; background: #eee; padding: 5px 10px; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <h1>List, Link, & Tables</h1>
+
+    <div id="selector-container">
+        <label for="subMateri">Pilih Sub-Materi:</label>
+        <select id="subMateri" onchange="displayMateri()">
+            <option value="">-- Pilih Sub-Materi --</option>
+            <option value="list">CSS Lists (Daftar)</option>
+            <option value="link">CSS Links (Tautan)</option>
+            <option value="tables">CSS Tables (Tabel)</option>
+        </select>
+    </div>
+
+    <div id="list" class="materi-section">
+        <h2>CSS Lists</h2>
+        <p>Anda bisa mengatur gaya penanda (bullet) pada daftar menggunakan properti <code>list-style-type</code>.</p>
+
+        <h3>list-style-type</h3>
+        <ul class="custom-list">
+            <li>Kopi</li>
+            <li>Teh</li>
+            <li>Susu (Bullet kotak)</li>
+        </ul>
+
+        <h3>Menghapus Penanda (Sangat Penting untuk Navigasi!)</h3>
+        <p>Seringkali kita ingin membuat menu navigasi menggunakan list tanpa bullet.</p>
+        <ul class="no-bullet">
+            <li>Beranda</li>
+            <li>Produk</li>
+            <li>Kontak</li>
+        </ul>
+        <pre><code>ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}</code></pre>
+
+        <h3>List Style Image</h3>
+        <p>Anda bisa menggunakan gambar kustom sebagai bullet.</p>
+        <pre><code>ul {
+  list-style-image: url('sqpurple.gif');
+}</code></pre>
+    </div>
+
+    <div id="link" class="materi-section">
+        <h2>CSS Links</h2>
+        <p>Tautan dapat diberi gaya berbeda tergantung pada **statusnya** menggunakan *pseudo-classes*.</p>
+
+        <div class="link-demo">
+            <p>Coba arahkan kursor (hover) atau klik tautan ini: <a href="#">Contoh Tautan Interaktif</a></p>
+        </div>
+
+        <h3>Empat Status Utama (LVHA):</h3>
+        <ul>
+            <li><code>:link</code> - Tautan normal yang belum dikunjungi.</li>
+            <li><code>:visited</code> - Tautan yang sudah pernah dikunjungi user.</li>
+            <li><code>:hover</code> - Saat kursor berada di atas tautan.</li>
+            <li><code>:active</code> - Saat tautan sedang diklik.</li>
+        </ul>
+        <pre><code>/* Urutan LVHA penting! */
+a:link { color: blue; }
+a:visited { color: purple; }
+a:hover { color: red; }
+a:active { color: yellow; }</code></pre>
+    </div>
+
+    <div id="tables" class="materi-section">
+        <h2>CSS Tables</h2>
+        <p>Tabel HTML tanpa CSS terlihat sangat berantakan. Properti CSS membuat data tabel mudah dibaca.</p>
+
+        <h3>Properti Utama Tabel:</h3>
+        <ul>
+            <li><code>border-collapse</code>: Menggabungkan border ganda menjadi satu garis tipis (Sangat penting!).</li>
+            <li><code>width</code> & <code>height</code>: Menentukan ukuran tabel.</li>
+            <li><code>padding</code>: Memberi ruang di dalam sel agar teks tidak menempel ke garis.</li>
+            <li><code>nth-child(even)</code>: Membuat efek "Zebra" (warna selang-seling).</li>
+        </ul>
+
+        <table>
+            <tr>
+                <th>Nama</th>
+                <th>Kategori</th>
+                <th>Status</th>
+            </tr>
+            <tr>
+                <td>HTML</td>
+                <td>Dasar</td>
+                <td>Selesai</td>
+            </tr>
+            <tr>
+                <td>CSS</td>
+                <td>Dasar</td>
+                <td>Sedang Dipelajari</td>
+            </tr>
+            <tr>
+                <td>JavaScript</td>
+                <td>Lanjutan</td>
+                <td>Belum Mulai</td>
+            </tr>
+        </table>
+
+        <pre><code>table {
+  border-collapse: collapse;
+  width: 100%;
+}
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+tr:nth-child(even) { background-color: #f2f2f2; }</code></pre>
+    </div>
+
+    <a href="../../index.html" class="back-link">Kembali ke Menu Utama Materi</a>
+
+    <script>
+        function displayMateri() {
+            const selector = document.getElementById('subMateri');
+            const selectedValue = selector.value;
+            
+            document.querySelectorAll('.materi-section').forEach(section => {
+                section.style.display = 'none';
+            });
+
+            if (selectedValue) {
+                document.getElementById(selectedValue).style.display = 'block';
+            }
+        }
+        document.addEventListener('DOMContentLoaded', displayMateri);
+    </script>
+</body>
+</html>

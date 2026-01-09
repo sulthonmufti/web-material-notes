@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi CSS: Units (px, em, rem, %)</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; padding: 20px; max-width: 900px; margin: auto; }
+        h1 { color: #333; }
+        h2 { color: #8e44ad; border-bottom: 2px solid #ccc; padding-bottom: 5px; margin-top: 30px; }
+        h3 { color: #444; }
+        code { background-color: #eee; padding: 2px 4px; border-radius: 3px; font-weight: bold; }
+        pre { background-color: #f4f4f4; padding: 15px; border-radius: 5px; overflow-x: auto; margin-bottom: 20px; border-left: 5px solid #8e44ad; }
+        
+        .back-link { display: inline-block; margin-top: 30px; padding: 10px 15px; background-color: #007bff; color: white; text-align: center; text-decoration: none; border-radius: 5px; }
+
+        /* Dropdown Styling */
+        #selector-container { margin-bottom: 25px; padding: 15px; background-color: #f5eef8; border-radius: 5px; border: 1px solid #d7bde2; }
+        .materi-section { display: none; padding: 15px; border: 1px solid #ddd; border-radius: 5px; margin-top: 20px; background-color: #fff; }
+
+        /* Demo Styles */
+        .demo-container { border: 2px dashed #ccc; padding: 10px; margin: 10px 0; background: #fafafa; }
+        
+        /* Parent font size for em demo */
+        .parent-em { font-size: 20px; border: 1px solid #8e44ad; padding: 10px; }
+        .child-em { font-size: 2em; color: #8e44ad; } /* Akan jadi 40px */
+
+        .rem-box { font-size: 1.5rem; background: #e8f8f5; padding: 10px; }
+        
+        .percent-parent { width: 100%; background: #eee; height: 50px; }
+        .percent-child { width: 50%; background: #8e44ad; color: white; height: 100%; text-align: center; }
+    </style>
+</head>
+<body>
+    <h1>CSS Units (Satuan)</h1>
+
+    <div id="selector-container">
+        <label for="subMateri">Pilih Sub-Materi:</label>
+        <select id="subMateri" onchange="displayMateri()">
+            <option value="">-- Pilih Sub-Materi --</option>
+            <option value="absolute">Absolute Units (px)</option>
+            <option value="relative">Relative Units (em, rem)</option>
+            <option value="percentage">Percentage (%)</option>
+        </select>
+    </div>
+
+    <div id="absolute" class="materi-section">
+        <h2>Absolute Units (Satuan Tetap)</h2>
+        <p>Satuan absolut memiliki ukuran yang sama persis, tidak peduli seberapa besar layar atau pengaturan browser pengguna.</p>
+        
+        
+
+        <h3>Pixels (px)</h3>
+        <ul>
+            <li>Satuan paling umum digunakan.</li>
+            <li>1px setara dengan 1 titik di layar.</li>
+            <li>**Kekurangan:** Tidak fleksibel untuk aksesibilitas. Jika pengguna mengubah ukuran font default di browser mereka, ukuran <code>px</code> tetap tidak akan berubah.</li>
+        </ul>
+        <div class="demo-container">
+            <p style="font-size: 16px;">Teks ini berukuran 16px (Tetap).</p>
+            <div style="width: 200px; background: #3498db; color: white; padding: 5px;">Lebar tetap 200px</div>
+        </div>
+    </div>
+
+    <div id="relative" class="materi-section">
+        <h2>Relative Units (Satuan Relatif)</h2>
+        <p>Satuan relatif berubah ukurannya berdasarkan elemen lain (induk atau root). Ini sangat disarankan untuk desain modern.</p>
+
+        
+
+        <h3>1. EM (Relative to Parent)</h3>
+        <p>Ukuran <code>em</code> relatif terhadap <strong>font-size elemen induknya</strong>.</p>
+        <div class="demo-container parent-em">
+            Induk (Font size: 20px)
+            <div class="child-em">Anak (2em = 40px)</div>
+        </div>
+        <p><em>Hati-hati: Jika em digunakan bertingkat (anak di dalam anak), ukurannya bisa menjadi sangat besar/kecil dengan cepat.</em></p>
+
+        <h3>2. REM (Relative to Root)</h3>
+        <p>Ukuran <code>rem</code> relatif terhadap <strong>font-size elemen ROOT (html)</strong>. Biasanya default browser adalah 16px.</p>
+        <ul>
+            <li>1rem biasanya = 16px.</li>
+            <li>2rem = 32px.</li>
+            <li>**Kelebihan:** Sangat stabil dan memudahkan aksesibilitas. Jika user memperbesar font browser, seluruh website Anda akan ikut membesar secara proporsional.</li>
+        </ul>
+        <div class="demo-container">
+            <div class="rem-box">Kotak ini 1.5rem (±24px)</div>
+        </div>
+    </div>
+
+    <div id="percentage" class="materi-section">
+        <h2>Percentage (%)</h2>
+        <p>Satuan persen selalu relatif terhadap elemen induknya (parent) untuk properti yang sama.</p>
+
+        <h3>Contoh Penggunaan Lebar:</h3>
+        <p>Jika induk lebarnya 100%, dan anak 50%, maka anak akan memakan setengah dari lebar induknya.</p>
+        <div class="demo-container">
+            <div class="percent-parent">
+                <div class="percent-child">50% Lebar Induk</div>
+            </div>
+        </div>
+
+        <p><strong>Kapan menggunakan %?</strong> Sangat berguna untuk membuat kolom layout yang bisa melebar atau mengecil sesuai ukuran layar.</p>
+    </div>
+
+    <a href="../../index.html" class="back-link">Kembali ke Menu Utama Materi</a>
+
+    <script>
+        function displayMateri() {
+            const selector = document.getElementById('subMateri');
+            const selectedValue = selector.value;
+            
+            document.querySelectorAll('.materi-section').forEach(section => {
+                section.style.display = 'none';
+            });
+
+            if (selectedValue) {
+                document.getElementById(selectedValue).style.display = 'block';
+            }
+        }
+        document.addEventListener('DOMContentLoaded', displayMateri);
+    </script>
+</body>
+</html>

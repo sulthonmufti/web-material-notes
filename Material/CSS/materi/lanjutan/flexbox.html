@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi CSS Lanjutan: Flexbox</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; padding: 20px; max-width: 1000px; margin: auto; }
+        h1 { color: #333; }
+        h2 { color: #27ae60; border-bottom: 2px solid #ccc; padding-bottom: 5px; margin-top: 30px; }
+        h3 { color: #444; }
+        code { background-color: #eee; padding: 2px 4px; border-radius: 3px; font-weight: bold; }
+        pre { background-color: #f4f4f4; padding: 15px; border-radius: 5px; overflow-x: auto; margin-bottom: 20px; border-left: 5px solid #27ae60; }
+        
+        .back-link { display: inline-block; margin-top: 30px; padding: 10px 15px; background-color: #007bff; color: white; text-align: center; text-decoration: none; border-radius: 5px; }
+
+        /* Dropdown Styling */
+        #selector-container { margin-bottom: 25px; padding: 15px; background-color: #eafaf1; border-radius: 5px; border: 1px solid #27ae60; }
+        .materi-section { display: none; padding: 15px; border: 1px solid #ddd; border-radius: 5px; margin-top: 20px; background-color: #fff; }
+
+        /* Flex Demo Styles */
+        .flex-container {
+            display: flex;
+            background-color: #f1f1f1;
+            padding: 10px;
+            border: 2px dashed #ccc;
+            min-height: 100px;
+            margin-bottom: 10px;
+        }
+        .flex-item {
+            background-color: #27ae60;
+            color: white;
+            margin: 5px;
+            padding: 20px;
+            font-size: 20px;
+            text-align: center;
+            border-radius: 5px;
+        }
+
+        .note { background-color: #e8f6f3; padding: 10px; border-left: 5px solid #1abc9c; margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <h1>CSS Flexbox (Flexible Box)</h1>
+
+    <div id="selector-container">
+        <label for="subMateri">Pilih Sub-Materi:</label>
+        <select id="subMateri" onchange="displayMateri()">
+            <option value="">-- Pilih Sub-Materi --</option>
+            <option value="intro">Flexbox Intro & Container</option>
+            <option value="justify">Justify Content (Horisontal)</option>
+            <option value="align">Align Items (Vertikal)</option>
+            <option value="items">Flex Items (Anak Elemen)</option>
+            <option value="responsive">Responsive Flexbox</option>
+        </select>
+    </div>
+
+    <div id="intro" class="materi-section">
+        <h2>Flexbox Intro</h2>
+        <p>Flexbox adalah model layout satu dimensi (baris atau kolom). Sebelum Flexbox, kita menggunakan <code>float</code> yang sangat rumit.</p>
+        
+        
+
+        <h3>Cara Mengaktifkan:</h3>
+        <p>Anda cukup memberikan properti <code>display: flex;</code> pada elemen induknya (container).</p>
+        <pre><code>.container {
+  display: flex;
+  flex-direction: row; /* Default: item berjejer ke samping */
+}</code></pre>
+        
+        <div class="flex-container">
+            <div class="flex-item">1</div>
+            <div class="flex-item">2</div>
+            <div class="flex-item">3</div>
+        </div>
+    </div>
+
+    <div id="justify" class="materi-section">
+        <h2>Justify Content</h2>
+        <p>Properti ini mengatur perataan item di sepanjang **Main Axis** (secara default: Horisontal).</p>
+
+        
+
+        <ul>
+            <li><code>flex-start</code> (Default): Rata kiri.</li>
+            <li><code>flex-end</code>: Rata kanan.</li>
+            <li><code>center</code>: Di tengah.</li>
+            <li><code>space-between</code>: Jarak merata di antara item.</li>
+            <li><code>space-around</code>: Jarak merata di sekeliling item.</li>
+        </ul>
+
+        <p>Contoh <code>justify-content: space-between;</code>:</p>
+        <div class="flex-container" style="justify-content: space-between;">
+            <div class="flex-item">1</div>
+            <div class="flex-item">2</div>
+            <div class="flex-item">3</div>
+        </div>
+    </div>
+
+    <div id="align" class="materi-section">
+        <h2>Align Items</h2>
+        <p>Properti ini mengatur perataan item di sepanjang **Cross Axis** (secara default: Vertikal).</p>
+
+        
+
+        <p>Contoh <code>align-items: center;</code> pada container yang tinggi:</p>
+        <div class="flex-container" style="align-items: center; height: 200px;">
+            <div class="flex-item">Item ini di tengah vertikal</div>
+            <div class="flex-item">Item 2</div>
+        </div>
+    </div>
+
+    <div id="items" class="materi-section">
+        <h2>Flex Items (Properties untuk Anak)</h2>
+        <p>Selain container, kita bisa mengatur masing-masing item di dalamnya.</p>
+        
+        <ul>
+            <li><code>flex-grow</code>: Menentukan seberapa besar item akan tumbuh dibanding item lain.</li>
+            <li><code>flex-shrink</code>: Menentukan kemampuan item untuk mengecil.</li>
+            <li><code>flex-basis</code>: Menentukan ukuran awal item.</li>
+        </ul>
+
+        <h3>Shorthand Flex</h3>
+        <p>Disarankan menggunakan <code>flex: 1;</code> agar item mengisi ruang yang kosong secara otomatis.</p>
+        <div class="flex-container">
+            <div class="flex-item" style="flex: 1;">Flex: 1 (Lebih lebar)</div>
+            <div class="flex-item">Normal</div>
+            <div class="flex-item">Normal</div>
+        </div>
+
+        <hr>
+
+        <h2>Align Items & Perilaku Item (Vertikal)</h2>
+        <p>Bagian ini membahas cara menyelaraskan elemen secara vertikal dan bagaimana elemen tersebut bereaksi terhadap ruang yang tersedia.</p>
+
+        
+
+        <h3>A. Penyelarasan Vertikal (Align Items)</h3>
+        <ul>
+            <li><code>stretch</code> (Default): Item memenuhi tinggi container.</li>
+            <li><code>center</code>: Item berada di tengah vertikal.</li>
+            <li><code>flex-start</code>: Item di atas.</li>
+            <li><code>flex-end</code>: Item di bawah.</li>
+        </ul>
+
+        <hr>
+
+        <h3>B. Logika Pertumbuhan Item (Deep Dive)</h3>
+        <p>Saat menyelaraskan secara vertikal, kita sering perlu mengatur bagaimana item mengisi ruang horisontal yang tersisa.</p>
+
+        
+
+        <h4>1. flex-grow <span class="badge">Tumbuh</span></h4>
+        <p>Mengatur seberapa besar item boleh <strong>"tumbuh"</strong> saat ada ruang kosong.</p>
+        <ul>
+            <li><strong>Default: 0</strong> (Tidak membesar).</li>
+            <li><strong>Contoh:</strong> <code>flex-grow: 2;</code> artinya item tersebut mengambil sisa ruang 2x lebih banyak dibanding yang bernilai 1.</li>
+        </ul>
+
+        <h4>2. flex-shrink <span class="badge">Menyusut</span></h4>
+        <p>Mengatur seberapa besar item boleh <strong>"mengecil"</strong> saat ruang tidak cukup.</p>
+        <ul>
+            <li><strong>Default: 1</strong> (Boleh mengecil).</li>
+            <li><strong>Nilai 0:</strong> Item mempertahankan ukurannya (sangat berguna untuk Icon/Sidebar).</li>
+        </ul>
+
+        <h4>3. flex-basis <span class="badge">Modal Awal</span></h4>
+        <p>Ukuran awal item sebelum <em>grow</em> atau <em>shrink</em> dihitung. Anggap ini sebagai titik start elemen.</p>
+
+        <div class="note">
+            <strong>🔥 Apa itu <code>flex: 1;</code>?</strong><br>
+            Ini adalah shorthand dari <code>flex: 1 1 0%;</code>. Artinya: Item boleh tumbuh, boleh menyusut, dan mengabaikan ukuran awal kontennya. Hasilnya, semua item akan membagi ruang secara <strong>rata dan adil</strong>.
+        </div>
+
+        <h3>Demo Visual: Align Center + Flex Logic</h3>
+        <div class="flex-container" style="align-items: center;">
+            <div class="flex-item" style="flex: 1;">Item A (flex: 1) - Saya mengisi ruang dan rata tengah vertikal</div>
+            <div class="flex-item" style="flex: 2; background-color: #e67e22;">Item B (flex: 2) - Saya tumbuh 2x lebih besar dari A</div>
+            <div class="flex-item" style="flex-shrink: 0; width: 100px; background-color: #c0392b;">Item C - Anti-Shrink (Tetap 100px)</div>
+        </div>
+
+    </div>
+
+    <div id="responsive" class="materi-section">
+        <h2>Responsive Flexbox</h2>
+        <p>Salah satu kekuatan Flexbox adalah kemampuannya berubah dari baris (row) menjadi kolom (column) pada layar kecil.</p>
+
+        <pre><code>.container {
+  display: flex;
+  flex-direction: row;
+}
+
+/* Jika layar di bawah 600px, berubah jadi kolom */
+@media (max-width: 600px) {
+  .container {
+    flex-direction: column;
+  }
+}</code></pre>
+
+        <div class="note">
+            Coba kecilkan ukuran browser Anda (jika menggunakan Desktop) untuk melihat efek <code>flex-wrap: wrap;</code> di bawah ini.
+        </div>
+        <div class="flex-container" style="flex-wrap: wrap;">
+            <div class="flex-item" style="width: 250px;">Item 1</div>
+            <div class="flex-item" style="width: 250px;">Item 2</div>
+            <div class="flex-item" style="width: 250px;">Item 3</div>
+            <div class="flex-item" style="width: 250px;">Item 4</div>
+        </div>
+    </div>
+
+    <a href="../../index.html" class="back-link">Kembali ke Menu Utama Materi</a>
+
+    <script>
+        function displayMateri() {
+            const selector = document.getElementById('subMateri');
+            const selectedValue = selector.value;
+            
+            document.querySelectorAll('.materi-section').forEach(section => {
+                section.style.display = 'none';
+            });
+
+            if (selectedValue) {
+                document.getElementById(selectedValue).style.display = 'block';
+            }
+        }
+        document.addEventListener('DOMContentLoaded', displayMateri);
+    </script>
+</body>
+</html>
