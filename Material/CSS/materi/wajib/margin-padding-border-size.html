@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi CSS: Margin, Padding, Border, Size</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; padding: 20px; max-width: 900px; margin: auto; }
+        h1 { color: #333; }
+        h2 { color: #2980b9; border-bottom: 2px solid #ccc; padding-bottom: 5px; margin-top: 30px; }
+        h3 { color: #444; }
+        code { background-color: #eee; padding: 2px 4px; border-radius: 3px; font-weight: bold; }
+        pre { background-color: #f4f4f4; padding: 15px; border-radius: 5px; overflow-x: auto; margin-bottom: 20px; border-left: 5px solid #2980b9; }
+        .back-link { display: inline-block; margin-top: 30px; padding: 10px 15px; background-color: #007bff; color: white; text-align: center; text-decoration: none; border-radius: 5px; }
+
+        /* Dropdown Styling */
+        #selector-container { margin-bottom: 25px; padding: 15px; background-color: #f0f4f8; border-radius: 5px; border: 1px solid #d1d9e6; }
+        .materi-section { display: none; padding: 15px; border: 1px solid #ddd; border-radius: 5px; margin-top: 20px; background-color: #fff; }
+
+        /* Contoh Visual */
+        .demo-box { background-color: #3498db; color: white; padding: 10px; text-align: center; border: 1px solid #2980b9; }
+        .container-demo { background-color: #ecf0f1; border: 2px dashed #bdc3c7; padding: 20px; margin: 10px 0; }
+        
+        /* Box khusus untuk Border */
+        .border-demo { width: 100%; padding: 15px; text-align: center; background-color: #fff; margin-bottom: 10px; border: 5px solid #e74c3c; }
+    </style>
+</head>
+<body>
+    <h1>Margin, Padding, Border, & Size</h1>
+
+    <div id="selector-container">
+        <label for="subMateri">Pilih Sub-Materi:</label>
+        <select id="subMateri" onchange="displayMateri()">
+            <option value="">-- Pilih Sub-Materi --</option>
+            <option value="margin">Margin (Jarak Luar)</option>
+            <option value="padding">Padding (Jarak Dalam)</option>
+            <option value="border">Border (Garis Tepi)</option>
+            <option value="size">Height & Width (Ukuran)</option>
+        </select>
+    </div>
+
+    <div id="margin" class="materi-section">
+        <h2>Margin (Jarak Luar)</h2>
+        <p>Margin digunakan untuk membuat ruang di **luar** elemen (di luar border).</p>
+        
+        <h3>Properti Individu</h3>
+        <code>margin-top</code>, <code>margin-right</code>, <code>margin-bottom</code>, <code>margin-left</code>.
+
+        <h3>Margin Shorthand</h3>
+        <pre><code>margin: 25px 50px 75px 100px; /* atas, kanan, bawah, kiri */
+margin: 25px 50px;           /* atas&bawah 25px, kiri&kanan 50px */
+margin: 25px;                /* semua sisi 25px */</code></pre>
+
+        <h3>Nilai "Auto"</h3>
+        <p>Mengatur <code>margin: auto;</code> secara horizontal akan membuat elemen berada di tengah secara otomatis di dalam containernya (syarat: elemen harus memiliki <code>width</code>).</p>
+        <div class="container-demo">
+            <div class="demo-box" style="width: 50%; margin: auto;">Kotak ini di tengah dengan margin: auto</div>
+        </div>
+    </div>
+
+    <div id="padding" class="materi-section">
+        <h2>Padding (Jarak Dalam)</h2>
+        <p>Padding digunakan untuk membuat ruang di **dalam** elemen, antara konten dan border.</p>
+
+        <h3>Padding Shorthand</h3>
+        <pre><code>padding: 20px 40px; /* 20px atas-bawah, 40px kiri-kanan */</code></pre>
+
+        <p><strong>Penting:</strong> Jika elemen memiliki warna latar belakang, warna tersebut akan terlihat memenuhi area padding.</p>
+        
+        <div class="container-demo">
+            <div class="demo-box" style="padding: 40px;">Kotak dengan Padding Besar (40px)</div>
+            <br>
+            <div class="demo-box" style="padding: 5px;">Kotak dengan Padding Kecil (5px)</div>
+        </div>
+    </div>
+
+    <div id="border" class="materi-section">
+        <h2>Border (Garis Tepi)</h2>
+        <p>Border mengelilingi padding dan konten. Anda bisa mengatur lebar, gaya, dan warnanya.</p>
+
+        <h3>Border Shorthand</h3>
+        <pre><code>border: 5px solid red; /* width, style, color */</code></pre>
+
+        <h3>Border Styles</h3>
+        <div class="border-demo" style="border-style: dotted;">Dotted Border</div>
+        <div class="border-demo" style="border-style: dashed;">Dashed Border</div>
+        <div class="border-demo" style="border-style: double;">Double Border</div>
+
+        <h3>Border Radius (Sudut Tumpul)</h3>
+        <p>Digunakan untuk membuat sudut elemen menjadi melengkung.</p>
+        <div class="demo-box" style="border-radius: 15px; border: 2px solid #333;">Kotak dengan border-radius: 15px</div>
+    </div>
+
+    <div id="size" class="materi-section">
+        <h2>Height & Width (Ukuran)</h2>
+        <p>Digunakan untuk menentukan tinggi dan lebar suatu elemen.</p>
+
+        <h3>Nilai Ukuran</h3>
+        <ul>
+            <li><code>auto</code> (default): Browser menghitung ukuran secara otomatis.</li>
+            <li><code>px</code>: Ukuran tetap (pixel).</li>
+            <li><code>%</code>: Ukuran relatif terhadap elemen induknya (parent).</li>
+        </ul>
+
+        <h3>Max-width (Penting untuk Responsif)</h3>
+        <p>Gunakan <code>max-width</code> daripada <code>width</code> agar elemen tidak meluap keluar layar pada HP yang kecil.</p>
+        <div class="container-demo">
+            <div class="demo-box" style="max-width: 300px; width: 100%;">Kotak ini lebarnya 100% tapi maksimal hanya 300px.</div>
+        </div>
+
+        <h3>Contoh Tinggi Tetap</h3>
+        <div class="demo-box" style="height: 150px;">Tinggi kotak ini 150px</div>
+    </div>
+
+    <a href="../../index.html" class="back-link">Kembali ke Menu Utama Materi</a>
+
+    <script>
+        function displayMateri() {
+            const selector = document.getElementById('subMateri');
+            const selectedValue = selector.value;
+            
+            document.querySelectorAll('.materi-section').forEach(section => {
+                section.style.display = 'none';
+            });
+
+            if (selectedValue) {
+                document.getElementById(selectedValue).style.display = 'block';
+            }
+        }
+        document.addEventListener('DOMContentLoaded', displayMateri);
+    </script>
+</body>
+</html>

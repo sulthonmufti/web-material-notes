@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi CSS: Display Property</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; padding: 20px; max-width: 900px; margin: auto; }
+        h1 { color: #333; }
+        h2 { color: #e67e22; border-bottom: 2px solid #ccc; padding-bottom: 5px; margin-top: 30px; }
+        h3 { color: #444; }
+        code { background-color: #eee; padding: 2px 4px; border-radius: 3px; font-weight: bold; }
+        pre { background-color: #f4f4f4; padding: 15px; border-radius: 5px; overflow-x: auto; margin-bottom: 20px; border-left: 5px solid #e67e22; }
+        
+        .back-link { display: inline-block; margin-top: 30px; padding: 10px 15px; background-color: #007bff; color: white; text-align: center; text-decoration: none; border-radius: 5px; }
+
+        /* Demo Styles */
+        .demo-container { background-color: #f9f9f9; border: 1px solid #ddd; padding: 15px; margin: 10px 0; }
+        
+        .block-box { display: block; background-color: #3498db; color: white; padding: 10px; margin-bottom: 5px; border: 1px solid #2980b9; }
+        
+        .inline-box { display: inline; background-color: #2ecc71; color: white; padding: 5px; border: 1px solid #27ae60; }
+        
+        .inline-block-box { display: inline-block; background-color: #9b59b6; color: white; padding: 10px; width: 100px; text-align: center; margin: 5px; border: 1px solid #8e44ad; }
+
+        .hidden-box { display: none; }
+        
+        .note { background-color: #ffffd2; padding: 10px; border-left: 5px solid #ffd700; margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <h1>CSS Display Property</h1>
+
+    <p>Properti <code>display</code> adalah properti paling dasar untuk mengontrol layout. Setiap elemen memiliki nilai default tergantung jenis elemennya.</p>
+
+    
+
+    <h2>1. Display: Block</h2>
+    <p>Elemen dengan <code>display: block</code> akan mengambil **seluruh lebar** yang tersedia dan selalu dimulai pada **baris baru**.</p>
+    <ul>
+        <li>Dapat diatur <code>width</code> dan <code>height</code>-nya.</li>
+        <li>Margin dan Padding berlaku di semua sisi.</li>
+        <li>Contoh elemen default block: <code>&lt;div&gt;</code>, <code>&lt;h1&gt;-&lt;h6&gt;</code>, <code>&lt;p&gt;</code>, <code>&lt;section&gt;</code>.</li>
+    </ul>
+
+    <div class="demo-container">
+        <div class="block-box">Kotak Block 1 (Full Width)</div>
+        <div class="block-box">Kotak Block 2</div>
+    </div>
+
+    <hr>
+
+    <h2>2. Display: Inline</h2>
+    <p>Elemen dengan <code>display: inline</code> hanya mengambil lebar **sesuai kebutuhan kontennya** saja dan **tidak** memulai baris baru.</p>
+    <ul>
+        <li>**Tidak bisa** diatur <code>width</code> dan <code>height</code>-nya.</li>
+        <li>Margin/Padding atas dan bawah tidak akan mempengaruhi elemen lain di sekitarnya.</li>
+        <li>Contoh elemen default inline: <code>&lt;span&gt;</code>, <code>&lt;a&gt;</code>, <code>&lt;img&gt;</code>.</li>
+    </ul>
+
+    <div class="demo-container">
+        <span class="inline-box">Teks Inline A</span>
+        <span class="inline-box">Teks Inline B</span>
+        <span class="inline-box">Teks Inline C</span>
+    </div>
+
+    <hr>
+
+    <h2>3. Display: Inline-Block</h2>
+    <p>Ini adalah jalan tengah. Elemen akan berbaris ke samping (seperti <code>inline</code>), tetapi kita **bisa** mengatur <code>width</code> dan <code>height</code>-nya (seperti <code>block</code>).</p>
+    <ul>
+        <li>Cocok untuk membuat menu navigasi atau kartu (cards) yang berjejer ke samping.</li>
+    </ul>
+
+    <div class="demo-container">
+        <div class="inline-block-box">Box 1</div>
+        <div class="inline-block-box">Box 2</div>
+        <div class="inline-block-box">Box 3</div>
+    </div>
+
+    <hr>
+
+    <h2>4. Display: None</h2>
+    <p>Digunakan untuk **menghilangkan** elemen sepenuhnya dari halaman. Elemen tersebut tidak akan mengambil ruang sama sekali, seolah-olah tidak ada di HTML.</p>
+    
+    <div class="note">
+        <strong>Bedanya dengan Visibility: Hidden?</strong><br>
+        <code>display: none;</code> -> Elemen hilang dan ruangnya tertutup.<br>
+        <code>visibility: hidden;</code> -> Elemen tidak terlihat tapi ruangnya tetap kosong (seperti hantu).
+    </div>
+
+    <pre><code>.tombol-rahasia {
+  display: none;
+}</code></pre>
+
+    <hr>
+
+    <h2>Nilai Modern: Flex & Grid</h2>
+    <p>Selain nilai di atas, ada nilai modern yang sangat kuat untuk layout:</p>
+    <ul>
+        <li><code>display: flex;</code> (Untuk layout satu dimensi).</li>
+        <li><code>display: grid;</code> (Untuk layout dua dimensi/tabel kompleks).</li>
+    </ul>
+    <p><em>Materi Flex dan Grid akan dibahas di bagian Lanjutan/Mahir.</em></p>
+
+    <a href="../../index.html" class="back-link">Kembali ke Menu Utama Materi</a>
+
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi CSS: Position dan Z-index</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; padding: 20px; max-width: 900px; margin: auto; height: 2000px; /* Tinggi ekstra untuk demo scrolling */ }
+        h1 { color: #333; }
+        h2 { color: #d35400; border-bottom: 2px solid #ccc; padding-bottom: 5px; margin-top: 30px; }
+        h3 { color: #444; }
+        code { background-color: #eee; padding: 2px 4px; border-radius: 3px; font-weight: bold; }
+        pre { background-color: #f4f4f4; padding: 15px; border-radius: 5px; overflow-x: auto; margin-bottom: 20px; border-left: 5px solid #d35400; }
+        
+        .back-link { display: inline-block; margin-top: 30px; padding: 10px 15px; background-color: #007bff; color: white; text-align: center; text-decoration: none; border-radius: 5px; }
+
+        /* Dropdown Styling */
+        #selector-container { margin-bottom: 25px; padding: 15px; background-color: #fdf2e9; border-radius: 5px; border: 1px solid #f5c6cb; position: sticky; top: 10px; z-index: 1000; }
+        .materi-section { display: none; padding: 15px; border: 1px solid #ddd; border-radius: 5px; margin-top: 20px; background-color: #fff; }
+
+        /* Demo Styles */
+        .parent-box { background-color: #ecf0f1; border: 2px dashed #7f8c8d; height: 200px; position: relative; margin: 20px 0; padding: 10px; }
+        .child-box { width: 80px; height: 80px; color: white; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 12px; }
+        
+        .static-demo { background-color: #3498db; position: static; }
+        .relative-demo { background-color: #2ecc71; position: relative; left: 50px; top: 20px; }
+        .absolute-demo { background-color: #e74c3c; position: absolute; right: 10px; bottom: 10px; }
+        .fixed-demo { background-color: #9b59b6; position: fixed; bottom: 20px; right: 20px; width: 100px; height: 50px; z-index: 999; }
+        .sticky-demo { background-color: #f1c40f; color: black; position: sticky; top: 80px; width: 100%; margin: 10px 0; }
+
+        /* Z-index Demo */
+        .z-container { position: relative; height: 150px; margin-top: 20px; }
+        .z-box { position: absolute; width: 100px; height: 100px; border: 2px solid black; }
+        .box-1 { background-color: red; top: 0; left: 0; z-index: 1; }
+        .box-2 { background-color: blue; top: 30px; left: 30px; z-index: 3; }
+        .box-3 { background-color: green; top: 60px; left: 60px; z-index: 2; }
+    </style>
+</head>
+<body>
+    <h1>CSS Position & Z-index</h1>
+
+    <div id="selector-container">
+        <label for="subMateri">Pilih Sub-Materi:</label>
+        <select id="subMateri" onchange="displayMateri()">
+            <option value="">-- Pilih Sub-Materi --</option>
+            <option value="position">CSS Position (Posisi)</option>
+            <option value="zindex">Z-index (Tumpukan)</option>
+        </select>
+    </div>
+
+    <div id="position" class="materi-section">
+        <h2>CSS Position</h2>
+        <p>Properti <code>position</code> menentukan metode penempatan elemen di dokumen.</p>
+
+        
+
+        <h3>1. Static (Default)</h3>
+        <p>Elemen mengikuti aliran normal halaman. Properti <code>top, bottom, left, right</code> **tidak berfungsi** pada static.</p>
+        <div class="parent-box">
+            <div class="child-box static-demo">Static</div>
+        </div>
+
+        <h3>2. Relative</h3>
+        <p>Elemen dipindahkan relatif terhadap posisi aslinya tanpa mengganggu ruang yang ditinggalkannya.</p>
+        <div class="parent-box">
+            <div class="child-box relative-demo">Relative (left 50px)</div>
+        </div>
+
+        <h3>3. Absolute</h3>
+        <p>Elemen dipindahkan relatif terhadap **elemen induk (parent)** terdekat yang memiliki posisi (selain static). Jika tidak ada, ia merujuk ke body.</p>
+        <div class="parent-box">
+            <div class="child-box absolute-demo">Absolute (bottom 10px)</div>
+        </div>
+
+        <h3>4. Fixed</h3>
+        <p>Elemen dipindahkan relatif terhadap **layar (viewport)**. Ia akan tetap di posisi yang sama meskipun halaman di-scroll (Lihat kotak ungu di pojok kanan bawah!).</p>
+        <div class="fixed-demo">Fixed Box</div>
+
+        <h3>5. Sticky</h3>
+        <p>Elemen bertingkah seperti <code>relative</code> sampai mencapai titik tertentu saat di-scroll, lalu menjadi <code>fixed</code>.</p>
+        <div class="sticky-demo">SAYA STICKY (Akan menempel saat scroll)</div>
+    </div>
+
+    <div id="zindex" class="materi-section">
+        <h2>Z-index (Stacking Order)</h2>
+        <p>Properti <code>z-index</code> menentukan urutan tumpukan elemen (elemen mana yang berada di depan/belakang elemen lain).</p>
+        
+        
+
+        <p><strong>Penting:</strong> <code>z-index</code> hanya berfungsi pada elemen yang memiliki posisi (<code>relative</code>, <code>absolute</code>, <code>fixed</code>, atau <code>sticky</code>).</p>
+
+        <ul>
+            <li>Nilai lebih besar = Berada lebih depan.</li>
+            <li>Nilai lebih kecil = Berada lebih belakang.</li>
+        </ul>
+
+        <h3>Contoh Tumpukan:</h3>
+        <div class="z-container">
+            <div class="z-box box-1">Z-index: 1</div>
+            <div class="z-box box-2">Z-index: 3</div>
+            <div class="z-box box-3">Z-index: 2</div>
+        </div>
+        <p style="margin-top: 100px;">Pada contoh di atas, kotak Biru (z-index: 3) berada paling depan, diikuti Hijau (2), dan Merah (1) paling belakang.</p>
+    </div>
+
+    <a href="../../index.html" class="back-link">Kembali ke Menu Utama Materi</a>
+
+    <script>
+        function displayMateri() {
+            const selector = document.getElementById('subMateri');
+            const selectedValue = selector.value;
+            
+            document.querySelectorAll('.materi-section').forEach(section => {
+                section.style.display = 'none';
+            });
+
+            if (selectedValue) {
+                document.getElementById(selectedValue).style.display = 'block';
+            }
+        }
+        document.addEventListener('DOMContentLoaded', displayMateri);
+    </script>
+</body>
+</html>
