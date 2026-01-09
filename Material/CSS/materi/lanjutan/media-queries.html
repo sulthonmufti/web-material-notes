@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi CSS: Media Queries (Responsive Design)</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; padding: 20px; max-width: 900px; margin: auto; }
+        h1 { color: #333; }
+        h2 { color: #d35400; border-bottom: 2px solid #ccc; padding-bottom: 5px; margin-top: 30px; }
+        h3 { color: #444; }
+        code { background-color: #eee; padding: 2px 4px; border-radius: 3px; font-weight: bold; color: #c0392b; }
+        pre { background-color: #f4f4f4; padding: 15px; border-radius: 5px; overflow-x: auto; margin-bottom: 20px; border-left: 5px solid #d35400; }
+        
+        .back-link { display: inline-block; margin-top: 30px; padding: 10px 15px; background-color: #007bff; color: white; text-align: center; text-decoration: none; border-radius: 5px; }
+
+        /* Dropdown Styling */
+        #selector-container { margin-bottom: 25px; padding: 15px; background-color: #fef5e7; border-radius: 5px; border: 1px solid #f5b041; }
+        .materi-section { display: none; padding: 15px; border: 1px solid #ddd; border-radius: 5px; margin-top: 20px; background-color: #fff; }
+
+        /* Demo Styles */
+        .responsive-box {
+            padding: 20px;
+            background-color: #3498db;
+            color: white;
+            text-align: center;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        /* MEDIA QUERY DEMO */
+        @media (max-width: 600px) {
+            .responsive-box {
+                background-color: orangered;
+                font-size: 12px;
+            }
+            .responsive-box::after { content: " (Mode HP)"; }
+        }
+
+        .note { background-color: #fdf2e9; padding: 15px; border-left: 5px solid #e67e22; margin: 15px 0; }
+        .term { font-weight: bold; color: #d35400; }
+
+        /*BREAKPOINTS*/
+        .demo-grid {
+            display: grid;
+            gap: 10px;
+            /* Default: 3 Kolom (Desktop) */
+            grid-template-columns: repeat(3, 1fr);
+        }
+        .demo-item {
+            background: #d35400; color: white; padding: 20px; text-align: center; border-radius: 5px;
+        }
+
+        /* BREAKPOINT HP: Di bawah 600px berubah jadi 1 kolom */
+        @media (max-width: 600px) {
+            .demo-grid {
+                grid-template-columns: 1fr;
+            }
+            .demo-item { background: #2980b9; }
+        }
+    </style>
+</head>
+<body>
+    <h1>Media Queries</h1>
+
+    <div id="selector-container">
+        <label for="subMateri">Pilih Sub-Materi:</label>
+        <select id="subMateri" onchange="displayMateri()">
+            <option value="">-- Pilih Sub-Materi --</option>
+            <option value="konsep">Konsep Dasar & Viewport</option>
+            <option value="syntax">Penulisan Syntax</option>
+            <option value="breakpoints">Apa itu Breakpoints?</option>
+            <option value="mobile-first">Strategi Mobile First</option>
+        </select>
+    </div>
+
+    <div id="konsep" class="materi-section">
+        <h2>1. Konsep Dasar & Viewport</h2>
+        <p>Media Queries memungkinkan kita menerapkan gaya CSS yang berbeda berdasarkan karakteristik perangkat, seperti lebar layar, orientasi (portrait/landscape), atau resolusi.</p>
+        
+        <div class="note">
+            <span class="term">Viewport:</span> Area layar yang terlihat oleh pengguna. Di HTML, kita wajib memasang tag <code>&lt;meta name="viewport" ...&gt;</code> di bagian <code>&lt;head&gt;</code> agar Media Queries bekerja dengan benar di HP.
+        </div>
+
+        
+    </div>
+
+    <div id="syntax" class="materi-section">
+        <h2>2. Penulisan Syntax</h2>
+        <p>Media query ditulis dengan simbol <code>@media</code> diikuti oleh kondisi tertentu.</p>
+        
+        <pre><code>@media screen and (max-width: 600px) {
+  /* CSS di sini hanya jalan jika lebar layar 
+     600px atau lebih kecil */
+  body {
+    background-color: orangered;
+  }
+}</code></pre>
+
+        <h3>Demo Langsung:</h3>
+        <p>Coba kecilkan lebar browser Anda hingga di bawah 600px, warna kotak di bawah akan berubah!</p>
+        <div class="responsive-box">
+            Kotak Responsif
+        </div>
+    </div>
+
+    <div id="breakpoints" class="materi-section">
+        <h2>3. Apa itu Breakpoints?</h2>
+        <p><span class="term">Breakpoints</span> adalah titik koordinat lebar layar (dalam pixel) di mana susunan elemen website Anda berubah total. Di titik inilah kita memberitahu browser: <em>"Jika layar sesempit ini, ubah tampilannya!"</em></p>
+
+        
+
+        <div class="note">
+            <strong>Penting:</strong> Jangan membuat terlalu banyak breakpoint. Fokuslah pada konten. Jika tampilan mulai terlihat berantakan pada lebar tertentu, di situlah Anda butuh breakpoint.
+        </div>
+
+        <h3>Standar Ukuran Industri:</h3>
+        <table style="width:100%; border-collapse: collapse; margin-bottom: 20px;">
+            <tr style="background: #f5b041; color: white;">
+                <th style="padding: 10px; border: 1px solid #ddd;">Kategori</th>
+                <th style="padding: 10px; border: 1px solid #ddd;">Lebar (px)</th>
+                <th style="padding: 10px; border: 1px solid #ddd;">Breakpoint Umum</th>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border: 1px solid #ddd;">Mobile (HP)</td>
+                <td style="padding: 10px; border: 1px solid #ddd;">320px - 480px</td>
+                <td style="padding: 10px; border: 1px solid #ddd;"><code>480px</code></td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border: 1px solid #ddd;">Tablet</td>
+                <td style="padding: 10px; border: 1px solid #ddd;">481px - 768px</td>
+                <td style="padding: 10px; border: 1px solid #ddd;"><code>768px</code></td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border: 1px solid #ddd;">Laptop</td>
+                <td style="padding: 10px; border: 1px solid #ddd;">769px - 1024px</td>
+                <td style="padding: 10px; border: 1px solid #ddd;"><code>1024px</code></td>
+            </tr>
+        </table>
+
+        <h3>Contoh Kasus: Perubahan Layout Kolom</h3>
+        <p>Misalnya kita punya 3 kotak. Di Desktop kita ingin berjajar menyamping (3 kolom), tapi di HP kita ingin menumpuk ke bawah (1 kolom).</p>
+        <div class="demo-grid">
+            <div class="demo-item">Kotak 1</div>
+            <div class="demo-item">Kotak 2</div>
+            <div class="demo-item">Kotak 3</div>
+        </div>
+
+        <h3>Kode Breakpoint-nya:</h3>
+        <pre><code>/* Tampilan Default (Desktop) */
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/* Breakpoint untuk Layar Kecil (Mobile) */
+@media (max-width: 600px) {
+  .container {
+    grid-template-columns: 1fr; /* Berubah jadi satu kolom penuh */
+  }
+}</code></pre>
+
+        <div class="note" style="border-left-color: #27ae60; background-color: #eafaf1;">
+            <strong>Tips Visual:</strong> Saat Anda melakukan inspeksi (F12) di browser, gunakan tombol <strong>"Toggle Device Toolbar"</strong> (icon HP/Tablet) untuk menggeser lebar layar secara manual dan melihat kapan desain Anda berubah.
+        </div>
+    </div>
+
+    <div id="mobile-first" class="materi-section">
+        <h2>4. Strategi Mobile First</h2>
+        <p>Saat ini, developer lebih suka menggunakan strategi <span class="term">Mobile First</span>. Artinya, kita menulis CSS untuk layar kecil dulu, baru kemudian menggunakan media query <code>min-width</code> untuk layar yang lebih besar.</p>
+
+        <pre><code>/* CSS Standar (Untuk HP) */
+.container { width: 100%; }
+
+/* Untuk Tablet ke atas */
+@media (min-width: 768px) {
+  .container { width: 750px; }
+}
+
+/* Untuk Desktop ke atas */
+@media (min-width: 1024px) {
+  .container { width: 960px; }
+}</code></pre>
+        
+        <div class="note">
+            <strong>Keuntungan:</strong> Website terasa lebih ringan di HP karena browser tidak perlu membaca banyak aturan CSS yang berat dari awal.
+        </div>
+    </div>
+
+    <a href="../../index.html" class="back-link">Kembali ke Menu Utama Materi</a>
+
+    <script>
+        function displayMateri() {
+            const selector = document.getElementById('subMateri');
+            const selectedValue = selector.value;
+            document.querySelectorAll('.materi-section').forEach(section => {
+                section.style.display = 'none';
+            });
+            if (selectedValue) {
+                document.getElementById(selectedValue).style.display = 'block';
+            }
+        }
+        document.addEventListener('DOMContentLoaded', displayMateri);
+    </script>
+</body>
+</html>
