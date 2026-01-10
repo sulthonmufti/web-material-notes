@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi CSS: Visual Effects</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; padding: 20px; max-width: 1000px; margin: auto; }
+        h1 { color: #333; }
+        h2 { color: #8e44ad; border-bottom: 2px solid #ccc; padding-bottom: 5px; margin-top: 30px; }
+        h3 { color: #2c3e50; }
+        code { background-color: #eee; padding: 2px 4px; border-radius: 3px; font-weight: bold; color: #c0392b; }
+        pre { background-color: #f4f4f4; padding: 15px; border-radius: 5px; overflow-x: auto; margin-bottom: 20px; border-left: 5px solid #8e44ad; }
+        
+        .back-link { display: inline-block; margin-top: 30px; padding: 10px 15px; background-color: #007bff; color: white; text-align: center; text-decoration: none; border-radius: 5px; }
+
+        /* Dropdown Styling */
+        #selector-container { margin-bottom: 25px; padding: 15px; background-color: #f4ecf7; border-radius: 5px; border: 1px solid #8e44ad; }
+        .materi-section { display: none; padding: 15px; border: 1px solid #ddd; border-radius: 5px; margin-top: 20px; background-color: #fff; }
+
+        /* Demo Box Styles */
+        .box {
+            width: 100px; height: 100px;
+            background-color: #8e44ad;
+            color: white;
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* 1. Transition Demo */
+        .trans-box { transition: all 0.5s ease-in-out; }
+        .trans-box:hover { background-color: #e67e22; border-radius: 50%; transform: scale(1.2); }
+
+        /* 2. Transform Demo */
+        .demo-transform-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .transform-item {
+            height: 100px;
+            background-color: #3498db;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+            border: 2px solid #2980b9;
+        }
+
+        /* Logic per kotak */
+        .t-translate:hover { transform: translate(20px, -10px); }
+        .t-rotate:hover    { transform: rotate(45deg); }
+        .t-scale:hover     { transform: scale(1.3); }
+        .t-skew:hover      { transform: skew(20deg); }
+        .transform-box:hover { transform: rotate(45deg) translate(20px, 0); }
+
+        /* 3. Animation Demo */
+        @keyframes goyang {
+            0% { transform: translateX(0); }
+            50% { transform: translateX(50px) rotate(10deg); background-color: #27ae60; }
+            100% { transform: translateX(0); }
+        }
+        .anim-box { animation: goyang 2s infinite; }
+
+        .note { background-color: #f5eef8; padding: 15px; border-left: 5px solid #9b59b6; margin: 15px 0; }
+        .term { font-weight: bold; color: #8e44ad; }
+    </style>
+</head>
+<body>
+    <h1>CSS Transitions, Transforms, & Animations</h1>
+
+    <div id="selector-container">
+        <label for="subMateri">Pilih Sub-Materi:</label>
+        <select id="subMateri" onchange="displayMateri()">
+            <option value="">-- Pilih Sub-Materi --</option>
+            <option value="transition">1. Transitions (Perubahan Halus)</option>
+            <option value="transform">2. 2D & 3D Transforms (Perubahan Bentuk)</option>
+            <option value="animation">3. Animations (Gerakan Kompleks)</option>
+        </select>
+    </div>
+
+    <div id="transition" class="materi-section">
+        <h2>1. CSS Transitions</h2>
+        <p><span class="term">Transition</span> adalah "jembatan" yang menghaluskan perubahan properti CSS dari kondisi A ke kondisi B (misal: saat tombol di-hover).</p>
+        
+        
+
+        <h3>Properti Utama:</h3>
+        <ul>
+            <li><code>transition-property</code>: Apa yang mau diubah? (Contoh: <code>background-color</code>, <code>all</code>).</li>
+            <li><code>transition-duration</code>: Berapa lama perubahannya? (Contoh: <code>0.5s</code>).</li>
+            <li><code>transition-timing-function</code>: Irama gerakannya (Contoh: <code>ease</code>, <code>linear</code>).</li>
+        </ul>
+
+        <div class="note"><strong>Analogi:</strong> Transisi adalah seperti perpindahan gigi mobil yang halus, bukan langsung loncat kecepatan.</div>
+
+        <div class="box trans-box">Hover Me!</div>
+        <pre><code>.box {
+  transition: all 0.5s ease-in-out;
+}
+.box:hover {
+  background-color: #e67e22;
+  border-radius: 50%;
+}</code></pre>
+    </div>
+
+    <div id="transform" class="materi-section">
+        <h2>2. 2D & 3D Transforms</h2>
+        <p><span class="term">Transform</span> digunakan untuk mengubah bentuk, posisi, dan ukuran elemen tanpa mengganggu posisi elemen di sekitarnya.</p>
+        
+        
+
+        <h3>Fungsi Populer (2D):</h3>
+        <ul>
+            <li><code>translate(x, y)</code>: Memindahkan posisi.</li>
+            <li><code>rotate(deg)</code>: Memutar elemen (Contoh: <code>45deg</code>).</li>
+            <li><code>scale(n)</code>: Mengubah ukuran (Contoh: <code>1.5</code> berarti 150%).</li>
+            <li><code>skew(deg)</code>: Menarik sudut elemen (miring).</li>
+        </ul>
+        <p>Arahkan kursor (hover) pada kotak di bawah untuk melihat fungsinya secara langsung:</p>
+        <div class="demo-transform-container">
+        <div class="transform-item t-translate">Translate(20, -10)</div>
+        <div class="transform-item t-rotate">Rotate(45deg)</div>
+        <div class="transform-item t-scale">Scale(1.3)</div>
+        <div class="transform-item t-skew">Skew(20deg)</div>
+    </div>
+
+        <h3>Kode CSS Dasar:</h3>
+        <pre><code>/* 1. Berpindah: Kanan 20px, Atas 10px */
+.item:hover { transform: translate(20px, -10px); }
+
+/* 2. Berputar searah jarum jam */
+.item:hover { transform: rotate(45deg); }
+
+/* 3. Membesar 1.3 kali lipat */
+.item:hover { transform: scale(1.3); }
+
+/* 4. Miring (Distorsi) */
+.item:hover { transform: skew(20deg); }</code></pre>
+
+        <hr>
+
+        <h3>Dunia 3D:</h3>
+        <p>Dengan menambahkan <code>perspective</code>, kita bisa memutar elemen di sumbu Z (seolah mendekat/menjauh dari layar).</p>
+
+        <div class="box transform-box">Rotate</div>
+        <pre><code>.box:hover {
+  transform: rotate(45deg) scale(1.1);
+}</code></pre>
+    </div>
+
+    <div id="animation" class="materi-section">
+        <h2>3. CSS Animations (@keyframes)</h2>
+        <p><span class="term">Animation</span> jauh lebih kuat dari transisi karena bisa bergerak sendiri tanpa perlu interaksi user (hover) dan memiliki banyak langkah.</p>
+        
+        <h3>Langkah 1: Membuat Storyboard (@keyframes)</h3>
+        <pre><code>@keyframes goyang {
+  0% { transform: translateX(0); }
+  50% { background: green; }
+  100% { transform: translateX(100px); }
+}</code></pre>
+
+        <h3>Langkah 2: Memanggil Animasi</h3>
+        <pre><code>.anim-box {
+  animation: goyang 2s infinite;
+}</code></pre>
+
+        <div class="box anim-box">Goyang</div>
+
+        <div class="note">
+            <strong>Istilah Baru:</strong> <code>iteration-count</code>. 
+            Gunakan nilai <code>infinite</code> agar animasi berulang selamanya.
+        </div>
+    </div>
+
+    <a href="../../index.html" class="back-link">Kembali ke Menu Utama Materi</a>
+
+    <script>
+        function displayMateri() {
+            const selector = document.getElementById('subMateri');
+            const selectedValue = selector.value;
+            document.querySelectorAll('.materi-section').forEach(section => {
+                section.style.display = 'none';
+            });
+            if (selectedValue) {
+                document.getElementById(selectedValue).style.display = 'block';
+            }
+        }
+        document.addEventListener('DOMContentLoaded', displayMateri);
+    </script>
+</body>
+</html>

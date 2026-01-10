@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi CSS: Navigation & Dropdowns</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; padding: 20px; max-width: 1000px; margin: auto; background-color: #f4f7f6; }
+        h1 { color: #2c3e50; text-align: center; }
+        h2 { color: #2980b9; border-bottom: 2px solid #ccc; padding-bottom: 5px; margin-top: 30px; }
+        code { background-color: #eee; padding: 2px 4px; border-radius: 3px; font-weight: bold; color: #c0392b; }
+        pre { background-color: #2d3436; color: #dfe6e9; padding: 15px; border-radius: 5px; overflow-x: auto; margin-bottom: 20px; border-left: 5px solid #2980b9; }
+        
+        .back-link { display: inline-block; margin-top: 30px; padding: 10px 15px; background-color: #007bff; color: white; text-align: center; text-decoration: none; border-radius: 5px; }
+
+        /* Dropdown Materi Styling */
+        #selector-container { margin-bottom: 25px; padding: 15px; background-color: #e8f2f8; border-radius: 5px; border: 1px solid #2980b9; }
+        .materi-section { display: none; padding: 20px; border: 1px solid #ddd; border-radius: 5px; margin-top: 20px; background-color: #fff; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+
+        /* --- DEMO NAVBAR STYLING --- */
+        .navbar-demo {
+            background-color: #2c3e50;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            height: 60px;
+            color: white;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+        .nav-links li { height: 100%; }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            height: 100%;
+            transition: background 0.3s;
+        }
+        .nav-links a:hover { background-color: #34495e; }
+
+        /* --- DEMO DROPDOWN STYLING --- */
+        .dropdown { position: relative; }
+        .dropdown-content {
+            display: none; /* Sembunyikan secara default */
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+            z-index: 1;
+            top: 60px;
+        }
+        .dropdown-content a {
+            color: #333;
+            padding: 12px 16px;
+            display: block;
+            border-bottom: 1px solid #eee;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block; /* Munculkan saat parent di-hover */
+        }
+        .dropdown-content a:hover { background-color: #f1f1f1; }
+
+        .note { background-color: #e7f3fe; padding: 15px; border-left: 5px solid #2196F3; margin: 15px 0; }
+        .term { font-weight: bold; color: #2980b9; }
+    </style>
+</head>
+<body>
+    <h1>Navigation Bars & Dropdowns</h1>
+
+    <div id="selector-container">
+        <label for="subMateri">Pilih Sub-Materi:</label>
+        <select id="subMateri" onchange="displayMateri()">
+            <option value="">-- Pilih Sub-Materi --</option>
+            <option value="horizontal">1. Horizontal Navbar (Flexbox)</option>
+            <option value="dropdown">2. Membuat Dropdown Menu</option>
+            <option value="sticky">3. Sticky & Fixed Navbar</option>
+        </select>
+    </div>
+
+    <div id="horizontal" class="materi-section">
+        <h2>1. Horizontal Navbar (Flexbox)</h2>
+        <p>Cara modern membuat Navbar adalah menggunakan elemen <code>&lt;nav&gt;</code>, <code>&lt;ul&gt;</code>, dan <strong>Flexbox</strong> untuk mengatur posisinya.</p>
+        
+        
+
+        <h3>Demo Visual:</h3>
+        <nav class="navbar-demo">
+            <div class="logo">MyBrand</div>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+
+        <h3>Analogi Struktur:</h3>
+        <ul>
+            <li><span class="term">Container (nav):</span> Ruang utama/jalan raya.</li>
+            <li><span class="term">List (ul):</span> Kereta belanja yang membawa item.</li>
+            <li><span class="term">Links (a):</span> Tombol interaktif yang bisa diklik.</li>
+        </ul>
+
+        <pre><code>.navbar {
+  display: flex;
+  justify-content: space-between; /* Logo di kiri, Menu di kanan */
+  align-items: center;
+}
+.nav-links {
+  display: flex; /* Membuat menu berjejer ke samping */
+  list-style: none;
+}</code></pre>
+    </div>
+
+    <div id="dropdown" class="materi-section">
+        <h2>2. Membuat Dropdown Menu</h2>
+        <p>Dropdown bekerja dengan prinsip "Sembunyi dan Muncul". Kita menggunakan CSS untuk mendeteksi kapan kursor berada di atas menu induk, lalu mengubah status tampilan anak elemennya.</p>
+
+        
+
+        <h3>A. Struktur HTML yang Benar</h3>
+        <p>Menu dropdown harus diletakkan <strong>di dalam</strong> elemen daftar (<code>&lt;li&gt;</code>) yang menjadi induknya. Ini penting agar saat kursor mengenai dropdown, kursor dianggap masih berada di dalam area induk.</p>
+        
+        <pre><code>&lt;li class="dropdown"&gt;
+  &lt;a href="#"&gt;Menu Induk&lt;/a&gt;
+  &lt;!-- Menu yang akan disembunyikan --&gt;
+  &lt;div class="dropdown-content"&gt;
+    &lt;a href="#"&gt;Sub Menu 1&lt;/a&gt;
+    &lt;a href="#"&gt;Sub Menu 2&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/li&gt;</code></pre>
+
+        <h3>B. Bedah Kode CSS (Logika Utama)</h3>
+        <p>Ada tiga kunci utama agar dropdown ini berfungsi:</p>
+        
+        <ol>
+            <li><span class="term">Positioning:</span> Induk diberi <code>relative</code>, dan isi dropdown diberi <code>absolute</code>.</li>
+            <li><span class="term">Initial State:</span> Isi dropdown disembunyikan dengan <code>display: none</code>.</li>
+            <li><span class="term">Hover State:</span> Menggunakan selector <code>.induk:hover .anak</code> untuk memunculkan kembali.</li>
+        </ol>
+
+        <pre><code>/* 1. Sembunyikan menu */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+  z-index: 1; /* Pastikan berada di atas konten lain */
+}
+
+/* 2. Tampilkan saat Mouse mendekat */
+.dropdown:hover .dropdown-content {
+  display: block;
+}</code></pre>
+
+    
+
+        <h3>C. Kenapa Harus Position Relative & Absolute?</h3>
+        <div class="note">
+            <strong>Analogi:</strong> <code>position: relative</code> pada induk adalah seperti "jangkar". Tanpa jangkar ini, menu dropdown (yang memiliki <code>position: absolute</code>) akan melompat keluar dan menempel pada pojok layar browser, bukan tepat di bawah tombol menunya.
+        </div>
+
+        <h3>Demo Interaktif:</h3>
+        <p>Arahkan kursor pada "Services" untuk melihat perubahan properti dari <code>none</code> ke <code>block</code> secara instan.</p>
+        
+        <nav class="navbar-demo">
+            <div class="logo">Logo</div>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li class="dropdown">
+                    <a href="#" style="background-color: #34495e;">Services ▾</a>
+                    <div class="dropdown-content">
+                        <a href="#">Web Design</a>
+                        <a href="#">SEO</a>
+                        <a href="#">App Development</a>
+                    </div>
+                </li>
+                <li><a href="#">About</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div id="sticky" class="materi-section">
+        <h2>3. Sticky & Fixed Navbar</h2>
+        <p>Kedua properti ini digunakan untuk menjaga agar navigasi tetap terlihat saat user melakukan scroll, namun cara kerjanya berbeda secara teknis.</p>
+
+        
+
+        <div style="border: 1px solid #ccc; height: 300px; overflow-y: scroll; padding: 10px; background: #f9f9f9; position: relative;">
+            <p style="color: #666; font-style: italic;">(Scroll area kotak ini ke bawah untuk melihat perbedaan)</p>
+            
+            <div style="position: fixed; width: 100px; background: #e74c3c; color: white; padding: 5px; font-size: 12px; z-index: 10;">
+                Fixed: Menempel di Layar Utama
+            </div>
+
+            <div style="height: 50px; background: #eee; margin-top: 10px;">Area Konten Awal</div>
+
+            <div style="position: -webkit-sticky; position: sticky; top: 0; background: #27ae60; color: white; padding: 10px; font-weight: bold; z-index: 5;">
+                Sticky: Menempel saat mencapai atas
+            </div>
+
+            <div style="height: 600px; padding-top: 20px;">
+                <p>Konten panjang...</p>
+                <p>Kotak Hijau (Sticky) akan menempel di atas area scroll ini.</p>
+                <p>Kotak Merah (Fixed) akan terus menempel di layar Anda tidak peduli apapun yang terjadi, karena ia keluar dari aliran dokumen.</p>
+            </div>
+        </div>
+
+        <h3>A. Position: Fixed</h3>
+        <ul>
+            <li><span class="term">Karakter:</span> Elemen "dicabut" dari aliran HTML normal.</li>
+            <li><span class="term">Efek:</span> Elemen di bawahnya akan naik ke atas seolah-olah elemen Fixed tersebut tidak ada (seringkali menabrak/tertutup).</li>
+            <li><span class="term">Kegunaan:</span> Cocok untuk tombol "Back to Top" atau Chat Widget.</li>
+        </ul>
+
+        <pre><code>.navbar-fixed {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}</code></pre>
+
+        <h3>B. Position: Sticky</h3>
+        <ul>
+            <li><span class="term">Karakter:</span> Elemen tetap berada di posisi aslinya sampai layar di-scroll menyentuh angka <code>top</code> yang ditentukan.</li>
+            <li><span class="term">Efek:</span> Elemen di bawahnya tidak akan naik. Layout tetap rapi.</li>
+            <li><span class="term">Kegunaan:</span> Sangat populer untuk Navbar utama website modern.</li>
+        </ul>
+
+        <pre><code>.navbar-sticky {
+    position: sticky;
+    top: 0; /* Menempel saat jarak ke atas layar 0px */
+    }</code></pre>
+
+        <div class="note">
+            <strong>Peringatan Sticky:</strong> Agar <code>sticky</code> bekerja, elemen induknya (parent) tidak boleh memiliki properti <code>overflow: hidden</code>. Selain itu, <code>sticky</code> hanya akan menempel selama ia masih berada di dalam area parent-nya.
+        </div>
+
+        
+
+        <h3>Apa itu Z-Index?</h3>
+        <p>Saat menggunakan <code>fixed</code> atau <code>sticky</code>, Anda wajib menambahkan <code>z-index: 1000;</code>. Ini memastikan navbar Anda berada di lapisan paling depan dan tidak "tenggelam" di bawah gambar atau teks lain saat di-scroll.</p>
+    </div>
+
+    <a href="../../index.html" class="back-link">Kembali ke Menu Utama Materi</a>
+
+    <script>
+        function displayMateri() {
+            const selector = document.getElementById('subMateri');
+            const selectedValue = selector.value;
+            document.querySelectorAll('.materi-section').forEach(section => {
+                section.style.display = 'none';
+            });
+            if (selectedValue) {
+                document.getElementById(selectedValue).style.display = 'block';
+            }
+        }
+        document.addEventListener('DOMContentLoaded', displayMateri);
+    </script>
+</body>
+</html>
