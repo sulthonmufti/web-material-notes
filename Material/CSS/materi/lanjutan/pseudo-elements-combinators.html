@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi CSS: Selector Lanjutan</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; line-height: 1.6; padding: 20px; max-width: 1000px; margin: auto; color: #333; }
+        h1 { color: #2c3e50; text-align: center; border-bottom: 4px solid #27ae60; padding-bottom: 10px; }
+        h2 { color: #27ae60; margin-top: 30px; border-left: 5px solid #2ecc71; padding-left: 10px; }
+        code { background-color: #f4f4f4; padding: 2px 5px; border-radius: 4px; color: #e74c3c; font-family: monospace; }
+        pre { background-color: #2c3e50; color: #ecf0f1; padding: 15px; border-radius: 8px; overflow-x: auto; }
+        
+        .back-link { display: inline-block; margin-top: 30px; padding: 10px 15px; background-color: #27ae60; color: white; text-decoration: none; border-radius: 5px; }
+
+        /* Dropdown Styling */
+        #selector-container { margin-bottom: 25px; padding: 15px; background-color: #eafaf1; border-radius: 5px; border: 1px solid #27ae60; }
+        .materi-section { display: none; padding: 20px; border: 1px solid #ddd; border-radius: 8px; background-color: #fff; }
+
+        /* Demo Styles */
+        .demo-box { padding: 15px; border: 2px dashed #ccc; margin: 10px 0; }
+        .term { font-weight: bold; color: #27ae60; }
+        .note { background-color: #fef9e7; padding: 15px; border-left: 5px solid #f1c40f; margin: 15px 0; }
+
+        /* Pseudo-class Demo */
+        .btn-demo { padding: 10px 20px; background: #3498db; color: white; border: none; cursor: pointer; transition: 0.3s; }
+        .btn-demo:hover { background: #2980b9; transform: scale(1.1); }
+        .btn-demo:active { background: #1c5980; }
+
+        /* Combinator Demo */
+        .parent { border: 2px solid #333; padding: 10px; }
+        .parent p { color: gray; } /* Semua cucu */
+        .parent > p { color: #e67e22; font-weight: bold; } /* Hanya anak langsung */
+    </style>
+</head>
+<body>
+    <h1>Pseudo-classes, Elements & Combinators</h1>
+
+    <div id="selector-container">
+        <label for="subMateri">Pilih Sub-Materi:</label>
+        <select id="subMateri" onchange="displayMateri()">
+            <option value="">-- Pilih Sub-Materi --</option>
+            <option value="pseudo-classes">1. Pseudo-classes (Kondisi Elemen)</option>
+            <option value="pseudo-elements">2. Pseudo-elements (Bagian Elemen)</option>
+            <option value="combinators">3. Combinators (Hubungan Elemen)</option>
+        </select>
+    </div>
+
+    <div id="pseudo-classes" class="materi-section">
+        <h2>1. Pseudo-classes (Simbol <code>:</code>)</h2>
+        <p><span class="term">Pseudo-class</span> digunakan untuk mendefinisikan <strong>keadaan khusus</strong> (state) dari suatu elemen.</p>
+        
+        
+
+        <h3>Yang Sering Digunakan:</h3>
+        <ul>
+            <li><code>:hover</code> : Saat kursor mouse di atas elemen.</li>
+            <li><code>:active</code> : Saat elemen sedang diklik.</li>
+            <li><code>:focus</code> : Saat elemen (seperti input) sedang dipilih/diketik.</li>
+            <li><code>:nth-child(n)</code> : Memilih anak ke-sekian (Contoh: memilih baris ganjil di tabel).</li>
+        </ul>
+
+        <h3>Demo Visual:</h3>
+        <button class="btn-demo">Hover & Klik Saya</button>
+        <pre><code>button:hover { background: darkblue; }
+button:active { transform: scale(0.9); }</code></pre>
+    </div>
+
+    <div id="pseudo-elements" class="materi-section">
+        <h2>2. Pseudo-elements (Simbol <code>::</code>)</h2>
+        <p><span class="term">Pseudo-element</span> digunakan untuk memberi gaya pada <strong>bagian tertentu</strong> dari suatu elemen.</p>
+
+        
+
+        <h3>Yang Sering Digunakan:</h3>
+        <ul>
+            <li><code>::before</code> : Menambahkan konten <em>sebelum</em> isi elemen.</li>
+            <li><code>::after</code> : Menambahkan konten <em>sesudah</em> isi elemen.</li>
+            <li><code>::selection</code> : Mengubah gaya teks saat di-highlight (blok) oleh user.</li>
+        </ul>
+
+        <div class="note">
+            <strong>Aturan Emas:</strong> Saat menggunakan <code>::before</code> atau <code>::after</code>, Anda <strong>wajib</strong> menulis properti <code>content: "";</code> meskipun kosong.
+        </div>
+
+        <pre><code>h2::before {
+  content: "🚀 "; /* Menambah icon sebelum judul */
+}
+::selection {
+  background: yellow; color: black;
+}</code></pre>
+    </div>
+
+    <div id="combinators" class="materi-section">
+        <h2>3. Combinators (Hubungan Antar Elemen)</h2>
+        <p>Combinator menjelaskan hubungan antara dua selector. Ini sangat berguna untuk menjaga kode CSS tetap bersih.</p>
+
+        
+
+        <table style="width:100%; border-collapse: collapse; margin: 20px 0;">
+            <tr style="background-color: #27ae60; color: white;">
+                <th style="padding: 10px; border: 1px solid #ddd;">Simbol</th>
+                <th style="padding: 10px; border: 1px solid #ddd;">Nama</th>
+                <th style="padding: 10px; border: 1px solid #ddd;">Penjelasan</th>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border: 1px solid #ddd; text-align: center;"><code>(spasi)</code></td>
+                <td style="padding: 10px; border: 1px solid #ddd;">Descendant</td>
+                <td style="padding: 10px; border: 1px solid #ddd;">Pilih semua anak, cucu, cicit di dalam.</td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border: 1px solid #ddd; text-align: center;"><code>&gt;</code></td>
+                <td style="padding: 10px; border: 1px solid #ddd;">Child Selector</td>
+                <td style="padding: 10px; border: 1px solid #ddd;">Hanya anak langsung (level 1).</td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border: 1px solid #ddd; text-align: center;"><code>+</code></td>
+                <td style="padding: 10px; border: 1px solid #ddd;">Adjacent Sibling</td>
+                <td style="padding: 10px; border: 1px solid #ddd;">Elemen yang tepat berada di bawahnya.</td>
+            </tr>
+        </table>
+
+        <h3>Contoh Visual:</h3>
+        <div class="parent">
+            <p>Anak Langsung (Warna Oranye - pakai > )</p>
+            <div>
+                <p>Cucu (Warna Abu-abu - pakai spasi)</p>
+            </div>
+        </div>
+    </div>
+
+    <a href="../../index.html" class="back-link">Kembali ke Menu Utama Materi</a>
+
+    <script>
+        function displayMateri() {
+            const selector = document.getElementById('subMateri');
+            const selectedValue = selector.value;
+            document.querySelectorAll('.materi-section').forEach(section => {
+                section.style.display = 'none';
+            });
+            if (selectedValue) {
+                document.getElementById(selectedValue).style.display = 'block';
+            }
+        }
+        document.addEventListener('DOMContentLoaded', displayMateri);
+    </script>
+</body>
+</html>
