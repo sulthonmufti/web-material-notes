@@ -21,29 +21,80 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 0 10px;
+            margin: 0;
         }
-        .logo{
+        /* .logo{
             font-size: 32px;
             color: white;
+            gap: 10px;
+        } */
+         .logo a{
+            text-decoration: none;
+            align-items: center;
+         }
+        .logo-class{
+            display: flex;
+            align-content: center;
+            margin: 0;
+            padding: 0;
+            gap: 5px;
+        }
+        .logo-class img{
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            /* opacity: 90%; */
+
+        }
+        .logo-class p{
+            text-decoration: none;
+            color: white;
+            font-size: 32px;
+            padding: 0;
+            margin: 20px 0;
         }
         .nav-links{
-            display: flex;
+            display:flex;
             list-style: none;
             text-decoration:  none;
-            padding: 0 60px;
+            padding: 0;
+            margin: 0;
+            font-size: 18px;
+            align-items:center;
+            gap: 5px;
         }
+        .nav-links a{
+            color: blueviolet;
+            text-decoration: none;
+            padding: 0 10px;
+            height: 100%;
+            transition: background 0.5s;
+            border-radius: 15px;
+        }
+        .nav-links a:hover{
+            background-color: rgba(137, 43, 226, 0.352);
+            border-radius: 15px;
+        }
+        
+
     </style>
 </head>
 <body>
     <div class="main-header">
         <nav class="navbar">
-            <div class="logo">MyNavbar</a></div>
+            <div class="logo">
+                <a href="#" class="logo-class">
+                    <img src="logo.jpg" alt="logo MyNavbar">
+                    <p class="">MyNavbar</p>
+                </a>
+            </div>
             <ul class="nav-links">
-                <li><a href="#"></a>Home</li>
-                <li><a href="#"></a>Services</li>
-                <li><a href="#"></a>Gallery</li>
-                <li><a href="#"></a>About</li>
-                <li><a href="#"></a>Contact</li>
+                <li><a href="../materi/lanjutan/navigation-dropdowns.html">Home</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Gallery</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
             </ul>
         </nav>
     </div>
