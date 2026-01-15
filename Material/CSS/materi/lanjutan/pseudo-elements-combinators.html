@@ -35,7 +35,8 @@
             .input-interact {
                 padding: 10px; border: 2px solid #ccc; border-radius: 5px; outline: none; transition: 0.3s;
             }
-        .input-interact:focus { border-color: #27ae60; background: #f0fff4; box-shadow: 0 0 8px rgba(39, 174, 96, 0.4); }
+            .input-interact:focus { border-color: #27ae60; background: #f0fff4; box-shadow: 0 0 8px rgba(39, 174, 96, 0.4); }
+
         /* B. Structural Pseudo-classes (nth-child) */
             .list-zebra { list-style: none; padding: 0; border: 1px solid #ddd; border-radius: 5px; }
             .list-zebra li { padding: 10px; border-bottom: 1px solid #eee; } 
@@ -122,29 +123,126 @@ li:last-child { color: green; }</code></pre>
     </div>
 
     <div id="pseudo-elements" class="materi-section">
-        <h2>2. Pseudo-elements (Simbol <code>::</code>)</h2>
-        <p><span class="term">Pseudo-element</span> digunakan untuk memberi gaya pada <strong>bagian tertentu</strong> dari suatu elemen.</p>
+    <h2>2. Pseudo-elements (Simbol <code>::</code>)</h2>
+    <p><span class="term">Pseudo-element</span> digunakan untuk membuat elemen "palsu" yang tidak ada di HTML, tetapi muncul di layar untuk keperluan dekorasi atau informasi tambahan.</p>
 
-        
+    
 
-        <h3>Yang Sering Digunakan:</h3>
-        <ul>
-            <li><code>::before</code> : Menambahkan konten <em>sebelum</em> isi elemen.</li>
-            <li><code>::after</code> : Menambahkan konten <em>sesudah</em> isi elemen.</li>
-            <li><code>::selection</code> : Mengubah gaya teks saat di-highlight (blok) oleh user.</li>
-        </ul>
+    <h3>Kasus yang Sering Digunakan di Industri:</h3>
 
-        <div class="note">
-            <strong>Aturan Emas:</strong> Saat menggunakan <code>::before</code> atau <code>::after</code>, Anda <strong>wajib</strong> menulis properti <code>content: "";</code> meskipun kosong.
-        </div>
+    <h3>A. Membuat Garis Dekorasi (Modern Heading)</h3>
+    <p>Daripada membuat <code>&lt;div&gt;</code> kosong hanya untuk sebuah garis, gunakan <code>::after</code>. Ini menjaga HTML Anda tetap bersih.</p>
 
-        <pre><code>h2::before {
-  content: "🚀 "; /* Menambah icon sebelum judul */
-}
-::selection {
-  background: yellow; color: black;
+    <style>
+        .fancy-header {
+            position: relative;
+            display: inline-block;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        /* Membuat garis di bawah teks */
+        .fancy-header::after {
+            content: ""; /* Wajib ada! */
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 50%; /* Garis hanya setengah lebar teks */
+            height: 4px;
+            background-color: #27ae60;
+            border-radius: 2px;
+        }
+    </style>
+
+    <h2 class="fancy-header">Layanan Kami</h2>
+
+    <pre><code>.fancy-header::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    width: 50%;
+    height: 4px;
+    background: #27ae60;
 }</code></pre>
+
+    <h3>B. Custom List Bullets (Ikon Daftar)</h3>
+    <p>Mengganti titik (bullet) standar yang membosankan dengan ikon atau simbol unik menggunakan <code>::before</code>.</p>
+
+    <style>
+        .custom-list { list-style: none; padding: 0; }
+        .custom-list li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 10px;
+        }
+        /* Mengganti bullet dengan centang */
+        .custom-list li::before {
+            content: "✔";
+            position: absolute;
+            left: 0;
+            color: #27ae60;
+            font-weight: bold;
+        }
+    </style>
+
+    <ul class="custom-list">
+        <li>Gratis Konsultasi</li>
+        <li>Update Selamanya</li>
+        <li>Dukungan 24/7</li>
+    </ul>
+
+    <pre><code>.custom-list li::before {
+    content: "✔";
+    color: #27ae60;
+    position: absolute;
+    left: 0;
+}</code></pre>
+
+    <h3>C. Efek Hover Berjalan (Advanced)</h3>
+    <p>Pseudo-element sering digunakan sebagai "lapisan latar" yang bergerak saat tombol disentuh.</p>
+
+    <style>
+        .btn-slide {
+            position: relative;
+            padding: 10px 25px;
+            background: #fff;
+            color: #27ae60;
+            border: 2px solid #27ae60;
+            cursor: pointer;
+            z-index: 1;
+            overflow: hidden;
+            transition: color 0.4s;
+        }
+        /* Lapisan hijau yang tersembunyi di kiri */
+        .btn-slide::before {
+            content: "";
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: #27ae60;
+            z-index: -1; /* Berada di belakang teks */
+            transition: left 0.4s;
+        }
+        .btn-slide:hover { color: #fff; }
+        .btn-slide:hover::before { left: 0; }
+    </style>
+
+    <button class="btn-slide">Sentuh Saya!</button>
+
+    <pre><code>/* Lapisan latar belakang yang bergeser */
+.btn-slide::before {
+    content: "";
+    position: absolute;
+    left: -100%; /* Sembunyi di kiri */
+    width: 100%; height: 100%;
+    background: #27ae60;
+    transition: 0.4s;
+}
+.btn-slide:hover::before { left: 0; }</code></pre>
+
+    <div class="note">
+        <strong>Pelajaran Penting:</strong> <code>::before</code> dan <code>::after</code> sangat bergantung pada <code>position: absolute;</code>. Oleh karena itu, elemen induknya (seperti <code>.btn-slide</code> atau <code>li</code>) wajib memiliki <code>position: relative;</code> agar elemen palsu tersebut tidak lari ke luar kotak.
     </div>
+</div>
 
     <div id="combinators" class="materi-section">
         <h2>3. Combinators (Hubungan Antar Elemen)</h2>
