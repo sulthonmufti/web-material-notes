@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice pseudo combinators</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <style>
+        body{
+            font-family: Poppins;
+            color: rgb(66, 66, 66);
+            background-color: rgb(169, 169, 169);
+            padding: 20px;
+            margin: 0;
+        }
+        h4{
+            margin: 0;
+        }
+        .family-box{
+            padding: 0 20px;
+        }
+        /* SEMUA p dalam class .family-box akan berwarna green dan bold */
+        .family-box p{
+            color: green;
+        }
+        /* HANYA p yang merupakan ANAK LANGSUNG yang punya border dan tebal */
+        .family-box > p{
+             font-weight: bold;
+             border: 3px dashed rgb(81, 0, 255);   
+        }
+
+        /* penggunaan Adjacent Sibling (+) */
+        .adjacent-sibling{
+            margin: 0 20px 16px;
+            padding: 0 20px;
+            border: 3px dashed grey;
+            color: green;
+        }
+        .adjacent-sibling h5 + p{
+            color: brown;
+            font-style: italic;
+        }
+
+        /* penggunaan general sibling selector (~) */
+        .general-sibling-selector h4{
+            padding: 0 20px 10px;
+        }
+        .todo{
+            padding: 0 20px;
+            transition: 0.9s;
+        }
+        input:checked ~ span{
+            color:  grey;
+            text-decoration: line-through red;
+            transition: 0.9s;
+        }
+        input:not(:checked) ~ span{
+            color: rgb(51, 51, 51);
+            transition: 0.9s;
+        }
+
+
+    </style>
+</head>
+<body>
+    <h4>A. penggunaan Descendant (spasi) dan (<)</h4>
+    <div class="family-box">
+        <p>Saya adalah anak langsung (bold). simbol (spasi) untuk Semua keturunan (Anak, Cucu, Cicit).</p>
+        <p>kalau ini anak ke dua</p>
+        <div>
+            <p>Ini adalah Cucu. warnanya akan sama dengan anak langsung, tapi tidak bold dan border karena bukan anak langsung (simbol < Hanya Anak Kandung (Level 1))</p>
+        </div>
+    </div>
+
+    <h4>B. penggunaan Adjacent Sibling (+) untuk Adik tepat di bawah kakak.</h4>
+    <p style=" padding: 0 20px;">biasanya dipake buat ngasih jarak dari judul dan paragraf</p>
+    <div class="adjacent-sibling">
+        <h5>Ini adalah judul</h5>
+        <p>ini adalah paragraf pertama (tepat setelah judul, jadi terpengaruh sama adjecent sibling (+) atau jadi italic)</p>
+        <p>ini paragraf dua, tidak akan terpengaruh sama adjecent sibling</p>
+    </div>
+
+    <h4>C. penggunaan General sibling selector (~) untuk Semua adik-adik di bawah kakak.</h4>
+    <p style=" padding: 0 20px;">Note: Digunakan untuk menandai semua elemen yang setingkat di bawah elemen tertentu. Berguna untuk fitur "Checklist" atau navigasi.</p>
+    <div class="general-sibling-selector">
+        <h4>membuat checklist box</h4>
+        <div class="todo">
+            <input type="checkbox" checked> <span>Belajar HTML</span>
+        </div>
+        <div class="todo">
+            <input type="checkbox"> <span>Belajar CSS</span>
+        </div>
+        <div class="todo">
+            <input type="checkbox"> <span>Belajar JavaScript</span>
+        </div>
+    </div>
+    
+</body>
+</html>

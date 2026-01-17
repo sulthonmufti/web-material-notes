@@ -21,7 +21,7 @@
         .demo-box { padding: 15px; border: 2px dashed #ccc; margin: 10px 0; }
         .term { font-weight: bold; color: #27ae60; }
         .note { background-color: #fef9e7; padding: 15px; border-left: 5px solid #f1c40f; margin: 15px 0; }
-
+        /* 1. PSEUDO CLASSES */
         /* A. State Interaksi (Hover, Active, Focus) */
             .demo-interaction { display: flex; gap: 20px; align-items: center; margin: 20px 0; }
             /* 1. HOVER & ACTIVE */
@@ -46,6 +46,71 @@
             .list-zebra li:nth-child(2) { color: #e74c3c; font-weight: bold;}
             /* Pilih anak terakhir */
             .list-zebra li:last-child { border-bottom: none; color: #27ae60; }
+
+        /* 2. PSEUDO ELEMENT*/
+            .fancy-header {
+                position: relative;
+                display: inline-block;
+                font-size: 24px;
+                margin-bottom: 20px;
+            }
+            /* Membuat garis di bawah teks */
+            .fancy-header::after {
+                content: ""; /* Wajib ada! */
+                position: absolute;
+                left: 0;
+                bottom: -5px;
+                width: 50%; /* Garis hanya setengah lebar teks */
+                height: 4px;
+                background-color: #27ae60;
+                border-radius: 2px;
+            }
+            .custom-list { list-style: none; padding: 0; }
+            .custom-list li {
+                position: relative;
+                padding-left: 25px;
+                margin-bottom: 10px;
+            }
+            /* Mengganti bullet dengan centang */
+            .custom-list li::before {
+                content: "✔";
+                position: absolute;
+                left: 0;
+                color: #27ae60;
+                font-weight: bold;
+            }
+            /* membuat button slide */
+            .btn-slide {
+                position: relative;
+                padding: 10px 25px;
+                background: #fff;
+                color: #27ae60;
+                border: 2px solid #27ae60;
+                cursor: pointer;
+                z-index: 1;
+                overflow: hidden;
+                transition: color 0.4s;
+            }
+            /* Lapisan hijau yang tersembunyi di kiri */
+            .btn-slide::before {
+                content: "";
+                position: absolute;
+                top: 0; left: -100%;
+                width: 100%; height: 100%;
+                background: #27ae60;
+                z-index: -1; /* Berada di belakang teks */
+                transition: left 0.4s;
+            }
+            .btn-slide:hover { color: #fff; }
+            .btn-slide:hover::before { left: 0; }
+            /* tabel referensi pseudo element */
+            .table-container { overflow-x: auto; margin-top: 20px; }
+            .pseudo-table { width: 100%; border-collapse: collapse; background: white; }
+            .pseudo-table th, .pseudo-table td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+            .pseudo-table th { background-color: #f8f9fa; color: #333; }
+            .pseudo-table tr:nth-child(even) { background-color: #fcfcfc; }
+            .star { color: #f1c40f; }
+
         /* Combinator Demo */
         .parent { border: 2px solid #333; padding: 10px; }
         .parent p { color: gray; } /* Semua cucu */
@@ -123,39 +188,19 @@ li:last-child { color: green; }</code></pre>
     </div>
 
     <div id="pseudo-elements" class="materi-section">
-    <h2>2. Pseudo-elements (Simbol <code>::</code>)</h2>
-    <p><span class="term">Pseudo-element</span> digunakan untuk membuat elemen "palsu" yang tidak ada di HTML, tetapi muncul di layar untuk keperluan dekorasi atau informasi tambahan.</p>
+        <h2>2. Pseudo-elements (Simbol <code>::</code>)</h2>
+        <p><span class="term">Pseudo-element</span> digunakan untuk membuat elemen "palsu" yang tidak ada di HTML, tetapi muncul di layar untuk keperluan dekorasi atau informasi tambahan.</p>
 
-    
+        
 
-    <h3>Kasus yang Sering Digunakan di Industri:</h3>
+        <h3>Kasus yang Sering Digunakan di Industri:</h3>
 
-    <h3>A. Membuat Garis Dekorasi (Modern Heading)</h3>
-    <p>Daripada membuat <code>&lt;div&gt;</code> kosong hanya untuk sebuah garis, gunakan <code>::after</code>. Ini menjaga HTML Anda tetap bersih.</p>
+        <h3>A. Membuat Garis Dekorasi (Modern Heading)</h3>
+        <p>Daripada membuat <code>&lt;div&gt;</code> kosong hanya untuk sebuah garis, gunakan <code>::after</code>. Ini menjaga HTML Anda tetap bersih.</p>
 
-    <style>
-        .fancy-header {
-            position: relative;
-            display: inline-block;
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-        /* Membuat garis di bawah teks */
-        .fancy-header::after {
-            content: ""; /* Wajib ada! */
-            position: absolute;
-            left: 0;
-            bottom: -5px;
-            width: 50%; /* Garis hanya setengah lebar teks */
-            height: 4px;
-            background-color: #27ae60;
-            border-radius: 2px;
-        }
-    </style>
+        <h2 class="fancy-header">Layanan Kami</h2>
 
-    <h2 class="fancy-header">Layanan Kami</h2>
-
-    <pre><code>.fancy-header::after {
+        <pre><code>.fancy-header::after {
     content: "";
     position: absolute;
     bottom: -5px;
@@ -164,71 +209,28 @@ li:last-child { color: green; }</code></pre>
     background: #27ae60;
 }</code></pre>
 
-    <h3>B. Custom List Bullets (Ikon Daftar)</h3>
-    <p>Mengganti titik (bullet) standar yang membosankan dengan ikon atau simbol unik menggunakan <code>::before</code>.</p>
+        <h3>B. Custom List Bullets (Ikon Daftar)</h3>
+        <p>Mengganti titik (bullet) standar yang membosankan dengan ikon atau simbol unik menggunakan <code>::before</code>.</p>
 
-    <style>
-        .custom-list { list-style: none; padding: 0; }
-        .custom-list li {
-            position: relative;
-            padding-left: 25px;
-            margin-bottom: 10px;
-        }
-        /* Mengganti bullet dengan centang */
-        .custom-list li::before {
-            content: "✔";
-            position: absolute;
-            left: 0;
-            color: #27ae60;
-            font-weight: bold;
-        }
-    </style>
+        <ul class="custom-list">
+            <li>Gratis Konsultasi</li>
+            <li>Update Selamanya</li>
+            <li>Dukungan 24/7</li>
+        </ul>
 
-    <ul class="custom-list">
-        <li>Gratis Konsultasi</li>
-        <li>Update Selamanya</li>
-        <li>Dukungan 24/7</li>
-    </ul>
-
-    <pre><code>.custom-list li::before {
+        <pre><code>.custom-list li::before {
     content: "✔";
     color: #27ae60;
     position: absolute;
     left: 0;
 }</code></pre>
 
-    <h3>C. Efek Hover Berjalan (Advanced)</h3>
-    <p>Pseudo-element sering digunakan sebagai "lapisan latar" yang bergerak saat tombol disentuh.</p>
+        <h3>C. Efek Hover Berjalan (Advanced)</h3>
+        <p>Pseudo-element sering digunakan sebagai "lapisan latar" yang bergerak saat tombol disentuh.</p>
 
-    <style>
-        .btn-slide {
-            position: relative;
-            padding: 10px 25px;
-            background: #fff;
-            color: #27ae60;
-            border: 2px solid #27ae60;
-            cursor: pointer;
-            z-index: 1;
-            overflow: hidden;
-            transition: color 0.4s;
-        }
-        /* Lapisan hijau yang tersembunyi di kiri */
-        .btn-slide::before {
-            content: "";
-            position: absolute;
-            top: 0; left: -100%;
-            width: 100%; height: 100%;
-            background: #27ae60;
-            z-index: -1; /* Berada di belakang teks */
-            transition: left 0.4s;
-        }
-        .btn-slide:hover { color: #fff; }
-        .btn-slide:hover::before { left: 0; }
-    </style>
+        <button class="btn-slide">Sentuh Saya!</button>
 
-    <button class="btn-slide">Sentuh Saya!</button>
-
-    <pre><code>/* Lapisan latar belakang yang bergeser */
+        <pre><code>/* Lapisan latar belakang yang bergeser */
 .btn-slide::before {
     content: "";
     position: absolute;
@@ -239,14 +241,93 @@ li:last-child { color: green; }</code></pre>
 }
 .btn-slide:hover::before { left: 0; }</code></pre>
 
-    <div class="note">
-        <strong>Pelajaran Penting:</strong> <code>::before</code> dan <code>::after</code> sangat bergantung pada <code>position: absolute;</code>. Oleh karena itu, elemen induknya (seperti <code>.btn-slide</code> atau <code>li</code>) wajib memiliki <code>position: relative;</code> agar elemen palsu tersebut tidak lari ke luar kotak.
+        <div class="note">
+            <strong>Pelajaran Penting:</strong> <code>::before</code> dan <code>::after</code> sangat bergantung pada <code>position: absolute;</code>. Oleh karena itu, elemen induknya (seperti <code>.btn-slide</code> atau <code>li</code>) wajib memiliki <code>position: relative;</code> agar elemen palsu tersebut tidak lari ke luar kotak.
+        </div>
+
+        <hr>
+    
+        <h3>Tabel Referensi Pseudo-element</h3>
+        <p>Berikut adalah daftar Pseudo-element lainnya beserta tingkat prioritas penggunaannya dalam pengembangan web:</p>
+
+        <div class="table-container">
+            <table class="pseudo-table">
+                <thead>
+                    <tr>
+                        <th>Pseudo-element</th>
+                        <th>Keterangan</th>
+                        <th>Prioritas</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>::after</code></td>
+                        <td>Menyisipkan konten setelah isi elemen</td>
+                        <td><span class="star">★★★★★</span></td>
+                    </tr>
+                    <tr>
+                        <td><code>::backdrop</code></td>
+                        <td>Backdrop pada elemen <code>&lt;dialog&gt;</code></td>
+                        <td><span class="star">★★★</span></td>
+                    </tr>
+                    <tr>
+                        <td><code>::before</code></td>
+                        <td>Menyisipkan konten sebelum isi elemen</td>
+                        <td><span class="star">★★★★★</span></td>
+                    </tr>
+                    <tr>
+                        <td><code>::cue</code></td>
+                        <td>Untuk styling cue (teks subtitle) pada video (WebVTT)</td>
+                        <td><span class="star">★★</span></td>
+                    </tr>
+                    <tr>
+                        <td><code>::details-content</code></td>
+                        <td>Styling konten pada elemen <code>&lt;details&gt;</code></td>
+                        <td><span class="star">★★★</span></td>
+                    </tr>
+                    <tr>
+                        <td><code>::file-selector-button</code></td>
+                        <td>Styling tombol pada <code>&lt;input type="file"&gt;</code></td>
+                        <td><span class="star">★★★★</span></td>
+                    </tr>
+                    <tr>
+                        <td><code>::first-letter</code></td>
+                        <td>Menargetkan huruf pertama dalam paragraf</td>
+                        <td><span class="star">★★★</span></td>
+                    </tr>
+                    <tr>
+                        <td><code>::first-line</code></td>
+                        <td>Menargetkan baris pertama dalam teks</td>
+                        <td><span class="star">★★★</span></td>
+                    </tr>
+                    <tr>
+                        <td><code>::marker</code></td>
+                        <td>Menentukan gaya bullet atau numbering pada list</td>
+                        <td><span class="star">★★★★</span></td>
+                    </tr>
+                    <tr>
+                        <td><code>::selection</code></td>
+                        <td>Menentukan gaya teks yang diseleksi user</td>
+                        <td><span class="star">★★★★★</span></td>
+                    </tr>
+                    <tr>
+                        <td><code>::target-text</code></td>
+                        <td>Menyorot teks target fragment URL</td>
+                        <td><span class="star">★★★</span></td>
+                    </tr>
+                    <tr>
+                        <td><code>::view-transition</code></td>
+                        <td>Memberikan animasi transisi halaman</td>
+                        <td><span class="star">★★★★</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
-</div>
 
     <div id="combinators" class="materi-section">
         <h2>3. Combinators (Hubungan Antar Elemen)</h2>
-        <p>Combinator menjelaskan hubungan antara dua selector. Ini sangat berguna untuk menjaga kode CSS tetap bersih.</p>
+        <p>Combinator menjelaskan hubungan antara dua selector. Ini sangat berguna untuk menjaga kode CSS tetap bersih dan efisien.</p>
 
         
 
@@ -254,31 +335,118 @@ li:last-child { color: green; }</code></pre>
             <tr style="background-color: #27ae60; color: white;">
                 <th style="padding: 10px; border: 1px solid #ddd;">Simbol</th>
                 <th style="padding: 10px; border: 1px solid #ddd;">Nama</th>
-                <th style="padding: 10px; border: 1px solid #ddd;">Penjelasan</th>
+                <th style="padding: 10px; border: 1px solid #ddd;">Analogi Sederhana</th>
             </tr>
             <tr>
                 <td style="padding: 10px; border: 1px solid #ddd; text-align: center;"><code>(spasi)</code></td>
                 <td style="padding: 10px; border: 1px solid #ddd;">Descendant</td>
-                <td style="padding: 10px; border: 1px solid #ddd;">Pilih semua anak, cucu, cicit di dalam.</td>
+                <td>Semua keturunan (Anak, Cucu, Cicit).</td>
             </tr>
             <tr>
                 <td style="padding: 10px; border: 1px solid #ddd; text-align: center;"><code>&gt;</code></td>
-                <td style="padding: 10px; border: 1px solid #ddd;">Child Selector</td>
-                <td style="padding: 10px; border: 1px solid #ddd;">Hanya anak langsung (level 1).</td>
+                <td style="padding: 10px; border: 1px solid #ddd;">Child</td>
+                <td>Hanya Anak Kandung (Level 1).</td>
             </tr>
             <tr>
                 <td style="padding: 10px; border: 1px solid #ddd; text-align: center;"><code>+</code></td>
                 <td style="padding: 10px; border: 1px solid #ddd;">Adjacent Sibling</td>
-                <td style="padding: 10px; border: 1px solid #ddd;">Elemen yang tepat berada di bawahnya.</td>
+                <td>Adik tepat di bawah kakak.</td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border: 1px solid #ddd; text-align: center;"><code>~</code></td>
+                <td style="padding: 10px; border: 1px solid #ddd;">General Sibling</td>
+                <td>Semua adik-adik di bawah kakak.</td>
             </tr>
         </table>
 
-        <h3>Contoh Visual:</h3>
-        <div class="parent">
-            <p>Anak Langsung (Warna Oranye - pakai > )</p>
-            <div>
-                <p>Cucu (Warna Abu-abu - pakai spasi)</p>
+        <hr>
+
+        <h3>Kasus Nyata & Demo Visual:</h3>
+
+        <h3>A. Descendant (Spasi) vs Child (>)</h3>
+        <p>Gunakan <code>&gt;</code> jika Anda ingin gaya yang sangat spesifik untuk level pertama saja.</p>
+
+        <style>
+            .family-box { border: 2px solid #333; padding: 15px; background: #f4f4f4; }
+            
+            /* Semua p di dalam .family-box akan berwarna abu-abu */
+            .family-box p { color: #888; } 
+
+            /* HANYA p yang merupakan anak langsung yang punya border & tebal */
+            .family-box > p { 
+                border: 1px solid #e67e22; 
+                padding: 5px; 
+                color: #e67e22; 
+                font-weight: bold; 
+            }
+        </style>
+
+        <div class="family-box">
+            <p>Saya Anak Langsung (Orange & Bold)</p>
+            <div style="margin-left: 20px; border-left: 2px dashed #ccc; padding-left: 10px;">
+                <p>Saya Cucu (Abu-abu saja)</p>
             </div>
+        </div>
+
+        <pre><code>/* Semua p di dalam box (anak & cucu) */
+.family-box p { color: gray; }
+
+/* Hanya p di level pertama */
+.family-box > p { color: orange; font-weight: bold; }</code></pre>
+
+        <h3>B. Menghapus Jarak Antar Judul (+)</h3>
+        <p>Kasus tersering: Memberikan jarak otomatis pada paragraf yang berada <strong>tepat setelah</strong> judul.</p>
+
+        <style>
+            .article h4 { margin-bottom: 5px; color: #27ae60; }
+            /* Hanya paragraf yang muncul tepat setelah H4 yang akan miring */
+            .article h4 + p { 
+                font-style: italic; 
+                color: #2980b9;
+                margin-top: 0; 
+            }
+        </style>
+
+        <div class="article demo-box">
+            <h4>Judul Artikel</h4>
+            <p>Ini paragraf pertama (Tepat setelah judul, jadi miring & biru).</p>
+            <p>Ini paragraf kedua (Biasa saja).</p>
+        </div>
+
+        <pre><code>/* Targetkan p yang ada tepat di bawah h4 */
+h4 + p { 
+    font-style: italic; 
+    color: blue; 
+}</code></pre>
+
+        <h3>C. General Sibling Selector (~)</h3>
+        <p>Digunakan untuk menandai semua elemen yang setingkat di bawah elemen tertentu. Berguna untuk fitur "Checklist" atau navigasi.</p>
+
+        <style>
+            .todo-item { margin: 10px 0; }
+            /* Jika checkbox dicentang, semua span di bawahnya akan dicoret */
+            input:checked ~ span {
+                text-decoration: line-through;
+                color: #ccc;
+            }
+        </style>
+
+        <div class="demo-box">
+            <div class="todo-item">
+                <input type="checkbox"> <span>Belajar Combinators</span>
+            </div>
+            <div class="todo-item">
+                <input type="checkbox"> <span>Mengerjakan Tugas</span>
+            </div>
+        </div>
+
+        <pre><code>/* Jika input di-check, coret teks span di sebelahnya */
+input:checked ~ span {
+    text-decoration: line-through;
+}</code></pre>
+
+        <div class="note">
+            <strong>Tips Penting:</strong> Sibling selector (<code>+</code> dan <code>~</code>) hanya bekerja untuk elemen yang berada <strong>setelah/di bawah</strong> elemen referensi dalam kode HTML. CSS tidak bisa memilih "kakak" (elemen di atasnya).
         </div>
     </div>
 

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice pseudo element</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <style>
+        body{
+            font-family: Poppins;
+            padding: 10px 20px;
+            margin: 0;
+            font-style: normal;
+        }
+        .pseudo-element-after{
+            display: flex;
+            justify-content: flex-start;
+        }
+        .title-decoration{
+            position: relative;
+            color: rgb(18, 218, 0);
+            padding: 0 10px;
+            margin-bottom: 20px;
+            border-left: 5px solid rgb(18, 218, 0);
+        }
+        .title-decoration::after{
+            content: "";
+            position: absolute;
+            background-color: rgb(18, 218, 0);
+            border-radius: 5px;
+            width: 100%;
+            height: 4px;
+            bottom: -4px; /*berada di bawah*/
+            left: 0; /*berada di kiri */
+        }
+        .bullet, .bullet-before{
+            color: rgb(18, 218, 0);
+            margin: 0;
+        }
+        .bullet-before{
+            padding: 0 20px 20px;
+        }
+        .bullet-before li{
+            position: relative;
+            list-style: none;
+            padding: 5px 0 0 25px;
+        }
+        .bullet-before li::before{
+            position: absolute;
+            content:"✔" ;
+            color: red;
+            font-weight: bold;
+            left: 0;
+            
+        }
+        /* button slide */
+        .bullet{
+            margin-bottom: 20px;
+        }
+        .btn-slide{
+            position: relative;
+            font-family: Poppins;
+            cursor: pointer;
+            color: red;
+            background-color: white;
+            border: 2px solid red;
+            width: 150px;
+            height: 45px;
+            margin-left: 25px;
+            border-radius: 5px;
+            z-index: 1;
+            overflow: hidden; /*memotong content yang keluar dari kotak content */
+            
+        }
+        .btn-slide::before{
+            content: "";
+            position: absolute;
+            background: red;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: -100%;
+            z-index: -1; /*berada di belakang btn-slide*/
+            transition: left 0.4s;
+        }
+        .btn-slide:hover{
+            color: white;
+        }
+        .btn-slide:hover::before{
+            left: 0;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="pseudo-element-after">
+        <h3 class="title-decoration">A.Berikut adalah penggunaan pseudo element (::after)</h3>
+    </div>
+
+    <h3 class="bullet">B. ganti bullet item (::before)</h3>
+    <ul class="bullet-before">
+        <li>pertama</li>
+        <li>kedua</li>
+        <li>ketiga</li>
+        <li>keempat</li>
+    </ul>
+
+    <div class="button">
+        <h3 class="bullet">C.  Membuat Button Slide (::before)</h3>
+        <button class="btn-slide">Sentuh saya!</button>
+    </div>
+
+    
+</body>
+</html>
