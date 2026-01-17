@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>practice overflow float and inlineblock</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <style>
+        body{
+            font-family: Poppins;
+            display: grid;
+            grid-template-columns: 1fr 4fr;
+            grid-template-areas:
+                "overflow-box float-box"
+                "overflow-box inlineblock-box"
+                "deference-box deference-box";
+            margin: 0;
+            padding: 0;
+        }
+        code{
+            color: blue;
+            font-size: 16px;
+        }
+        .overflow-box{
+            grid-area: overflow-box;
+            background-color: rgb(253, 228, 228);
+            padding: 20px;
+            margin: 0;
+        }
+        .overflow-used{
+            background-color: rgb(176, 176, 176);
+            width: 200px;
+            height: 450px;
+            overflow: auto;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 8px rgb(176, 176, 176);
+        }
+        /* penggunaan float */
+        .float-box{
+            grid-area: float-box;
+            background-color: rgb(255, 158, 158);
+            padding: 20px;
+            margin: 0;
+        }
+        .float-used{
+            padding: 10px;
+            margin: 10px 0 0;
+            background-color: rgb(208, 208, 208);
+            border: 2px dashed grey;
+        }
+        /* .float-used p{
+            margin: 0;
+        } */
+        .img-float{
+            width: 100px;
+            height: 100px;
+            border-radius: 5px;
+            display: flex;
+            float: left;    /*ini bakal ngebuat img mengapung di kiri, alhasil bagian bawahnya bakal tidak sesuai (kita manipulasi dengan ::after atau clearfix)*/
+            margin-right: 10px;
+        }
+        .float-used::after{ /*solusi buat img-float yang pake properti float karena bagian bawahnya bakal tidak sesuai jadi kita manipulasi pake after*/
+            content: "";
+            display: table;
+            clear: both;
+        }
+        /* inlineblock */
+        .inlineblock-box{
+            grid-area: inlineblock-box;
+            padding: 20px;
+            background-color: rgba(249, 103, 103, 0.315);
+        }
+        .content-inlineblock{
+            padding: 0;
+            background-color: aliceblue;
+        }
+        .content-inlineblock li{
+            display: inline-block;
+            list-style: none;
+            padding: 5px;
+            margin: 5px;
+            width: 150px;
+            height: 40px;
+            color: white;
+            background-color: blueviolet;
+            text-align: center; /*untuk tengah kanan kiri*/
+            line-height: 40px;
+        }
+        /* deference box */
+        /* A. Inline */
+        .deference-box{
+            grid-area: deference-box;
+            background-color: rgba(250, 161, 161, 0.863);
+            padding: 20px;
+        }
+        .inline-used{
+            background-color: aliceblue;
+            padding: 10px;
+            margin-left: 20px;
+            border-radius: 5px;
+        }
+        .inline-used li{
+            display: inline;
+            width: 150px; /*display inline tidak bisa menentukan width dan height, jadi ini akan diabaikan*/
+            height: 40px; /*display inline tidak bisa menentukan width dan height, jadi ini akan diabaikan*/
+            color: white;
+            background-color: blueviolet;
+            border-radius: 5px;
+        }
+        /* B. Block */
+        .block-used{
+            background-color: aliceblue;
+            padding: 10px;
+            margin-left: 20px;
+            border-radius: 5px;
+        }
+        .block-used li{
+            display: block;
+            width: 150px;
+            height: 40px;
+            color: white;
+            background-color: blueviolet;
+            text-align: center; /*untuk menengahkan kanan kiri*/
+            line-height: 40px; /*untuk menengahkan atas bawah (samankan valuenya dengan hight*/
+            margin: 5px; 
+            border-radius: 5px;
+        }
+        /* C. Inline-block */
+        .inline-block-used{
+            background-color: aliceblue;
+            padding: 10px;
+            margin-left: 20px;
+            border-radius: 5px;
+        }
+        .inline-block-used li{
+            display: inline-block;
+            width: 150px;
+            height: 40px;
+            color: white;
+            background-color: blueviolet;
+            text-align: center; /*untuk menengahkan kanan kiri*/
+            line-height: 40px; /*untuk menengahkan atas bawah (samankan valuenya dengan hight*/
+            margin: 5px; 
+            border-radius: 5px;
+        }
+
+        /* tambahan aja sekalian practice (abaikan) */
+        .content-inlineblock li:hover{
+            scale: 1.1;
+            transition: 0.5s;
+            box-shadow: 0 0 8px rgb(104, 31, 171);
+        }
+        .inline-used li:hover{
+            scale: 1.1;
+            transition: 0.5s;
+            box-shadow: 0 0 8px rgb(104, 31, 171);
+        }
+        .block-used li:hover{
+            scale: 1.1;
+            transition: 0.5s;
+            box-shadow: 0 0 8px rgb(104, 31, 171);
+        }
+        .inline-block-used li:hover{
+            scale: 1.1;
+            transition: 0.5s;
+            box-shadow: 0 0 8px rgb(104, 31, 171);
+        }
+    </style>
+
+</head>
+<body>
+    <div class="overflow-box">
+        <h3>Overflow case</h3>
+        <div class="overflow-used">
+            <p><b>LOREM UPSUM</b><br>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi doloribus, distinctio ea, accusamus accusantium maxime expedita illum nihil sed illo amet. Architecto dolorem ullam eaque laborum! Maxime maiores, voluptas est voluptatibus in tenetur dolore. A ipsam voluptate possimus. Incidunt ut sunt quos dolorem laboriosam sapiente culpa repellendus? Cum, autem. Dolore a unde architecto ut aspernatur eius natus deleniti exercitationem quam quidem corporis praesentium laudantium, veritatis officia rem iusto, facere molestias ratione, sit eos quos ipsum enim harum. Debitis consequatur sunt unde tempore quo amet perspiciatis asperiores! Officiis blanditiis vitae repellendus rem sit fuga, quibusdam facere suscipit numquam mollitia voluptas unde dicta vel saepe, culpa exercitationem quidem omnis maiores minima dolore debitis iusto doloribus? Tenetur nobis vel laboriosam distinctio, quod consequuntur officiis error, cupiditate quasi dicta assumenda accusamus inventore optio ab perspiciatis natus quibusdam laborum expedita, similique tempore quae necessitatibus? Quo doloribus dignissimos omnis commodi, quis odit dicta placeat earum provident amet quos, incidunt ipsam. Consequatur autem molestiae neque, pariatur nesciunt tempore amet labore omnis earum voluptate alias consectetur vel magni veritatis quod expedita doloremque perferendis, rem illo facere? Exercitationem, at.</p>
+        </div>
+    </div>
+    <div class="float-box"> <!--bisa juga pake div class="float-box clearfix" nanti clearfix nya kita buat after content: "";  -->
+        <h3>float case</h3>
+        <div class="float-used">
+            <div class="img-float"><img src="logo.jpg" alt="image"></div>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quam tenetur ut mollitia repellat quisquam? Animi, quae incidunt! Hic ut similique consectetur aperiam nesciunt. Dolorem, harum.</p>
+        </div>
+        <div class="float-used">
+            <div class="img-float"><img src="image.png" alt="image"></div>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quam tenetur ut mollitia repellat quisquam? Animi, quae incidunt! Hic ut similique consectetur aperiam nesciunt. Dolorem, harum.</p>
+        </div>
+    </div>
+    <div class="inlineblock-box">
+        <h3>Inline-block case</h3>
+            <ul class="content-inlineblock">
+                <li>first centent</li>
+                <li>second centent</li>
+                <li>thrid centent</li>
+            </ul>
+    </div>
+
+    <div class="deference-box">
+        <h3 style="text-align: center;">deference between inline, block, and inline-block</h3>
+        <div class="inline">
+            <h3>A. Inline:</h3>
+            <p style="margin-left: 20px;">note: <code>display: inline</code> kita tidak bisa mengatur width dan height, jika ada di CSS maka akan diabaikan, tapi (untuk mengakali) masih bisa mengatur padding dan margin</p>
+            <ul class="inline-used">
+                <li>first</li>
+                <li>second</li>
+                <li>thrid</li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h3>B. Block:</h3>
+            <p style="margin-left: 20px;">note: <code>display: block</code> selalu memulai baris baru, dan kita bisa mengatur width dan height</p>
+            <ul class="block-used">
+                <li>first</li>
+                <li>second</li>
+                <li>thrid</li>
+            </ul>
+        </div>
+
+        <div class="inline-block">
+            <h3>B. Inline-block:</h3>
+            <p style="margin-left: 20px;">note: <code>display: block</code> seperti gabungan <code>display: inline</code> dan <code>display: block</code> dimana content ditampilkan berjejeran (tidak baris baru) dan width dan hight bisa diatur, dan kita bisa mengatur width dan height</p>
+            <ul class="inline-block-used">
+                <li>first</li>
+                <li>second</li>
+                <li>thrid</li>
+            </ul>
+        </div>
+    </div>
+    
+    
+</body>
+</html>
