@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi CSS: Overflow, Float, & Inline-block</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; line-height: 1.6; padding: 20px; max-width: 1000px; margin: auto; background-color: #f0f2f5; }
+        h1 { color: #2c3e50; text-align: center; border-bottom: 4px solid #8e44ad; padding-bottom: 10px; }
+        h2 { color: #8e44ad; margin-top: 40px; border-left: 5px solid #9b59b6; padding-left: 10px; }
+        code { background-color: #eee; padding: 2px 4px; border-radius: 3px; color: #c0392b; }
+        pre { background-color: #2d3436; color: #dfe6e9; padding: 15px; border-radius: 8px; overflow-x: auto; }
+        
+        .materi-section { background: white; padding: 25px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-bottom: 30px; }
+        .term { font-weight: bold; color: #8e44ad; }
+        .note { background-color: #f3e5f5; padding: 15px; border-left: 5px solid #8e44ad; margin: 15px 0; }
+        .demo-box { border: 2px dashed #ccc; padding: 15px; margin: 15px 0; background: #fafafa; }
+
+        /* Styling tambahan untuk tombol kembali agar senada dengan tema Mahir */
+        .back-link {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: #8e44ad;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .back-link:hover {
+            background-color: #7d3c98;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .back-link:active {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Overflow, Float, & Inline-block</h1>
+
+    <div id="overflow" class="materi-section">
+        <h2>1. Overflow</h2>
+        <p><span class="term">Overflow</span> mengatur apa yang terjadi jika konten di dalam sebuah elemen terlalu besar untuk ukuran kotaknya (wadahnya).</p>
+
+        
+
+        <h3>Nilai yang Sering Digunakan:</h3>
+        <ul>
+            <li><code>visible</code> (Default): Konten tetap muncul keluar kotak.</li>
+            <li><code>hidden</code>: Konten yang meluap akan dipotong dan disembunyikan.</li>
+            <li><code>scroll</code>: Selalu memunculkan scrollbar (meskipun konten tidak meluap).</li>
+            <li><code>auto</code>: Memunculkan scrollbar <strong>hanya jika</strong> konten meluap.</li>
+        </ul>
+
+        <h3>Kasus Nyata: Kotak Chat atau Berita</h3>
+        <p>Gunakan <code>overflow: auto</code> untuk area yang terbatas tapi memiliki banyak teks.</p>
+
+        <style>
+            .box-overflow {
+                width: 250px; height: 100px;
+                border: 2px solid #333;
+                overflow: auto; /* Cobalah ganti ke hidden atau scroll */
+                padding: 10px;
+            }
+        </style>
+        <div class="box-overflow">
+            Ini adalah teks yang sangat panjang. Dengan overflow: auto, kotak ini akan memiliki scrollbar sendiri sehingga tidak merusak tata letak elemen lain di sekitarnya. Scroll ke bawah untuk membaca lebih lanjut!
+        </div>
+
+        <pre><code>.container {
+  width: 250px;
+  height: 100px;
+  overflow: auto; /* Scrollbar muncul otomatis saat dibutuhkan */
+}</code></pre>
+    </div>
+
+    <div id="float" class="materi-section">
+        <h2>2. Float</h2>
+        <p><span class="term">Float</span> awalnya digunakan untuk membungkus teks di sekitar gambar (seperti tata letak koran). Elemen akan "mengapung" ke kiri atau kanan.</p>
+
+        
+
+        <h3>Kasus Nyata: Gambar dalam Artikel</h3>
+        
+        <style>
+            .img-float {
+                width: 100px; height: 100px;
+                background: #9b59b6; color: white;
+                float: left; /* Mengapung ke kiri */
+                margin-right: 15px;
+                display: flex; align-items: center; justify-content: center;
+            }
+            .clearfix::after { /* Solusi untuk masalah Float */
+                content: "";
+                display: table;
+                clear: both;
+            }
+        </style>
+
+        <div class="demo-box clearfix">
+            <div class="img-float">IMAGE</div>
+            <p>Teks ini akan membungkus elemen di sampingnya karena elemen kotak ungu menggunakan <code>float: left</code>. Ini adalah cara klasik untuk membuat layout artikel yang menarik.</p>
+        </div>
+
+        <div class="note">
+            <strong>Istilah Baru: Clearfix.</strong> Saat menggunakan float, elemen induk seringkali "kehilangan" tingginya. Kita wajib menggunakan teknik <code>clear: both</code> atau <em>Clearfix</em> agar elemen di bawahnya tidak ikut berantakan.
+        </div>
+
+        <pre><code>img {
+  float: right;
+  margin-left: 20px;
+}
+/* Menghentikan efek mengapung */
+.footer { clear: both; }</code></pre>
+    </div>
+
+    <div id="inline-block" class="materi-section">
+        <h2>3. Inline-block</h2>
+        <p><span class="term">Inline-block</span> adalah jalan tengah. Ia membiarkan elemen berjejer ke samping (seperti <em>inline</em>), tetapi tetap bisa diatur lebar dan tingginya (seperti <em>block</em>).</p>
+
+        
+
+        <h3>Perbandingan:</h3>
+        <ul>
+            <li><code>inline</code>: Bisa ke samping, tapi <strong>tidak bisa</strong> diberi width/height.</li>
+            <li><code>block</code>: Bisa diberi width/height, tapi <strong>memaksa</strong> baris baru.</li>
+            <li><code>inline-block</code>: Bisa ke samping <strong>DAN</strong> bisa diberi width/height.</li>
+        </ul>
+
+        <h3>Kasus Nyata: Kartu Produk atau Menu</h3>
+        
+        <style>
+            .card {
+                display: inline-block;
+                width: 150px;
+                padding: 10px;
+                background: #fff;
+                border: 1px solid #ddd;
+                margin: 5px;
+                text-align: center;
+            }
+        </style>
+
+        <div class="demo-box">
+            <div class="card">Produk 1</div>
+            <div class="card">Produk 2</div>
+            <div class="card">Produk 3</div>
+        </div>
+
+        <pre><code>.nav-item {
+  display: inline-block;
+  width: 100px;
+  height: 40px;
+  text-align: center;
+}</code></pre>
+
+        <div class="note">
+            <strong>Kelemahan:</strong> <code>inline-block</code> secara otomatis memberikan sedikit spasi (sekitar 4px) antar elemen. Hal ini karena browser menganggap spasi di kode HTML sebagai spasi nyata di layar.
+        </div>
+
+        <style>
+            .demo-container { background: #eee; padding: 10px; margin-bottom: 20px; }
+            
+            /* Elemen Kuning: BLOCK */
+            .box-block {
+                display: block;
+                background: #f1c40f;
+                width: 150px; height: 50px;
+                margin: 5px 0;
+            }
+
+            /* Elemen Biru: INLINE */
+            .box-inline {
+                display: inline;
+                background: #3498db;
+                color: white;
+                width: 500px; /* Ini akan diabaikan browser */
+                height: 500px; /* Ini juga akan diabaikan */
+                padding: 10px;
+            }
+
+            /* Elemen Hijau: INLINE-BLOCK */
+            .box-inline-block {
+                display: inline-block;
+                background: #2ecc71;
+                width: 120px; height: 50px;
+                margin: 5px;
+                color: white;
+                text-align: center;
+            }
+        </style>
+
+        <h3>Visualisasi Perbedaan:</h3>
+
+        <p><strong>1. Display: Block</strong> (Selalu baris baru, ukuran patuh/bisa disesuaikan width dan height nya)</p>
+        <div class="demo-container">
+            <div class="box-block">Block 1</div>
+            <div class="box-block">Block 2</div>
+        </div>
+
+        <p><strong>2. Display: Inline</strong> (Berjejer, tapi lebar/tinggi diabaikan)</p>
+        <div class="demo-container">
+            <div class="box-inline">Inline A</div>
+            <div class="box-inline">Inline B</div>
+            <span style="color: #888; font-size: 12px;">(Lebar 500px di kode diabaikan)</span>
+        </div>
+
+        <p><strong>3. Display: Inline-block</strong> (Berjejer DAN ukuran patuh)</p>
+        <div class="demo-container">
+            <div class="box-inline-block">In-Block 1</div>
+            <div class="box-inline-block">In-Block 2</div>
+        </div>
+    </div>
+
+    <div style="margin-top: 50px; text-align: center; padding-bottom: 40px;">
+        <hr style="border: 0; border-top: 1px solid #ccc; margin-bottom: 20px;">
+        <a href="../../index.html" class="back-link">Kembali ke Menu Utama Materi</a>
+    </div>
+
+</body>
+</html>
