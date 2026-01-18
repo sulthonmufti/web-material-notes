@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advance CSS: Master UI Components</title>
+    <style>
+        :root {
+            --primary: #6c5ce7;
+            --bg: #f8f9fa;
+            --text: #2d3436;
+            --glass: rgba(255, 255, 255, 0.2);
+        }
+
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            margin: 0; padding: 0; background-color: var(--bg); color: var(--text);
+        }
+
+        /* Navigasi Dropdown */
+        .top-nav {
+            background: white; padding: 15px 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky; top: 0; z-index: 1000;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+
+        select {
+            padding: 8px 15px; border-radius: 5px; border: 2px solid var(--primary);
+            font-size: 16px; outline: none; cursor: pointer;
+        }
+
+        .container { max-width: 900px; margin: 30px auto; padding: 0 20px; }
+        
+        /* Sembunyikan semua materi secara default */
+        .materi-page { display: none; animation: fadeIn 0.5s ease; }
+        .active { display: block; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .card { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        h1, h2 { color: var(--primary); }
+        pre { background: #2d3436; color: #fab1a0; padding: 15px; border-radius: 8px; overflow-x: auto; }
+        code { color: #55efc4; }
+
+        /* Kasus Nyata Style */
+        .demo-box { border: 2px dashed #ccc; padding: 20px; margin: 20px 0; border-radius: 10px; text-align: center; }
+        .back-link { display: inline-block; margin-top: 30px; color: var(--primary); text-decoration: none; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <nav class="top-nav">
+        <strong>Advance CSS Mastery</strong>
+        <select id="materiSelector" onchange="showMateri()">
+            <option value="page1">1. Image Styling & Filters</option>
+            <option value="page2">2. Modern Modals & Overlay</option>
+            <option value="page3">3. Glassmorphism & Gradients</option>
+            <option value="page4">4. Transitions & Animations</option>
+        </select>
+    </nav>
+
+    <div class="container">
+
+        <div id="page1" class="materi-page active">
+            <div class="card">
+                <h1>Image Styling & Filters</h1>
+                <p>Mengubah gambar mentah menjadi elemen estetis menggunakan manipulasi CSS.</p>
+                
+                
+
+                <h3>Kasus Terpopuler: Instagram-like Filters</h3>
+                <p>Kita bisa memberikan efek filter dan bentuk hanya dengan satu baris kode.</p>
+                
+                <div class="demo-box">
+                    <img src="/Material/CSS/practice/image.png" alt="Demo" style="width: 200px; border-radius: 20px; filter: sepia(0.8) contrast(1.2);">
+                    <p><i>Filter: Sepia & Contrast</i></p>
+                </div>
+
+                <pre><code>img {
+    border-radius: 50%;    /* Lingkaran */
+    object-fit: cover;     /* Anti Gepeng */
+    filter: grayscale(100%); /* Hitam Putih */
+}</code></pre>
+            </div>
+        </div>
+
+        <div id="page2" class="materi-page">
+            <div class="card">
+                <h1>Modern Modals & Overlays</h1>
+                <p>Modal digunakan untuk interaksi krusial tanpa meninggalkan halaman utama.</p>
+                
+                
+
+                <h3>Kasus Nyata: Confirm Delete Box</h3>
+                <div class="demo-box" style="background: rgba(0,0,0,0.1); padding: 50px;">
+                    <div style="background: white; padding: 20px; border-radius: 10px; width: 250px; margin: auto; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+                        <p>Hapus file ini?</p>
+                        <button style="background: #ff7675; border: none; color: white; padding: 5px 15px; border-radius: 5px;">Hapus</button>
+                    </div>
+                </div>
+
+                <pre><code>.modal-overlay {
+    position: fixed; top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(0,0,0,0.7); /* Backdrop gelap */
+    z-index: 999;
+}</code></pre>
+            </div>
+        </div>
+
+        <div id="page3" class="materi-page">
+            <div class="card">
+                <h1>Glassmorphism & Gradients</h1>
+                <p>Tren desain modern yang memberikan efek "kaca buram" (frosted glass) di atas latar belakang warna-warni.</p>
+                
+                
+
+                <h3>Kasus Nyata: Card iOS Style</h3>
+                <div class="demo-box" style="background: linear-gradient(45deg, #6c5ce7, #a29bfe); padding: 50px;">
+                    <div style="background: rgba(255,255,255,0.2); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.3); padding: 20px; border-radius: 15px; color: white; width: 200px; margin: auto;">
+                        <strong>Glass Card</strong>
+                        <p>Sangat populer untuk dashboard modern.</p>
+                    </div>
+                </div>
+
+                <pre><code>.glass-card {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px); /* Efek Buram Kaca */
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}</code></pre>
+            </div>
+        </div>
+
+        <div id="page4" class="materi-page">
+            <div class="card">
+                <h1>CSS Animations & Transitions</h1>
+                <p>Membuat website terasa hidup dan interaktif.</p>
+
+                <h3>Kasus Nyata: Tombol Berdenyut (Pulse)</h3>
+                <style>
+                    .pulse-btn {
+                        background: var(--primary); color: white; border: none;
+                        padding: 15px 30px; border-radius: 50px; cursor: pointer;
+                        animation: pulse 2s infinite;
+                    }
+                    @keyframes pulse {
+                        0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(108, 92, 231, 0.7); }
+                        70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(108, 92, 231, 0); }
+                        100% { transform: scale(1); }
+                    }
+                </style>
+                <div class="demo-box">
+                    <button class="pulse-btn">Klik Saya!</button>
+                </div>
+
+                <pre><code>@keyframes pulse {
+    from { transform: scale(1); }
+    to { transform: scale(1.1); }
+}
+button:hover { animation: pulse 1s infinite alternate; }</code></pre>
+            </div>
+        </div>
+
+        <a href="../../index.html" class="back-link">← Kembali ke Menu Utama</a>
+    </div>
+
+    <script>
+        function showMateri() {
+            // Sembunyikan semua
+            const pages = document.querySelectorAll('.materi-page');
+            pages.forEach(page => page.classList.remove('active'));
+
+            // Tampilkan yang dipilih
+            const selected = document.getElementById('materiSelector').value;
+            document.getElementById(selected).classList.add('active');
+        }
+    </script>
+</body>
+</html>

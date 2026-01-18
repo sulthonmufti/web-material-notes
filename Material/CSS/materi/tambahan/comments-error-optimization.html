@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi CSS: Comments, Error, & Optimization</title>
+    <style>
+        :root {
+            --primary-color: #e67e22;
+            --danger-color: #e74c3c;
+            --success-color: #27ae60;
+            --dark-color: #2c3e50;
+            --light-bg: #fdfdfd;
+        }
+
+        body { 
+            font-family: 'Segoe UI', sans-serif; 
+            line-height: 1.6; 
+            padding: 20px; 
+            max-width: 1000px; 
+            margin: auto; 
+            background-color: var(--light-bg); 
+            color: var(--dark-color);
+        }
+
+        h1 { text-align: center; color: var(--primary-color); border-bottom: 4px solid var(--primary-color); padding-bottom: 10px; }
+        h2 { color: var(--primary-color); margin-top: 40px; border-left: 5px solid var(--primary-color); padding-left: 10px; }
+        
+        code { background-color: #eee; padding: 2px 4px; border-radius: 3px; color: #c0392b; }
+        pre { background-color: #2d3436; color: #dfe6e9; padding: 15px; border-radius: 8px; overflow-x: auto; position: relative; }
+        
+        .materi-section { background: white; padding: 25px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 30px; }
+        .term { font-weight: bold; color: var(--primary-color); }
+        .note { background-color: #fff5e6; padding: 15px; border-left: 5px solid var(--primary-color); margin: 15px 0; }
+        
+        .error-box { border: 2px solid var(--danger-color); padding: 10px; background: #fdf2f2; border-radius: 5px; margin: 10px 0; }
+        .success-box { border: 2px solid var(--success-color); padding: 10px; background: #f2fdf5; border-radius: 5px; margin: 10px 0; }
+
+        .back-link {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .back-link:hover { opacity: 0.8; transform: translateY(-2px); }
+    </style>
+</head>
+<body>
+
+    <h1>CSS Best Practices: Maintenance & Optimization</h1>
+
+    <div class="materi-section">
+        <h2>1. Comments (Komentar)</h2>
+        <p><span class="term">Comments</span> adalah catatan yang ditulis di dalam kode yang tidak akan dibaca oleh browser. Fungsinya adalah untuk menjelaskan maksud kode kepada diri sendiri atau tim.</p>
+        
+        
+
+        <h3>Cara Penulisan:</h3>
+        <pre><code>/* Ini adalah komentar satu baris */
+
+/* Ini adalah komentar 
+   beberapa baris (multi-line)
+*/</code></pre>
+
+        <h3>Kasus Penggunaan Terbaik (Table of Content):</h3>
+        <p>Gunakan komentar untuk membagi bagian-bagian besar dalam file CSS Anda agar mudah dicari.</p>
+        <pre><code>/* =========================================
+   NAVBAR SECTION
+   ========================================= */
+.navbar { ... }
+
+/* =========================================
+   FOOTER SECTION
+   ========================================= */
+.footer { ... }</code></pre>
+    </div>
+
+    <div class="materi-section">
+        <h2>2. Menangani Error & Debugging</h2>
+        <p>CSS tidak akan memunculkan pesan "Error" seperti JavaScript; jika ada salah tulis, browser hanya akan mengabaikan baris tersebut (Silent Error).</p>
+        
+        <h3>Kesalahan yang Sering Terjadi:</h3>
+        <div class="error-box">
+            <strong>Salah:</strong> <code>margin: 20 solid black;</code> (Lupa satuan px)<br>
+            <strong>Benar:</strong> <code>margin: 20px solid black;</code>
+        </div>
+        <div class="error-box">
+            <strong>Salah:</strong> <code>color: #ff00;</code> (Kode hex warna tidak lengkap)<br>
+            <strong>Benar:</strong> <code>color: #ff0000;</code> atau <code>#f00;</code>
+        </div>
+
+        <div class="note">
+            <strong>Tips Debugging:</strong> Gunakan <strong>Inspect Element (F12)</strong>. Jika sebuah properti CSS dicoret oleh browser, berarti ada kesalahan tulis atau tertimpa oleh selector yang lebih kuat.
+        </div>
+    </div>
+
+    <div class="materi-section">
+        <h2>3. Optimization (Optimasi)</h2>
+        <p><span class="term">Optimization</span> bertujuan agar file CSS lebih ringan sehingga website loading lebih cepat.</p>
+
+        
+
+        <h3>Teknik yang Sering Dipakai:</h3>
+        <ul>
+            <li><strong>Minification:</strong> Menghapus spasi dan baris baru sebelum file diupload ke server.</li>
+            <li><strong>Shorthand Properties:</strong> Menggabungkan beberapa properti menjadi satu baris.</li>
+        </ul>
+
+        <h3>Contoh Shorthand (Lebih Efisien):</h3>
+        <div class="success-box">
+            <p><strong>Sebelum:</strong></p>
+            <pre><code>padding-top: 10px;
+padding-right: 20px;
+padding-bottom: 10px;
+padding-left: 20px;</code></pre>
+            <p><strong>Setelah (Shorthand):</strong></p>
+            <pre><code>padding: 10px 20px; /* Jauh lebih hemat baris! */</code></pre>
+        </div>
+
+        <div class="note">
+            <strong>Gunakan Don't Repeat Yourself (DRY):</strong> Jika beberapa elemen memiliki gaya yang sama, gabungkan selector-nya menggunakan tanda koma.
+            <code>h1, h2, h3 { font-family: 'Arial'; }</code>
+        </div>
+    </div>
+
+    <div style="margin-top: 50px; text-align: center; padding-bottom: 40px;">
+        <hr style="border: 0; border-top: 1px solid #ccc; margin-bottom: 20px;">
+        <a href="../../index.html" class="back-link">Kembali ke Menu Utama Materi</a>
+    </div>
+
+</body>
+</html>

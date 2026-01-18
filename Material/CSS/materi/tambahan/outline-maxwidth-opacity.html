@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi CSS: Outline, Max-width, & Opacity</title>
+    <style>
+        :root {
+            --primary-color: #16a085;
+            --accent-color: #27ae60;
+            --dark-color: #2c3e50;
+            --light-bg: #f9f9f9;
+        }
+
+        body { 
+            font-family: 'Segoe UI', sans-serif; 
+            line-height: 1.6; 
+            padding: 20px; 
+            max-width: 1000px; 
+            margin: auto; 
+            background-color: var(--light-bg); 
+            color: var(--dark-color);
+        }
+
+        h1 { text-align: center; color: var(--primary-color); border-bottom: 4px solid var(--primary-color); padding-bottom: 10px; }
+        h2 { color: var(--primary-color); margin-top: 40px; border-left: 5px solid var(--primary-color); padding-left: 10px; }
+        
+        code { background-color: #eee; padding: 2px 4px; border-radius: 3px; color: #c0392b; }
+        pre { background-color: #2d3436; color: #dfe6e9; padding: 15px; border-radius: 8px; overflow-x: auto; }
+        
+        .materi-section { background: white; padding: 25px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 30px; }
+        .term { font-weight: bold; color: var(--primary-color); }
+        .note { background-color: #e6f7f4; padding: 15px; border-left: 5px solid var(--primary-color); margin: 15px 0; }
+        
+        /* Demo Styles */
+        .outline-demo {
+            padding: 10px;
+            border: 3px solid #3498db;
+            outline: 5px solid #e74c3c;
+            outline-offset: 5px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .max-width-demo {
+            background: #ddd;
+            width: 100%;
+            max-width: 500px;
+            padding: 10px;
+            margin: 10px auto;
+            border: 2px solid #333;
+        }
+
+        .opacity-container { display: flex; gap: 10px; margin: 20px 0; }
+        .opacity-box {
+            width: 80px; height: 80px;
+            background: var(--primary-color);
+            display: flex; align-items: center; justify-content: center;
+            color: white; font-weight: bold;
+        }
+
+        .back-link {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .back-link:hover { opacity: 0.8; transform: translateY(-2px); }
+    </style>
+</head>
+<body>
+
+    <h1>Advance Utility: Outline, Max-width, & Opacity</h1>
+
+    <div class="materi-section">
+        <h2>1. Outline (Garis Luar)</h2>
+        <p><span class="term">Outline</span> adalah garis yang digambar di luar batas (border) elemen. Berbeda dengan border, outline <strong>tidak mengambil ruang</strong> dalam layout (tidak menambah lebar/tinggi elemen).</p>
+        
+        
+
+        <h3>Perbedaan Utama dengan Border:</h3>
+        <ul>
+            <li>Outline digambar di luar border.</li>
+            <li>Outline tidak mempengaruhi ukuran kotak elemen.</li>
+            <li>Outline bisa menggunakan <code>outline-offset</code> untuk memberi jarak dari border.</li>
+        </ul>
+
+        <div class="outline-demo">
+            Kotak ini punya Border Biru dan Outline Merah dengan Offset 5px.
+        </div>
+
+        <pre><code>.box {
+  border: 3px solid blue;
+  outline: 5px solid red;
+  outline-offset: 5px; /* Jarak antara border dan outline */
+}</code></pre>
+        
+        <div class="note">
+            <strong>Kasus Penting: Aksesibilitas.</strong> Browser memberikan outline otomatis saat Anda menekan tombol 'Tab' pada keyboard. Jangan pernah menghapus <code>outline: none</code> tanpa memberikan gaya fokus pengganti, karena pengguna keyboard akan kesulitan navigasi.
+        </div>
+    </div>
+
+    <div class="materi-section">
+        <h2>2. Max-width (Batas Lebar Maksimal)</h2>
+        <p><span class="term">Max-width</span> digunakan untuk mencegah elemen menjadi lebih lebar dari nilai yang ditentukan, tetapi elemen tetap bisa mengecil jika layarnya menyempit.</p>
+
+        
+
+        <h3>Kasus Nyata: Desain Responsif</h3>
+        <p>Jika Anda menggunakan <code>width: 800px</code>, website akan terpotong di HP. Jika menggunakan <code>max-width: 800px</code>, website akan mengikuti lebar HP tapi tidak akan lebih dari 800px di laptop.</p>
+
+        <div class="max-width-demo">
+            Kotak ini lebarnya 100%, tapi <strong>max-width</strong> cuma 500px. Coba kecilkan jendela browser Anda!
+        </div>
+
+        <pre><code>.container {
+  width: 100%;      /* Mencoba penuh */
+  max-width: 800px;  /* Tapi dilarang lebih dari 800px */
+  margin: 0 auto;    /* Mengetengahkan kotak */
+}</code></pre>
+    </div>
+
+    <div class="materi-section">
+        <h2>3. Opacity (Transparansi)</h2>
+        <p><span class="term">Opacity</span> mengatur tingkat transparansi elemen. Nilainya berkisar dari <code>0.0</code> (transparan penuh) hingga <code>1.0</code> (solid/tidak transparan).</p>
+
+        <div class="opacity-container">
+            <div class="opacity-box" style="opacity: 1;">1.0</div>
+            <div class="opacity-box" style="opacity: 0.7;">0.7</div>
+            <div class="opacity-box" style="opacity: 0.4;">0.4</div>
+            <div class="opacity-box" style="opacity: 0.1;">0.1</div>
+        </div>
+
+        <div class="note">
+            <strong>Peringatan:</strong> Saat Anda memberikan <code>opacity</code> pada elemen induk, maka <strong>semua anak elemen</strong> di dalamnya (teks, gambar) juga akan ikut transparan.
+        </div>
+
+        <h3>Kasus Nyata: Efek Hover Gambar</h3>
+        <div class="gallery-demo" style="margin: 20px 0; display: flex; gap: 15px; justify-content: center;">
+            <div class="img-wrapper">
+                <img src="/Material/CSS/practice/logo.jpg" alt="Contoh Opacity" class="demo-hover-img">
+                <p style="text-align: center; font-size: 14px;">Hover Saya!</p>
+            </div>
+            <div class="img-wrapper">
+                <img src="/Material/CSS/practice/image.png" alt="Contoh Opacity" class="demo-hover-img">
+                <p style="text-align: center; font-size: 14px;">Hover Saya!</p>
+            </div>
+        </div>
+
+        <style>
+            .demo-hover-img {
+                width: 200px;
+                height: 150px;
+                object-fit: cover; /* Menjaga gambar tidak penyet */
+                border-radius: 8px;
+                opacity: 0.6; /* Transparansi awal */
+                transition: 0.3s; /* Efek halus saat berubah */
+                cursor: pointer;
+            }
+
+            .demo-hover-img:hover {
+                opacity: 1; /* Menjadi solid saat dihover */
+            }
+        </style>
+
+        <pre><code>.gallery-img {
+  opacity: 0.6;
+  transition: 0.3s;
+}
+
+.gallery-img:hover {
+  opacity: 1; /* Gambar menjadi jelas saat disentuh */
+}</code></pre>
+    </div>
+
+    <div style="margin-top: 50px; text-align: center; padding-bottom: 40px;">
+        <hr style="border: 0; border-top: 1px solid #ccc; margin-bottom: 20px;">
+        <a href="../../index.html" class="back-link">Kembali ke Menu Utama Materi</a>
+    </div>
+
+</body>
+</html>
