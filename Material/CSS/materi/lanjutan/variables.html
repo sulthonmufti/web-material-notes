@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi CSS: Variables (Custom Properties)</title>
+    <style>
+        /* Definisi Variabel Global */
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2ecc71;
+            --dark-color: #2c3e50;
+            --light-bg: #f4f7f6;
+            --spacing-unit: 20px;
+            --border-radius: 8px;
+        }
+
+        body { 
+            font-family: 'Segoe UI', sans-serif; 
+            line-height: 1.6; 
+            padding: var(--spacing-unit); 
+            max-width: 1000px; 
+            margin: auto; 
+            background-color: var(--light-bg); 
+            color: var(--dark-color);
+        }
+
+        h1 { text-align: center; color: var(--primary-color); border-bottom: 4px solid var(--primary-color); padding-bottom: 10px; }
+        h2 { color: var(--primary-color); margin-top: 40px; border-left: 5px solid var(--primary-color); padding-left: 10px; }
+        
+        code { background-color: #eee; padding: 2px 4px; border-radius: 3px; color: #c0392b; }
+        pre { background-color: #2d3436; color: #dfe6e9; padding: 15px; border-radius: 8px; overflow-x: auto; }
+        
+        .materi-section { background: white; padding: 25px; border-radius: var(--border-radius); box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 30px; }
+        .term { font-weight: bold; color: var(--primary-color); }
+        .note { background-color: #e8f6ff; padding: 15px; border-left: 5px solid var(--primary-color); margin: 15px 0; }
+        
+        /* Demo Cards */
+        .card-container { display: flex; gap: 15px; flex-wrap: wrap; margin: 20px 0; }
+        .theme-card {
+            flex: 1;
+            min-width: 200px;
+            padding: var(--spacing-unit);
+            border-radius: var(--border-radius);
+            background-color: white;
+            border: 2px solid var(--primary-color);
+            transition: 0.3s;
+        }
+        .theme-card.alt { border-color: var(--secondary-color); }
+        .theme-card h3 { color: var(--primary-color); margin-top: 0; }
+        .theme-card.alt h3 { color: var(--secondary-color); }
+
+        .back-link {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--border-radius);
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .back-link:hover { opacity: 0.8; transform: translateY(-2px); }
+    </style>
+</head>
+<body>
+
+    <h1>CSS Variables (Custom Properties)</h1>
+
+    <div class="materi-section">
+        <h2>Apa itu CSS Variables?</h2>
+        <p><span class="term">CSS Variables</span> adalah entitas yang didefinisikan oleh penulis CSS yang berisi nilai spesifik untuk digunakan kembali di seluruh dokumen.</p>
+        
+        <p>Bayangkan Anda memiliki warna biru yang sama di 50 tempat berbeda. Tanpa variabel, jika Anda ingin mengubah biru tersebut menjadi hijau, Anda harus mencarinya satu per satu. Dengan variabel, Anda cukup mengubah <strong>satu baris kode</strong>.</p>
+        
+        
+    </div>
+
+    <div class="materi-section">
+        <h2>1. Cara Mendeklarasikan Variabel</h2>
+        <p>Variabel biasanya dideklarasikan di dalam pseudo-class <code>:root</code> agar bisa diakses oleh seluruh elemen di halaman (Global).</p>
+        
+        <div class="note">
+            <strong>Aturan Penulisan:</strong> Nama variabel harus dimulai dengan dua tanda hubung (<code>--</code>).
+        </div>
+
+        <pre><code>:root {
+  --main-bg-color: coral;
+  --main-txt-color: white;
+  --padding-standard: 15px;
+}</code></pre>
+    </div>
+
+    <div class="materi-section">
+        <h2>2. Cara Menggunakan Variabel (Fungsi <code>var()</code>)</h2>
+        <p>Untuk mengambil nilai dari variabel, kita menggunakan fungsi <code>var()</code>.</p>
+
+        <pre><code>body {
+  background-color: var(--main-bg-color);
+  color: var(--main-txt-color);
+  padding: var(--padding-standard);
+}</code></pre>
+
+        <h3>Demo Visual: Penggunaan Variabel yang Sama</h3>
+        <p>Kedua kartu di bawah ini menggunakan variabel <code>--border-radius</code> dan <code>--spacing-unit</code> yang sama, namun memiliki warna primer yang berbeda.</p>
+        
+        <div class="card-container">
+            <div class="theme-card">
+                <h3>Tema Biru</h3>
+                <p>Menggunakan <code>--primary-color</code>.</p>
+            </div>
+            <div class="theme-card alt">
+                <h3>Tema Hijau</h3>
+                <p>Menggunakan <code>--secondary-color</code>.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="materi-section">
+        <h2>Kasus Nyata: Dark Mode (Mode Gelap)</h2>
+        <p>Ini adalah kegunaan variabel yang paling populer. Kita hanya perlu mengubah nilai variabel di dalam sebuah class "dark-theme".</p>
+
+        <pre><code>:root {
+  --bg-color: white;
+  --text-color: black;
+}
+
+/* Saat class .dark-mode aktif pada body */
+body.dark-mode {
+  --bg-color: #1a1a1a;
+  --text-color: #f0f0f0;
+}
+
+/* Elemen tetap menggunakan var() yang sama */
+section {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}</code></pre>
+    </div>
+
+    <div class="materi-section">
+        <h2>Kelebihan Menggunakan Variabel</h2>
+        <ul>
+            <li><strong>Maintenance Mudah:</strong> Ubah di satu tempat, berubah di semua tempat.</li>
+            <li><strong>Keterbacaan:</strong> Nama <code>--brand-red</code> lebih mudah dipahami dibanding <code>#e74c3c</code>.</li>
+            <li><strong>Dinamis:</strong> Bisa diubah menggunakan JavaScript secara real-time.</li>
+        </ul>
+    </div>
+
+    <div style="margin-top: 50px; text-align: center; padding-bottom: 40px;">
+        <hr style="border: 0; border-top: 1px solid #ccc; margin-bottom: 20px;">
+        <a href="../../index.html" class="back-link">Kembali ke Menu Utama Materi</a>
+    </div>
+
+</body>
+</html>

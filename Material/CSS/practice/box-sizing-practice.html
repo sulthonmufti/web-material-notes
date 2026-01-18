@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>practice box sizing</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <style>
+        body{
+            font-family: Poppins;
+            font-size: 12px;
+            background-color: rgba(51, 124, 188, 0.338);
+        }
+        code{
+            color: blue;
+            font-size: 12x;
+            background-color: rgba(184, 184, 184, 0.409);
+            border-radius: 2px;
+        }
+
+        .content-box-used{box-sizing: content-box;}
+        .border-box-used{box-sizing: border-box;}
+        .box{
+            text-align: center;
+            color: white;
+            background-color: blueviolet;
+            border-radius: 5px;
+
+            padding: 20px;
+            border: 10px solid blueviolet;
+            width: 300px;
+            height: 80px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="box content-box-used">
+        <strong>Content-box</strong><br>
+        <p>width content 300px + padding 20px + border 10px = 360px</p>
+    </div>
+    <p>note: <code>box-sizing: content-box</code> itu kaya belum fix karena belum ditambah padding border dll, misal content mu diisi width 300px tapi kamu tambahin padding 20px dan border 10px, maka keseluruhan content mu bakal jadi 360px. <strong>Secara deafult kalau kamau tidak mengatur box-sizing maka akan otomatis <code>box-sizing: content-box</code></strong></p>
+
+    <br>
+
+    <div class="box border-box-used">
+        <strong>Border-box</strong><br>
+        <p>width tetap 300px walau ditambah padding 20px & border 10px</p>
+    </div>
+    <br>
+    <p>note: <code>box-sizing: border-box</code> itu ukurannya udah fix, misal width kamu tentukan 300px walaupun ditambah padding 20px dan border 10px maka width nya akan tetap 300px. karena width itu akan dibagi bagi dulu. jadi width all 300px, border 10px, padding 20px sisanya masuk ke width content 240px</p>
+    
+    <strong>Programmer profesional akan lebih mengutamakan menggunakan <code>box-sizing: border-box</code> karena ukurannya pasti dan tidak akan berubah, terkhusus kalau kasusnya penggunaan width %</strong>
+   
+</body>
+</html>

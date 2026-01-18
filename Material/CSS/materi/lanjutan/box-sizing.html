@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi CSS: Box Sizing</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; line-height: 1.6; padding: 20px; max-width: 1000px; margin: auto; background-color: #f4f7f6; }
+        h1 { color: #2c3e50; text-align: center; border-bottom: 4px solid #3498db; padding-bottom: 10px; }
+        h2 { color: #2980b9; margin-top: 40px; border-left: 5px solid #3498db; padding-left: 10px; }
+        code { background-color: #eee; padding: 2px 4px; border-radius: 3px; color: #c0392b; }
+        pre { background-color: #2d3436; color: #dfe6e9; padding: 15px; border-radius: 8px; overflow-x: auto; }
+        
+        .materi-section { background: white; padding: 25px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 30px; }
+        .term { font-weight: bold; color: #3498db; }
+        .note { background-color: #e8f6ff; padding: 15px; border-left: 5px solid #3498db; margin: 15px 0; }
+        
+        /* Box Sizing Demo */
+        .demo-wrapper { display: flex; gap: 20px; flex-wrap: wrap; margin: 20px 0; }
+        .box {
+            width: 300px;
+            height: 100px;
+            padding: 20px;
+            border: 10px solid #2c3e50;
+            background-color: #3498db;
+            color: white;
+            text-align: center;
+        }
+        .content-box { box-sizing: content-box; }
+        .border-box { box-sizing: border-box; }
+
+        .back-link {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .back-link:hover { background-color: #2980b9; transform: translateY(-2px); }
+    </style>
+</head>
+<body>
+
+    <h1>Memahami CSS Box Sizing</h1>
+
+    <div class="materi-section">
+        <h2>Apa itu Box Sizing?</h2>
+        <p><span class="term">Box Sizing</span> adalah properti CSS yang menentukan bagaimana ukuran total sebuah elemen (lebar dan tinggi) dihitung oleh browser.</p>
+        
+        <p>Secara default, jika Anda memberi lebar 100px pada kotak, lalu menambah padding 20px, kotak tersebut akan membengkak menjadi 140px. Box sizing hadir untuk mengontrol "pembengkakan" tersebut.</p>
+
+        
+    </div>
+
+    <div class="materi-section">
+        <h2>1. content-box (Nilai Bawaan)</h2>
+        <p>Ini adalah pengaturan standar browser. Ukuran <code>width</code> dan <code>height</code> hanya berlaku untuk <strong>isinya saja</strong>.</p>
+        
+        <div class="note">
+            <strong>Rumus Total Lebar:</strong><br>
+            Width + Padding + Border = Total Lebar Elemen
+        </div>
+
+        <div class="demo-wrapper">
+            <div class="box content-box">
+                <strong>Content-box</strong><br>
+                Width: 300px + Padding 20px + Border 10px = 360px!
+            </div>
+        </div>
+
+        <pre><code>.box {
+  width: 300px;
+  padding: 20px;
+  border: 10px solid black;
+  box-sizing: content-box; /* Ukuran asli membengkak */
+}</code></pre>
+    </div>
+
+    <div class="materi-section">
+        <h2>2. border-box (Pilihan Profesional)</h2>
+        <p>Dengan <code>border-box</code>, ukuran <code>width</code> dan <code>height</code> sudah mencakup padding dan border. Kotak tidak akan membengkak.</p>
+        
+        <div class="note">
+            <strong>Rumus Total Lebar:</strong><br>
+            Width = Total Lebar Elemen (Padding & Border memakan ruang dari dalam)
+        </div>
+
+        <div class="demo-wrapper">
+            <div class="box border-box">
+                <strong>Border-box</strong><br>
+                Width: Tetap 300px! (Padding & Border masuk ke dalam)
+            </div>
+        </div>
+
+        <pre><code>.box {
+  width: 300px;
+  padding: 20px;
+  border: 10px solid black;
+  box-sizing: border-box; /* Ukuran tetap konsisten */
+}</code></pre>
+    </div>
+
+    <div class="materi-section">
+        <h2>Kasus Nyata: Kenapa Border-box Penting?</h2>
+        <p>Bayangkan Anda membuat dua kotak berdampingan dengan lebar masing-masing <code>50%</code>.</p>
+        <ul>
+            <li><strong>Jika pakai Content-box:</strong> Saat Anda menambah <code>padding</code>, lebarnya menjadi 50% + padding. Hasilnya? Kotak kedua akan jatuh ke bawah karena total lebar melebihi 100%.</li>
+            <li><strong>Jika pakai Border-box:</strong> Meskipun Anda menambah padding, lebarnya tetap 50%. Kotak akan tetap rapi berdampingan.</li>
+        </ul>
+
+        <div class="note">
+            <strong>Praktik Terbaik:</strong> Hampir semua web developer modern mereset semua elemen agar menggunakan <code>border-box</code> di awal kode CSS mereka.
+        </div>
+
+        <pre><code>/* "Global Reset" yang sering dipakai profesional */
+* {
+  box-sizing: border-box;
+}</code></pre>
+    </div>
+
+    <div class="materi-section">
+        <h2>Demo Visual: Content-box vs Border-box di Layout Grid</h2>
+        <p>Perhatikan bagaimana elemen <code>content-box</code> membengkak dan merusak tata letak saat diberi padding dan border, sementara <code>border-box</code> tetap rapi.</p>
+
+        <style>
+            .layout-demo-container {
+                display: flex;
+                flex-wrap: wrap; /* Agar bisa turun ke baris baru jika tidak muat */
+                gap: 10px; /* Jarak antar kotak */
+                margin-top: 20px;
+                background-color: #f7f7f7;
+                padding: 15px;
+                border: 1px dashed #ddd;
+            }
+
+            .layout-box {
+                width: calc(50% - 5px); /* Setengah lebar, dikurangi setengah gap */
+                min-height: 80px; /* Tinggi minimum agar terlihat */
+                padding: 15px;
+                border: 5px solid #7f8c8d; /* Border 5px */
+                background-color: #ecf0f1;
+                color: #2c3e50;
+                text-align: center;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: bold;
+                box-sizing: content-box; /* Default untuk perbandingan pertama */
+            }
+
+            /* Modifikasi untuk border-box */
+            .layout-box.is-border-box {
+                box-sizing: border-box;
+                background-color: #bdc3c7; /* Warna sedikit berbeda */
+            }
+
+            .layout-caption {
+                font-size: 0.9em;
+                color: #555;
+                margin-top: 5px;
+            }
+        </style>
+
+        <h3>Dengan <code>content-box</code> (Bawaan Browser):</h3>
+        <p class="layout-caption">Setiap kotak diset <code>width: 50%</code>. Karena <code>padding</code> dan <code>border</code> ditambahkan DI LUAR lebar 50% tersebut, kotak kedua terdorong ke bawah karena melebihi width 100%.</p>
+        <div class="layout-demo-container">
+            <div class="layout-box">Kotak A</div>
+            <div class="layout-box">Kotak B</div>
+        </div>
+
+        <h3>Dengan <code>border-box</code> (Rekomendasi):</h3>
+        <p class="layout-caption">Setiap kotak diset <code>width: 50%</code>. <code>padding</code> dan <code>border</code> masuk KE DALAM lebar 50% tersebut, sehingga tata letak tetap rapi.</p>
+        <div class="layout-demo-container">
+            <div class="layout-box is-border-box">Kotak C</div>
+            <div class="layout-box is-border-box">Kotak D</div>
+        </div>
+
+        <pre><code>/* Kode CSS untuk Content-box */
+.layout-box {
+    width: calc(50% - 5px); /* target width */
+    padding: 15px;
+    border: 5px solid gray;
+    box-sizing: content-box; /* total width = 50% + 30px padding + 10px border */
+}
+
+/* Kode CSS untuk Border-box */
+.layout-box.is-border-box {
+    width: calc(50% - 5px); /* target width */
+    padding: 15px;
+    border: 5px solid gray;
+    box-sizing: border-box; /* total width TETAP 50% */
+}</code></pre>
+    </div>
+
+    <div style="margin-top: 50px; text-align: center; padding-bottom: 40px;">
+        <hr style="border: 0; border-top: 1px solid #ccc; margin-bottom: 20px;">
+        <a href="../../index.html" class="back-link">Kembali ke Menu Utama Materi</a>
+    </div>
+
+</body>
+</html>

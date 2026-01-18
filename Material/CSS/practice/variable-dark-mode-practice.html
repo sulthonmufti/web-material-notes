@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>practice CSS Variable (dark mode)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <style>
+        :root{
+            --font-utama: Poppins;
+            --main-bg: white;
+            --second-bg:rgb(44, 44, 44);
+            --main-color: black;
+            --secondary-color:white;
+            --bg-button:black;
+            --border-r: 5px;
+            --border: orange;
+
+        }
+        body{
+            font-family: var(--font-utama);
+            padding: 20px;
+            margin: 0;
+        }
+        .main-body{
+            background-color: var(--main-bg);
+            color: var(--main-color);
+        }
+        button.btn-toggle{box-sizing: border-box;}
+
+        button.btn-toggle{
+            display: flex;
+            justify-content: center; /* Tengah atas-bawah */
+            align-items: center; /* Tengah kanan-kiri */
+            color:var(--secondary-color);
+            background-color: var(--bg-button);
+            border-radius: var(--border-r);
+            width: 100px;
+            height: 50px;
+            padding: 0;
+            border: 2px solid var(--border);
+            gap: 4px;
+        }
+
+        button.btn-toggle:hover{
+            box-shadow: 0 0 8px var(--border);
+            transform: translateY(6px);
+            transition: 0.5s;
+        }
+
+        .moon, .dark{
+            display: none;
+            transition: 0.7s;
+        }
+
+        /* DARK MODE */
+        body.dark-mode{
+            background-color: var(--second-bg);
+            color: var(--secondary-color);
+            transition: 0.7s;
+        }
+        /* Artinya: Jika body punya class dark-mode, cari button btn-toggle di dalamnya */
+        body.dark-mode button.btn-toggle{
+            color: var(--main-color);
+            background-color: var(--secondary-color);
+            transition: 0.7s;
+        }
+        body.dark-mode .moon, body.dark-mode .dark{
+            display: block;
+            transition: 0.7s;
+        }
+        body.dark-mode .sun, body.dark-mode .light{
+            display: none;
+            transition: 0.7s;
+        }
+    </style>
+</head>
+<body class="main-body">
+    <p>Penggunaan variable pada CSS</p>
+    <button class="btn-toggle" id="theme-toggle">
+        <span class="moon">⏾</span>
+        <span class="sun">☀</span>
+
+        <span class="dark">Light mode</span>
+        <span class="light">Dark mode</span>
+    </button>
+
+    <script>
+        //mendapatkan id 'theme-toggle'
+        const btn = document.getElementById('theme-toggle');
+
+        btn.addEventListener('click',() =>{
+            //toggle akan menambahkan class jika belum ada,
+            //dan menghapusnya jika sudah ada
+            document.body.classList.toggle('dark-mode');
+        });
+    </script>
+</body>
+</html>
