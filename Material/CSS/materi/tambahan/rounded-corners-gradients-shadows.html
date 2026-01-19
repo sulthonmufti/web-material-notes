@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi CSS: Rounded, Gradients, & Shadows</title>
+    <style>
+        :root {
+            --primary: #6c5ce7;
+            --bg: #f8f9fa;
+        }
+
+        body { 
+            font-family: 'Segoe UI', sans-serif; 
+            line-height: 1.6; padding: 20px; 
+            max-width: 900px; margin: auto; 
+            background: var(--bg);
+        }
+
+        .materi-section { background: white; padding: 25px; border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 30px; }
+        h1 { text-align: center; color: var(--primary); }
+        h2 { color: var(--primary); border-left: 5px solid var(--primary); padding-left: 10px; }
+        
+        pre { background: #2d3436; color: #fab1a0; padding: 15px; border-radius: 10px; overflow-x: auto; }
+        code { color: #55efc4; }
+
+        /* Demo Boxes */
+        .demo-box { height: 100px; width: 100%; max-width: 400px; margin: 20px auto; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; text-align: center; }
+        
+        .back-link { display: inline-block; margin-top: 20px; padding: 10px 20px; background: var(--primary); color: white; text-decoration: none; border-radius: 5px; }
+    </style>
+</head>
+<body>
+
+    <h1>Visual Aesthetics: Rounded, Gradients, & Shadows</h1>
+
+    <div class="materi-section">
+        <h2>1. Rounded Corners (border-radius)</h2>
+        <p>Properti <code>border-radius</code> digunakan untuk membuat sudut elemen menjadi tumpul atau bulat.</p>
+        
+        
+
+        <div class="note">
+            <strong>Istilah Baru:</strong>
+            <ul>
+                <li><strong>Pixels (px):</strong> Memberikan lengkungan yang tetap.</li>
+                <li><strong>Percentage (%):</strong> Jika diset 50% pada kotak persegi, elemen akan menjadi <strong>lingkaran sempurna</strong>.</li>
+            </ul>
+        </div>
+
+        <div class="demo-box" style="background: var(--primary); border-radius: 20px; border: 2px solid #4834d4;">
+            Sudut Tumpul (20px)
+        </div>
+
+        <pre><code>.button {
+    border-radius: 10px; /* Sudut halus */
+}
+
+.avatar {
+    width: 100px; height: 100px;
+    border-radius: 50%; /* Bulat sempurna */
+}</code></pre>
+    </div>
+
+    <div class="materi-section">
+        <h2>2. Gradients (Gradasi Warna)</h2>
+        <p><span class="term">Gradients</span> adalah transisi halus antara dua warna atau lebih. CSS mengenal dua jenis utama:</p>
+        
+        
+
+        <ul>
+            <li><strong>Linear Gradient:</strong> Warna mengalir ke satu arah (atas, bawah, kiri, kanan, atau diagonal).</li>
+            <li><strong>Radial Gradient:</strong> Warna menyebar dari titik tengah (melingkar).</li>
+        </ul>
+
+        <h3>Kasus Nyata: Background Hero Section</h3>
+        <div class="demo-box" style="background: linear-gradient(135deg, #6c5ce7, #a29bfe); border-radius: 15px;">
+            Linear Gradient 135deg
+        </div>
+
+        <pre><code>/* Arah, Warna 1, Warna 2 */
+.hero {
+    background: linear-gradient(to right, #6c5ce7, #00cec9);
+}
+
+.circle {
+    background: radial-gradient(circle, #fab1a0, #e17055);
+}</code></pre>
+    </div>
+
+    <div class="materi-section">
+        <h2>3. Shadows (Efek Bayangan)</h2>
+        <p>Shadow memberikan efek "kedalaman" sehingga elemen terlihat menonjol dari latar belakang. Ada dua jenis:</p>
+        
+        <ul>
+            <li><strong>Box Shadow:</strong> Bayangan untuk kotak/elemen.</li>
+            <li><strong>Text Shadow:</strong> Bayangan khusus untuk teks.</li>
+        </ul>
+
+        
+
+        <h3>Anatomi Box Shadow:</h3>
+        <p><code>box-shadow: 10px 10px 20px rgba(0,0,0,0.2);</code></p>
+        <ol>
+            <li><strong>10px (X):</strong> Geser bayangan ke kanan.</li>
+            <li><strong>10px (Y):</strong> Geser bayangan ke bawah.</li>
+            <li><strong>20px (Blur):</strong> Seberapa kabur bayangannya.</li>
+            <li><strong>rgba:</strong> Warna bayangan (disarankan menggunakan transparansi/alpha).</li>
+        </ol>
+
+        <div class="demo-box" style="background: white; color: #333; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+            Floating Effect (Box Shadow)
+        </div>
+
+        <pre><code>/* Memberikan kedalaman pada kartu */
+.card {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Memberikan efek cahaya pada teks */
+h1 {
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}</code></pre>
+    </div>
+
+    <div style="text-align: center;">
+        <a href="../../index.html" class="back-link">Kembali ke Menu Utama Materi</a>
+    </div>
+
+</body>
+</html>
