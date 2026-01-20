@@ -14,13 +14,18 @@
             --pd20 : 20px;
         }
         body{
+            font-family: Poppins;
+            padding: var(--pd20);
+            margin: 0;
+            font-size: 32px;
+        }
+        .content-box{
             display: flex;
             justify-content: center;
             align-items: center;
             width: auto;
             height: 500px;
             line-height: auto;
-            font-family: Poppins;
             padding: var(--pd20);
             margin: 0;
             font-size: 32px;
@@ -52,9 +57,12 @@
     </style>
 </head>
 <body>
-    <div class="content">
-        content
+    <div class="content-box">
+        <div class="content">
+            content
+        </div>
     </div>
+    <p style="padding: 20px; margin: 0; font-size: 14px;">OMG div di tengah!!! btw ini di luar div content :p</p>
     
 </body>
 </html>
