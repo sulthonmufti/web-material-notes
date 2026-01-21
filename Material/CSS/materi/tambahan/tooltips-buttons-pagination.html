@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi CSS: Tooltips, Buttons, & Pagination</title>
+    <style>
+        :root {
+            --primary: #0984e3;
+            --secondary: #6c5ce7;
+            --success: #00b894;
+            --dark: #2d3436;
+            --light: #f5f6fa;
+        }
+
+        body { 
+            font-family: 'Segoe UI', sans-serif; 
+            line-height: 1.6; padding: 20px; 
+            max-width: 900px; margin: auto; 
+            background: var(--light);
+        }
+
+        .materi-section { background: white; padding: 25px; border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 30px; }
+        h1 { text-align: center; color: var(--primary); }
+        h2 { color: var(--primary); border-left: 5px solid var(--primary); padding-left: 10px; }
+        
+        pre { background: #2d3436; color: #fab1a0; padding: 15px; border-radius: 10px; overflow-x: auto; }
+        code { color: #55efc4; }
+
+        /* --- TOOLTIP STYLE --- */
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            border-bottom: 1px dotted black;
+            cursor: help;
+        }
+
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 140px;
+            background-color: var(--dark);
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 0;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%; /* Muncul di atas teks */
+            left: 50%;
+            margin-left: -70px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* --- BUTTON STYLE --- */
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+            margin: 5px;
+        }
+        .btn-primary { background: var(--primary); color: white; }
+        .btn-outline { background: transparent; border: 2px solid var(--primary); color: var(--primary); }
+        .btn:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+
+        /* --- PAGINATION STYLE --- */
+        .pagination { display: flex; list-style: none; padding: 0; justify-content: center; }
+        .pagination li a {
+            color: var(--dark);
+            padding: 8px 16px;
+            text-decoration: none;
+            border: 1px solid #ddd;
+            margin: 0 4px;
+            border-radius: 4px;
+        }
+        .pagination li a.active { background-color: var(--primary); color: white; border-color: var(--primary); }
+        .pagination li a:hover:not(.active) { background-color: #ddd; }
+
+        .back-link { display: inline-block; margin-top: 20px; padding: 10px 20px; background: var(--primary); color: white; text-decoration: none; border-radius: 5px; }
+    </style>
+</head>
+<body>
+
+    <h1>Interactive UI: Tooltips, Buttons, & Pagination</h1>
+
+    <div class="materi-section">
+        <h2>1. Tooltips</h2>
+        <p><span class="term">Tooltip</span> adalah pesan kecil yang muncul saat pengguna mengarahkan kursor (hover) ke sebuah elemen. Fungsinya memberikan konteks tambahan tanpa memenuhi layar.</p>
+        
+        
+
+        <h3>Demo Visual:</h3>
+        <p>Arahkan kursor pada teks ini: 
+            <div class="tooltip">Dekatkan mouse ke sini
+                <span class="tooltiptext">Halo! Saya Tooltip</span>
+            </div>
+        </p>
+
+        <pre><code>/* Kunci Tooltip: Position Relative pada Parent 
+   dan Position Absolute pada Tooltiptext */
+.tooltip .tooltiptext {
+    position: absolute;
+    bottom: 125%; 
+    left: 50%;
+    visibility: hidden;
+}
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}</code></pre>
+    </div>
+
+    <div class="materi-section">
+        <h2>2. Buttons (Tombol)</h2>
+        <p>Tombol adalah elemen interaksi utama. Desain tombol yang baik harus memiliki status **Normal**, **Hover** (saat disentuh), dan **Active** (saat diklik).</p>
+
+        
+
+        <h3>Contoh Visual:</h3>
+        <div style="text-align: center;">
+            <button class="btn btn-primary">Primary Button</button>
+            <button class="btn btn-outline">Outline Button</button>
+        </div>
+
+        <pre><code>.btn {
+    transition: 0.3s; /* Agar animasi hover halus */
+}
+.btn:hover {
+    transform: translateY(-3px); /* Efek mengangkat */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}</code></pre>
+
+        <div class="note">
+            <strong>Tips:</strong> Gunakan <code>cursor: pointer;</code> agar pengguna tahu bahwa elemen tersebut bisa diklik.
+        </div>
+    </div>
+
+    <div class="materi-section">
+        <h2>3. Pagination (Penomoran Halaman)</h2>
+        <p><span class="term">Pagination</span> digunakan jika Anda memiliki daftar konten yang sangat banyak (seperti hasil pencarian Google) agar beban loading tidak berat.</p>
+
+        
+
+        <h3>Kasus Nyata: Navigasi Blog</h3>
+        <ul class="pagination">
+            <li><a href="#">&laquo;</a></li>
+            <li><a href="#">1</a></li>
+            <li><a href="#" class="active">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">&raquo;</a></li>
+        </ul>
+
+        <pre><code>.pagination {
+    display: flex; /* Berjejer ke samping */
+    list-style: none;
+}
+.pagination a {
+    border: 1px solid #ddd;
+    padding: 8px 16px;
+}</code></pre>
+    </div>
+
+    <div style="text-align: center; padding-bottom: 40px;">
+        <a href="../../index.html" class="back-link">Kembali ke Menu Utama Materi</a>
+    </div>
+
+</body>
+</html>
