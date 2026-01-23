@@ -3,173 +3,203 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Materi CSS: Tooltips, Buttons, & Pagination</title>
+    <title>Mastering Components: Interactive UI</title>
     <style>
         :root {
             --primary: #0984e3;
-            --secondary: #6c5ce7;
             --success: #00b894;
+            --warning: #fdcb6e;
             --dark: #2d3436;
             --light: #f5f6fa;
+            --bg: #dfe6e9;
         }
 
         body { 
-            font-family: 'Segoe UI', sans-serif; 
-            line-height: 1.6; padding: 20px; 
-            max-width: 900px; margin: auto; 
-            background: var(--light);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            margin: 0; padding: 0; background-color: var(--bg); color: var(--dark);
         }
 
-        .materi-section { background: white; padding: 25px; border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 30px; }
-        h1 { text-align: center; color: var(--primary); }
-        h2 { color: var(--primary); border-left: 5px solid var(--primary); padding-left: 10px; }
+        /* Navigasi Dropdown */
+        .header-nav {
+            background: white; padding: 15px 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky; top: 0; z-index: 1000;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+
+        .dropdown-container select {
+            padding: 10px 20px; border-radius: 8px; border: 2px solid var(--primary);
+            font-size: 16px; font-weight: bold; outline: none; cursor: pointer;
+        }
+
+        .container { max-width: 850px; margin: 30px auto; padding: 0 20px; }
         
-        pre { background: #2d3436; color: #fab1a0; padding: 15px; border-radius: 10px; overflow-x: auto; }
-        code { color: #55efc4; }
+        /* Animasi Transisi Halaman */
+        .materi-content { display: none; animation: slideUp 0.4s ease-out; }
+        .active { display: block; }
 
-        /* --- TOOLTIP STYLE --- */
-        .tooltip {
-            position: relative;
-            display: inline-block;
-            border-bottom: 1px dotted black;
-            cursor: help;
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        .card { background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+        h1, h2 { color: var(--primary); margin-top: 0; }
+        pre { background: #2d3436; color: #55efc4; padding: 20px; border-radius: 12px; overflow-x: auto; font-size: 14px; }
+        
+        .case-study { 
+            background: #fff9eb; border-left: 6px solid var(--warning); 
+            padding: 20px; margin-top: 30px; border-radius: 0 10px 10px 0;
         }
 
-        .tooltip .tooltiptext {
-            visibility: hidden;
-            width: 140px;
-            background-color: var(--dark);
-            color: #fff;
-            text-align: center;
-            border-radius: 6px;
-            padding: 5px 0;
-            position: absolute;
-            z-index: 1;
-            bottom: 125%; /* Muncul di atas teks */
-            left: 50%;
-            margin-left: -70px;
-            opacity: 0;
-            transition: opacity 0.3s;
+        /* --- STYLING KOMPONEN --- */
+        /* Tooltip */
+        .tooltip-trigger { color: var(--primary); font-weight: bold; text-decoration: underline; cursor: help; position: relative; }
+        .tooltip-box { 
+            visibility: hidden; background: var(--dark); color: white; text-align: center;
+            padding: 8px 12px; border-radius: 6px; position: absolute; z-index: 1;
+            bottom: 125%; left: 50%; transform: translateX(-50%); opacity: 0; transition: 0.3s; width: 150px; font-size: 12px;
         }
+        .tooltip-trigger:hover .tooltip-box { visibility: visible; opacity: 1; }
 
-        .tooltip:hover .tooltiptext {
-            visibility: visible;
-            opacity: 1;
-        }
+        /* Button Group */
+        .btn-group { display: flex; gap: 10px; margin: 20px 0; }
+        .btn { padding: 12px 24px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        .btn-save { background: var(--success); color: white; }
+        .btn-cancel { background: #eee; color: #666; }
+        .btn:hover { filter: brightness(90%); transform: translateY(-2px); }
 
-        /* --- BUTTON STYLE --- */
-        .btn {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: 0.3s;
-            margin: 5px;
-        }
-        .btn-primary { background: var(--primary); color: white; }
-        .btn-outline { background: transparent; border: 2px solid var(--primary); color: var(--primary); }
-        .btn:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        /* Pagination */
+        .pg-container { display: flex; list-style: none; padding: 0; gap: 5px; }
+        .pg-item { border: 1px solid #ddd; padding: 8px 16px; border-radius: 5px; cursor: pointer; text-decoration: none; color: var(--dark); }
+        .pg-item.active { background: var(--primary); color: white; border-color: var(--primary); }
 
-        /* --- PAGINATION STYLE --- */
-        .pagination { display: flex; list-style: none; padding: 0; justify-content: center; }
-        .pagination li a {
-            color: var(--dark);
-            padding: 8px 16px;
-            text-decoration: none;
-            border: 1px solid #ddd;
-            margin: 0 4px;
-            border-radius: 4px;
-        }
-        .pagination li a.active { background-color: var(--primary); color: white; border-color: var(--primary); }
-        .pagination li a:hover:not(.active) { background-color: #ddd; }
-
-        .back-link { display: inline-block; margin-top: 20px; padding: 10px 20px; background: var(--primary); color: white; text-decoration: none; border-radius: 5px; }
+        .back-link { display: inline-block; margin-top: 40px; color: #636e72; text-decoration: none; }
     </style>
 </head>
 <body>
 
-    <h1>Interactive UI: Tooltips, Buttons, & Pagination</h1>
+    <nav class="header-nav">
+        <strong>UI Components Mastery</strong>
+        <div class="dropdown-container">
+            <select id="pageSelect" onchange="changePage()">
+                <option value="tooltip-page">1. Tooltips (Informative UI)</option>
+                <option value="button-page">2. Buttons (Interaction UI)</option>
+                <option value="pagination-page">3. Pagination (Navigation UI)</option>
+            </select>
+        </div>
+    </nav>
 
-    <div class="materi-section">
-        <h2>1. Tooltips</h2>
-        <p><span class="term">Tooltip</span> adalah pesan kecil yang muncul saat pengguna mengarahkan kursor (hover) ke sebuah elemen. Fungsinya memberikan konteks tambahan tanpa memenuhi layar.</p>
-        
-        
+    <div class="container">
 
-        <h3>Demo Visual:</h3>
-        <p>Arahkan kursor pada teks ini: 
-            <div class="tooltip">Dekatkan mouse ke sini
-                <span class="tooltiptext">Halo! Saya Tooltip</span>
-            </div>
-        </p>
+        <div id="tooltip-page" class="materi-content active">
+            <div class="card">
+                <h1>Tooltips</h1>
+                <p>Tooltips adalah label mengambang yang memberikan informasi singkat saat elemen diarahkan. Ini kunci untuk menjaga desain tetap bersih (Clean UI).</p>
+                
+                
 
-        <pre><code>/* Kunci Tooltip: Position Relative pada Parent 
-   dan Position Absolute pada Tooltiptext */
-.tooltip .tooltiptext {
+                <h3>Kode Dasar:</h3>
+                <pre><code>.tooltip-box {
     position: absolute;
-    bottom: 125%; 
-    left: 50%;
+    bottom: 125%; /* Berada di atas trigger */
     visibility: hidden;
+    opacity: 0;
 }
-.tooltip:hover .tooltiptext {
+.trigger:hover .tooltip-box {
     visibility: visible;
+    opacity: 1;
 }</code></pre>
-    </div>
 
-    <div class="materi-section">
-        <h2>2. Buttons (Tombol)</h2>
-        <p>Tombol adalah elemen interaksi utama. Desain tombol yang baik harus memiliki status **Normal**, **Hover** (saat disentuh), dan **Active** (saat diklik).</p>
-
-        
-
-        <h3>Contoh Visual:</h3>
-        <div style="text-align: center;">
-            <button class="btn btn-primary">Primary Button</button>
-            <button class="btn btn-outline">Outline Button</button>
+                <div class="case-study">
+                    <h3>Kasus Nyata: Toolbar Ikon Tanpa Teks</h3>
+                    <p>Pernahkah Anda menggunakan dashboard seperti YouTube atau Facebook? Banyak tombol hanya berupa ikon (seperti ikon "Sampah"). Tanpa tooltip, pengguna baru mungkin bingung apakah itu "Hapus Permanen" atau "Pindahkan ke Bin".</p>
+                    <div style="background: white; padding: 15px; border-radius: 10px; text-align: center;">
+                        <span class="tooltip-trigger">🗑️ 
+                            <span class="tooltip-box">Pindahkan ke Keranjang Sampah</span>
+                        </span>
+                        <span class="tooltip-trigger" style="margin-left: 20px;">⚙️ 
+                            <span class="tooltip-box">Pengaturan Akun</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <pre><code>.btn {
-    transition: 0.3s; /* Agar animasi hover halus */
+        <div id="button-page" class="materi-content">
+            <div class="card">
+                <h1>Buttons Interaction</h1>
+                <p>Tombol bukan sekadar kotak berwarna. Ia harus memberikan *feedback* visual yang jelas saat disentuh atau diklik.</p>
+
+                
+
+                <h3>Prinsip Hover & Transition:</h3>
+                <pre><code>.btn {
+    transition: all 0.3s ease; /* Transisi halus */
 }
 .btn:hover {
-    transform: translateY(-3px); /* Efek mengangkat */
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transform: translateY(-2px); /* Efek melayang */
+    filter: brightness(110%);   /* Sedikit lebih terang */
 }</code></pre>
 
-        <div class="note">
-            <strong>Tips:</strong> Gunakan <code>cursor: pointer;</code> agar pengguna tahu bahwa elemen tersebut bisa diklik.
+                <div class="case-study">
+                    <h3>Kasus Nyata: Call to Action (CTA) Form</h3>
+                    <p>Dalam form pendaftaran, tombol "Simpan" harus terlihat lebih dominan daripada tombol "Batal". Ini membantu menuntun psikologi pengguna untuk menyelesaikan pendaftaran.</p>
+                    <div class="btn-group">
+                        <button class="btn btn-save">Daftar Sekarang</button>
+                        <button class="btn btn-cancel">Nanti Saja</button>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
 
-    <div class="materi-section">
-        <h2>3. Pagination (Penomoran Halaman)</h2>
-        <p><span class="term">Pagination</span> digunakan jika Anda memiliki daftar konten yang sangat banyak (seperti hasil pencarian Google) agar beban loading tidak berat.</p>
+        <div id="pagination-page" class="materi-content">
+            <div class="card">
+                <h1>Pagination Navigation</h1>
+                <p>Memecah data besar menjadi halaman-halaman kecil. Penting untuk kecepatan *loading* website.</p>
 
-        
+                
 
-        <h3>Kasus Nyata: Navigasi Blog</h3>
-        <ul class="pagination">
-            <li><a href="#">&laquo;</a></li>
-            <li><a href="#">1</a></li>
-            <li><a href="#" class="active">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">&raquo;</a></li>
-        </ul>
-
-        <pre><code>.pagination {
-    display: flex; /* Berjejer ke samping */
-    list-style: none;
+                <h3>Struktur Flexbox:</h3>
+                <pre><code>.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
 }
-.pagination a {
-    border: 1px solid #ddd;
-    padding: 8px 16px;
+.page-item.active {
+    background-color: #0984e3;
+    pointer-events: none; /* Halaman aktif tidak bisa diklik lagi */
 }</code></pre>
+
+                <div class="case-study">
+                    <h3>Kasus Nyata: E-Commerce Product Listing</h3>
+                    <p>Saat Anda mencari "Sepatu" di Tokopedia, ada ribuan produk. Pagination memungkinkan browser hanya memuat 20-40 produk per halaman, sehingga HP pengguna tidak nge-lag saat membukanya.</p>
+                    <div class="pg-container">
+                        <a href="#" class="pg-item">«</a>
+                        <a href="#" class="pg-item">1</a>
+                        <a href="#" class="pg-item active">2</a>
+                        <a href="#" class="pg-item">3</a>
+                        <a href="#" class="pg-item">»</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <a href="../../index.html" class="back-link">← Kembali ke Menu Utama</a>
     </div>
 
-    <div style="text-align: center; padding-bottom: 40px;">
-        <a href="../../index.html" class="back-link">Kembali ke Menu Utama Materi</a>
-    </div>
-
+    <script>
+        function changePage() {
+            // Ambil nilai dropdown
+            const selectedPage = document.getElementById('pageSelect').value;
+            
+            // Sembunyikan semua konten
+            const pages = document.querySelectorAll('.materi-content');
+            pages.forEach(p => p.classList.remove('active'));
+            
+            // Tampilkan konten yang dipilih
+            document.getElementById(selectedPage).classList.add('active');
+            
+            // Scroll ke atas otomatis saat ganti materi
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
 </body>
 </html>
