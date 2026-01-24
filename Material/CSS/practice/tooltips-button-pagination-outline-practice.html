@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pratice tooltips button pagination and outline</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <style>
+        :root{
+            --primary: rgb(0, 136, 255);
+            --secondary: rgb(128, 195, 255);
+            --save: #00b894;
+            --delete: rgb(199, 0, 0);
+            --outline: white;
+            --dark: rgb(37, 37, 37);
+        }
+        body{
+            font-family: Poppins;
+            padding: 20px;
+            margin: 0;
+        }
+        .tooltip-box{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            background-color: rgba(128, 128, 128, 0.495);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 10px 10px -5px grey; /* x=0, y=10px, blur=10px, spread= -5px (agar tidak melebar ke samping) */
+        }
+        .tooltip-trigger-simpan{
+            position: relative;
+            color: white;
+            background-color: var(--save);
+            padding: 12px 16px;
+            border-radius: 8px;
+            transition: 0.5s;
+            z-index: 2;  
+        }
+        .tooltip-trigger-delete{
+            position: relative;
+            color: white;
+            background-color: var(--delete);
+            padding: 12px 16px;
+            border-radius: 8px;
+            transition: 0.5s;
+            z-index: 1; 
+        }
+
+        .content-tooltips{
+            visibility: hidden;
+            position: absolute;
+            font-size: 14px;
+            background-color: var(--dark);
+            padding: 12px 16px;
+            border-radius: 8px;
+            color: yellow;
+            text-align: center;
+            opacity: 0;
+            transition: 0.5s;
+        }
+        .tooltip-trigger-simpan:hover{
+            color: rgb(223, 223, 223);
+            background-color: #01a584;
+            box-shadow: 0 5px 5px -5px #01a584;
+            transform: translateY(-5px);
+        }
+        .tooltip-trigger-delete:hover{
+            color: rgb(223, 223, 223);
+            background-color: #7b0000;
+            box-shadow: 0 5px 5px -5px #7b0000;
+            transform: translateY(-5px);
+        }
+        .tooltip-trigger-simpan:hover .content-tooltips{
+            visibility: visible;
+            opacity: 0.7;
+        }
+        .tooltip-trigger-delete:hover .content-tooltips{
+            visibility: visible;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+    <div class="tooltip-box">
+            <span class="tooltip-trigger-simpan"> <b>Simpan perubahan</b>
+                <span class="content-tooltips">Klik untuk menyimpan perubahan anda!</span>
+            </span>
+            <span class="tooltip-trigger-delete"> <b>Hapus</b>
+                <span class="content-tooltips">Klik untuk menhapus data anda!</span>
+            </span>
+    </div>
+    
+</body>
+</html>
