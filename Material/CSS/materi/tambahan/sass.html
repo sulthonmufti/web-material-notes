@@ -11,6 +11,7 @@
             --light: #f5f6fa;
             --bg: #dfe6e9;
             --mahir-purple: #8e44ad;
+            --accent-green: #00b894;
         }
 
         body { 
@@ -37,16 +38,24 @@
 
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        .card { background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
-        h1, h2 { color: var(--primary); margin-top: 0; }
+        .card { background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); margin-bottom: 20px; }
+        h1, h2, h3 { color: var(--primary); margin-top: 0; }
         
-        pre { background: #2d3436; color: #fdcb6e; padding: 20px; border-radius: 12px; overflow-x: auto; font-size: 14px; }
+        pre { background: #2d3436; color: #fdcb6e; padding: 20px; border-radius: 12px; overflow-x: auto; font-size: 14px; line-height: 1.6; }
         code { color: #a29bfe; }
 
         .case-study { 
             background: #fff0f6; border-left: 6px solid var(--primary); 
             padding: 20px; margin-top: 30px; border-radius: 0 10px 10px 0;
         }
+
+        .note {
+            background: #e1f5fe; border-left: 6px solid #03a9f4;
+            padding: 15px; margin: 20px 0; border-radius: 0 10px 10px 0;
+        }
+
+        .step-list { padding-left: 20px; }
+        .step-list li { margin-bottom: 15px; }
 
         .back-link {
             display: inline-block; padding: 12px 25px;
@@ -67,6 +76,7 @@
                 <option value="nesting-page">2. Nesting (Penulisan Bersarang)</option>
                 <option value="variables-page">3. SASS Variables</option>
                 <option value="mixins-page">4. Mixins (Reusable Code)</option>
+                <option value="usage-page">5. Cara Penggunaan SCSS</option>
             </select>
         </div>
     </nav>
@@ -78,8 +88,6 @@
                 <h1>Apa itu SASS?</h1>
                 <p><span style="font-weight: bold; color: var(--primary);">SASS</span> adalah bahasa pemroses (pre-processor) yang akan diubah menjadi CSS biasa agar bisa dibaca browser.</p>
                 
-                
-
                 <div class="note">
                     <strong>Istilah Baru: Compilation (Kompilasi)</strong><br>
                     Browser tidak bisa membaca file <code>.scss</code> secara langsung. Kita membutuhkan alat (seperti ekstensi VS Code "Live Sass Compiler") untuk mengubahnya menjadi file <code>.css</code>.
@@ -98,8 +106,6 @@
             <div class="card">
                 <h1>Nesting (Bersarang)</h1>
                 <p><span style="font-weight: bold; color: var(--primary);">Nesting</span> memungkinkan kita menulis selector di dalam selector lain, mengikuti struktur HTML kita.</p>
-
-                
 
                 <h3>Perbandingan Kode:</h3>
                 <pre><code>/* DI SASS (.scss) */
@@ -139,7 +145,7 @@ $jarak-standar: 20px;
 
                 <div class="case-study">
                     <h3>Kasus Nyata: Branding Warna</h3>
-                    <p>Jika klien ingin mengubah warna brand dari Pink ke Biru di seluruh website (ratusan elemen), Anda hanya perlu mengubah satu baris di variabel <code>$warna-utama</code> saja.</p>
+                    <p>Jika klien ingin mengubah warna brand dari Pink ke Biru di seluruh website, Anda hanya perlu mengubah satu baris di variabel <code>$warna-utama</code> saja.</p>
                 </div>
             </div>
         </div>
@@ -147,9 +153,7 @@ $jarak-standar: 20px;
         <div id="mixins-page" class="materi-content">
             <div class="card">
                 <h1>Mixins (@mixin & @include)</h1>
-                <p><span style="font-weight: bold; color: var(--primary);">Mixins</span> adalah fitur paling sakti di SASS. Ini memungkinkan Anda membuat "template" grup kode CSS dan menggunakannya kembali di mana saja.</p>
-
-                
+                <p><span style="font-weight: bold; color: var(--primary);">Mixins</span> adalah fitur paling sakti di SASS. Ini memungkinkan Anda membuat "template" grup kode CSS dan menggunakannya kembali.</p>
 
                 <h3>Contoh Penggunaan:</h3>
                 <pre><code>/* Membuat Template */
@@ -167,8 +171,85 @@ $jarak-standar: 20px;
 
                 <div class="case-study">
                     <h3>Kasus Nyata: Centering & Flexbox</h3>
-                    <p>Daripada menulis 3 baris Flexbox berulang-ulang di setiap kotak, cukup buat satu mixin dan panggil dengan <code>@include</code>. Ini mengurangi duplikasi kode secara drastis!</p>
+                    <p>Cukup buat satu mixin dan panggil dengan <code>@include</code>. Ini mengurangi duplikasi kode secara drastis!</p>
                 </div>
+            </div>
+        </div>
+
+        <div id="usage-page" class="materi-content">
+            <div class="card">
+                <h1>Panduan Penggunaan SCSS</h1>
+                <p>Berikut adalah panduan runtut penggunaan SCSS, dari instalasi hingga fitur-fitur utamanya.</p>
+
+                <h3>1. Tahap Persiapan: Instalasi Compiler</h3>
+                <p>Cara termudah untuk pemula adalah menggunakan ekstensi VS Code:</p>
+                <ul class="step-list">
+                    <li>Buka VS Code.</li>
+                    <li>Cari ekstensi bernama <strong>"Live Sass Compiler"</strong> (oleh Glenn Marks).</li>
+                    <li>Klik <strong>Install</strong>.</li>
+                    <li>Setelah terinstal, klik tombol <strong>"Watch Sass"</strong> di Status Bar bawah VS Code.</li>
+                </ul>
+
+                <h3>2. Struktur File dan Folder</h3>
+                <p>Gunakan <em>Partials</em> (file dengan awalan underscore) agar kode rapi:</p>
+                <ul>
+                    <li><code>main.scss</code> (File utama yang meng-import semua file).</li>
+                    <li><code>_variables.scss</code> (Penyimpanan warna dan font).</li>
+                    <li><code>_buttons.scss</code> (Gaya khusus tombol).</li>
+                </ul>
+
+                <h3>3. Menulis Kode SCSS</h3>
+                <p><strong>A. Variables</strong></p>
+                <pre><code>$warna-utama: #00b894;
+$warna-gelap: #2d3436;
+
+body {
+    background-color: $warna-utama;
+    color: $warna-gelap;
+}</code></pre>
+
+                <p><strong>B. Nesting</strong></p>
+                <pre><code>.nav {
+    background: white;
+    ul {
+        margin: 0;
+        li {
+            display: inline-block;
+            a {
+                color: blue;
+                &:hover { color: red; }
+            }
+        }
+    }
+}</code></pre>
+
+                <p><strong>C. Mixins</strong></p>
+                <pre><code>@mixin pusat-elemen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box { @include pusat-elemen; }</code></pre>
+
+                <p><strong>D. Import</strong></p>
+                <pre><code>@import 'variables';
+@import 'buttons';
+@import 'layout';</code></pre>
+
+                <h3>4. Proses Kompilasi</h3>
+                <p>Setiap kali Anda menekan <strong>Ctrl + S</strong> pada file <code>.scss</code>, compiler otomatis membuat file <code>.css</code>.</p>
+                <div class="note">
+                    <strong>Penting:</strong> Di HTML, tetap panggil file CSS hasil kompilasi:<br>
+                    <code>&lt;link rel="stylesheet" href="main.css"&gt;</code>
+                </div>
+
+                <h3>5. Keuntungan SCSS</h3>
+                <ul>
+                    <li><strong>Maintenance Cepat:</strong> Ubah 1 variabel untuk merubah seluruh web.</li>
+                    <li><strong>Keterbacaan:</strong> Struktur rapi, tidak ada selector panjang yang membingungkan.</li>
+                    <li><strong>Logika:</strong> Bisa operasi matematika dan fungsi warna (<code>darken</code>, <code>lighten</code>).</li>
+                </ul>
             </div>
         </div>
 
