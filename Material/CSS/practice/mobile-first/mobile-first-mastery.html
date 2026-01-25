@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mastering Mobile-First Design</title>
+    <style>
+        :root {
+            --primary: #2ecc71;
+            --dark: #2d3436;
+            --light: #f9f9f9;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0; padding: 0;
+            background-color: #f0f2f5;
+        }
+
+        /* =========================================
+           1. GAYA DASAR (MOBILE-FIRST) 
+           Ditulis tanpa Media Query (Default)
+           =========================================
+        */
+        
+        /* Container utama */
+        .card-container {
+            padding: 20px;
+            display: flex;
+            flex-direction: column; /* Vertikal di Mobile */
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+
+        /* FLEXIBLE IMAGE: Dasar agar gambar aman di semua layar */
+        .card-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .card-content {
+            padding: 15px;
+        }
+
+        /* KONTEN YANG DISEMBUNYIKAN DI MOBILE (Adaptive Content) */
+        .extra-info {
+            display: none; /* Sembunyikan info berat/detail di mobile */
+            margin-top: 10px;
+            color: #636e72;
+            font-size: 0.9em;
+        }
+
+        /* INTERAKSI: Disable Hover di Mobile (untuk kenyamanan touch) */
+        .card:hover {
+            /* Di mobile, hover seringkali mengganggu atau tidak ada */
+            transform: none;
+        }
+
+        /* =========================================
+           2. ADAPTASI TABLET (Width >= 768px)
+           =========================================
+        */
+        @media (min-width: 768px) {
+            .card-container {
+                flex-direction: row; /* Berjejer ke samping */
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .card {
+                width: calc(50% - 20px); /* 2 Kolom */
+            }
+
+            /* Mulai Munculkan Konten Tambahan */
+            .extra-info {
+                display: block;
+                border-top: 1px solid #eee;
+                padding-top: 10px;
+            }
+        }
+
+        /* =========================================
+           3. ADAPTASI DESKTOP (Width >= 1024px)
+           =========================================
+        */
+        @media (min-width: 1024px) {
+            .card {
+                width: 300px; /* Lebar tetap yang rapi */
+            }
+
+            /* INTERAKSI: Aktifkan Hover hanya di layar besar */
+            .card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+                cursor: pointer;
+            }
+
+            .card-content h3 {
+                color: var(--primary);
+                font-size: 1.5em;
+            }
+        }
+
+        .header {
+            background: var(--dark);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .back-nav {
+            text-align: center;
+            padding: 40px;
+        }
+
+        .btn-back {
+            background: #8e44ad;
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Adaptive Mobile-First Demo</h1>
+        <p>Gunakan Inspect Element (F12) dan ubah ukuran layar!</p>
+    </div>
+
+    <div class="card-container">
+        <div class="card">
+            <img src="/Material/CSS/practice/image.png" alt="Flexible Image" class="card-image">
+            <div class="card-content">
+                <h3>Paket Starter</h3>
+                <p>Dasar pengembangan web untuk pemula yang ingin belajar.</p>
+                
+                <div class="extra-info">
+                    <strong>Detail Tambahan:</strong>
+                    <ul>
+                        <li>Akses seumur hidup</li>
+                        <li>Update materi gratis</li>
+                        <li>Sertifikat digital</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="/Material/CSS/practice/image.png" alt="Flexible Image" class="card-image">
+            <div class="card-content">
+                <h3>Paket Pro</h3>
+                <p>Materi lanjutan dengan proyek nyata industri global.</p>
+                
+                <div class="extra-info">
+                    <strong>Detail Tambahan:</strong>
+                    <ul>
+                        <li>Konsultasi mentor</li>
+                        <li>Bantuan penyaluran kerja</li>
+                        <li>Review portofolio</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="back-nav">
+        <a href="../../index.html" class="btn-back">Kembali ke Menu Utama</a>
+    </div>
+
+</body>
+</html>
