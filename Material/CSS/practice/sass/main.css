@@ -1,0 +1,28 @@
+body {
+  background-color: #00b894;
+  font-size: 32px;
+}
+
+.nav {
+  background: white;
+}
+.nav ul {
+  margin: 0;
+}
+.nav ul li {
+  display: inline-block;
+}
+.nav ul li a {
+  color: blue;
+}
+.nav ul li a:hover {
+  color: red;
+}
+
+.box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+}/*# sourceMappingURL=main.css.map */

@@ -1,0 +1,14 @@
+// SCSS
+.nav {
+    background: white;
+    ul {
+        margin: 0;
+        li {
+            display: inline-block;
+            a {
+                color: blue;
+                &:hover { color: red; } // Simbol & berarti "parent" (a:hover)
+            }
+        }
+    }
+}

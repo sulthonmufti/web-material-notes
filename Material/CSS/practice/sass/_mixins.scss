@@ -1,0 +1,11 @@
+@mixin pusat-elemen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box {
+    @include pusat-elemen; // Memanggil mixin
+    width: 100px;
+    height: 100px;
+}
