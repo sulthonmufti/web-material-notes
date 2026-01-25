@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mastering CSS: SASS Pre-processor</title>
+    <style>
+        :root {
+            --primary: #cf649a; /* Warna khas SASS */
+            --dark: #2d3436;
+            --light: #f5f6fa;
+            --bg: #dfe6e9;
+            --mahir-purple: #8e44ad;
+        }
+
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            margin: 0; padding: 0; background-color: var(--bg); color: var(--dark);
+        }
+
+        .header-nav {
+            background: white; padding: 15px 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky; top: 0; z-index: 1000;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+
+        .dropdown-container select {
+            padding: 10px 20px; border-radius: 8px; border: 2px solid var(--primary);
+            font-size: 16px; font-weight: bold; outline: none; cursor: pointer;
+        }
+
+        .container { max-width: 850px; margin: 30px auto; padding: 0 20px; }
+        
+        .materi-content { display: none; animation: fadeIn 0.4s ease; }
+        .active { display: block; }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        .card { background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+        h1, h2 { color: var(--primary); margin-top: 0; }
+        
+        pre { background: #2d3436; color: #fdcb6e; padding: 20px; border-radius: 12px; overflow-x: auto; font-size: 14px; }
+        code { color: #a29bfe; }
+
+        .case-study { 
+            background: #fff0f6; border-left: 6px solid var(--primary); 
+            padding: 20px; margin-top: 30px; border-radius: 0 10px 10px 0;
+        }
+
+        .back-link {
+            display: inline-block; padding: 12px 25px;
+            background-color: var(--mahir-purple); color: white;
+            text-decoration: none; border-radius: 5px; font-weight: bold;
+            transition: 0.3s;
+        }
+        .back-link:hover { background-color: #7d3c98; transform: translateY(-2px); }
+    </style>
+</head>
+<body>
+
+    <nav class="header-nav">
+        <strong>SASS Pre-processor Mastery</strong>
+        <div class="dropdown-container">
+            <select id="pageSelect" onchange="changePage()">
+                <option value="intro-page">1. Apa itu SASS?</option>
+                <option value="nesting-page">2. Nesting (Penulisan Bersarang)</option>
+                <option value="variables-page">3. SASS Variables</option>
+                <option value="mixins-page">4. Mixins (Reusable Code)</option>
+            </select>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <div id="intro-page" class="materi-content active">
+            <div class="card">
+                <h1>Apa itu SASS?</h1>
+                <p><span style="font-weight: bold; color: var(--primary);">SASS</span> adalah bahasa pemroses (pre-processor) yang akan diubah menjadi CSS biasa agar bisa dibaca browser.</p>
+                
+                
+
+                <div class="note">
+                    <strong>Istilah Baru: Compilation (Kompilasi)</strong><br>
+                    Browser tidak bisa membaca file <code>.scss</code> secara langsung. Kita membutuhkan alat (seperti ekstensi VS Code "Live Sass Compiler") untuk mengubahnya menjadi file <code>.css</code>.
+                </div>
+
+                <h3>Kenapa Pakai SASS?</h3>
+                <ul>
+                    <li>Menulis kode jauh lebih cepat.</li>
+                    <li>Struktur kode lebih rapi dan mudah dibaca.</li>
+                    <li>Sangat efisien untuk proyek website skala besar.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="nesting-page" class="materi-content">
+            <div class="card">
+                <h1>Nesting (Bersarang)</h1>
+                <p><span style="font-weight: bold; color: var(--primary);">Nesting</span> memungkinkan kita menulis selector di dalam selector lain, mengikuti struktur HTML kita.</p>
+
+                
+
+                <h3>Perbandingan Kode:</h3>
+                <pre><code>/* DI SASS (.scss) */
+nav {
+  background: white;
+  ul {
+    margin: 0;
+    li { display: inline-block; }
+  }
+}
+
+/* HASILNYA DI CSS BIASA */
+nav { background: white; }
+nav ul { margin: 0; }
+nav ul li { display: inline-block; }</code></pre>
+
+                <div class="case-study">
+                    <h3>Kasus Nyata: Navbar Complex</h3>
+                    <p>Saat membuat Navbar, Anda tidak perlu menulis <code>.navbar .menu .item .link</code> berulang kali. Cukup masukkan selector di dalamnya, sehingga kode Anda terlihat persis seperti struktur HTML.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="variables-page" class="materi-content">
+            <div class="card">
+                <h1>SASS Variables</h1>
+                <p>Sama seperti CSS Variables, tapi SASS Variables menggunakan simbol <code>$</code>. Bedanya, variabel SASS diproses sebelum sampai ke browser, sehingga lebih ringan.</p>
+
+                <h3>Penulisan:</h3>
+                <pre><code>$warna-utama: #cf649a;
+$jarak-standar: 20px;
+
+.tombol {
+    background-color: $warna-utama;
+    padding: $jarak-standar;
+}</code></pre>
+
+                <div class="case-study">
+                    <h3>Kasus Nyata: Branding Warna</h3>
+                    <p>Jika klien ingin mengubah warna brand dari Pink ke Biru di seluruh website (ratusan elemen), Anda hanya perlu mengubah satu baris di variabel <code>$warna-utama</code> saja.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="mixins-page" class="materi-content">
+            <div class="card">
+                <h1>Mixins (@mixin & @include)</h1>
+                <p><span style="font-weight: bold; color: var(--primary);">Mixins</span> adalah fitur paling sakti di SASS. Ini memungkinkan Anda membuat "template" grup kode CSS dan menggunakannya kembali di mana saja.</p>
+
+                
+
+                <h3>Contoh Penggunaan:</h3>
+                <pre><code>/* Membuat Template */
+@mixin pusat-elemen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Menggunakan Template */
+.hero-content {
+    @include pusat-elemen;
+    height: 100vh;
+}</code></pre>
+
+                <div class="case-study">
+                    <h3>Kasus Nyata: Centering & Flexbox</h3>
+                    <p>Daripada menulis 3 baris Flexbox berulang-ulang di setiap kotak, cukup buat satu mixin dan panggil dengan <code>@include</code>. Ini mengurangi duplikasi kode secara drastis!</p>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-top: 50px; text-align: center; padding-bottom: 40px;">
+            <hr style="border: 0; border-top: 1px solid #ccc; margin-bottom: 20px;">
+            <a href="../../index.html" class="back-link">Kembali ke Menu Utama Materi</a>
+        </div>
+    </div>
+
+    <script>
+        function changePage() {
+            const selectedPage = document.getElementById('pageSelect').value;
+            const pages = document.querySelectorAll('.materi-content');
+            pages.forEach(p => p.classList.remove('active'));
+            document.getElementById(selectedPage).classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
