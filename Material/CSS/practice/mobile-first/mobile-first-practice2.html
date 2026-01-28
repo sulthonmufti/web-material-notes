@@ -46,10 +46,40 @@
 
         }
 
-        .card img{
-            width: 100px;
-            height: 100%;
+        /* CARD */
+        .card-container{
+            display: flex;
+            flex-direction: column;
+            box-sizing: border-box;
+            margin: 20px;
+            gap: 20px;
         }
+        .card{
+            /* padding: 20px; */
+            overflow:hidden;
+            background-color: var(--primary);
+            border-radius: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.199);
+            padding: 0;
+        }
+
+        .card img{
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-content{
+            padding: 0 20px;
+        }
+        .extra-info-card{
+            display: none;
+            border-top: 1px solid rgba(128, 128, 128, 0.39);
+            padding: 20px 0 0;
+        }
+        .limited-dekstop{
+                display: none;
+            }
 
         /* TOGGLE */
         .toggle-light{
@@ -65,12 +95,113 @@
                 justify-content: space-between;
                 align-items: center;
             }
+            .card-container{
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+
+            }
+            .card{
+                width: 300px;
+                height: 100%;
+            }
+            .extra-info-card{
+                display: block;
+            }
         }
         /* ============================ */
         /* RESPONSIVE DEKSTOP */
         /* ============================ */
         @media (min-width: 1024px){
+            .limited-dekstop1{
+                display: block;
+                position: relative;
+                width: 100%;
+                height: 400px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                overflow: hidden; /* Penting agar blur tidak meluber keluar */
+            }
+            .limited-dekstop1::before {
+                content: "";
+                position: absolute;
+                top: 0; left: 0; right: 0; bottom: 0;
+                background-image: url('../image.png');
+                background-size: cover;
+                background-position: center;
+                filter: blur(8px); /* Atur tingkat blur di sini */
+                z-index: -1; /* Menaruhnya di belakang teks */
+                transform: scale(1.1); /* Opsional: menutupi pinggiran putih akibat blur */
+            }
 
+            .limited-dekstop {
+                display: flex; /* Memunculkan section yang sebelumnya none */
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                min-height: 400px; /* Memberikan ruang tinggi yang cukup */
+                margin-top: 50px;
+                
+                /* Background Gradient Bergerak */
+                background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+                background-size: 400% 400%;
+                animation: gradientAnimation 15s ease infinite;
+                /*gradientAnimation : Nama instruksi gerakan (yang didefinisikan di @keyframes).
+                15s                 : Durasi satu kali putaran gerakan (semakin besar angkanya, semakin pelan dan halus gerakannya).
+                ease                : Gerakan dimulai lambat, cepat di tengah, dan lambat di akhir (terlihat lebih alami).
+                infinite            : Gerakan ini tidak akan pernah berhenti, terus berulang selama website dibuka*/
+                
+                border-radius: 20px;
+                overflow: hidden;
+            }
+
+            /* Pembungkus teks dengan efek Glassmorphism */
+            .glass-card {
+                padding: 50px;
+                width: 80%;
+                max-width: 700px;
+                background: rgba(255, 255, 255, 0.1); /* Transparansi Putih */
+                
+                /* Efek Utama Glassmorphism */
+                backdrop-filter: blur(15px);
+                -webkit-backdrop-filter: blur(15px);
+                
+                /* Border Tipis (Kesan Kaca) */
+                border: 1px solid rgba(255, 255, 255, 0.3);
+                border-radius: 25px;
+                
+                /* Bayangan agar terlihat melayang */
+                box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+                text-align: center;
+                
+                /* Animasi masuk saat dihover */
+                transition: all 0.4s ease;
+            }
+
+            .glass-card:hover {
+                transform: scale(1.02);
+                background: rgba(255, 255, 255, 0.15);
+                border: 1px solid rgba(255, 255, 255, 0.5);
+            }
+
+            .glass-card h3 {
+                color: white;
+                font-size: 2rem;
+                font-weight: 700;
+                margin: 0;
+                text-transform: uppercase;
+                letter-spacing: 3px;
+                /* Efek bayangan teks agar lebih kontras di atas kaca */
+                text-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            }
+        }
+        /* Animasi untuk Background Gradient */
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; } /* Poster di posisi awal */
+            50% { background-position: 100% 50%; } /* Poster digeser ke ujung kanan */
+            100% { background-position: 0% 50%; } /* Poster balik lagi ke awal */
         }
 
     </style>
@@ -89,16 +220,17 @@
             <button class="toggle-light">Dark Mode</button>
             <button class="toggle-dark">light Mode</button>
         </div>
-        <strong class="choose">Choose you subciption:</strong>
+        <strong class="choose">Choose your subciption:</strong>
     </div>
 
     <main class="card-container">
         <div class="card">
-            <img src="../card-logo.png" alt="card">
-            <h3>Biginner</h3>
+            <img src="../premium.png" alt="card">
+            <div class="card-content">
+                <h4>Biginner</h4>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi?</p>
             <div class="extra-info-card">
-                <strong class="extra">Biginner</strong>
+                <strong class="extra">More detail:</strong>
                 <ul>
                     <li>Lorem ipsum dolor sit.</li>
                     <li>Lorem ipsum dolor sit amet.</li>
@@ -106,14 +238,16 @@
                     <li>Lorem ipsum dolor sit.</li>
                 </ul>
             </div>
+            </div>
         </div>
 
         <div class="card">
-            <img src="../card-logo.png" alt="card">
-            <h3>Premium</h3>
+            <img src="../premium.png" alt="card">
+            <div class="card-content">
+                <h4>Biginner</h4>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi?</p>
             <div class="extra-info-card">
-                <strong class="extra">Biginner</strong>
+                <strong class="extra">More detail:</strong>
                 <ul>
                     <li>Lorem ipsum dolor sit.</li>
                     <li>Lorem ipsum dolor sit amet.</li>
@@ -121,14 +255,16 @@
                     <li>Lorem ipsum dolor sit.</li>
                 </ul>
             </div>
+            </div>
         </div>
 
         <div class="card">
-            <img src="../card-logo.png" alt="card">
-            <h3>VIP</h3>
+            <img src="../premium.png" alt="card">
+            <div class="card-content">
+                <h4>Biginner</h4>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi?</p>
             <div class="extra-info-card">
-                <strong class="extra">Biginner</strong>
+                <strong class="extra">More detail:</strong>
                 <ul>
                     <li>Lorem ipsum dolor sit.</li>
                     <li>Lorem ipsum dolor sit amet.</li>
@@ -136,26 +272,31 @@
                     <li>Lorem ipsum dolor sit.</li>
                 </ul>
             </div>
+            </div>
         </div>
 
         <div class="card">
-            <img src="../card-logo.png" alt="card">
-            <h3>VVIP</h3>
+            <img src="../premium.png" alt="card">
+            <div class="card-content">
+                <h4>Biginner</h4>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi?</p>
             <div class="extra-info-card">
-                <strong class="extra">Biginner</strong>
+                <strong class="extra">More detail:</strong>
                 <ul>
                     <li>Lorem ipsum dolor sit.</li>
                     <li>Lorem ipsum dolor sit amet.</li>
                     <li>Lorem, ipsum dolor.</li>
                     <li>Lorem ipsum dolor sit.</li>
                 </ul>
+            </div>
             </div>
         </div>
     </main>
 
     <section class="limited-dekstop">
-        <h3>IF YOU SEE THIS, IT MEANS YOU'RE IN THE DEKSTOP MODE</h3>
+        <div class="glass-card">
+            <h3>IF YOU SEE THIS, IT MEANS YOU'RE IN THE DEKSTOP MODE</h3>
+        </div>
     </section>
     
 </body>
