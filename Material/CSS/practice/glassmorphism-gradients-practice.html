@@ -12,8 +12,35 @@
             font-family: Poppins;
             margin: 0;
             padding: 20px;
-        }   
-        .background-animation-container{
+            background-color: rgb(184, 236, 255);
+        }
+        /* BACKGROUND IMAGE BLUR*/
+        .background-image-blur{
+            position: relative;
+            width: 100%;
+            height: 400px;
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            overflow: hidden; /*agar blur nya tidak meluber keluat*/
+        }
+        .background-image-blur::before{
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url('./image.png');
+            background-size: cover;      /* Memastikan kotak tertutup penuh */
+            background-position: center; /* Memastikan bagian tengah gambar selalu di tengah kotak */
+            background-repeat: no-repeat;
+            filter: blur(8px); /*pengaturan tingkat blur*/
+            z-index: -1; /*menaruhnya di belakang teks*/
+            transform: scale(1.1); /*opsional: menutupi pinggiran putih akibat blur*/
+        }
+
+        /* BACKGROUND GRADIENT */
+        .background-gradient{
             box-sizing: border-box  ;
             display: block;
             width: 100%;
@@ -21,19 +48,131 @@
             border-radius: 15px;
 
             background: linear-gradient(130deg,purple, red, blue, skyblue);
+        }
 
+        /* BACKGROUND ANIMATION */
+        .background-animation{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 400px;
+
+            /* background gradient bergerak */
+            background: linear-gradient(130deg, purple, red, blue, skyblue);
+            background-size: 400% 400%; /*memperlebar width dan height background menjadi 400%*/
+            animation: gradienAnimation 8s ease infinite;
+            /*gradientAnimation : Nama instruksi gerakan (yang didefinisikan di @keyframes).
+            15s                 : Durasi satu kali putaran gerakan (semakin besar angkanya, semakin pelan dan halus gerakannya).
+            ease                : Gerakan dimulai lambat, cepat di tengah, dan lambat di akhir (terlihat lebih alami).
+            infinite            : Gerakan ini tidak akan pernah berhenti, terus berulang selama website dibuka*/
             
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        /* BACKGROUND ANIMATION */
+        .glass{
+            box-sizing: border-box;
+            padding: 50px;
+            width: 100%;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.121); /*transparan putih*/
+
+            /*efek utama glassmorphism*/
+            backdrop-filter: blur(15px); /*backdrop-filter: memberikan efek visual pada area di belakang elemen*/
+            -webkit-backdrop-filter: blur(15px);
+            /* -webkit-backdrop-filter: Ini khusus untuk browser berbasis WebKit, seperti Safari (di iPhone atau Mac).
+                backdrop-filter: Ini adalah standar global yang dipahami oleh Chrome, Edge, dan Firefox. */
+
+            /*border tipis (kesan kaca)*/
+            border: 1px solid rgba(255, 255, 255, 0.326);
+            border-radius: 15px;
+
+            /*bayangan agar terlihat melayang*/
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.311);
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            /*animasi masuk saat hover*/
+            transition: all 0.4s ease;
+        }
+
+        .glass:hover{
+            transform: scale(1.02);
+            background: rgba(255, 255, 255, 0.144);
+            border: 1px solid rgba(255, 255, 255, 0.511);
+        }
+
+        /* COMBINE */
+        .glass-background-gradient-animation{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(130deg, purple, red, blue, skyblue);
+            border-radius: 15px;
+
+            background-size: 400% 400%;
+            animation: combine 8s ease infinite;
+            overflow: hidden;
+        }
+        .glass-combine{
+            border: 1px solid rgba(255, 255, 255, 0.527);
+            border-radius: 5px;
+            padding: 5px 15px;
+            background-color: rgba(255, 255, 255, 0.155);
+
+            /*efek utama glassmorphism*/
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.324);
+            transition: all 0.4s ease;
+        }
+        .glass-combine:hover{
+            transform: scale(1.02);
+            background: rgba(0, 0, 0, 0.194);
+            border: 1px solid rgba(255, 255, 255, 0.365);
+        }
+        .glass-combine p{
+            color: white;
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.315);
+        }
+
+        /*COMBINE*/
+        @keyframes combine{
+            0%{background-position: 0% 50%;}
+            50%{background-position: 100% 50%;}
+            100%{background-position: 0% 50%;}
+        }
+
+        /* ANIMATION FOR BACKGROUND ANIMATION */
+        @keyframes gradienAnimation{
+            0%{background-position: 0% 50%;} /*poster di posisi awal*/
+            50%{background-position: 100% 50%;} /*poster digeser ke ujung kanan*/
+            100%{background-position: 0% 50%;}
         }
     </style>
 </head>
 <body>
+    <p>background image blur:</p>
+    <div class="background-image-blur">
+        <p>test blur.</p>
+    </div>
     <p>background gradient:</p>
-    <div class="background-animation-container">
+    <div class="background-gradient">
 
     </div>
 
     <p>background gradient animation:</p>
-    <div class="background-animation-container">
+    <div class="background-animation">
 
     </div>
 
@@ -43,5 +182,10 @@
     </div>
 
     <p>combine:</p>
+    <div class="glass-background-gradient-animation">
+        <div class="glass-combine">
+            <P>animation.</P>
+        </div>
+    </div>
 </body>
 </html>
