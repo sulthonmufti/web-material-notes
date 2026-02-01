@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice overflow</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <style>
+        h3{
+            text-align: center;
+        }
+        body{
+            font-family: Poppins;
+            padding: 20px;
+            margin: 0;
+            gap: 20px;
+        }
+        .overflow-container{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .visible, .hidden, .scroll, .auto{
+            display: flex;
+            flex-direction: column;
+        }
+        .overflow-visible, .overflow-hidden, .overflow-scroll, .overflow-auto{
+            width: 200px;
+            height: 350px;
+            background-color: rgba(128, 128, 128, 0.395);
+            border-radius: 8px;
+            padding: 18px;
+            margin: 0;
+            overflow: scroll;
+        }
+        .overflow-visible{overflow: visible;} .overflow-hidden{overflow: hidden;} .overflow-scroll{overflow: scroll;} .overflow-auto{overflow: auto;} 
+
+        /* RESPONSIVE MEDIA QUERY */
+        @media (min-width:764px){
+            .overflow-container{
+                gap: 50px;
+                flex-wrap: wrap;
+            }
+            .overflow-container{
+                flex-direction: row;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h3>DIFERENCE OF SOME VALUE IN OVERFLOW</h3>
+    <div class="overflow-container">
+        <div class="hidden">
+            <p>overflow hidden:</p>
+            <div class="overflow-hidden">
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis, laudantium itaque! Vero excepturi laboriosam, quaerat eum, non dolores voluptatum nostrum magnam ipsa voluptas repellat. Totam, quia! Culpa dolorem, quis impedit id esse nihil perspiciatis porro veritatis corrupti iure deleniti magni dolor optio vero minima dolore nesciunt aliquam repellendus cumque! Dolores dignissimos expedita reprehenderit vel quia voluptates nemo dolor suscipit fugiat.</p>
+            </div>
+        </div>
+
+
+        <div class="scroll">
+            <p>overflow scroll:</p>
+            <div class="overflow-scroll">
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis, laudantium itaque! Vero excepturi laboriosam, quaerat eum, non dolores voluptatum nostrum magnam ipsa voluptas repellat. Totam, quia! Culpa dolorem, quis impedit id esse nihil perspiciatis porro veritatis corrupti iure deleniti magni dolor optio vero minima dolore nesciunt aliquam repellendus cumque! Dolores dignissimos expedita reprehenderit vel quia voluptates nemo dolor suscipit fugiat.</p>
+            </div>
+        </div>
+
+        <div class="auto">
+            <p>overflow auto:</p>
+            <div class="overflow-auto">
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis, laudantium itaque! Vero excepturi laboriosam, quaerat eum, non dolores voluptatum nostrum magnam ipsa voluptas repellat. Totam, quia! Culpa dolorem, quis impedit id esse nihil perspiciatis porro veritatis corrupti iure deleniti magni dolor optio vero minima dolore nesciunt aliquam repellendus cumque! Dolores dignissimos expedita reprehenderit vel quia voluptates nemo dolor suscipit fugiat.</p>
+            </div>
+        </div>
+
+        <div class="visible">
+            <p>overflow visible:</p>
+            <div class="overflow-visible">
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis, laudantium itaque! Vero excepturi laboriosam, quaerat eum, non dolores voluptatum nostrum magnam ipsa voluptas repellat. Totam, quia! Culpa dolorem, quis impedit id esse nihil perspiciatis porro veritatis corrupti iure deleniti magni dolor optio vero minima dolore nesciunt aliquam repellendus cumque! Dolores dignissimos expedita reprehenderit vel quia voluptates nemo dolor suscipit fugiat.</p>
+            </div>  
+        </div>
+    </div>
+    
+</body>
+</html>
