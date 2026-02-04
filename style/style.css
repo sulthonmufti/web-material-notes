@@ -3,14 +3,17 @@ body {
   justify-content: center;
   align-items: center;
   font-family: Arial, Helvetica, sans-serif;
+  background-color: #f4f4f9;
+  align-items: center;
   min-height: 100vh;
   margin: 0;
 }
 body .container {
-  background-color: white;
+  background-color: #fff;
   padding: 30px;
   border-radius: 8px;
   box-shadow: 0 4p 8px rgba(0, 0, 0, 0.1);
+  width: 90%;
   width: 450px;
   text-align: center;
 }
@@ -38,14 +41,14 @@ body .container select, body .container button {
   font-size: 1em;
 }
 body .container button {
-  background-color: #0056b3;
-  color: white;
+  background-color: #007bff;
+  color: #fff;
   cursor: pointer;
   margin-top: 10px;
   transition: background-color 0.3s;
 }
 body .container button:hover:not(:disabled) {
-  background-color: white;
+  background-color: #0056b3;
 }
 body .container button:disabled {
   background-color: #b3d7ff;
