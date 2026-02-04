@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Mastery: Basic & Elements</title>
+    <link rel="stylesheet" href="basic-elements.css">
+</head>
+<body>
+
+    <nav class="header-nav">
+        <strong>HTML Foundation Series</strong>
+        <div class="dropdown-container">
+            <select id="pageSelect" onchange="changePage()">
+                <option value="elements-intro">1. Anatomi Elemen</option>
+                <option value="headings-paragraphs">2. Headings & Paragraphs</option>
+                <option value="links-images">3. Links & Images</option>
+            </select>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <div id="elements-intro" class="materi-content active">
+            <div class="card">
+                <h1>Anatomi Elemen HTML</h1>
+                <p>Sebelum menulis banyak kode, Anda harus paham bagaimana satu baris kode HTML dibentuk.</p>
+                
+                
+
+                <div class="term-box">
+                    <b>Istilah Penting:</b>
+                    <ul>
+                        <li><b>Start Tag:</b> Tanda dimulainya elemen (contoh: <code>&lt;p&gt;</code>).</li>
+                        <li><b>Content:</b> Isi teks atau media di dalam tag.</li>
+                        <li><b>End Tag:</b> Tanda berakhirnya elemen, ditandai dengan garis miring (contoh: <code>&lt;/p&gt;</code>).</li>
+                        <li><b>Nested Elements:</b> Elemen di dalam elemen (elemen bersarang).</li>
+                    </ul>
+                </div>
+
+                <h3>Contoh Kode:</h3>
+                <pre><code>&lt;p&gt;Ini adalah konten paragraf.&lt;/p&gt;</code></pre>
+
+                <div class="case-study">
+                    <h3>Aturan Emas: Jangan Lupa Tag Penutup!</h3>
+                    <p>Meskipun beberapa tag bisa berjalan tanpa penutup di browser modern, melewatkan tag penutup dapat merusak tata letak (layout) seluruh website Anda secara tidak terduga.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="headings-paragraphs" class="materi-content">
+            <div class="card">
+                <h1>Headings & Paragraphs</h1>
+                <p>Ini adalah cara utama kita memberikan informasi tekstual kepada pengguna.</p>
+
+                <h3>1. Headings (h1 - h6)</h3>
+                <p>Digunakan untuk judul dan sub-judul. <code>&lt;h1&gt;</code> adalah yang terbesar/terpenting, dan <code>&lt;h6&gt;</code> adalah yang terkecil.</p>
+                
+                <div class="demo-box">
+                    <h1>Judul Tingkat 1</h1>
+                    <h2>Judul Tingkat 2</h2>
+                    <h3>Judul Tingkat 3</h3>
+                </div>
+
+                <h3>2. Paragraphs (p)</h3>
+                <p>Digunakan untuk membungkus blok teks biasa. Browser otomatis memberikan sedikit ruang kosong (margin) di atas dan bawah paragraf.</p>
+
+                <pre><code>&lt;h1&gt;Manfaat Belajar Coding&lt;/h1&gt;
+&lt;p&gt;Coding membantu melatih logika dan pemecahan masalah.&lt;/p&gt;</code></pre>
+
+                <div class="case-study">
+                    <h3>Kasus Nyata: SEO (Search Engine Optimization)</h3>
+                    <p>Google menggunakan tag <code>&lt;h1&gt;</code> untuk memahami topik utama halaman Anda. Jangan pernah gunakan lebih dari satu <code>&lt;h1&gt;</code> dalam satu halaman agar peringkat Google Anda bagus!</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="links-images" class="materi-content">
+            <div class="card">
+                <h1>Links & Images</h1>
+                <p>Website tidak akan menjadi "Web" tanpa kemampuan untuk berpindah halaman dan menampilkan visual.</p>
+
+                <div class="term-box">
+                    <b>Istilah Baru: Attribute</b>
+                    <p>Informasi tambahan yang diletakkan di dalam tag pembuka. Contoh: <code>href</code> untuk link dan <code>src</code> untuk gambar.</p>
+                </div>
+
+                <h3>1. Links (anchor tag)</h3>
+                <p>Menggunakan tag <code>&lt;a&gt;</code> dengan atribut <code>href</code>.</p>
+                <pre><code>&lt;a href="https://google.com"&gt;Kunjungi Google&lt;/a&gt;</code></pre>
+
+                <h3>2. Images</h3>
+                <p>Menggunakan tag <code>&lt;img&gt;</code>. Uniknya, tag ini **tidak punya tag penutup** (Self-closing).</p>
+                <pre><code>&lt;img src="gambar-kucing.jpg" alt="Foto Kucing Lucu" width="300"&gt;</code></pre>
+
+                <div class="case-study">
+                    <h3>Penting: Atribut "Alt" pada Gambar</h3>
+                    <p>Atribut <code>alt</code> (Alternative Text) sangat penting untuk aksesibilitas. Jika gambar gagal dimuat atau jika pengunjung adalah tunanetra yang menggunakan pembaca layar (screen reader), teks inilah yang akan dibacakan.</p>
+                    <div class="demo-box" style="text-align: center;">
+                        <img src="https://via.placeholder.com/150" alt="Contoh Placeholder Gambar">
+                        <p><small><i>Visual: Gambar dengan atribut src</i></small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <a href="/Material/HTML/index.html" class="back-link">← Kembali ke Daftar Materi</a>
+    </div>
+
+    <script src="basic-elements.js"></script>
+</body>
+</html>

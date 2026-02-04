@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Mastery: Attributes</title>
+    <link rel="stylesheet" href="attributes.css">
+</head>
+<body>
+
+    <nav class="header-nav">
+        <strong>HTML Foundation Series</strong>
+        <div class="dropdown-container">
+            <select id="pageSelect" onchange="changePage()">
+                <option value="attr-intro">1. Apa itu Attributes?</option>
+                <option value="common-attr">2. Atribut yang Sering Dipakai</option>
+                <option value="global-attr">3. Global Attributes (ID & Class)</option>
+            </select>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <div id="attr-intro" class="materi-content active">
+            <div class="card">
+                <h1>Apa itu HTML Attributes?</h1>
+                <p>Jika elemen HTML adalah "benda", maka atribut adalah "sifat" atau "instruksi tambahan" yang ditempelkan pada benda tersebut.</p>
+                
+                
+
+                <div class="term-box">
+                    <b>Aturan Penulisan:</b>
+                    <ul>
+                        <li>Atribut selalu ditulis di dalam <b>Start Tag</b> (tag pembuka).</li>
+                        <li>Biasanya berpasangan antara <b>nama</b> dan <b>nilai</b> (name="value").</li>
+                        <li>Nilai atribut harus selalu berada di dalam tanda petik (kutip dua <code>""</code> sangat direkomendasikan).</li>
+                    </ul>
+                </div>
+
+                <h3>Contoh Kode Dasar:</h3>
+                <pre><code>&lt;tag nama-atribut="nilainya"&gt;Konten&lt;/tag&gt;</code></pre>
+
+                <div class="case-study">
+                    <h3>Kasus Nyata: Mengarahkan Link</h3>
+                    <p>Tanpa atribut <code>href</code>, sebuah tag <code>&lt;a&gt;</code> (link) tidak akan tahu ke mana ia harus pergi saat diklik. Atributlah yang memberikan tujuan tersebut.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="common-attr" class="materi-content">
+            <div class="card">
+                <h1>Atribut yang Sering Dipakai</h1>
+                <p>Hampir setiap tag HTML memiliki atribut spesifiknya sendiri. Berikut adalah yang paling sering muncul di W3Schools:</p>
+
+                <table style="border:1; width: 100%; border-collapse: collapse; margin: 20px 0; border-color: #ddd;">
+                    <tr style="background: #fdf0e7;">
+                        <th style="padding: 10px;">Atribut</th>
+                        <th style="padding: 10px;">Digunakan Pada</th>
+                        <th style="padding: 10px;">Fungsi</th>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px;"><code>href</code></td>
+                        <td style="padding: 10px;"><code>&lt;a&gt;</code></td>
+                        <td style="padding: 10px;">Menentukan URL tujuan link.</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px;"><code>src</code></td>
+                        <td style="padding: 10px;"><code>&lt;img&gt;</code>, <code>&lt;video&gt;</code></td>
+                        <td style="padding: 10px;">Menentukan sumber (path) file.</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px;"><code>alt</code></td>
+                        <td style="padding: 10px;"><code>&lt;img&gt;</code></td>
+                        <td style="padding: 10px;">Teks pengganti jika gambar rusak.</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px;"><code>style</code></td>
+                        <td style="padding: 10px;">Semua Elemen</td>
+                        <td style="padding: 10px;">Menambahkan desain inline (warna, font).</td>
+                    </tr>
+                </table>
+
+                <div class="case-study">
+                    <h3>Tips Visual: Atribut "Title"</h3>
+                    <p>Atribut <code>title</code> memberikan informasi tambahan berupa "tooltip" kecil saat Anda mengarahkan kursor (hover) ke arah elemen.</p>
+                    <div class="demo-box">
+                        <p title="Halo, saya adalah tooltip!">Dekatkan kursor Anda ke sini untuk melihat fungsi atribut title.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="global-attr" class="materi-content">
+            <div class="card">
+                <h1>Global Attributes: ID & Class</h1>
+                <p>Ada atribut yang bisa dipasang di <b>semua</b> elemen HTML. Yang paling penting untuk dipelajari sebelum masuk ke CSS dan JS adalah <code>id</code> dan <code>class</code>.</p>
+
+                <div class="term-box">
+                    <b>ID vs CLASS:</b>
+                    <ul>
+                        <li><b>ID:</b> Harus unik (hanya satu di seluruh halaman). Ibarat Nomor Induk Kependudukan (NIK).</li>
+                        <li><b>Class:</b> Bisa dipakai berkali-kali pada banyak elemen. Ibarat Seragam Sekolah.</li>
+                    </ul>
+                </div>
+
+                <h3>Contoh Kode:</h3>
+                <pre><code>&lt;!-- Menggunakan Class (Bisa banyak elemen) --&gt;
+&lt;p class="teks-biru"&gt;Paragraf 1&lt;/p&gt;
+&lt;p class="teks-biru"&gt;Paragraf 2&lt;/p&gt;
+
+&lt;!-- Menggunakan ID (Hanya satu di halaman) --&gt;
+&lt;h1 id="judul-utama"&gt;Selamat Datang&lt;/h1&gt;</code></pre>
+
+                <div class="case-study">
+                    <h3>Kapan Menggunakan ID atau Class?</h3>
+                    <p>Gunakan <b>Class</b> jika Anda ingin memberikan gaya (styling) yang sama pada banyak elemen (misal: semua tombol berwarna merah). Gunakan <b>ID</b> jika Anda ingin menargetkan satu elemen spesifik untuk fungsi JavaScript tertentu.</p>
+                </div>
+            </div>
+        </div>
+
+        <a href="../../../index.html" class="back-link">← Kembali ke Daftar Materi</a>
+    </div>
+
+    <script>
+        function changePage() {
+            const selectedPage = document.getElementById('pageSelect').value;
+            const pages = document.querySelectorAll('.materi-content');
+            
+            pages.forEach(p => p.classList.remove('active'));
+            document.getElementById(selectedPage).classList.add('active');
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

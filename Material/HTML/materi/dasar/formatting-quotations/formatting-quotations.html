@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Mastery: Formatting & Quotations</title>
+    <link rel="stylesheet" href="formatting-quotations.css">
+</head>
+<body>
+
+    <nav class="header-nav">
+        <strong>HTML Foundation Series</strong>
+        <div class="dropdown-container">
+            <select id="pageSelect" onchange="changePage()">
+                <option value="formatting-page">1. Text Formatting</option>
+                <option value="quotations-page">2. Quotations (Kutipan)</option>
+                <option value="abbreviations-page">3. Abbreviations & Citations</option>
+            </select>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <div id="formatting-page" class="materi-content active">
+            <div class="card">
+                <h1>Text Formatting</h1>
+                <p>HTML menyediakan tag khusus untuk mengubah tampilan teks tanpa perlu bantuan CSS di tahap awal. Tag ini memberikan makna visual sekaligus makna semantik.</p>
+                
+                
+
+                <div class="term-box">
+                    <b>Tag Populer:</b>
+                    <ul>
+                        <li><code>&lt;b&gt;</code> & <code>&lt;strong&gt;</code>: Membuat teks **Tebal**.</li>
+                        <li><code>&lt;i&gt;</code> & <code>&lt;em&gt;</code>: Membuat teks *Miring*.</li>
+                        <li><code>&lt;mark&gt;</code>: Memberikan efek stabilo (Highlight).</li>
+                        <li><code>&lt;small&gt;</code>: Mengecilkan ukuran teks.</li>
+                        <li><code>&lt;sub&gt;</code> & <code>&lt;sup&gt;</code>: Membuat teks subscript dan superscript (seperti rumus kimia atau kuadrat).</li>
+                    </ul>
+                </div>
+
+                <h3>Demo Visual:</h3>
+                <div class="demo-box">
+                    <p>Ini adalah teks <b>Tebal (b)</b> dan ini <strong>Penting (strong)</strong>.</p>
+                    <p>Ini adalah teks <i>Miring (i)</i> dan ini <em>Ditekankan (em)</em>.</p>
+                    <p>Rumus air adalah H<sub>2</sub>O, dan luas persegi adalah m<sup>2</sup>.</p>
+                    <p>Jangan lupa <mark>bagian ini sangat penting</mark> untuk dibaca.</p>
+                </div>
+
+                <div class="case-study">
+                    <h3>Kasus Nyata: Perbedaan b vs strong?</h3>
+                    <p>Meskipun keduanya terlihat sama-sama tebal, <code>&lt;strong&gt;</code> memberitahu browser dan Google bahwa kata tersebut memiliki kepentingan tinggi, sedangkan <code>&lt;b&gt;</code> hanya tebal untuk alasan estetika saja. Gunakan <code>strong</code> untuk kata kunci penting!</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="quotations-page" class="materi-content">
+            <div class="card">
+                <h1>HTML Quotations</h1>
+                <p>Bagaimana cara menampilkan kutipan dari orang lain atau sumber lain dengan benar?</p>
+
+                <div class="term-box">
+                    <b>Dua Jenis Utama:</b>
+                    <ul>
+                        <li><code>&lt;blockquote&gt;</code>: Untuk kutipan panjang (blok teks terpisah).</li>
+                        <li><code>&lt;q&gt;</code>: Untuk kutipan pendek di dalam kalimat (otomatis menambah tanda petik).</li>
+                    </ul>
+                </div>
+
+                <h3>Contoh Kode:</h3>
+                <pre><code>&lt;blockquote cite="https://w3schools.com"&gt;
+    HTML adalah bahasa masa depan web.
+&lt;/blockquote&gt;
+
+&lt;p&gt;Bill Gates pernah berkata: &lt;q&gt;Content is King.&lt;/q&gt;&lt;/p&gt;</code></pre>
+
+                <h3>Demo Visual:</h3>
+                <div class="demo-box">
+                    <blockquote>
+                        "Kesuksesan bukanlah kunci dari kebahagiaan. Kebahagiaanlah kunci dari kesuksesan."
+                    </blockquote>
+                    <p>Dia berkata, <q>Tetaplah belajar setiap hari.</q></p>
+                </div>
+
+                <div class="case-study">
+                    <h3>Kasus Nyata: Atribut "cite"</h3>
+                    <p>Gunakan atribut <code>cite</code> di dalam tag <code>blockquote</code> untuk menyertakan URL sumber kutipan tersebut. Ini tidak terlihat oleh pengunjung, tapi sangat membantu mesin pencari memverifikasi sumber data Anda.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="abbreviations-page" class="materi-content">
+            <div class="card">
+                <h1>Abbreviations & Citations</h1>
+                <p>Tag ini membantu memberikan konteks pada singkatan atau judul karya seni.</p>
+
+                <div class="term-box">
+                    <b>Tag Tambahan:</b>
+                    <ul>
+                        <li><code>&lt;abbr&gt;</code>: Abbreviation (Singkatan). Menampilkan teks lengkap saat di-hover.</li>
+                        <li><code>&lt;cite&gt;</code>: Mendefinisikan judul karya (buku, film, lagu). Biasanya tampil miring.</li>
+                        <li><code>&lt;address&gt;</code>: Untuk informasi kontak penulis/pemilik dokumen.</li>
+                    </ul>
+                </div>
+
+                <h3>Contoh Visual:</h3>
+                <div class="demo-box">
+                    <p>Saya belajar <abbr title="HyperText Markup Language">HTML</abbr> hari ini.</p>
+                    <p><cite>The Starry Night</cite> adalah lukisan karya Vincent van Gogh.</p>
+                    <address>
+                        Ditulis oleh: Budi Santoso<br>
+                        Jakarta, Indonesia
+                    </address>
+                </div>
+
+                <div class="case-study">
+                    <h3>Kapan Pakai abbr?</h3>
+                    <p>Gunakan <code>&lt;abbr&gt;</code> saat pertama kali menyebutkan istilah teknis yang sulit agar pembaca awam bisa mengarahkan kursor dan melihat kepanjangannya tanpa mengganggu alur bacaan.</p>
+                </div>
+            </div>
+        </div>
+
+        <a href="../../../index.html" class="back-link">← Kembali ke Daftar Materi</a>
+    </div>
+
+    <script src="formatting-quotations.js"></script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Mastery: Comments</title>
+    <link rel="stylesheet" href="comments.css">
+</head>
+<body>
+
+    <nav class="header-nav">
+        <strong>HTML Foundation Series</strong>
+        <div class="dropdown-container">
+            <select id="pageSelect" onchange="changePage()">
+                <option value="intro-page">1. Apa itu Comments?</option>
+                <option value="usage-page">2. Kasus Penggunaan</option>
+                <option value="debugging-page">3. Debugging dengan Komentar</option>
+            </select>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <div id="intro-page" class="materi-content active">
+            <div class="card">
+                <h1>HTML Comments</h1>
+                <p>Komentar HTML adalah teks di dalam kode yang sengaja disembunyikan dari browser. Teks ini tidak akan terlihat oleh pengunjung website Anda.</p>
+                
+                
+
+                <div class="term-box">
+                    <b>Sintaks Penulisan:</b>
+                    <p>Dimulai dengan <code>&lt;!--</code> dan diakhiri dengan <code>--&gt;</code>.</p>
+                    <ul>
+                        <li>Ada tanda seru (<code>!</code>) di awal, tapi tidak ada di akhir.</li>
+                        <li>Isi di dalamnya bebas dan tidak diproses sebagai kode.</li>
+                    </ul>
+                </div>
+
+                <h3>Contoh Kode:</h3>
+                <pre><code><span class="comment-code">&lt;!-- Ini adalah komentar yang tidak akan muncul di layar --&gt;</span>
+&lt;p&gt;Paragraf ini akan muncul di layar.&lt;/p&gt;</code></pre>
+
+                <div class="case-study">
+                    <h3>Peringatan Keamanan!</h3>
+                    <p>Meskipun tidak tampil di layar browser, siapapun bisa melihat komentar Anda melalui fitur <b>"View Page Source"</b> (Klik kanan di browser). Jangan pernah menaruh informasi rahasia seperti password atau data pribadi di dalam komentar HTML!</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="usage-page" class="materi-content">
+            <div class="card">
+                <h1>Mengapa Kita Butuh Komentar?</h1>
+                <p>Seiring bertambahnya baris kode Anda, membaca file HTML akan menjadi semakin sulit. Komentar membantu memberikan navigasi.</p>
+
+                <div class="term-box">
+                    <b>Kegunaan Utama:</b>
+                    <ul>
+                        <li><b>Dokumentasi:</b> Menjelaskan fungsi bagian kode tertentu.</li>
+                        <li><b>Organisasi:</b> Menandai awal dan akhir sebuah bagian (misal: header, footer, sidebar).</li>
+                        <li><b>Catatan Tim:</b> Memberitahu rekan kerja tentang perubahan yang dilakukan.</li>
+                    </ul>
+                </div>
+
+                <h3>Contoh Organisasi Kode:</h3>
+                <pre><code><span class="comment-code">&lt;!-- BAGIAN NAVIGASI START --&gt;</span>
+&lt;nav&gt;
+    &lt;ul&gt;
+        &lt;li&gt;Home&lt;/li&gt;
+        &lt;li&gt;About&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;
+<span class="comment-code">&lt;!-- BAGIAN NAVIGASI END --&gt;</span></code></pre>
+
+                <div class="case-study">
+                    <h3>Tips Pro: Shortcut Keyboard</h3>
+                    <p>Di hampir semua Code Editor (seperti VS Code), Anda bisa membuat komentar secara instan dengan menyorot teks lalu menekan <b>Ctrl + /</b> (Windows) atau <b>Cmd + /</b> (Mac).</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="debugging-page" class="materi-content">
+            <div class="card">
+                <h1>Debugging & Testing</h1>
+                <p>Komentar sering digunakan untuk menyembunyikan sementara bagian kode yang bermasalah tanpa harus menghapusnya.</p>
+
+                <div class="term-box">
+                    <b>Istilah Baru: Debugging</b>
+                    <p>Proses mencari dan memperbaiki kesalahan (bug) di dalam kode program.</p>
+                </div>
+
+                <h3>Cara Menyembunyikan Kode:</h3>
+                <p>Jika Anda punya gambar yang rusak atau teks yang belum pasti, "bungkus" dengan komentar:</p>
+                <pre><code>&lt;h1&gt;Judul Berita&lt;/h1&gt;
+<span class="comment-code">&lt;!-- 
+&lt;img src="foto-rusak.jpg" alt="Foto Berita"&gt; 
+&lt;p&gt;Teks berita yang belum selesai ditulis...&lt;/p&gt;
+--&gt;</span></code></pre>
+
+                <div class="case-study">
+                    <h3>Kasus Nyata: Eksperimen Desain</h3>
+                    <p>Bayangkan Anda punya dua pilihan desain tombol. Daripada menghapus salah satu, Anda bisa memberikan komentar pada tombol pertama untuk melihat hasil tombol kedua. Jika hasilnya buruk, Anda tinggal memindahkan komentarnya kembali.</p>
+                </div>
+            </div>
+        </div>
+
+        <a href="../../../index.html" class="back-link">← Kembali ke Daftar Materi</a>
+    </div>
+
+    <script src="comments.js"></script>
+</body>
+</html>
