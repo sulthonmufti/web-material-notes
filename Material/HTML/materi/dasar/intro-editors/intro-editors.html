@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Mastery: Intro & Editors</title>
+    <link rel="stylesheet" href="intro-editors.css">
+</head>
+<body>
+
+    <nav class="header-nav">
+        <strong>HTML Foundation Series</strong>
+        <div class="dropdown-container">
+            <select id="pageSelect" onchange="changePage()">
+                <option value="intro-page">1. Apa itu HTML?</option>
+                <option value="structure-page">2. Struktur Dasar</option>
+                <option value="editors-page">3. HTML Editors</option>
+            </select>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <div id="intro-page" class="materi-content active">
+            <div class="card">
+                <h1>Introduction to HTML</h1>
+                <p>HTML adalah bahasa standar yang digunakan untuk membuat kerangka halaman web. Tanpa HTML, browser tidak akan tahu cara menampilkan teks, gambar, atau link.</p>
+                
+                <div class="term-box">
+                    <b>Istilah Penting:</b>
+                    <ul>
+                        <li><b>Hypertext:</b> Teks yang mengandung link ke teks lain.</li>
+                        <li><b>Markup:</b> Memberikan instruksi (tanda) pada teks biasa agar memiliki format tertentu.</li>
+                        <li><b>Tag:</b> Instruksi kode di dalam kurung siku, misal <code>&lt;h1&gt;</code>.</li>
+                    </ul>
+                </div>
+
+                <h3>Analogi Sederhana:</h3>
+                <p>Bayangkan membangun rumah. <b>HTML</b> adalah susunan batu bata dan semen (rangka), <b>CSS</b> adalah cat dan dekorasinya, sedangkan <b>JS</b> adalah sistem kelistrikannya.</p>
+
+                <div class="case-study">
+                    <h3>Kapan Ini Digunakan?</h3>
+                    <p>Digunakan setiap kali Anda ingin membuat struktur website. Apapun framework-nya (React, Vue, etc), output akhirnya selalu berupa HTML agar bisa dibaca browser.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="structure-page" class="materi-content">
+            <div class="card">
+                <h1>Struktur Dokumen HTML</h1>
+                <p>Setiap file HTML yang valid harus memiliki "tulang punggung" standar agar browser bisa merender halaman dengan benar.</p>
+
+                <h3>Kode Template Wajib:</h3>
+                <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Judul Halaman&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Halo Dunia!&lt;/h1&gt;
+    &lt;p&gt;Ini konten website Anda.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+                <div class="term-box">
+                    <b>Penjelasan Runtut:</b>
+                    <ol>
+                        <li><code>&lt;!DOCTYPE html&gt;</code>: Memberitahu browser bahwa ini adalah HTML5 terbaru.</li>
+                        <li><code>&lt;html&gt;</code>: Elemen akar yang membungkus seluruh konten.</li>
+                        <li><code>&lt;head&gt;</code>: Tempat menyimpan data teknis (judul tab, CSS, meta).</li>
+                        <li><code>&lt;body&gt;</code>: Tempat semua konten visual yang dilihat pengunjung.</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <div id="editors-page" class="materi-content">
+            <div class="card">
+                <h1>HTML Editors</h1>
+                <p>Meskipun Anda bisa menulis kode di Notepad, pengembang profesional menggunakan <b>IDE (Integrated Development Environment)</b> untuk bekerja lebih cepat.</p>
+
+                
+
+                <h3>Rekomendasi Editor:</h3>
+                <ul class="step-list">
+                    <li><b>Visual Studio Code (VS Code):</b> Standar industri saat ini. Gratis dan sangat cerdas.</li>
+                    <li><b>Sublime Text:</b> Ringan, simpel, dan sangat cepat untuk komputer spek rendah.</li>
+                    <li><b>Notepad++:</b> Pilihan klasik yang jauh lebih baik daripada Notepad bawaan Windows.</li>
+                </ul>
+
+                <div class="case-study">
+                    <h3>Cara Praktik Langsung:</h3>
+                    <ol class="step-list">
+                        <li>Buka Editor Anda.</li>
+                        <li>Buat file baru, simpan dengan nama <code>index.html</code>.</li>
+                        <li>Ketik <code>!</code> lalu tekan <b>Tab</b> (di VS Code) untuk memunculkan kode otomatis.</li>
+                        <li>Buka file tersebut di browser (Chrome/Edge).</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <a href="/Material/HTML/index.html" class="back-link">← Kembali ke Daftar Materi</a>
+    </div>
+    <script src="intro-editor.js"></script>
+
+</body>
+</html>

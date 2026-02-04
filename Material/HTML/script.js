@@ -1,4 +1,4 @@
-const materiHTMLData = {
+const materiData = {
     // Kategori: DASAR (Wajib untuk pemula)
     dasar: [
         { nama: "HTML Introduction & Editors", file: "intro-editors" },
@@ -40,6 +40,7 @@ const materiHTMLData = {
         { nama: "Web Workers & SSE", file: "workers-sse" }
     ]
 };
+
 
 const kategoriSelect = document.getElementById('kategori');
 const materiSelect = document.getElementById('materi');
@@ -83,7 +84,7 @@ function goToMateri() {
     if (kategori && materiFile) {
         // Logika pembuatan URL: materi/kategori/namafile.html
         // Contoh: materi/wajib/box-model.html
-        const url = `materi/${kategori}/${materiFile}.html`;
+        const url = `materi/${kategori}/${materiFile}/${materiFile}.html`;
         
         // Pindah ke halaman materi yang dipilih
         window.location.href = url;
