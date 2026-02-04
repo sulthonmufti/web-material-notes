@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>Pilih Materi Belajar Web Development</h1>
+        <h2>Pilih Materi Belajar Web Development</h2>
         <div class="input-group">
             <label for="kategori">Kategori materi:</label>
             <select id="kategori" onchange="updateMateri()">
@@ -17,7 +17,10 @@
                 <option value="javascript">JavaScript</option>
             </select>
         </div>
+        <button id="belajarButton" onclick="goToMateri()" disabled>Belajar!</button>
     </div>
+
+    <script src="JS/script.js"></script>
     
 </body>
 </html>

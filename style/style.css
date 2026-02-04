@@ -1,0 +1,56 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+  margin: 0;
+}
+body .container {
+  background-color: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4p 8px rgba(0, 0, 0, 0.1);
+  width: 450px;
+  text-align: center;
+}
+body .container h2 {
+  color: #333;
+  margin-bottom: 30px;
+  font-size: 1.5rem;
+}
+body .container .input-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+body .container label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #555;
+}
+body .container select, body .container button {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #cccccc;
+  box-sizing: border-box;
+  font-size: 1em;
+}
+body .container button {
+  background-color: #0056b3;
+  color: white;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s;
+}
+body .container button:hover:not(:disabled) {
+  background-color: white;
+}
+body .container button:disabled {
+  background-color: #b3d7ff;
+  cursor: not-allowed;
+}
+body .container select:disabled {
+  background-color: #eee;
+}/*# sourceMappingURL=style.css.map */
