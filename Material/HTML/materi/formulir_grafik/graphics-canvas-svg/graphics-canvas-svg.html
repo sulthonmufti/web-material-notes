@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Mastery: Canvas & SVG</title>
+    <link rel="stylesheet" href="graphics-canvas-svg.css">
+</head>
+<body>
+
+    <nav class="header-nav">
+        <strong>HTML Graphics Series</strong>
+        <div class="dropdown-container">
+            <select id="pageSelect" onchange="changePage()">
+                <option value="intro-graphics">1. Perbedaan Canvas vs SVG</option>
+                <option value="svg-page">2. SVG (Scalable Vector Graphics)</option>
+                <option value="canvas-page">3. HTML5 Canvas</option>
+            </select>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <div id="intro-graphics" class="materi-content active">
+            <div class="card">
+                <h1>Canvas vs SVG</h1>
+                <p>Keduanya digunakan untuk membuat grafis di web, tetapi cara kerja dan tujuannya sangat berbeda.</p>
+                
+                
+
+                <div class="term-box">
+                    <table style="width:100%; border-collapse: collapse;">
+                        <tr>
+                            <th style="text-align:left; padding: 8px;">Fitur</th>
+                            <th style="text-align:left; padding: 8px;">SVG</th>
+                            <th style="text-align:left; padding: 8px;">Canvas</th>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px;">Format</td>
+                            <td style="padding: 8px;">Vektor (XML)</td>
+                            <td style="padding: 8px;">Raster (Pixel)</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px;">Skalabilitas</td>
+                            <td style="padding: 8px;">Tidak pecah saat dizoom</td>
+                            <td style="padding: 8px;">Pecah jika diperbesar</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px;">Kontrol</td>
+                            <td style="padding: 8px;">Via CSS & DOM</td>
+                            <td style="padding: 8px;">Via JavaScript</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="case-study">
+                    <h3>Kapan Pakai yang Mana?</h3>
+                    <p>Gunakan <b>SVG</b> untuk logo, ikon, dan diagram sederhana. Gunakan <b>Canvas</b> untuk game 2D/3D, pemrosesan video, atau animasi kompleks dengan ribuan objek.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="svg-page" class="materi-content">
+            <div class="card">
+                <h1>Scalable Vector Graphics (SVG)</h1>
+                <p>SVG mendefinisikan grafis dalam format XML. Artinya, setiap elemen (lingkaran, kotak, garis) adalah tag HTML yang bisa Anda manipulasi.</p>
+
+                <div class="term-box">
+                    <b>Tag SVG Dasar:</b>
+                    <ul>
+                        <li><code>&lt;svg&gt;</code>: Wadah utama.</li>
+                        <li><code>&lt;circle&gt;</code>: Membuat lingkaran (cx, cy, r).</li>
+                        <li><code>&lt;rect&gt;</code>: Membuat kotak (width, height).</li>
+                        <li><code>&lt;path&gt;</code>: Membuat bentuk bebas yang kompleks.</li>
+                    </ul>
+                </div>
+
+                <h3>Contoh Kode SVG:</h3>
+                <pre><code>&lt;svg width="100" height="100"&gt;
+  &lt;circle cx="50" cy="50" r="40" stroke="purple" stroke-width="4" fill="yellow" /&gt;
+&lt;/svg&gt;</code></pre>
+
+                <div class="demo-area">
+                    <svg width="100" height="100">
+                        <circle cx="50" cy="50" r="40" stroke="#8e44ad" stroke-width="4" fill="#f1c40f" />
+                    </svg>
+                    <p><small>Lingkaran di atas digambar langsung dengan kode HTML!</small></p>
+                </div>
+            </div>
+        </div>
+
+        <div id="canvas-page" class="materi-content">
+            <div class="card">
+                <h1>HTML5 Canvas</h1>
+                <p>Canvas hanyalah sebuah "kanvas kosong". Anda tidak bisa menggambar apa pun di dalamnya tanpa bantuan <b>JavaScript</b>.</p>
+
+                <div class="term-box">
+                    <b>Istilah Baru: Rendering Context</b>
+                    <p>Objek dalam JavaScript yang menyediakan metode untuk menggambar. Versi yang paling umum adalah <code>2d</code>.</p>
+                </div>
+
+                <h3>Langkah Menggunakan Canvas:</h3>
+                <ol>
+                    <li>Buat elemen <code>&lt;canvas&gt;</code> di HTML.</li>
+                    <li>Ambil elemen tersebut di JavaScript.</li>
+                    <li>Gambar menggunakan fungsi seperti <code>fillRect()</code> atau <code>arc()</code>.</li>
+                </ol>
+
+                <pre><code>&lt;canvas id="myCanvas" width="200" height="100"&gt;&lt;/canvas&gt;
+
+&lt;script&gt;
+  var c = document.getElementById("myCanvas");
+  var ctx = c.getContext("2d");
+  ctx.fillStyle = "#9b59b6";
+  ctx.fillRect(20, 20, 150, 60);
+&lt;/script&gt;</code></pre>
+
+                <div class="demo-area">
+                    <canvas id="myCanvas" width="200" height="100"></canvas>
+                </div>
+
+                <div class="case-study">
+                    <h3>Kasus Nyata: Dashboard & Game</h3>
+                    <p>Jika Anda melihat grafik saham yang bergerak naik turun secara real-time atau game seperti <i>Flappy Bird</i> di web, itu hampir pasti dibuat menggunakan elemen <code>&lt;canvas&gt;</code>.</p>
+                </div>
+            </div>
+        </div>
+
+        <a href="../../../index.html" class="back-link">← Kembali ke Daftar Materi</a>
+    </div>
+
+    <script src="graphics-canvas-svg.js"></script>
+</body>
+</html>

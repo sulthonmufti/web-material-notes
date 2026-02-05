@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Mastery: Class & ID</title>
+    <link rel="stylesheet" href="class-id.css">
+</head>
+<body>
+
+    <nav class="header-nav">
+        <strong>HTML Intermediate Series</strong>
+        <div class="dropdown-container">
+            <select id="pageSelect" onchange="changePage()">
+                <option value="class-page">1. Atribut Class (Grup)</option>
+                <option value="id-page">2. Atribut ID (Unik)</option>
+                <option value="comparison-page">3. Perbedaan & Aturan</option>
+            </select>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <div id="class-page" class="materi-content active">
+            <div class="card">
+                <h1>Atribut Class</h1>
+                <p>Atribut <code>class</code> digunakan untuk menentukan satu atau lebih nama kelas untuk elemen HTML. Nama kelas ini bisa digunakan oleh banyak elemen sekaligus.</p>
+                
+                
+
+                <div class="term-box">
+                    <b>Ciri-ciri Class:</b>
+                    <ul>
+                        <li>Dapat digunakan pada **banyak elemen** di satu halaman.</li>
+                        <li>Satu elemen boleh memiliki **lebih dari satu class** (dipisahkan dengan spasi).</li>
+                        <li>Dalam CSS, class dipanggil menggunakan tanda titik (<code>.nama-class</code>).</li>
+                    </ul>
+                </div>
+
+                <h3>Contoh Kode:</h3>
+                <pre><code>&lt;!-- Dua elemen dengan class yang sama --&gt;
+&lt;p class="teks-biru"&gt;Paragraf pertama.&lt;/p&gt;
+&lt;p class="teks-biru"&gt;Paragraf kedua.&lt;/p&gt;
+
+&lt;!-- Satu elemen dengan dua class --&gt;
+&lt;div class="kotak bayangan"&gt;Isi konten.&lt;/div&gt;</code></pre>
+
+                <div class="case-study">
+                    <h3>Kasus Nyata: Desain Tombol</h3>
+                    <p>Jika Anda memiliki 10 tombol "Beli Sekarang" di sebuah website e-commerce, Anda cukup membuat satu class <code>.btn-beli</code> di CSS, lalu menempelkan <code>class="btn-beli"</code> ke semua tombol tersebut agar tampilannya seragam.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="id-page" class="materi-content">
+            <div class="card">
+                <h1>Atribut ID</h1>
+                <p>Atribut <code>id</code> digunakan untuk menentukan identitas unik bagi sebuah elemen HTML. Nilai ID tidak boleh ada yang sama dalam satu halaman web.</p>
+
+                
+
+                <div class="term-box">
+                    <b>Ciri-ciri ID:</b>
+                    <ul>
+                        <li>Harus **unik** (hanya satu elemen yang boleh pakai nama ID tersebut).</li>
+                        <li>Satu elemen hanya boleh memiliki **satu ID**.</li>
+                        <li>Dalam CSS, ID dipanggil menggunakan tanda pagar (<code>#nama-id</code>).</li>
+                    </ul>
+                </div>
+
+                <h3>Contoh Kode:</h3>
+                <pre><code>&lt;h1 id="judul-utama"&gt;Selamat Datang di Web Saya&lt;/h1&gt;</code></pre>
+
+                <div class="case-study">
+                    <h3>Kasus Nyata: Navigasi Anchor</h3>
+                    <p>ID sangat berguna untuk membuat link yang menuju ke bagian tertentu di halaman yang sama. Contoh: <code>&lt;a href="#kontak"&gt;Ke Kontak&lt;/a&gt;</code> akan otomatis menggulir halaman ke elemen yang memiliki <code>id="kontak"</code>.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="comparison-page" class="materi-content">
+            <div class="card">
+                <h1>Class vs ID: Mana yang Digunakan?</h1>
+                <p>Memilih antara Class dan ID sering membingungkan pemula. Gunakan tabel berikut sebagai panduan praktis:</p>
+
+                <table border="1" style="width: 100%; border-collapse: collapse; margin: 20px 0; border-color: #ddd;">
+                    <tr style="background: #eef7fd;">
+                        <th style="padding: 10px;">Fitur</th>
+                        <th style="padding: 10px;">Class ( . )</th>
+                        <th style="padding: 10px;">ID ( # )</th>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px;">Jumlah per halaman</td>
+                        <td style="padding: 10px;">Bisa banyak</td>
+                        <td style="padding: 10px;">Hanya satu (Harus unik)</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px;">Jumlah per elemen</td>
+                        <td style="padding: 10px;">Bisa lebih dari satu</td>
+                        <td style="padding: 10px;">Hanya satu</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px;">Kegunaan Utama</td>
+                        <td style="padding: 10px;">Styling (CSS)</td>
+                        <td style="padding: 10px;">Fungsi (JS) & Anchor</td>
+                    </tr>
+                </table>
+
+                <div class="term-box">
+                    <b>Aturan Penamaan:</b>
+                    <ul>
+                        <li>Jangan diawali dengan angka.</li>
+                        <li>Jangan gunakan spasi (gunakan tanda hubung <code>-</code> atau <code>_</code>).</li>
+                        <li>Bersifat *Case-Sensitive* (<code>Menu</code> dan <code>menu</code> adalah hal yang berbeda).</li>
+                    </ul>
+                </div>
+
+                <div class="case-study">
+                    <h3>Tips Pro: Prioritas</h3>
+                    <p>Jika sebuah elemen memiliki Class dan ID yang mengatur warna berbeda, maka **ID akan selalu menang** karena dianggap lebih spesifik oleh browser.</p>
+                </div>
+            </div>
+        </div>
+
+        <a href="../../../index.html" class="back-link">← Kembali ke Daftar Materi</a>
+    </div>
+
+    <script src="class-id.js"></script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Mastery: Lists</title>
+    <link rel="stylesheet" href="lists.css">
+</head>
+<body>
+
+    <nav class="header-nav">
+        <strong>HTML Intermediate Series</strong>
+        <div class="dropdown-container">
+            <select id="pageSelect" onchange="changePage()">
+                <option value="unordered-list">1. Unordered Lists (Poin)</option>
+                <option value="ordered-list">2. Ordered Lists (Angka)</option>
+                <option value="description-list">3. Description Lists (Kamus)</option>
+            </select>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <div id="unordered-list" class="materi-content active">
+            <div class="card">
+                <h1>Unordered Lists (ul)</h1>
+                <p>Digunakan untuk daftar item di mana urutannya tidak menjadi masalah (acak). Secara default, item akan ditandai dengan simbol peluru (*bullet points*).</p>
+                
+                
+
+                <div class="term-box">
+                    <b>Tag yang Digunakan:</b>
+                    <ul>
+                        <li><code>&lt;ul&gt;</code>: **Unordered List**. Wadah pembungkus seluruh daftar.</li>
+                        <li><code>&lt;li&gt;</code>: **List Item**. Elemen untuk tiap poin di dalam daftar.</li>
+                    </ul>
+                </div>
+
+                <h3>Contoh Kode:</h3>
+                <pre><code>&lt;ul&gt;
+  &lt;li&gt;Kopi&lt;/li&gt;
+  &lt;li&gt;Teh&lt;/li&gt;
+  &lt;li&gt;Susu&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+
+                <div class="case-study">
+                    <h3>Kasus Nyata: Menu Navigasi Website</h3>
+                    <p>Pernahkah Anda melihat menu "Home, About, Contact" di bagian atas website? Di balik layar, itu hampir selalu dibuat menggunakan tag <code>&lt;ul&gt;</code> yang kemudian dihias dengan CSS agar pelurunya hilang dan posisinya berjajar ke samping.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="ordered-list" class="materi-content">
+            <div class="card">
+                <h1>Ordered Lists (ol)</h1>
+                <p>Digunakan untuk daftar yang memiliki urutan tertentu, seperti langkah-langkah atau peringkat. Item akan ditandai dengan angka atau huruf.</p>
+
+                <div class="term-box">
+                    <b>Atribut Penting:</b>
+                    <ul>
+                        <li><code>type</code>: Menentukan gaya urutan (1, A, a, I, i).</li>
+                        <li><code>start</code>: Menentukan angka awal dimulainya daftar.</li>
+                    </ul>
+                </div>
+
+                <h3>Contoh Kode Urutan Huruf:</h3>
+                <pre><code>&lt;ol type="A"&gt;
+  &lt;li&gt;Langkah Pertama&lt;/li&gt;
+  &lt;li&gt;Langkah Kedua&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+
+                <div class="demo-box">
+                    <h3>Visualisasi (Default):</h3>
+                    <ol>
+                        <li>Siapkan bahan.</li>
+                        <li>Masak hingga matang.</li>
+                        <li>Sajikan hangat.</li>
+                    </ol>
+                </div>
+
+                <div class="case-study">
+                    <h3>Kasus Nyata: Resep Masakan & Tutorial</h3>
+                    <p>Setiap kali Anda membuat panduan yang harus diikuti secara berurutan, gunakan <code>&lt;ol&gt;</code>. Ini membantu pembaca (dan mesin pencari) memahami alur proses dari awal hingga akhir.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="description-list" class="materi-content">
+            <div class="card">
+                <h1>Description Lists (dl)</h1>
+                <p>Ini adalah jenis daftar yang sedikit berbeda. Gunanya untuk daftar istilah beserta penjelasannya, mirip seperti format kamus atau daftar glosarium.</p>
+
+                
+
+                <div class="term-box">
+                    <b>Tiga Tag Kerja Sama:</b>
+                    <ul>
+                        <li><code>&lt;dl&gt;</code>: **Description List**. Wadah utamanya.</li>
+                        <li><code>&lt;dt&gt;</code>: **Description Term**. Istilah yang ingin dijelaskan.</li>
+                        <li><code>&lt;dd&gt;</code>: **Description Details**. Penjelasan atau definisi dari istilah tersebut.</li>
+                    </ul>
+                </div>
+
+                <h3>Contoh Kode:</h3>
+                <pre><code>&lt;dl&gt;
+  &lt;dt&gt;HTML&lt;/dt&gt;
+  &lt;dd&gt;Bahasa standar untuk membuat halaman web.&lt;/dd&gt;
+  &lt;dt&gt;CSS&lt;/dt&gt;
+  &lt;dd&gt;Bahasa untuk mendesain tampilan web.&lt;/dd&gt;
+&lt;/dl&gt;</code></pre>
+
+                <div class="case-study">
+                    <h3>Kasus Nyata: Daftar Tanya Jawab (FAQ)</h3>
+                    <p>Tag ini sangat cocok untuk halaman FAQ (*Frequently Asked Questions*), di mana <code>&lt;dt&gt;</code> adalah pertanyaannya dan <code>&lt;dd&gt;</code> adalah jawabannya.</p>
+                </div>
+            </div>
+        </div>
+
+        <a href="../../../index.html" class="back-link">← Kembali ke Daftar Materi</a>
+    </div>
+
+    <script src="lists.js"></script>
+</body>
+</html>

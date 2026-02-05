@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Mastery: File Paths</title>
+    <link rel="stylesheet" href="file-paths.css">
+</head>
+<body>
+
+    <nav class="header-nav">
+        <strong>HTML Intermediate Series</strong>
+        <div class="dropdown-container">
+            <select id="pageSelect" onchange="changePage()">
+                <option value="absolute-paths">1. Absolute File Paths</option>
+                <option value="relative-paths">2. Relative File Paths</option>
+                <option value="folder-navigation">3. Navigasi Antar Folder (../)</option>
+            </select>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <div id="absolute-paths" class="materi-content active">
+            <div class="card">
+                <h1>Absolute File Paths</h1>
+                <p><b>Absolute file path</b> adalah alamat lengkap dari sebuah file di internet. Ini seperti menuliskan alamat rumah lengkap dengan negara dan kode posnya.</p>
+                
+                
+
+                <div class="term-box">
+                    <b>Ciri Khas:</b>
+                    <ul>
+                        <li>Selalu diawali dengan protokol (<code>http://</code> atau <code>https://</code>).</li>
+                        <li>Mengarah ke file yang berada di website lain atau server luar.</li>
+                        <li>Link ini akan tetap bekerja selama website sumber tidak menghapus filenya.</li>
+                    </ul>
+                </div>
+
+                <h3>Contoh Kode:</h3>
+                <pre><code>&lt;img src="https://www.w3schools.com/images/picture.jpg" alt="Gunung"&gt;</code></pre>
+
+                <div class="case-study">
+                    <h3>Kapan Digunakan?</h3>
+                    <p>Gunakan absolute path jika Anda ingin mengambil sumber daya (gambar, library CSS, atau video) yang tidak Anda miliki sendiri, atau jika ingin membuat link ke website orang lain.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="relative-paths" class="materi-content">
+            <div class="card">
+                <h1>Relative File Paths</h1>
+                <p><b>Relative file path</b> menjelaskan letak sebuah file relatif terhadap posisi file HTML yang sedang dibuka saat ini. Ini adalah cara yang paling direkomendasikan untuk mengelola file website Anda sendiri.</p>
+
+                
+
+                <div class="term-box">
+                    <b>Aturan Dasar:</b>
+                    <ul>
+                        <li><b>Satu Folder:</b> Jika file ada di folder yang sama, cukup tulis namanya. <br><code>src="gambar.jpg"</code></li>
+                        <li><b>Di dalam Folder:</b> Jika file ada di dalam sub-folder. <br><code>src="images/gambar.jpg"</code></li>
+                        <li><b>Akar Website:</b> Diawali dengan slash (/) untuk merujuk ke folder utama. <br><code>src="/images/gambar.jpg"</code></li>
+                    </ul>
+                </div>
+
+                <h3>Struktur Folder Contoh:</h3>
+                <div class="folder-structure">
+                    index.html<br>
+                    |__ images/<br>
+                    &nbsp;&nbsp;&nbsp;|__ logo.png
+                </div>
+
+                <h3>Kodenya di index.html:</h3>
+                <pre><code>&lt;img src="images/logo.png"&gt;</code></pre>
+
+                <div class="case-study">
+                    <h3>Mengapa Relative Path Lebih Baik?</h3>
+                    <p>Jika Anda memindahkan seluruh folder website Anda dari komputer ke server hosting, semua link akan tetap bekerja selama struktur folder di dalamnya tidak berubah. Jika pakai absolute path (C:/Users/Budi/...), link tersebut akan rusak di internet.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="folder-navigation" class="materi-content">
+            <div class="card">
+                <h1>Navigasi Naik Folder (../)</h1>
+                <p>Bagaimana jika file yang kita butuhkan berada "di luar" atau "di atas" folder tempat file HTML kita berada?</p>
+
+                <div class="term-box">
+                    <b>Simbol Ajaib: <code>../</code></b>
+                    <p>Gunakan dua titik dan slash (<code>../</code>) untuk <b>naik satu tingkat</b> ke folder di atasnya.</p>
+                </div>
+
+                <h3>Simulasi Struktur:</h3>
+                <div class="folder-structure">
+                    logo.png<br>
+                    |__ pages/<br>
+                    &nbsp;&nbsp;&nbsp;|__ contact.html
+                </div>
+
+                <p>Jika kita sedang mengedit <b>contact.html</b> dan ingin memanggil <b>logo.png</b> yang ada di luar folder 'pages':</p>
+                
+                <pre><code>&lt;!-- Naik satu tingkat baru cari logo.png --&gt;
+&lt;img src="../logo.png"&gt;</code></pre>
+
+                <div class="case-study">
+                    <h3>Kesalahan Umum</h3>
+                    <p>Lupa jumlah <code>../</code>. Jika Anda perlu naik dua tingkat folder, Anda harus menulisnya dua kali: <code>../../images/foto.jpg</code>. Pastikan Anda menghitung dengan teliti hirarki folder Anda!</p>
+                </div>
+            </div>
+        </div>
+
+        <a href="../../../index.html" class="back-link">← Kembali ke Daftar Materi</a>
+    </div>
+
+    <script src="file-paths.js"></script>
+</body>
+</html>

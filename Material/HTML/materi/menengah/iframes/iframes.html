@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Mastery: Iframes</title>
+    <link rel="stylesheet" href="iframes.css">
+</head>
+<body>
+
+    <nav class="header-nav">
+        <strong>HTML Intermediate Series</strong>
+        <div class="dropdown-container">
+            <select id="pageSelect" onchange="changePage()">
+                <option value="iframe-intro">1. Apa itu Iframe?</option>
+                <option value="iframe-attr">2. Atribut Penting Iframe</option>
+                <option value="iframe-cases">3. Implementasi Dunia Nyata</option>
+            </select>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <div id="iframe-intro" class="materi-content active">
+            <div class="card">
+                <h1>Mengenal HTML Iframe</h1>
+                <p>Iframe singkatan dari <b>Inline Frame</b>. Elemen ini digunakan untuk menyisipkan (<i>embed</i>) dokumen lain di dalam dokumen HTML yang sedang aktif.</p>
+                
+                
+
+                <div class="term-box">
+                    <b>Istilah Baru: Embed</b>
+                    <p>Proses memasukkan konten dari situs luar (seperti video YouTube atau peta Google Maps) ke dalam website Anda sendiri tanpa harus mengunggah file tersebut ke server Anda.</p>
+                </div>
+
+                <h3>Sintaks Dasar:</h3>
+                <pre><code>&lt;iframe src="url_tujuan" title="deskripsi"&gt;&lt;/iframe&gt;</code></pre>
+
+                <div class="case-study">
+                    <h3>Catatan Keamanan:</h3>
+                    <p>Beberapa situs besar seperti Google atau Facebook melarang situs mereka ditampilkan di dalam Iframe situs lain untuk mencegah serangan keamanan (<i>Clickjacking</i>). Jadi, jangan heran jika beberapa link tidak muncul saat dicoba di dalam iframe.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="iframe-attr" class="materi-content">
+            <div class="card">
+                <h1>Atribut Penting Iframe</h1>
+                <p>Agar tampilan iframe sesuai dengan desain web kita, ada beberapa atribut yang sering digunakan:</p>
+
+                <div class="term-box">
+                    <ul>
+                        <li><b>src:</b> Alamat (URL) halaman yang ingin ditampilkan.</li>
+                        <li><b>width & height:</b> Menentukan ukuran jendela iframe (bisa dalam pixel atau persen).</li>
+                        <li><b>title:</b> Penting untuk aksesibilitas (menjelaskan isi iframe bagi pembaca layar).</li>
+                        <li><b>loading="lazy":</b> Menginstruksikan browser untuk memuat iframe hanya saat pengguna men-scroll ke bagian tersebut (menghemat kuota & mempercepat web).</li>
+                    </ul>
+                </div>
+
+                <h3>Contoh Kode:</h3>
+                <pre><code>&lt;iframe src="halaman-internal.html" 
+        width="100%" 
+        height="300" 
+        title="Contoh Iframe"&gt;
+&lt;/iframe&gt;</code></pre>
+
+                <div class="case-study">
+                    <h3>Tips Visual: Menghapus Border</h3>
+                    <p>Secara default, browser memberikan border pada iframe. Gunakan CSS <code>style="border:none;"</code> di dalam tag iframe Anda untuk tampilan yang lebih menyatu dengan background.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="iframe-cases" class="materi-content">
+            <div class="card">
+                <h1>Kasus Dunia Nyata</h1>
+                <p>Iframe jarang digunakan untuk menampilkan seluruh halaman web lain, melainkan untuk fitur-fitur spesifik berikut:</p>
+
+                
+
+                <div class="term-box">
+                    <b>Penggunaan Terpopuler:</b>
+                    <ul>
+                        <li><b>YouTube:</b> Menampilkan pemutar video langsung di web Anda.</li>
+                        <li><b>Google Maps:</b> Menampilkan lokasi toko atau kantor.</li>
+                        <li><b>Iklan:</b> Sebagian besar banner iklan di internet dimuat melalui iframe.</li>
+                    </ul>
+                </div>
+
+                <h3>Demo Visual:</h3>
+                <div class="demo-box">
+                    <div style="background:#eee; padding:20px; border-radius:5px;">
+                        <p><i>[Area Iframe: Menampilkan konten dari sumber luar]</i></p>
+                    </div>
+                </div>
+
+                <div class="case-study">
+                    <h3>Keuntungan Menggunakan Iframe:</h3>
+                    <p>Konten di dalam iframe berjalan secara independen. Jika konten di dalam iframe lambat dimuat, hal itu tidak akan menghambat pemuatan konten utama di halaman web Anda.</p>
+                </div>
+            </div>
+        </div>
+
+        <a href="../../../index.html" class="back-link">← Kembali ke Daftar Materi</a>
+    </div>
+
+    <script src="iframes.js"></script>
+</body>
+</html>

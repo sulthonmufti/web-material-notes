@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Mastery: Form Elements & Inputs</title>
+    <link rel="stylesheet" href="form-elements-inputs.css">
+</head>
+<body>
+
+    <nav class="header-nav">
+        <strong>HTML Form & Graphics Series</strong>
+        <div class="dropdown-container">
+            <select id="pageSelect" onchange="changePage()">
+                <option value="input-types">1. Ragam Tipe Input</option>
+                <option value="selection-elements">2. Elemen Pilihan (Select & Checkbox)</option>
+                <option value="text-area">3. Multi-line & Buttons</option>
+            </select>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <div id="input-types" class="materi-content active">
+            <div class="card">
+                <h1>Ragam Tipe Input</h1>
+                <p>Tag <code>&lt;input&gt;</code> adalah elemen yang paling serbaguna. Fungsinya berubah drastis hanya dengan mengganti atribut <code>type</code>-nya.</p>
+                
+                
+
+                <div class="term-box">
+                    <b>Tipe yang Sering Dipakai:</b>
+                    <ul>
+                        <li><code>text</code>: Input satu baris teks standar.</li>
+                        <li><code>password</code>: Karakter akan disamarkan (biasanya jadi titik).</li>
+                        <li><code>email</code>: Memvalidasi apakah format yang dimasukkan adalah alamat email.</li>
+                        <li><code>number</code>: Hanya mengizinkan angka.</li>
+                        <li><code>date</code>: Memunculkan kalender pemilih tanggal.</li>
+                    </ul>
+                </div>
+
+                <h3>Contoh Kode:</h3>
+                <pre><code>&lt;input type="password" name="sandi" placeholder="Masukkan Password"&gt;
+&lt;input type="date" name="tgl_lahir"&gt;</code></pre>
+
+                <div class="demo-area">
+                    <div class="input-row">
+                        <label>Contoh Input Password:</label>
+                        <input type="password" value="rahasia123">
+                    </div>
+                    <div class="input-row">
+                        <label>Contoh Input Tanggal:</label>
+                        <input type="date">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="selection-elements" class="materi-content">
+            <div class="card">
+                <h1>Elemen Pilihan</h1>
+                <p>Terkadang kita ingin pengguna memilih dari opsi yang sudah kita sediakan daripada mengetik sendiri.</p>
+
+                <div class="term-box">
+                    <b>Istilah Baru:</b>
+                    <ul>
+                        <li><b>Radio Button:</b> Pilih satu dari banyak (hanya bisa pilih 1).</li>
+                        <li><b>Checkbox:</b> Pilih banyak dari banyak (bisa centang lebih dari 1).</li>
+                        <li><b>Select (Dropdown):</b> Daftar pilihan yang hemat ruang.</li>
+                    </ul>
+                </div>
+
+                <h3>Penting: Atribut Name pada Radio</h3>
+                <p>Agar Radio Button berfungsi sebagai "pilih salah satu", semua opsi harus memiliki <code>name</code> yang sama.</p>
+
+                <pre><code>&lt;!-- Radio: Harus Name yang sama agar sinkron --&gt;
+&lt;input type="radio" name="gender" value="L"&gt; Laki-laki
+&lt;input type="radio" name="gender" value="P"&gt; Perempuan</code></pre>
+
+                <div class="demo-area">
+                    <label><b>Hobi (Checkbox):</b></label><br>
+                    <input type="checkbox"> Coding 
+                    <input type="checkbox"> Gaming<br><br>
+                    
+                    <label><b>Kota (Select):</b></label>
+                    <select>
+                        <option>Jakarta</option>
+                        <option>Bandung</option>
+                        <option>Surabaya</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div id="text-area" class="materi-content">
+            <div class="card">
+                <h1>Multi-line & Buttons</h1>
+                <p>Untuk input yang panjang (seperti alamat atau komentar) dan cara mengirimkan formulir tersebut.</p>
+
+                <div class="term-box">
+                    <b>Elemen Terkait:</b>
+                    <ul>
+                        <li><code>&lt;textarea&gt;</code>: Input teks yang bisa menampung banyak baris.</li>
+                        <li><code>&lt;button&gt;</code>: Tombol yang bisa dikustomisasi isinya (bisa berisi gambar/icon).</li>
+                    </ul>
+                </div>
+
+                <h3>Contoh Textarea:</h3>
+                <pre><code>&lt;textarea name="pesan" rows="4" cols="50"&gt;
+Tulis pesan Anda di sini...
+&lt;/textarea&gt;</code></pre>
+
+                <div class="demo-area">
+                    <label>Alamat Lengkap:</label>
+                    <textarea rows="3" placeholder="Jl. Merdeka No. 45..."></textarea>
+                    <br><br>
+                    <button type="submit" style="padding: 10px; background: #9b59b6; color: white; border: none; border-radius: 5px; cursor: pointer;">
+                        <b>Kirim Sekarang</b>
+                    </button>
+                </div>
+
+                <div class="case-study">
+                    <h3>Kasus Nyata: Mengapa pakai &lt;label&gt;?</h3>
+                    <p>Selalu gunakan tag <code>&lt;label&gt;</code>. Selain rapi, jika user mengklik teks labelnya, kursor akan otomatis masuk ke dalam kotak input terkait. Ini sangat membantu pengguna di perangkat mobile yang layarnya kecil.</p>
+                </div>
+            </div>
+        </div>
+
+        <a href="../../../index.html" class="back-link">← Kembali ke Daftar Materi</a>
+    </div>
+
+    <script src="form-elements-inputs.js"></script>
+</body>
+</html>

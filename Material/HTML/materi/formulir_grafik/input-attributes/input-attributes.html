@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Mastery: Input Attributes</title>
+    <link rel="stylesheet" href="input-attributes.css">
+</head>
+<body>
+
+    <nav class="header-nav">
+        <strong>HTML Form & Graphics Series</strong>
+        <div class="dropdown-container">
+            <select id="pageSelect" onchange="changePage()">
+                <option value="value-readonly">1. Value, Readonly, & Disabled</option>
+                <option value="size-limits">2. Size & Maxlength</option>
+                <option value="numeric-attr">3. Min, Max, & Step</option>
+            </select>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <div id="value-readonly" class="materi-content active">
+            <div class="card">
+                <h1>Kontrol Akses Input</h1>
+                <p>Bagaimana kita mengatur data awal dan apakah user boleh mengubah data tersebut?</p>
+                
+                <div class="term-box">
+                    <b>Istilah Penting:</b>
+                    <ul>
+                        <li><b>value:</b> Menentukan nilai awal (default) yang ada di dalam input.</li>
+                        <li><b>readonly:</b> User bisa melihat dan klik, tapi tidak bisa menghapus/mengubah teks. Data tetap terkirim ke server.</li>
+                        <li><b>disabled:</b> Input "mati". Tidak bisa diklik dan datanya **tidak akan** terkirim ke server.</li>
+                    </ul>
+                </div>
+
+                <h3>Contoh Kode:</h3>
+                <pre><code>&lt;input type="text" value="ID-12345" readonly&gt;
+&lt;input type="text" value="Tidak Aktif" disabled&gt;</code></pre>
+
+                <div class="demo-area">
+                    <div class="input-row">
+                        <label>Readonly (Hanya Baca):</label>
+                        <input type="text" value="Anda tidak bisa mengubah ini" readonly>
+                    </div>
+                    <div class="input-row">
+                        <label>Disabled (Non-aktif):</label>
+                        <input type="text" value="Input ini mati" disabled>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="size-limits" class="materi-content">
+            <div class="card">
+                <h1>Membatasi Karakter</h1>
+                <p>Penting untuk validasi agar database Anda tidak menerima teks yang terlalu panjang atau tidak sesuai format.</p>
+
+                
+
+                <div class="term-box">
+                    <b>Atribut Pembatas:</b>
+                    <ul>
+                        <li><b>maxlength:</b> Jumlah karakter maksimal yang boleh diketik.</li>
+                        <li><b>minlength:</b> Jumlah karakter minimal agar form dianggap valid.</li>
+                        <li><b>size:</b> Mengatur lebar fisik kotak input (dalam jumlah karakter).</li>
+                    </ul>
+                </div>
+
+                <h3>Contoh Kasus: Kode Pos</h3>
+                <p>Kode pos di Indonesia selalu 5 angka. Kita bisa membatasi agar user tidak mengetik lebih dari itu.</p>
+                <pre><code>&lt;input type="text" name="kodepos" maxlength="5" size="5"&gt;</code></pre>
+
+                <div class="demo-area">
+                    <label>Coba ketik (Maksimal 10 huruf):</label>
+                    <input type="text" maxlength="10" placeholder="Ketik di sini...">
+                </div>
+            </div>
+        </div>
+
+        <div id="numeric-attr" class="materi-content">
+            <div class="card">
+                <h1>Atribut Angka (Min, Max, Step)</h1>
+                <p>Khusus untuk <code>type="number"</code> dan <code>type="range"</code>, kita bisa mengatur rentang nilai yang diizinkan.</p>
+
+                
+
+                <div class="term-box">
+                    <b>Atribut Numerik:</b>
+                    <ul>
+                        <li><b>min:</b> Nilai terkecil yang boleh dimasukkan.</li>
+                        <li><b>max:</b> Nilai terbesar yang boleh dimasukkan.</li>
+                        <li><b>step:</b> Kelipatan angka (misal: hanya boleh kelipatan 10).</li>
+                        <li><b>multiple:</b> (Khusus file/email) Mengizinkan memilih lebih dari satu data.</li>
+                    </ul>
+                </div>
+
+                <h3>Contoh Kode:</h3>
+                <pre><code>&lt;!-- Input angka 10-100 kelipatan 10 --&gt;
+&lt;input type="number" min="10" max="100" step="10"&gt;</code></pre>
+
+                <div class="demo-area">
+                    <label>Pilih Jumlah (Min 1, Max 5):</label>
+                    <input type="number" min="1" max="5" value="1">
+                </div>
+
+                <div class="case-study">
+                    <h3>Kasus Nyata: Pembelian Produk</h3>
+                    <p>Dalam toko online, atribut <code>min="1"</code> memastikan pembeli tidak memesan 0 barang, dan <code>max</code> bisa disesuaikan dengan sisa stok yang ada di gudang.</p>
+                </div>
+            </div>
+        </div>
+
+        <a href="../../../index.html" class="back-link">← Kembali ke Daftar Materi</a>
+    </div>
+
+    <script src="input-attributes.js"></script>
+</body>
+</html>

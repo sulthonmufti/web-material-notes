@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Mastery: Tables</title>
+    <link rel="stylesheet" href="tables.css">
+</head>
+<body>
+
+    <nav class="header-nav">
+        <strong>HTML Intermediate Series</strong>
+        <div class="dropdown-container">
+            <select id="pageSelect" onchange="changePage()">
+                <option value="table-basic">1. Struktur Dasar Tabel</option>
+                <option value="table-headers">2. Table Headers & Borders</option>
+                <option value="table-span">3. Colspan & Rowspan</option>
+            </select>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <div id="table-basic" class="materi-content active">
+            <div class="card">
+                <h1>Struktur Dasar Tabel</h1>
+                <p>Tabel dalam HTML dibangun baris demi baris, bukan kolom demi kolom. Anda harus mendefinisikan barisnya dulu, baru mengisi sel di dalamnya.</p>
+                
+                
+
+                <div class="term-box">
+                    <b>Tag Utama:</b>
+                    <ul>
+                        <li><code>&lt;table&gt;</code>: Wadah utama untuk seluruh data tabel.</li>
+                        <li><code>&lt;tr&gt;</code>: **Table Row**. Mendefinisikan baris horizontal.</li>
+                        <li><code>&lt;td&gt;</code>: **Table Data**. Mendefinisikan sel (isi) dalam baris tersebut.</li>
+                    </ul>
+                </div>
+
+                <h3>Contoh Kode Dasar:</h3>
+                <pre><code>&lt;table&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Baris 1, Sel 1&lt;/td&gt;
+    &lt;td&gt;Baris 1, Sel 2&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+
+                <div class="case-study">
+                    <h3>Kasus Nyata: Data Produk</h3>
+                    <p>Bayangkan Anda membuat daftar stok barang. Setiap <code>tr</code> mewakili satu produk, dan setiap <code>td</code> mewakili nama, harga, atau jumlah stok produk tersebut.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="table-headers" class="materi-content">
+            <div class="card">
+                <h1>Headers & Styling</h1>
+                <p>Untuk membedakan antara judul kolom dan isi data, HTML menyediakan tag khusus yang memberikan format tebal secara otomatis.</p>
+
+                <div class="term-box">
+                    <b>Tag Penting:</b>
+                    <ul>
+                        <li><code>&lt;th&gt;</code>: **Table Header**. Sel khusus untuk judul (teks otomatis tebal dan di tengah).</li>
+                        <li><code>&lt;caption&gt;</code>: Memberikan judul/keterangan di atas tabel.</li>
+                    </ul>
+                </div>
+
+                <h3>Visualisasi Tabel:</h3>
+                <table class="demo-table">
+                    <caption>Daftar Siswa Kelas A</caption>
+                    <tr>
+                        <th>Nama</th>
+                        <th>Umur</th>
+                        <th>Kota</th>
+                    </tr>
+                    <tr>
+                        <td>Budi</td>
+                        <td>20</td>
+                        <td>Jakarta</td>
+                    </tr>
+                </table>
+
+                <div class="case-study">
+                    <h3>Tips Penting: Border-Collapse</h3>
+                    <p>Secara default, tabel HTML memiliki jarak antar garis sel. Dalam CSS modern, kita hampir selalu menggunakan <code>border-collapse: collapse;</code> agar garis tabel terlihat rapi dan menyatu seperti tabel di Excel.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="table-span" class="materi-content">
+            <div class="card">
+                <h1>Colspan & Rowspan</h1>
+                <p>Terkadang satu sel harus memakan ruang lebih dari satu kolom atau baris. Di sinilah kita menggunakan atribut "Span".</p>
+
+                
+
+                <div class="term-box">
+                    <b>Atribut Atur Ruang:</b>
+                    <ul>
+                        <li><b>colspan:</b> Menggabungkan dua atau lebih **kolom** menjadi satu.</li>
+                        <li><b>rowspan:</b> Menggabungkan dua atau lebih **baris** menjadi satu.</li>
+                    </ul>
+                </div>
+
+                <h3>Contoh Kode Colspan:</h3>
+                <pre><code>&lt;tr&gt;
+  &lt;th colspan="2"&gt;Nama Lengkap&lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td&gt;Budi&lt;/td&gt;
+  &lt;td&gt;Santoso&lt;/td&gt;
+&lt;/tr&gt;</code></pre>
+
+                <div class="case-study">
+                    <h3>Kasus Nyata: Jadwal Pelajaran</h3>
+                    <p>Dalam jadwal sekolah, jika waktu "Istirahat" memakan waktu yang sama untuk semua hari, Anda bisa menggunakan <code>colspan</code> untuk menarik satu tulisan "ISTIRAHAT" ke seluruh kolom hari (Senin-Jumat).</p>
+                </div>
+            </div>
+        </div>
+
+        <a href="../../../index.html" class="back-link">← Kembali ke Daftar Materi</a>
+    </div>
+
+    <script src="tables.js"></script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Mastery: YouTube Embedding</title>
+    <link rel="stylesheet" href="youtube.css">
+</head>
+<body>
+
+    <nav class="header-nav">
+        <strong>HTML Media Series</strong>
+        <div class="dropdown-container">
+            <select id="pageSelect" onchange="changePage()">
+                <option value="yt-basic">1. Dasar YouTube Embed</option>
+                <option value="yt-params">2. Parameter Tambahan (Autoplay, dll)</option>
+                <option value="yt-responsive">3. Membuat Video Responsive</option>
+            </select>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <div id="yt-basic" class="materi-content active">
+            <div class="card">
+                <h1>YouTube Iframe</h1>
+                <p>YouTube menggunakan tag <code>&lt;iframe&gt;</code> untuk menyisipkan video ke dalam website lain. Ini disebut teknik <b>Embedding</b>.</p>
+                
+                
+
+                <div class="term-box">
+                    <b>Cara Mendapatkan Kode:</b>
+                    <ol>
+                        <li>Buka video di YouTube.</li>
+                        <li>Klik tombol <b>Share</b>.</li>
+                        <li>Pilih <b>Embed</b>.</li>
+                        <li>Salin kode iframe yang muncul.</li>
+                    </ol>
+                </div>
+
+                <h3>Struktur Kode Utama:</h3>
+                <pre><code>&lt;iframe width="560" height="315" 
+  src="https://www.youtube.com/embed/VIDEO_ID" 
+  title="YouTube video player" 
+  allowfullscreen&gt;
+&lt;/iframe&gt;</code></pre>
+
+                <div class="term-box">
+                    <b>Istilah Baru: VIDEO_ID</b>
+                    <p>Kode unik (biasanya 11 karakter) yang muncul setelah <code>v=</code> di URL YouTube asli. Contoh: Jika URL-nya <code>youtube.com/watch?v=dQw4w9WgXcQ</code>, maka ID-nya adalah <code>dQw4w9WgXcQ</code>.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="yt-params" class="materi-content">
+            <div class="card">
+                <h1>Parameter YouTube</h1>
+                <p>Anda bisa mengontrol perilaku video dengan menambahkan parameter di ujung URL di dalam atribut <code>src</code> menggunakan tanda tanya (<code>?</code>).</p>
+
+                <div class="term-box">
+                    <b>Parameter Sering Dipakai:</b>
+                    <ul>
+                        <li><code>autoplay=1</code>: Video langsung jalan (harus dikombinasikan dengan <code>mute=1</code>).</li>
+                        <li><code>mute=1</code>: Mematikan suara saat pertama kali diputar.</li>
+                        <li><code>loop=1</code>: Mengulang video terus menerus (membutuhkan parameter <code>playlist=ID_VIDEO</code>).</li>
+                        <li><code>controls=0</code>: Menghilangkan tombol navigasi YouTube.</li>
+                    </ul>
+                </div>
+
+                <h3>Contoh URL dengan Parameter:</h3>
+                <pre><code>src="https://www.youtube.com/embed/ID?autoplay=1&mute=1"</code></pre>
+
+                <div class="case-study">
+                    <h3>Kasus Nyata: Landing Page</h3>
+                    <p>Pada halaman produk, video sering diset <code>autoplay=1&mute=1&loop=1</code> untuk menunjukkan cara kerja produk secara visual tanpa mengganggu pengguna dengan suara mendadak.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="yt-responsive" class="materi-content">
+            <div class="card">
+                <h1>Video yang Fleksibel (Responsive)</h1>
+                <p>Masalah utama <code>iframe</code> adalah ukurannya yang tetap (piksel). Di layar HP, video akan terpotong atau terlalu kecil.</p>
+
+                
+
+                <div class="term-box">
+                    <b>Solusi CSS (Aspect Ratio):</b>
+                    <p>Kita perlu membungkus iframe dengan <code>&lt;div&gt;</code> dan menggunakan teknik perbandingan 16:9 agar video mengikuti lebar layar.</p>
+                </div>
+
+                <h3>Praktik Terbaik (HTML & CSS):</h3>
+                <pre><code>&lt;!-- HTML --&gt;
+&lt;div class="video-container"&gt;
+  &lt;iframe src="https://www.youtube.com/embed/ID"&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;!-- CSS Dasar --&gt;
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%; /* Perbandingan 16:9 */
+  height: 0;
+}
+.video-container iframe {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+}</code></pre>
+
+                <div class="demo-area">
+                    <h3>Simulasi Tampilan:</h3>
+                    <div class="video-container">
+                        <div style="color: white; padding: 20px; text-align: center;">
+                            [Area Video YouTube Responsive]
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <a href="../../../index.html" class="back-link">← Kembali ke Daftar Materi</a>
+    </div>
+
+    <script src="youtube.js"></script>
+</body>
+</html>

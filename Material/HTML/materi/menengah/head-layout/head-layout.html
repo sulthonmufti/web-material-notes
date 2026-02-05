@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Mastery: Head & Layout</title>
+    <link rel="stylesheet" href="head-layout.css">
+</head>
+<body>
+
+    <nav class="header-nav">
+        <strong>HTML Intermediate Series</strong>
+        <div class="dropdown-container">
+            <select id="pageSelect" onchange="changePage()">
+                <option value="head-page">1. The Head Element (Metadata)</option>
+                <option value="layout-page">2. HTML5 Semantic Layout</option>
+                <option value="responsive-page">3. Viewport & Responsive Dasar</option>
+            </select>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <div id="head-page" class="materi-content active">
+            <div class="card">
+                <h1>The Head Element</h1>
+                <p>Tag <code>&lt;head&gt;</code> adalah wadah untuk **Metadata**. Metadata adalah data tentang halaman HTML tersebut yang tidak ditampilkan langsung di layar browser, tetapi sangat penting bagi mesin pencari (SEO) dan browser.</p>
+                
+                <div class="term-box">
+                    <b>Elemen di dalam Head:</b>
+                    <ul>
+                        <li><code>&lt;title&gt;</code>: Judul yang muncul di tab browser.</li>
+                        <li><code>&lt;meta&gt;</code>: Berisi deskripsi, kata kunci, penulis, dan pengaturan karakter.</li>
+                        <li><code>&lt;link&gt;</code>: Menghubungkan ke file luar (seperti CSS atau Favicon).</li>
+                        <li><code>&lt;script&gt;</code>: Menghubungkan ke file JavaScript.</li>
+                    </ul>
+                </div>
+
+                <h3>Contoh Kode Head yang Ideal:</h3>
+                <pre><code>&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="description" content="Tutorial HTML Lengkap"&gt;
+  &lt;title&gt;Belajar HTML Layout - Materi 8&lt;/title&gt;
+  &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;</code></pre>
+
+                <div class="case-study">
+                    <h3>Kasus Nyata: Mengapa Title Penting?</h3>
+                    <p>Google menggunakan teks di dalam <code>&lt;title&gt;</code> sebagai link biru yang diklik orang di hasil pencarian. Jika Anda mengosongkannya, orang tidak akan tahu apa isi web Anda.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="layout-page" class="materi-content">
+            <div class="card">
+                <h1>HTML5 Semantic Layout</h1>
+                <p>Dulu, orang membuat tata letak hanya menggunakan <code>&lt;div&gt;</code>. Sekarang, HTML5 memperkenalkan elemen **Semantik** yang memiliki makna jelas bagi browser dan perangkat bantu (seperti pembaca layar untuk tunanetra).</p>
+
+                
+
+                <div class="term-box">
+                    <b>Elemen Layout Utama:</b>
+                    <ul>
+                        <li><code>&lt;header&gt;</code>: Bagian kepala (logo, judul).</li>
+                        <li><code>&lt;nav&gt;</code>: Kumpulan link navigasi.</li>
+                        <li><code>&lt;main&gt;</code>: Konten utama halaman (hanya boleh satu per halaman).</li>
+                        <li><code>&lt;aside&gt;</code>: Konten samping (iklan, link tambahan).</li>
+                        <li><code>&lt;footer&gt;</code>: Bagian kaki (copyright, info kontak).</li>
+                    </ul>
+                </div>
+
+                <h3>Simulasi Visual Struktur Web:</h3>
+                <div class="layout-demo">
+                    <div class="l-header">HEADER</div>
+                    <div class="l-nav">NAV (MENU)</div>
+                    <div class="l-main">MAIN CONTENT</div>
+                    <div class="l-aside">ASIDE</div>
+                    <div class="l-footer">FOOTER</div>
+                </div>
+
+                <div class="case-study">
+                    <h3>Kenapa Tidak Pakai Div Saja?</h3>
+                    <p>Menggunakan tag semantik membuat kode Anda lebih rapi ("bersih") dan membantu Google memahami bagian mana yang merupakan menu dan bagian mana yang merupakan isi berita utama.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="responsive-page" class="materi-content">
+            <div class="card">
+                <h1>Viewport & Responsive Dasar</h1>
+                <p>Pernahkah Anda membuka website di HP dan tulisannya sangat kecil sehingga harus di-zoom? Itu karena pengaturan <b>Viewport</b> yang salah.</p>
+
+                <div class="term-box">
+                    <b>Istilah Baru: Viewport</b>
+                    <p>Area tampilan web yang terlihat oleh pengguna. Di HP, viewport jauh lebih kecil daripada di laptop.</p>
+                </div>
+
+                <h3>Tag Meta Viewport Wajib:</h3>
+                <pre><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code></pre>
+
+                <h3>Penjelasan Atribut:</h3>
+                <ul>
+                    <li><code>width=device-width</code>: Mengatur lebar halaman mengikuti lebar layar perangkat.</li>
+                    <li><code>initial-scale=1.0</code>: Mengatur level zoom awal saat halaman pertama kali dimuat.</li>
+                </ul>
+
+                
+
+                <div class="case-study">
+                    <h3>Kasus Nyata: Mobile-First</h3>
+                    <p>Hampir 60% trafik internet saat ini berasal dari perangkat mobile. Tanpa baris kode meta viewport di atas, website Anda akan dianggap "tidak layak" oleh Google untuk muncul di hasil pencarian mobile.</p>
+                </div>
+            </div>
+        </div>
+
+        <a href="../../../index.html" class="back-link">← Kembali ke Daftar Materi</a>
+    </div>
+
+    <script src="head-layout.js"></script>
+</body>
+</html>

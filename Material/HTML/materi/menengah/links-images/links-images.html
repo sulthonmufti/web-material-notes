@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Mastery: Links & Images Advanced</title>
+    <link rel="stylesheet" href="links-images.css">
+</head>
+<body>
+
+    <nav class="header-nav">
+        <strong>HTML Intermediate Series</strong>
+        <div class="dropdown-container">
+            <select id="pageSelect" onchange="changePage()">
+                <option value="links-page">1. Navigasi Link (Target & Bookmark)</option>
+                <option value="images-page">2. Images (Path & Tooltip)</option>
+                <option value="link-images">3. Image as Link</option>
+            </select>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <div id="links-page" class="materi-content active">
+            <div class="card">
+                <h1>Advanced Links</h1>
+                <p>Link bukan sekadar pindah halaman. Anda bisa mengatur bagaimana browser membukanya dan ke bagian mana link tersebut mengarah.</p>
+                
+                <div class="term-box">
+                    <b>Atribut Baru:</b>
+                    <ul>
+                        <li><b>target="_blank":</b> Membuka link di tab baru.</li>
+                        <li><b>target="_self":</b> Membuka di tab yang sama (default).</li>
+                        <li><b>id & href=#id:</b> Membuat "Bookmark" (navigasi ke bagian tertentu dalam halaman yang sama).</li>
+                    </ul>
+                </div>
+
+                <h3>Contoh Navigasi Tab Baru:</h3>
+                <pre><code>&lt;a href="https://google.com" target="_blank"&gt;Buka Google di Tab Baru&lt;/a&gt;</code></pre>
+
+                <div class="case-study">
+                    <h3>Kasus Nyata: External vs Internal Link</h3>
+                    <p>Praktik terbaik UX adalah menggunakan <code>target="_blank"</code> untuk link yang mengarah ke luar website Anda (External), agar pengunjung tidak benar-benar meninggalkan web Anda. Untuk navigasi antar halaman di web sendiri (Internal), biarkan menggunakan tab yang sama.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="images-page" class="materi-content">
+            <div class="card">
+                <h1>Images & File Paths</h1>
+                <p>Masalah tersulit bagi pemula saat memasukkan gambar adalah menentukan "lokasi" atau <i>Path</i> file yang benar.</p>
+
+                
+
+                <div class="term-box">
+                    <b>Istilah Penting:</b>
+                    <ul>
+                        <li><b>Absolute Path:</b> URL lengkap gambar dari internet (Contoh: https://site.com/foto.jpg).</li>
+                        <li><b>Relative Path:</b> Lokasi gambar relatif terhadap file HTML Anda (Contoh: <code>images/foto.jpg</code>).</li>
+                    </ul>
+                </div>
+
+                <h3>Penulisan Path yang Benar:</h3>
+                <pre><code>&lt;!-- Gambar di folder yang sama --&gt;
+&lt;img src="foto.jpg" alt="Deskripsi"&gt;
+
+&lt;!-- Gambar di dalam sub-folder bernama 'img' --&gt;
+&lt;img src="img/foto.jpg" alt="Deskripsi"&gt;</code></pre>
+
+                <div class="case-study">
+                    <h3>Tips: Selalu Gunakan "alt"</h3>
+                    <p>Jika gambar gagal dimuat karena koneksi internet lambat, teks di dalam atribut <code>alt</code> akan muncul. Ini menjaga agar pesan di dalam gambar tetap tersampaikan.</p>
+                    <div class="demo-box">
+                        <img src="gambar-salah.jpg" alt="Ini adalah teks pengganti jika gambar rusak">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="link-images" class="materi-content">
+            <div class="card">
+                <h1>Menjadikan Gambar Sebagai Link</h1>
+                <p>Anda bisa menggabungkan kedua elemen ini untuk membuat tombol bergambar, banner iklan, atau logo navigasi.</p>
+
+                <div class="term-box">
+                    <b>Konsep:</b>
+                    <p>Cukup bungkus tag <code>&lt;img&gt;</code> di dalam tag <code>&lt;a&gt;</code>.</p>
+                </div>
+
+                <h3>Contoh Kode:</h3>
+                <pre><code>&lt;a href="https://google.com"&gt;
+    &lt;img src="logo-google.png" alt="Google" style="width:100px;"&gt;
+&lt;/a&gt;</code></pre>
+
+                <div class="case-study">
+                    <h3>Kasus Nyata: Tombol Media Sosial</h3>
+                    <p>Hampir semua website menggunakan teknik ini untuk ikon Instagram, Facebook, dan WhatsApp di bagian bawah (footer) mereka.</p>
+                    <div class="demo-box">
+                        <a href="#">
+                            <img src="https://via.placeholder.com/50" alt="Ikon Sosmed" style="border-radius: 50%;">
+                        </a>
+                        <p><small>Klik gambar di atas (Demo simulasi)</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <a href="../../../index.html" class="back-link">← Kembali ke Daftar Materi</a>
+    </div>
+
+    <script src="links-images.js"></script>
+</body>
+</html>

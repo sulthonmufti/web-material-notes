@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Mastery: Video & Audio</title>
+    <link rel="stylesheet" href="media-video-audio.css">
+</head>
+<body>
+
+    <nav class="header-nav">
+        <strong>HTML Media Series</strong>
+        <div class="dropdown-container">
+            <select id="pageSelect" onchange="changePage()">
+                <option value="video-page">1. HTML Video</option>
+                <option value="audio-page">2. HTML Audio</option>
+                <option value="formats-page">3. Atribut & Format File</option>
+            </select>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <div id="video-page" class="materi-content active">
+            <div class="card">
+                <h1>Menyisipkan Video</h1>
+                <p>Tag <code>&lt;video&gt;</code> digunakan untuk menampilkan konten gambar bergerak di website Anda.</p>
+                
+                
+
+                <div class="term-box">
+                    <b>Atribut Dasar Video:</b>
+                    <ul>
+                        <li><b>controls:</b> Menampilkan tombol play, pause, dan volume (Wajib agar user bisa memutar video).</li>
+                        <li><b>autoplay:</b> Video langsung berputar saat halaman dibuka (Catatan: Browser biasanya mengharuskan video di-<i>mute</i> agar fungsi ini jalan).</li>
+                        <li><b>poster:</b> Gambar yang muncul sebelum video diputar (seperti <i>thumbnail</i>).</li>
+                    </ul>
+                </div>
+
+                <h3>Contoh Kode:</h3>
+                <pre><code>&lt;video width="400" controls poster="thumb.jpg"&gt;
+  &lt;source src="video-produk.mp4" type="video/mp4"&gt;
+  Maaf, browser Anda tidak mendukung tag video.
+&lt;/video&gt;</code></pre>
+
+                <div class="case-study">
+                    <h3>Kasus Nyata: Video Background</h3>
+                    <p>Banyak website modern menggunakan video di bagian paling atas (hero section). Mereka menggunakan atribut <code>autoplay muted loop</code> agar video terus berputar tanpa suara dan tanpa tombol kontrol.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="audio-page" class="materi-content">
+            <div class="card">
+                <h1>Menyisipkan Audio</h1>
+                <p>Tag <code>&lt;audio&gt;</code> berfungsi mirip dengan video, namun hanya menampilkan panel kontrol suara tanpa layar visual.</p>
+
+                
+
+                <div class="term-box">
+                    <b>Atribut Penting Audio:</b>
+                    <ul>
+                        <li><b>controls:</b> Sama seperti video, tanpa ini audio tidak akan terlihat di layar.</li>
+                        <li><b>loop:</b> Mengulang musik secara terus menerus.</li>
+                        <li><b>preload:</b> Memberitahu browser seberapa banyak data yang harus dimuat saat halaman dibuka.</li>
+                    </ul>
+                </div>
+
+                <h3>Contoh Kode:</h3>
+                <pre><code>&lt;audio controls&gt;
+  &lt;source src="musik-relax.mp3" type="audio/mpeg"&gt;
+  Your browser does not support the audio element.
+&lt;/audio&gt;</code></pre>
+
+                <div class="case-study">
+                    <h3>Kasus Nyata: Podcast & Audio Guide</h3>
+                    <p>Elemen ini sangat berguna untuk blog berita yang menyediakan fitur "Dengarkan Artikel" atau situs pembelajaran bahasa yang memerlukan tombol putar pelafalan kata.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="formats-page" class="materi-content">
+            <div class="card">
+                <h1>Atribut Tambahan & Format</h1>
+                <p>Kenapa kita perlu tag <code>&lt;source&gt;</code> di dalam video/audio? Karena tidak semua browser menyukai format file yang sama.</p>
+
+                <div class="term-box">
+                    <b>Format yang Paling Didukung:</b>
+                    <ul>
+                        <li><b>Video:</b> MP4 (Standar), WebM (Kualitas tinggi, file kecil), Ogg.</li>
+                        <li><b>Audio:</b> MP3 (Standar), WAV (Kualitas asli/besar), Ogg.</li>
+                    </ul>
+                </div>
+
+                <h3>Contoh "Multiple Source" (Praktik Terbaik):</h3>
+                <p>Jika browser tidak bisa memutar file pertama, ia akan mencoba file kedua.</p>
+                <pre><code>&lt;video controls&gt;
+  &lt;source src="movie.webm" type="video/webm"&gt;
+  &lt;source src="movie.mp4" type="video/mp4"&gt;
+&lt;/video&gt;</code></pre>
+
+                <div class="case-study">
+                    <h3>Istilah Baru: MIME Type</h3>
+                    <p>Atribut <code>type="video/mp4"</code> disebut **MIME Type**. Ini adalah label yang memberitahu browser jenis file apa yang sedang dikirim agar browser tidak perlu menebak-nebak isi filenya.</p>
+                </div>
+            </div>
+        </div>
+
+        <a href="../../../index.html" class="back-link">← Kembali ke Daftar Materi</a>
+    </div>
+
+    <script src="media-video-audio.js"></script>
+</body>
+</html>

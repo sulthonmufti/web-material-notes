@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Mastery: Forms & Attributes</title>
+    <link rel="stylesheet" href="forms-attributes.css">
+</head>
+<body>
+
+    <nav class="header-nav">
+        <strong>HTML Form & Graphics Series</strong>
+        <div class="dropdown-container">
+            <select id="pageSelect" onchange="changePage()">
+                <option value="form-structure">1. Struktur Dasar & Action</option>
+                <option value="form-methods">2. Method: GET vs POST</option>
+                <option value="form-attributes">3. Atribut Input Wajib</option>
+            </select>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <div id="form-structure" class="materi-content active">
+            <div class="card">
+                <h1>Struktur Dasar Form</h1>
+                <p>Form HTML dibungkus menggunakan tag <code>&lt;form&gt;</code>. Tag ini berfungsi sebagai pengumpul data sebelum dikirimkan ke server.</p>
+                
+                
+
+                <div class="term-box">
+                    <b>Atribut Utama Form:</b>
+                    <ul>
+                        <li><b>action:</b> URL tujuan ke mana data akan dikirim (biasanya file PHP atau server).</li>
+                        <li><b>target:</b> Menentukan apakah hasil kiriman dibuka di tab baru (<code>_blank</code>) atau tab yang sama.</li>
+                    </ul>
+                </div>
+
+                <h3>Contoh Kode:</h3>
+                <pre><code>&lt;form action="/proses-data.php"&gt;
+  &lt;label for="nama"&gt;Nama:&lt;/label&gt;
+  &lt;input type="text" id="nama" name="user_nama"&gt;
+  &lt;input type="submit" value="Kirim"&gt;
+&lt;/form&gt;</code></pre>
+
+                <div class="case-study">
+                    <h3>Kasus Nyata: Form Pencarian</h3>
+                    <p>Pada kotak pencarian Google, saat Anda menekan Enter, atribut <code>action</code> mengarahkan data teks Anda ke halaman hasil pencarian mereka.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="form-methods" class="materi-content">
+            <div class="card">
+                <h1>Method: GET vs POST</h1>
+                <p>Bagaimana cara data dikirimkan? Ada dua cara utama yang sering digunakan melalui atribut <code>method</code>.</p>
+
+                
+
+                <div class="term-box">
+                    <b>Perbedaan Utama:</b>
+                    <ul>
+                        <li><b>GET:</b> Data ditempelkan langsung di URL (terlihat oleh mata). Cocok untuk pencarian (search).</li>
+                        <li><b>POST:</b> Data dikirim "di balik layar". Sangat penting untuk data sensitif seperti password.</li>
+                    </ul>
+                </div>
+
+                <div class="case-study">
+                    <h3>Kapan Pakai yang Mana?</h3>
+                    <p><b>Gunakan POST</b> untuk pendaftaran akun atau kirim file. <b>Gunakan GET</b> untuk fitur filter atau pencarian produk yang bisa di-bookmark URL-nya oleh pengguna.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="form-attributes" class="materi-content">
+            <div class="card">
+                <h1>Atribut Input Wajib</h1>
+                <p>Tanpa atribut yang benar, server tidak akan mengenali data apa yang Anda kirimkan.</p>
+
+                <div class="term-box">
+                    <b>Istilah Baru:</b>
+                    <ul>
+                        <li><b>name:</b> Nama variabel yang akan dikenali server (Wajib ada!).</li>
+                        <li><b>value:</b> Nilai default atau nilai yang akan dikirim.</li>
+                        <li><b>placeholder:</b> Teks bantuan sementara di dalam kotak input.</li>
+                        <li><b>required:</b> Memaksa pengguna mengisi kotak tersebut sebelum dikirim.</li>
+                    </ul>
+                </div>
+
+                <h3>Demo Visual:</h3>
+                <div class="demo-form">
+                    <div class="form-group">
+                        <label>Nama (Required):</label>
+                        <input type="text" placeholder="Masukkan nama Anda..." required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email (Value Default):</label>
+                        <input type="email" value="contoh@mail.com">
+                    </div>
+                    <button class="btn-submit">Kirim Data</button>
+                </div>
+
+                <div class="case-study">
+                    <h3>Pesan Penting: Atribut 'name'</h3>
+                    <p>Kesalahan nomor satu pemula adalah lupa memberikan atribut <code>name</code>. Tanpa <code>name</code>, meskipun user mengetik panjang lebar, server akan menerima kotak kosong karena tidak tahu nama "label" untuk data tersebut.</p>
+                </div>
+            </div>
+        </div>
+
+        <a href="../../../index.html" class="back-link">← Kembali ke Daftar Materi</a>
+    </div>
+
+    <script src="forms-attributes.js"></script>
+</body>
+</html>

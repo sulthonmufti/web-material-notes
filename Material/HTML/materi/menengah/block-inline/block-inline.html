@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Mastery: Block & Inline</title>
+    <link rel="stylesheet" href="block-inline.css">
+</head>
+<body>
+
+    <nav class="header-nav">
+        <strong>HTML Intermediate Series</strong>
+        <div class="dropdown-container">
+            <select id="pageSelect" onchange="changePage()">
+                <option value="block-page">1. Block-level Elements</option>
+                <option value="inline-page">2. Inline Elements</option>
+                <option value="div-span">3. Div & Span (The Containers)</option>
+            </select>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <div id="block-page" class="materi-content active">
+            <div class="card">
+                <h1>Block-level Elements</h1>
+                <p>Elemen tingkat blok selalu dimulai pada baris baru dan mengambil seluruh lebar yang tersedia (merentang ke kiri dan kanan sejauh mungkin).</p>
+                
+                
+
+                <div class="term-box">
+                    <b>Ciri-ciri Utama:</b>
+                    <ul>
+                        <li>Selalu membuat baris baru.</li>
+                        <li>Lebarnya otomatis 100% dari induknya.</li>
+                        <li>Memiliki margin atas dan bawah secara default.</li>
+                    </ul>
+                </div>
+
+                <h3>Elemen Block yang Sering Dipakai:</h3>
+                <ul>
+                    <li><code>&lt;p&gt;</code>, <code>&lt;h1&gt;</code> - <code>&lt;h6&gt;</code></li>
+                    <li><code>&lt;div&gt;</code>, <code>&lt;ul&gt;</code>, <code>&lt;li&gt;</code></li>
+                    <li><code>&lt;section&gt;</code>, <code>&lt;header&gt;</code>, <code>&lt;footer&gt;</code></li>
+                </ul>
+
+                <h3>Demo Visual:</h3>
+                <div class="block-demo">Ini adalah elemen Block (misal: p atau div).</div>
+                <div class="block-demo">Dia selalu memaksa elemen selanjutnya pindah ke baris baru.</div>
+            </div>
+        </div>
+
+        <div id="inline-page" class="materi-content">
+            <div class="card">
+                <h1>Inline Elements</h1>
+                <p>Elemen inline tidak memulai baris baru. Ia hanya mengambil lebar sebanyak yang diperlukan sesuai dengan konten di dalamnya.</p>
+
+                <div class="term-box">
+                    <b>Ciri-ciri Utama:</b>
+                    <ul>
+                        <li>Tidak membuat baris baru.</li>
+                        <li>Hanya "membungkus" kontennya.</li>
+                        <li>Lebar dan tinggi tidak bisa diatur secara manual melalui CSS (kecuali diubah tipenya).</li>
+                    </ul>
+                </div>
+
+                <h3>Elemen Inline yang Sering Dipakai:</h3>
+                <ul>
+                    <li><code>&lt;span&gt;</code>, <code>&lt;a&gt;</code></li>
+                    <li><code>&lt;img&gt;</code>, <code>&lt;strong&gt;</code>, <code>&lt;em&gt;</code></li>
+                </ul>
+
+                <h3>Demo Visual:</h3>
+                <p>Teks ini normal, tapi <span class="inline-demo">bagian ini inline</span> dan <span class="inline-demo">bagian ini juga inline</span>. Mereka tetap sejajar dalam satu baris.</p>
+
+                <div class="case-study">
+                    <h3>Aturan Penting: Elemen di dalam Elemen</h3>
+                    <p>Secara umum, elemen **Block** boleh berisi elemen Block lain atau elemen Inline. Namun, elemen **Inline** dilarang berisi elemen Block. Jangan menaruh <code>&lt;div&gt;</code> di dalam <code>&lt;span&gt;</code>!</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="div-span" class="materi-content">
+            <div class="card">
+                <h1>Div & Span (Kontainer Kosong)</h1>
+                <p>Kedua elemen ini tidak memiliki makna atau tampilan khusus. Mereka murni digunakan sebagai wadah untuk mengelompokkan elemen agar bisa dihias dengan CSS.</p>
+
+                
+
+                <div class="term-box">
+                    <b>Perbedaan Utama:</b>
+                    <ul>
+                        <li><b>&lt;div&gt; (Block):</b> Digunakan untuk membungkus **bagian besar** (layout, section, sidebar).</li>
+                        <li><b>&lt;span&gt; (Inline):</b> Digunakan untuk membungkus **bagian kecil** di dalam teks (warna kata tertentu, ikon kecil).</li>
+                    </ul>
+                </div>
+
+                <h3>Contoh Kasus:</h3>
+                <pre><code>&lt;!-- Mengelompokkan section berita --&gt;
+&lt;div class="berita"&gt;
+  &lt;h2&gt;Judul Berita&lt;/h2&gt;
+  &lt;p&gt;Klik &lt;span style="color:red"&gt;di sini&lt;/span&gt; untuk detail.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+
+                <div class="case-study">
+                    <h3>Kasus Nyata: Mengapa Div Sangat Populer?</h3>
+                    <p>Hampir semua website modern menggunakan ribuan <code>&lt;div&gt;</code> untuk membagi halaman menjadi kotak-kotak. Tanpa <code>div</code>, kita akan kesulitan membuat kolom (seperti sidebar kiri dan konten kanan).</p>
+                </div>
+            </div>
+        </div>
+
+        <a href="../../../index.html" class="back-link">← Kembali ke Daftar Materi</a>
+    </div>
+
+    <script src="block-inline.js"></script>
+</body>
+</html>
