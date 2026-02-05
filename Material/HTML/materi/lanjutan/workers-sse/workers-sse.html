@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Advanced: Web Workers & SSE</title>
+    <link rel="stylesheet" href="workers-sse.css">
+</head>
+<body>
+
+    <nav class="header-nav">
+        <strong>HTML Advanced Series</strong>
+        <div class="dropdown-container">
+            <select id="pageSelect" onchange="changePage()">
+                <option value="web-workers">1. Web Workers (Multi-threading)</option>
+                <option value="sse-intro">2. Server-Sent Events (SSE)</option>
+                <option value="comparison">3. Kapan Menggunakan SSE?</option>
+            </select>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <div id="web-workers" class="materi-content active">
+            <div class="card">
+                <h1>Web Workers</h1>
+                <p>Secara default, JavaScript berjalan pada satu jalur tunggal (**Single Thread**). Jika ada proses hitung yang sangat berat, website akan "beku" (hang) dan tidak bisa diklik. **Web Workers** adalah solusinya.</p>
+                
+                
+
+                <div class="term-box">
+                    <b>Istilah Penting:</b>
+                    <ul>
+                        <li><b>Main Thread:</b> Jalur utama tempat UI (tampilan) berjalan.</li>
+                        <li><b>Background Thread:</b> Jalur terpisah tempat Web Worker bekerja tanpa mengganggu tampilan.</li>
+                        <li><b>postMessage():</b> Cara mengirim data antara jalur utama dan worker.</li>
+                    </ul>
+                </div>
+
+                <h3>Cara Penggunaan:</h3>
+                <pre><code>// Membuat worker baru dari file terpisah
+var w = new Worker("tugas_berat.js");
+
+// Menerima hasil dari worker
+w.onmessage = function(event) {
+  document.getElementById("hasil").innerHTML = event.data;
+};</code></pre>
+
+                <div class="case-study">
+                    <h3>Kasus Nyata: Pengolahan Gambar</h3>
+                    <p>Saat Anda mengunggah foto besar dan menerapkan filter (seperti di Instagram Web), proses hitung pixel yang rumit dilakukan oleh Web Worker agar Anda tetap bisa mengetik caption tanpa lag.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="sse-intro" class="materi-content">
+            <div class="card">
+                <h1>Server-Sent Events (SSE)</h1>
+                <p>SSE memungkinkan halaman web menerima pembaruan otomatis dari server melalui koneksi HTTP. Ini adalah komunikasi **satu arah** (Server ke Browser).</p>
+
+                
+
+                <div class="term-box">
+                    <b>Istilah Baru: EventSource</b>
+                    <p>Objek JavaScript yang digunakan untuk membuka koneksi terus-menerus ke server guna menerima aliran data (stream).</p>
+                </div>
+
+                <h3>Contoh Kode:</h3>
+                <pre><code>var source = new EventSource("update_stok.php");
+
+source.onmessage = function(event) {
+  console.log("Data baru: " + event.data);
+};</code></pre>
+
+                <div class="demo-box">
+                    <p><b>Status Koneksi:</b> <code id="sseStatus">Mencoba terhubung...</code></p>
+                    <p>Data terakhir: <b id="sseData">-</b></p>
+                </div>
+            </div>
+        </div>
+
+        <div id="comparison" class="materi-content">
+            <div class="card">
+                <h1>Kapan Menggunakan SSE?</h1>
+                <p>Banyak yang bingung membedakan SSE dengan **WebSockets**. Berikut adalah panduannya:</p>
+
+                <div class="term-box">
+                    <table style="width:100%; border-collapse: collapse;">
+                        <tr style="background: #27ae60; color: white;">
+                            <th style="padding: 10px;">Fitur</th>
+                            <th style="padding: 10px;">SSE</th>
+                            <th style="padding: 10px;">WebSockets</th>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd;">Arah</td>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd;">Satu Arah (Server &rarr; Client)</td>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd;">Dua Arah (Bolak-balik)</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd;">Protokol</td>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd;">HTTP Biasa</td>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd;">Protokol Khusus (WS)</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px;">Auto-reconnect</td>
+                            <td style="padding: 10px;">Ya (Otomatis)</td>
+                            <td style="padding: 10px;">Tidak (Manual)</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="case-study">
+                    <h3>Kasus Penggunaan SSE:</h3>
+                    <ul>
+                        <li><b>Live Score:</b> Update skor pertandingan bola.</li>
+                        <li><b>Stock Ticker:</b> Update harga saham atau crypto.</li>
+                        <li><b>Social Feed:</b> Muncul notifikasi "Ada 1 pesan baru" secara otomatis.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <a href="../../../index.html" class="back-link">← Kembali ke Daftar Materi</a>
+    </div>
+
+    <script src="workers-sse.js"></script>
+</body>
+</html>

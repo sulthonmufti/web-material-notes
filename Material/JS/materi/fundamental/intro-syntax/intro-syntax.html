@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi JS: Intro & Syntax</title>
+    <link rel="stylesheet" href="intro-syntax.css">
+</head>
+<body>
+
+<header>
+    <h1>JavaScript: Introduction & Syntax</h1>
+    <p>Pintu Gerbang Menuju Frontend Interaktif</p>
+</header>
+
+<div class="container">
+    
+    <section id="introduction">
+        <h2>1. Apa itu JavaScript?</h2>
+        <p>JavaScript adalah bahasa pemrograman yang membuat website "hidup". Jika HTML adalah struktur dan CSS adalah gaya, JS adalah perilakunya.</p>
+        
+        <div class="term-box">
+            <span class="term-title">📖 Istilah Baru: Client-Side</span>
+            Artinya, kode ini dijalankan langsung oleh browser Anda (Chrome, Firefox, Edge), bukan oleh komputer pusat (server).
+        </div>
+
+        <p><strong>Kasus Penggunaan:</strong></p>
+        <ul>
+            <li>Mengubah isi teks tanpa reload.</li>
+            <li>Memvalidasi input di form.</li>
+            <li>Membuat pop-up atau notifikasi interaktif.</li>
+        </ul>
+    </section>
+
+    <section id="where-to">
+        <h2>2. Cara Meletakkan Kode (Where To)</h2>
+        <p>Ada dua cara yang sering dipakai di dunia kerja:</p>
+        
+        <h3>A. Internal Script</h3>
+        <p>Langsung di dalam tag <code>&lt;script&gt;</code> sebelum penutup <code>&lt;/body&gt;</code>.</p>
+        
+        <h3>B. External Script (Standar Industri)</h3>
+        <p>Memisahkan kode JS ke file <code>.js</code> agar file HTML tetap rapi.</p>
+        <pre><code><span class="code-comment">&lt;!-- Di file index.html --&gt;</span>
+<span class="code-keyword">&lt;script</span> <span class="code-string">src="script.js"</span><span class="code-keyword">&gt;&lt;/script&gt;</span></code></pre>
+    </section>
+
+    <section id="syntax">
+        <h2>3. Syntax & Aturan Main</h2>
+        <p>Sama seperti bahasa manusia, JS punya tata bahasa (grammar) yang ketat.</p>
+
+        <div class="term-box">
+            <span class="term-title">⚠️ Penting: Case Sensitive</span>
+            JavaScript membedakan huruf besar dan kecil. <code>namaSaya</code> dan <code>namasaya</code> dianggap dua hal yang berbeda.
+        </div>
+
+        <div class="term-box">
+            <span class="term-title">📝 Istilah: Statement & Semicolon (;)</span>
+            Setiap satu instruksi disebut <strong>Statement</strong>. Akhiri dengan titik koma agar browser tidak bingung.
+        </div>
+
+        <pre><code><span class="code-keyword">let</span> pesan = <span class="code-string">"Halo!"</span>; <span class="code-comment">// Statement 1</span>
+console.log(pesan); <span class="code-comment">// Statement 2</span></code></pre>
+    </section>
+
+    <section id="output">
+        <h2>4. Output (Menampilkan Hasil)</h2>
+        <p>Sebagai Frontend Dev, Anda harus tahu cara memantau hasil kerja Anda. Coba klik tombol di bawah ini:</p>
+
+        <div class="interactive-demo">
+            <h3 id="teks-demo">Teks ini akan berubah</h3>
+            <button onclick="ubahTeks()">Klik untuk ubah teks (innerHTML)</button>
+            <button onclick="cekConsole()">Klik & Cek Inspect Console</button>
+        </div>
+
+        <div class="note">
+            <strong>Tips Debugging:</strong> Tekan <code>F12</code> pada keyboard, lalu pilih tab <strong>Console</strong> untuk melihat hasil dari <code>console.log()</code>. Ini adalah alat tempur utama developer!
+        </div>
+    </section>
+
+    <hr style="margin-top: 40px; border: 0; border-top: 1px solid #eee;">
+    <div style="display: flex; justify-content: center; padding: 20px 0;">
+        <a href="../../../index.html" style="text-decoration: none;">
+            <button type="button" style="background: #e74c3c; color: white; padding: 12px 25px; border-radius: 30px; display: flex; align-items: center; gap: 10px;">
+                <span>←</span> Kembali ke Dashboard Utama
+            </button>
+        </a>
+    </div>
+
+</div>
+
+<script src="intro-syntax.js"></script>
+
+</body>
+</html>

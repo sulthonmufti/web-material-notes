@@ -1,0 +1,20 @@
+:root {
+    --primary: #f7df1e; /* Warna Kuning Khas JS */
+    --dark: #222;
+    --light: #f4f4f4;
+    --code-bg: #282c34;
+}
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 0; background: var(--light); }
+header { background: var(--dark); color: var(--primary); padding: 2rem; text-align: center; border-bottom: 5px solid var(--primary); }
+.container { max-width: 900px; margin: 20px auto; padding: 20px; background: white; box-shadow: 0 0 10px rgba(0,0,0,0.1); border-radius: 8px; }
+h2 { color: #d35400; border-left: 5px solid var(--primary); padding-left: 10px; margin-top: 30px; }
+.term-box { background: #e8f4fd; border-left: 5px solid #3498db; padding: 15px; margin: 15px 0; border-radius: 4px; }
+.term-title { font-weight: bold; color: #2980b9; display: block; }
+pre { background: var(--code-bg); color: #abb2bf; padding: 15px; border-radius: 5px; overflow-x: auto; font-size: 14px; }
+.code-comment { color: #5c6370; font-style: italic; }
+.code-keyword { color: #c678dd; }
+.code-string { color: #98c379; }
+.interactive-demo { border: 2px dashed #ccc; padding: 20px; margin: 20px 0; background: #fff; text-align: center; }
+button { background: var(--dark); color: var(--primary); border: none; padding: 10px 20px; cursor: pointer; border-radius: 5px; font-weight: bold; }
+button:hover { opacity: 0.9; }
+.note { background: #fff3cd; border: 1px solid #ffeeba; padding: 15px; border-radius: 5px; margin: 15px 0; }

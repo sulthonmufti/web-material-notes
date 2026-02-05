@@ -1,0 +1,37 @@
+body{
+    font-family: Poppins;
+    margin: 0;
+    padding: 20px;
+}
+.segment{
+    background-color: rgb(227, 227, 227);
+    padding: 10px;
+}
+.segment-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    background-color:bisque;
+    margin: 10px;
+    padding: 20px;
+    cursor: pointer;
+}
+.segment-content{
+    display: none;
+    padding: 10px;
+    gap: 20px;
+}
+
+.letVariable, .constVariable{
+    width: 250px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.active .segment-content{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    gap: 20px;
+}

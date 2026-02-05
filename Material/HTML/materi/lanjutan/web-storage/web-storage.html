@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Advanced: Web Storage</title>
+    <link rel="stylesheet" href="web-storage.css">
+</head>
+<body>
+
+    <nav class="header-nav">
+        <strong>HTML Advanced Series</strong>
+        <div class="dropdown-container">
+            <select id="pageSelect" onchange="changePage()">
+                <option value="storage-intro">1. Local vs Session Storage</option>
+                <option value="storage-methods">2. Cara Menggunakan (Methods)</option>
+                <option value="storage-practice">3. Simulasi Simpan Nama</option>
+            </select>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <div id="storage-intro" class="materi-content active">
+            <div class="card">
+                <h1>Mengenal Web Storage</h1>
+                <p>Web Storage memungkinkan aplikasi web menyimpan data secara lokal di dalam browser pengguna dalam bentuk pasangan <b>Key</b> (kunci) dan <b>Value</b> (nilai).</p>
+                
+                
+
+                <div class="term-box">
+                    <b>Dua Jenis Web Storage:</b>
+                    <ul>
+                        <li><b>localStorage:</b> Menyimpan data tanpa batas waktu. Data tidak akan terhapus meskipun browser ditutup atau komputer dimatikan.</li>
+                        <li><b>sessionStorage:</b> Menyimpan data sementara. Data akan langsung terhapus begitu tab browser atau jendela browser ditutup.</li>
+                    </ul>
+                </div>
+
+                <h3>Kasus Penggunaan:</h3>
+                <ul>
+                    <li>Menyimpan preferensi <b>Dark Mode</b> (Tema Gelap).</li>
+                    <li>Menyimpan item di dalam <b>Keranjang Belanja</b> sebelum checkout.</li>
+                    <li>Menyimpan skor tertinggi (High Score) pada game berbasis web.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="storage-methods" class="materi-content">
+            <div class="card">
+                <h1>Metode Web Storage</h1>
+                <p>Kedua jenis storage memiliki cara kerja yang sama persis dalam hal penulisan kode:</p>
+
+                
+
+                <div class="term-box">
+                    <b>Fungsi yang Sering Digunakan:</b>
+                    <ul>
+                        <li><code>setItem(key, value)</code>: Menambahkan data baru.</li>
+                        <li><code>getItem(key)</code>: Mengambil data berdasarkan kuncinya.</li>
+                        <li><code>removeItem(key)</code>: Menghapus satu data spesifik.</li>
+                        <li><code>clear()</code>: Menghapus semua data yang ada di storage.</li>
+                    </ul>
+                </div>
+
+                <h3>Contoh Kode JavaScript:</h3>
+                <pre><code>// Menyimpan data
+localStorage.setItem("username", "Budi");
+
+// Mengambil data
+let nama = localStorage.getItem("username");
+
+// Menghapus data
+localStorage.removeItem("username");</code></pre>
+            </div>
+        </div>
+
+        <div id="storage-practice" class="materi-content">
+            <div class="card">
+                <h1>Simulasi Real-Time</h1>
+                <p>Ketik nama Anda di bawah, simpan, lalu coba <b>Refresh</b> halaman ini. Nama Anda akan tetap muncul karena tersimpan di <code>localStorage</code>.</p>
+
+                <div class="demo-area">
+                    <div class="input-group">
+                        <input type="text" id="inputNama" placeholder="Ketik nama Anda...">
+                        <button class="btn-save" onclick="simpanNama()">Simpan</button>
+                        <button class="btn-clear" onclick="hapusSemua()">Reset</button>
+                    </div>
+                    <div id="hasilStorage">Halo, <b>Tamu</b>!</div>
+                </div>
+
+                <div class="case-study">
+                    <h3>Keamanan & Privasi:</h3>
+                    <p>Meskipun praktis, jangan pernah menyimpan data sensitif seperti <b>Password</b> atau <b>Nomor Kartu Kredit</b> di Web Storage. Data ini bisa diakses dengan mudah oleh siapa pun yang bisa membuka konsol browser di komputer tersebut.</p>
+                </div>
+            </div>
+        </div>
+
+        <a href="../../../index.html" class="back-link">← Kembali ke Daftar Materi</a>
+    </div>
+
+    <script src="web-storage.js"></script>
+</body>
+</html>

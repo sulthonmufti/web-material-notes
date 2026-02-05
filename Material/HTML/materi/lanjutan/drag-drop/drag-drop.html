@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Advanced: Drag and Drop</title>
+    <link rel="stylesheet" href="drag-drop.css">
+</head>
+<body>
+
+    <nav class="header-nav">
+        <strong>HTML Advanced Series</strong>
+        <div class="dropdown-container">
+            <select id="pageSelect" onchange="changePage()">
+                <option value="dd-intro">1. Konsep Drag & Drop</option>
+                <option value="dd-events">2. Event (ondrag, ondrop)</option>
+                <option value="dd-practice">3. Simulasi & Implementasi</option>
+            </select>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <div id="dd-intro" class="materi-content active">
+            <div class="card">
+                <h1>Drag and Drop Dasar</h1>
+                <p>Fitur Drag and Drop (Tarik dan Lepas) memungkinkan pengguna berinteraksi dengan elemen secara lebih intuitif.</p>
+                
+                
+
+                <div class="term-box">
+                    <b>Langkah Utama:</b>
+                    <ul>
+                        <li><b>draggable="true":</b> Atribut wajib agar elemen bisa ditarik.</li>
+                        <li><b>DataTransfer:</b> "Kantong" tempat menyimpan data elemen yang sedang ditarik.</li>
+                    </ul>
+                </div>
+
+                <h3>Sintaks Dasar:</h3>
+                <pre><code>&lt;!-- Membuat gambar bisa ditarik --&gt;
+&lt;img src="img.jpg" draggable="true" ondragstart="drag(event)"&gt;</code></pre>
+
+                <div class="case-study">
+                    <h3>Kasus Nyata: Trello & KanBan</h3>
+                    <p>Aplikasi seperti Trello menggunakan fitur ini agar pengguna bisa memindahkan kartu tugas dari kolom "To-Do" ke "Done" dengan satu gerakan mouse.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="dd-events" class="materi-content">
+            <div class="card">
+                <h1>Memahami Drag Events</h1>
+                <p>Ada beberapa kejadian (event) yang terjadi selama proses tarik-lepas berlangsung:</p>
+
+                <div class="term-box">
+                    <b>Istilah & Fungsi:</b>
+                    <ul>
+                        <li><code>ondragstart</code>: Terjadi saat user mulai menarik elemen.</li>
+                        <li><code>ondragover</code>: Terjadi saat elemen berada di atas area drop. (Penting: Harus melakukan <code>event.preventDefault()</code> agar drop bisa terjadi).</li>
+                        <li><code>ondrop</code>: Terjadi saat elemen dilepaskan di area tujuan.</li>
+                    </ul>
+                </div>
+
+                <h3>Logika JavaScript:</h3>
+                <pre><code>function allowDrop(ev) {
+  ev.preventDefault(); // Mengizinkan drop
+}
+
+function drag(ev) {
+  ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+  ev.preventDefault();
+  var data = ev.dataTransfer.getData("text");
+  ev.target.appendChild(document.getElementById(data));
+}</code></pre>
+            </div>
+        </div>
+
+        <div id="dd-practice" class="materi-content">
+            <div class="card">
+                <h1>Simulasi Interaktif</h1>
+                <p>Coba tarik kotak hijau di bawah ini dan pindahkan ke kotak kosong lainnya.</p>
+
+                <div class="demo-flex">
+                    <div id="div1" class="drop-zone" ondrop="drop(event)" ondragover="allowDrop(event)">
+                        <div id="drag1" class="drag-item" draggable="true" ondragstart="drag(event)">TARIK</div>
+                    </div>
+                    <div id="div2" class="drop-zone" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                </div>
+
+                <div class="case-study">
+                    <h3>Tips Penting:</h3>
+                    <p>Browser secara default melarang data dijatuhkan (drop) ke elemen lain. Itulah sebabnya fungsi <code>event.preventDefault()</code> pada event <b>ondragover</b> sangat krusial. Tanpanya, fitur drop tidak akan pernah bekerja.</p>
+                </div>
+            </div>
+        </div>
+
+        <a href="../../../index.html" class="back-link">← Kembali ke Daftar Materi</a>
+    </div>
+
+    <script src="drag-drop.js"></script>
+</body>
+</html>

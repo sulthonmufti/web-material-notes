@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Advanced: Geolocation API</title>
+    <link rel="stylesheet" href="geolocation.css">
+</head>
+<body>
+
+    <nav class="header-nav">
+        <strong>HTML Advanced Series</strong>
+        <div class="dropdown-container">
+            <select id="pageSelect" onchange="changePage()">
+                <option value="geo-intro">1. Apa itu Geolocation?</option>
+                <option value="geo-method">2. Cara Kerja (getCurrentPosition)</option>
+                <option value="geo-handling">3. Menangani Error & Izin</option>
+            </select>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <div id="geo-intro" class="materi-content active">
+            <div class="card">
+                <h1>HTML Geolocation</h1>
+                <p>HTML Geolocation API digunakan untuk mendapatkan posisi geografis pengguna. Karena ini masalah privasi, posisi **tidak akan tersedia** kecuali pengguna menyetujuinya.</p>
+                
+                
+
+                <div class="term-box">
+                    <b>Prasyarat Penting:</b>
+                    <ul>
+                        <li><b>HTTPS:</b> Geolocation hanya bekerja pada situs yang aman (HTTPS). Di localhost (saat belajar), fitur ini tetap aktif.</li>
+                        <li><b>User Permission:</b> Browser akan otomatis memunculkan pop-up "Allow" atau "Block".</li>
+                    </ul>
+                </div>
+
+                <h3>Kasus Penggunaan:</h3>
+                <ul>
+                    <li>Menemukan toko terdekat dari lokasi Anda.</li>
+                    <li>Memberikan prakiraan cuaca lokal secara otomatis.</li>
+                    <li>Menampilkan rute di peta (Google Maps).</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="geo-method" class="materi-content">
+            <div class="card">
+                <h1>Mendapatkan Lokasi</h1>
+                <p>Metode utama yang digunakan adalah <code>getCurrentPosition()</code>. Metode ini mengembalikan koordinat <b>Latitude</b> (garis lintang) dan <b>Longitude</b> (garis bujur).</p>
+
+                
+
+[Image of latitude and longitude coordinates on a globe]
+
+
+                <div class="term-box">
+                    <b>Istilah Baru:</b>
+                    <ul>
+                        <li><b>Latitude:</b> Posisi utara-selatan dari garis khatulistiwa.</li>
+                        <li><b>Longitude:</b> Posisi timur-barat dari garis meridian.</li>
+                        <li><b>Accuracy:</b> Tingkat keakuratan lokasi dalam satuan meter.</li>
+                    </ul>
+                </div>
+
+                <h3>Contoh Kode Dasar:</h3>
+                <pre><code>&lt;script&gt;
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else {
+    alert("Geolocation tidak didukung browser ini.");
+  }
+}
+
+function showPosition(position) {
+  console.log("Lat: " + position.coords.latitude);
+  console.log("Lon: " + position.coords.longitude);
+}
+&lt;/script&gt;</code></pre>
+
+                <div class="demo-area">
+                    <button class="btn-geo" onclick="getLocation()">Coba Ambil Lokasi Saya</button>
+                    <div id="locationDisplay">Lokasi akan muncul di sini...</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="geo-handling" class="materi-content">
+            <div class="card">
+                <h1>Menangani Masalah (Error Handling)</h1>
+                <p>Tidak selamanya pengambilan lokasi berhasil. Kita harus menyiapkan pesan jika sesuatu salah terjadi.</p>
+
+                <div class="term-box">
+                    <b>Penyebab Umum Error:</b>
+                    <ul>
+                        <li><b>Permission Denied:</b> Pengguna menekan tombol "Block".</li>
+                        <li><b>Position Unavailable:</b> Sinyal GPS lemah atau tidak ada koneksi internet.</li>
+                        <li><b>Timeout:</b> Waktu pengambilan lokasi terlalu lama.</li>
+                    </ul>
+                </div>
+
+                <h3>Kode Penanganan Error:</h3>
+                <pre><code>function showError(error) {
+  switch(error.code) {
+    case error.PERMISSION_DENIED:
+      return "Pengguna menolak izin lokasi.";
+    case error.POSITION_UNAVAILABLE:
+      return "Informasi lokasi tidak tersedia.";
+    case error.TIMEOUT:
+      return "Waktu permintaan habis.";
+  }
+}</code></pre>
+
+                <div class="case-study">
+                    <h3>Tips Pro: watchPosition()</h3>
+                    <p>Jika Anda membuat aplikasi navigasi (seperti ojek online), gunakan <code>watchPosition()</code>. Bedanya, ia akan terus memperbarui lokasi setiap kali posisi pengguna berubah secara otomatis tanpa harus klik tombol lagi.</p>
+                </div>
+            </div>
+        </div>
+
+        <a href="../../../index.html" class="back-link">← Kembali ke Daftar Materi</a>
+    </div>
+
+    <script src="geolocation.js"></script>
+</body>
+</html>
