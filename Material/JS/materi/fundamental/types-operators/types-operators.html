@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi JS: Types & Operators</title>
+    <style>
+        :root {
+            --primary: #f7df1e;
+            --dark: #222;
+            --light: #f4f4f4;
+            --code-bg: #282c34;
+            --accent: #3498db;
+        }
+        body { font-family: 'Segoe UI', sans-serif; line-height: 1.6; color: #333; margin: 0; background: var(--light); }
+        header { background: var(--dark); color: var(--primary); padding: 2rem; text-align: center; border-bottom: 5px solid var(--primary); }
+        .container { max-width: 900px; margin: 20px auto; padding: 20px; }
+        
+        /* Accordion Style */
+        .segment { background: white; margin-bottom: 10px; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .segment-header { background: #fff; padding: 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: bold; border-bottom: 1px solid #eee; }
+        .segment-header:hover { background: #f9f9f9; }
+        .segment-content { padding: 20px; display: none; background: #fff; }
+        .active .segment-content { display: block; }
+        .active .segment-header { border-bottom: 3px solid var(--primary); }
+
+        .term-box { background: #e8f4fd; border-left: 5px solid var(--accent); padding: 15px; margin: 15px 0; border-radius: 4px; }
+        pre { background: var(--code-bg); color: #abb2bf; padding: 15px; border-radius: 5px; overflow-x: auto; }
+        .code-kw { color: #c678dd; } /* keyword */
+        .code-st { color: #98c379; } /* string */
+        .code-nm { color: #d19a66; } /* number */
+        
+        .analysis-box { background: #f8f9fa; border: 1px solid #ddd; padding: 15px; margin-top: 15px; border-radius: 5px; }
+        .interactive-demo { border: 2px dashed #ccc; padding: 20px; margin: 15px 0; background: #fff; }
+        .btn-back { background: #e74c3c; color: white; border: none; padding: 12px 25px; border-radius: 30px; cursor: pointer; text-decoration: none; display: inline-block; margin-top: 20px; }
+        button { padding: 10px 15px; cursor: pointer; border-radius: 5px; border: 1px solid #ccc; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>JS: Data Types & Operators</h1>
+    <p>Memahami Bahan Baku dan Mesin JavaScript</p>
+</header>
+
+<div class="container">
+
+    <div class="segment">
+        <div class="segment-header" onclick="toggleSegment(this)">
+            1. Tipe Data Primitif <span>+</span>
+        </div>
+        <div class="segment-content">
+            <p>JavaScript memiliki beberapa tipe data dasar. Yang paling sering Anda temui adalah:</p>
+            <ul>
+                <li><strong>String:</strong> Teks (dibungkus kutip).</li>
+                <li><strong>Number:</strong> Angka (desimal atau bulat).</li>
+                <li><strong>Boolean:</strong> Hanya dua nilai: <code>true</code> atau <code>false</code>.</li>
+                <li><strong>Undefined:</strong> Variabel yang sudah dibuat tapi belum diisi.</li>
+                <li><strong>Null:</strong> Nilai kosong yang disengaja.</li>
+            </ul>
+
+            <div class="term-box">
+                <span style="font-weight:bold">📖 Istilah: Dynamic Typing</span>
+                JavaScript adalah bahasa yang "dinamis". Artinya, satu variabel bisa berubah dari angka menjadi teks tanpa error.
+            </div>
+
+            <pre><code><span class="code-kw">let</span> nama = <span class="code-st">"Ali"</span>;      <span class="code-comment">// String</span>
+<span class="code-kw">let</span> umur = <span class="code-nm">25</span>;         <span class="code-comment">// Number</span>
+<span class="code-kw">let</span> isLulus = <span class="code-kw">true</span>;    <span class="code-comment">// Boolean</span></code></pre>
+        </div>
+    </div>
+
+    <div class="segment">
+        <div class="segment-header" onclick="toggleSegment(this)">
+            2. Operator Aritmatika <span>+</span>
+        </div>
+        <div class="segment-content">
+            <p>Digunakan untuk melakukan perhitungan matematika.</p>
+            
+            
+            <p><strong>Kasus Penggunaan:</strong> Menghitung total harga keranjang belanja atau sisa stok produk.</p>
+            
+            <div class="interactive-demo">
+                <input type="number" id="harga" placeholder="Harga Barang">
+                <input type="number" id="jumlah" placeholder="Jumlah">
+                <button onclick="hitungTotal()">Hitung Total</button>
+                <p id="hasil-hitung"></p>
+            </div>
+
+            <div class="analysis-box">
+                <h4>🛠️ Dapur Rekaman: Proses Perhitungan</h4>
+                <pre><code><span class="code-kw">const</span> total = harga * jumlah; 
+<span class="code-comment">// Mengambil nilai dari input HTML biasanya menghasilkan String. 
+// JavaScript secara cerdas melakukan "Type Coercion" (otomatis ubah string ke angka) 
+// saat bertemu operator perkalian (*).</span></code></pre>
+            </div>
+        </div>
+    </div>
+
+    <div class="segment">
+        <div class="segment-header" onclick="toggleSegment(this)">
+            3. Perbandingan & Logika <span>+</span>
+        </div>
+        <div class="segment-content">
+            <p>Digunakan untuk mengambil keputusan (If-Else).</p>
+            <ul>
+                <li><code>==</code> (Sama nilainya) vs <code>===</code> (Sama nilai & tipe datanya).</li>
+                <li><code>&&</code> (DAN), <code>||</code> (ATAU), <code>!</code> (TIDAK).</li>
+            </ul>
+
+            <div class="term-box">
+                <span style="font-weight:bold">📖 Istilah: Strict Equality (===)</span>
+                Developer Frontend profesional selalu menyarankan <code>===</code> untuk menghindari bug "aneh" di JavaScript.
+            </div>
+
+            <div class="interactive-demo">
+                <p>Apakah 5 == "5"? <button onclick="cekSama()">Cek ==</button></p>
+                <p>Apakah 5 === "5"? <button onclick="cekStrict()">Cek ===</button></p>
+                <p id="hasil-cek"></p>
+            </div>
+
+            <div class="analysis-box">
+                <h4>🛠️ Dapur Rekaman: Kenapa Hasilnya Berbeda?</h4>
+                <p><strong>Loose Equality (==):</strong> Mencoba memaksa tipe data agar sama sebelum dibandingan. <em>"Pokoknya angkanya 5, ya dianggap sama."</em></p>
+                <p><strong>Strict Equality (===):</strong> Tidak ada toleransi. <em>"Yang satu angka, yang satu teks? Beda!"</em>. Ini lebih aman untuk aplikasi besar.</p>
+            </div>
+        </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 30px;">
+        <a href="../../../index.html" class="btn-back">← Kembali ke Dashboard Utama</a>
+    </div>
+
+</div>
+
+<script>
+    function toggleSegment(element) {
+        const parent = element.parentElement;
+        parent.classList.toggle('active');
+        const span = element.querySelector('span');
+        span.innerText = parent.classList.contains('active') ? '-' : '+';
+    }
+
+    // Demo Hitung
+    function hitungTotal() {
+        const h = document.getElementById('harga').value;
+        const j = document.getElementById('jumlah').value;
+        const total = h * j;
+        document.getElementById('hasil-hitung').innerText = "Total Bayar: Rp " + total;
+    }
+
+    // Demo Comparison
+    function cekSama() {
+        const hasil = (5 == "5");
+        document.getElementById('hasil-cek').innerText = "Hasil (5 == '5') adalah: " + hasil;
+        document.getElementById('hasil-cek').style.color = "orange";
+    }
+
+    function cekStrict() {
+        const hasil = (5 === "5");
+        document.getElementById('hasil-cek').innerText = "Hasil (5 === '5') adalah: " + hasil;
+        document.getElementById('hasil-cek').style.color = "red";
+    }
+</script>
+
+</body>
+</html>
