@@ -4,37 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Materi JS: Types & Operators</title>
-    <style>
-        :root {
-            --primary: #f7df1e;
-            --dark: #222;
-            --light: #f4f4f4;
-            --code-bg: #282c34;
-            --accent: #3498db;
-        }
-        body { font-family: 'Segoe UI', sans-serif; line-height: 1.6; color: #333; margin: 0; background: var(--light); }
-        header { background: var(--dark); color: var(--primary); padding: 2rem; text-align: center; border-bottom: 5px solid var(--primary); }
-        .container { max-width: 900px; margin: 20px auto; padding: 20px; }
-        
-        /* Accordion Style */
-        .segment { background: white; margin-bottom: 10px; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        .segment-header { background: #fff; padding: 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: bold; border-bottom: 1px solid #eee; }
-        .segment-header:hover { background: #f9f9f9; }
-        .segment-content { padding: 20px; display: none; background: #fff; }
-        .active .segment-content { display: block; }
-        .active .segment-header { border-bottom: 3px solid var(--primary); }
-
-        .term-box { background: #e8f4fd; border-left: 5px solid var(--accent); padding: 15px; margin: 15px 0; border-radius: 4px; }
-        pre { background: var(--code-bg); color: #abb2bf; padding: 15px; border-radius: 5px; overflow-x: auto; }
-        .code-kw { color: #c678dd; } /* keyword */
-        .code-st { color: #98c379; } /* string */
-        .code-nm { color: #d19a66; } /* number */
-        
-        .analysis-box { background: #f8f9fa; border: 1px solid #ddd; padding: 15px; margin-top: 15px; border-radius: 5px; }
-        .interactive-demo { border: 2px dashed #ccc; padding: 20px; margin: 15px 0; background: #fff; }
-        .btn-back { background: #e74c3c; color: white; border: none; padding: 12px 25px; border-radius: 30px; cursor: pointer; text-decoration: none; display: inline-block; margin-top: 20px; }
-        button { padding: 10px 15px; cursor: pointer; border-radius: 5px; border: 1px solid #ccc; }
-    </style>
+    <link rel="stylesheet" href="types-operators.css">
 </head>
 <body>
 
@@ -64,9 +34,19 @@
                 JavaScript adalah bahasa yang "dinamis". Artinya, satu variabel bisa berubah dari angka menjadi teks tanpa error.
             </div>
 
-            <pre><code><span class="code-kw">let</span> nama = <span class="code-st">"Ali"</span>;      <span class="code-comment">// String</span>
-<span class="code-kw">let</span> umur = <span class="code-nm">25</span>;         <span class="code-comment">// Number</span>
-<span class="code-kw">let</span> isLulus = <span class="code-kw">true</span>;    <span class="code-comment">// Boolean</span></code></pre>
+            <pre><code><span class="code-kw">let</span> nama = <span class="code-st">"Ali"</span>;       <span class="code-comment">// String: Untuk teks</span>
+<span class="code-kw">let</span> umur = <span class="code-nm">25</span>;          <span class="code-comment">// Number: Untuk angka</span>
+<span class="code-kw">let</span> isLulus = <span class="code-kw">true</span>;     <span class="code-comment">// Boolean: Hanya true atau false</span>
+<span class="code-kw">let</span> barang;             <span class="code-comment">// Undefined: Variabel kosong karena belum diisi</span>
+<span class="code-kw">let</span> fotoUser = <span class="code-kw">null</span>;    <span class="code-comment">// Null: Variabel sengaja dikosongkan (objek kosong)</span>
+</code></pre>
+
+            <div class="analysis-box">
+                <h4>🛠️ Dapur Rekaman: Bedah Tipe Data</h4>
+                <p><strong>1. Undefined:</strong> Muncul secara otomatis. Saat Anda membuat variabel dengan <code>let</code> tapi tidak memberinya nilai, JavaScript memberinya label <em>undefined</em>.</p>
+                
+                <p><strong>2. Null:</strong> Harus diberikan secara manual. Di dunia Frontend, kita sering menggunakan <code>null</code> untuk menandakan bahwa data dari server belum datang atau user belum memilih sesuatu.</p>
+            </div>
         </div>
     </div>
 
@@ -124,44 +104,38 @@
                 <p><strong>Loose Equality (==):</strong> Mencoba memaksa tipe data agar sama sebelum dibandingan. <em>"Pokoknya angkanya 5, ya dianggap sama."</em></p>
                 <p><strong>Strict Equality (===):</strong> Tidak ada toleransi. <em>"Yang satu angka, yang satu teks? Beda!"</em>. Ini lebih aman untuk aplikasi besar.</p>
             </div>
-        </div>
-    </div>
 
-    <div style="text-align: center; margin-top: 30px;">
-        <a href="../../../index.html" class="btn-back">← Kembali ke Dashboard Utama</a>
-    </div>
+            <div class="interactive-demo">
+                <h4>Demo Logika Frontend</h4>
+                <p>Status: <span id="status-teks">Silakan tes tombol di bawah</span></p>
+                
+                <button onclick="tesLogika('DAN')">Tes && (DAN)</button>
+                <button onclick="tesLogika('ATAU')">Tes || (ATAU)</button>
+                <button onclick="tesLogika('TIDAK')">Tes ! (TIDAK)</button>
+            </div>
 
+            <div class="analysis-box">
+                <h4>🛠️ Analisis Kode Logika</h4>
+                <pre><code><span class="code-comment">// 1. DAN (&&) - Syarat ketat</span>
+<span class="code-kw">if</span> (punyaTiket && punyaKTP) { <span class="code-comment">/* Masuk */</span> }
+
+<span class="code-comment">// 2. ATAU (||) - Syarat fleksibel</span>
+<span class="code-kw">if</span> (pakeEmail || pakeNoHP) { <span class="code-comment">/* Bisa Login */</span> }
+
+<span class="code-comment">// 3. TIDAK (!) - Membalikkan keadaan</span>
+<span class="code-kw">let</span> sedangLoading = <span class="code-kw">true</span>;
+<span class="code-kw">let</span> tampilkanData = !sedangLoading; <span class="code-comment">// Menjadi false</span></code></pre>
 </div>
+                </div>
+            </div>
 
-<script>
-    function toggleSegment(element) {
-        const parent = element.parentElement;
-        parent.classList.toggle('active');
-        const span = element.querySelector('span');
-        span.innerText = parent.classList.contains('active') ? '-' : '+';
-    }
+        <div style="text-align: center; margin-top: 30px;">
+            <a href="../../../index.html" class="btn-back">← Kembali ke Dashboard Utama</a>
+        </div>
 
-    // Demo Hitung
-    function hitungTotal() {
-        const h = document.getElementById('harga').value;
-        const j = document.getElementById('jumlah').value;
-        const total = h * j;
-        document.getElementById('hasil-hitung').innerText = "Total Bayar: Rp " + total;
-    }
+    </div>
 
-    // Demo Comparison
-    function cekSama() {
-        const hasil = (5 == "5");
-        document.getElementById('hasil-cek').innerText = "Hasil (5 == '5') adalah: " + hasil;
-        document.getElementById('hasil-cek').style.color = "orange";
-    }
-
-    function cekStrict() {
-        const hasil = (5 === "5");
-        document.getElementById('hasil-cek').innerText = "Hasil (5 === '5') adalah: " + hasil;
-        document.getElementById('hasil-cek').style.color = "red";
-    }
-</script>
+    <script src="types-operators.js"></script>
 
 </body>
 </html>
