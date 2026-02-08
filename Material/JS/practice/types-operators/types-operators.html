@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice Operators</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="containder">
+        <div class="segment">
+            <div class="header-segment" onclick="toggleSegment(this)">
+                Operator Aritmatika <span>+</span>
+            </div>
+            <div class="segment-content">
+                <div class="multiplication">
+                    <p>Operator Perkalian: </p>
+                    <input type="number" id="kalisatu" placeholder="angka pertama">
+                    <input type="number" id="kalidua" placeholder="angka kedua">
+                    <button onclick="totalKali()">Total</button>
+                    <p id="hasil-perkalian"></p>
+                </div>
+                <div class="addition">
+                    <p>Operator Penjumlahan: </p>
+                    <input type="number" id="tambahsatu" placeholder="angka pertama">
+                    <input type="number" id="tambahdua" placeholder="angka kedua">
+                    <button onclick="totalTambah()">Total</button>
+                    <p id="hasil-tambah"></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="segment">
+            <div class="header-segment" onclick="toggleSegment(this)">
+                Perbandingan Logika <span>+</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    
+</body>
+</html>
