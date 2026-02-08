@@ -14,13 +14,35 @@ function totalTambah(){
     
     document.getElementById('hasil-tambah').innerText = "Hasil penjumlahan: " + addition_result;
 }
+//Operator pengurangan
+function totalKurang(){
+    const sub_first = Number(document.getElementById('kurangsatu').value);
+    const sub_second = Number(document.getElementById('kurangdua').value);
+    const subtraction_result = sub_first - sub_second;
+    
+    document.getElementById('hasil-kurang').innerText = "Hasil pengurangan: " + subtraction_result;
+}
+//Operator pembagian
+function totalBagi(){
+    const dis_first = Number(document.getElementById('bagisatu').value);
+    const dis_second = Number(document.getElementById('bagidua').value);
+    const distribution_result = dis_first / dis_second;
+    
+    document.getElementById('hasil-bagi').innerText = "Hasil pembagian: " + distribution_result;
+}
 
 //toggle
-//penulisan biasa (terlalu panjang):
+function toggleSegment(element){
+    const parent = element.parentElement;
+    parent.classList.toggle('Active');
+    const span = element.querySelector('span');
+
+    //penulisan biasa (terlalu panjang):
     // if (parent.classList.contains('active')) {
     //     span.innerText = '-';
     // } else {
     //     span.innerText = '+';
     // }
     //pake Ternary Operator:
-    ///span.innerText = parent.classList.contains('active') ? '-' : '+';
+    span.innerText = parent.classList.contains('active') ? '-' : '+';
+}

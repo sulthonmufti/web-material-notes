@@ -1,0 +1,9 @@
+.header-segment{
+    cursor: pointer;
+}
+.segment-content{
+    display: none;
+}
+.active .segment-content{
+    display: block;
+}
