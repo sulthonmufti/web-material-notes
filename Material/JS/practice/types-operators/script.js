@@ -34,7 +34,7 @@ function totalBagi(){
 //toggle
 function toggleSegment(element){
     const parent = element.parentElement;
-    parent.classList.toggle('Active');
+    parent.classList.toggle('active');
     const span = element.querySelector('span');
 
     //penulisan biasa (terlalu panjang):
@@ -45,4 +45,26 @@ function toggleSegment(element){
     // }
     //pake Ternary Operator:
     span.innerText = parent.classList.contains('active') ? '-' : '+';
+}
+
+//perbandingan loose equality (==)
+function loose_Equality(){
+    const loose_first = Number(document.getElementById('loose-angka').value);
+    const loose_second = String(document.getElementById('loose-pembanding').value);
+
+    const loose_hasil = (loose_first == loose_second);
+
+    document.getElementById('hasil-cek-loose-equality').innerText = "Hasil cek " + loose_first + " dan " + loose_second + " adalah: " + loose_hasil;
+    document.getElementById('hasil-cek-loose-equality').style.color = "rgb(0, 255, 0)";
+}
+
+//perbandingan strict equality (===)
+function strict_Equality(){
+    const strict_first = Number(document.getElementById('strict-angka').value);
+    const strict_second = String(document.getElementById('strict-pembanding').value);
+
+    const strict_hasil = (strict_first === strict_second);
+
+    document.getElementById('hasil-cek-strict-equality').innerText = "Hasil cek " + strict_first + " dan " + strict_second + " adalah: " + strict_hasil;
+    document.getElementById('hasil-cek-strict-equality').style.color = "red";
 }

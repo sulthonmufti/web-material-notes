@@ -48,6 +48,24 @@
             <div class="header-segment" onclick="toggleSegment(this)">
                 Perbandingan Logika <span>+</span>
             </div>
+            <div class="segment-content">
+                <div class="loose-equality">
+                    <p>perbandingan operator loose equality (==):</p>
+                    <input type="number" id="loose-angka" placeholder="masukkan angka">
+                    <input type="text" id="loose-pembanding" placeholder="string pembanding">
+                    <button onclick="loose_Equality()">Cek ==</button>
+                    <p id="hasil-cek-loose-equality"></p>
+                </div>
+
+                <div class="strict-equality">
+                    <p>perbandingan operator strict equality (===):</p>
+                    <input type="number" id="strict-angka" placeholder="masukkan angka">
+                    <input type="text" id="strict-pembanding" placeholder="string pembanding">
+                    <button onclick="strict_Equality()">Cek ===</button>
+                    <p id="hasil-cek-strict-equality"></p>
+                </div>
+            </div>
+            
         </div>
     </div>
 
