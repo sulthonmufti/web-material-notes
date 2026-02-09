@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peta Pembelajaran Coding - Roadmap Pribadi</title>
+    <link rel="stylesheet" href="roadmap.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Peta Pembelajaran Coding</h1>
+        <p class="subtitle">Roadmap Pribadi untuk Web & Mobile Development</p>
+
+        <div class="progress-container">
+            <h3>Progress Keseluruhan</h3>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill">0%</div>
+            </div>
+            <p><span id="completedCount">0</span> dari <span id="totalCount">0</span> topik selesai</p>
+        </div>
+
+        <div class="tips">
+            <h3>💡 Tips Belajar Efektif</h3>
+            <ul>
+                <li>Luangkan waktu 1-2 jam per hari secara konsisten</li>
+                <li>Praktik langsung dengan membuat project kecil setiap minggu</li>
+                <li>Jangan terburu-buru, pahami konsep dasar dengan baik</li>
+                <li>Bergabung dengan komunitas online untuk bertanya dan sharing</li>
+                <li>Klik pada setiap topik untuk melihat detail dan resources</li>
+            </ul>
+        </div>
+
+        <!-- Phase 1: Foundation -->
+        <div class="phase">
+            <div class="phase-header">
+                <div class="phase-number">1</div>
+                <div>
+                    <h2>Foundation - Dasar Programming</h2>
+                    <p>Mulai dari sini! (2-3 bulan)</p>
+                </div>
+            </div>
+            <div class="phase-content">
+                <div class="topic" onclick="toggleTopic(this)">
+                    <div class="topic-header">
+                        <div class="checkbox" onclick="toggleCheck(event, this)"></div>
+                        <div class="topic-title">HTML Basics</div>
+                        <div class="duration">2 minggu</div>
+                    </div>
+                    <div class="topic-description">
+                        Pelajari struktur dasar web: tags, elements, attributes, forms, semantic HTML. Ini adalah tulang punggung semua website.
+                    </div>
+                    <div class="resources">
+                        <a href="https://www.freecodecamp.org/learn/responsive-web-design/" class="resource-link" target="_blank">FreeCodeCamp</a>
+                        <a href="https://www.w3schools.com/html/" class="resource-link" target="_blank">W3Schools</a>
+                    </div>
+                </div>
+
+                <div class="topic" onclick="toggleTopic(this)">
+                    <div class="topic-header">
+                        <div class="checkbox" onclick="toggleCheck(event, this)"></div>
+                        <div class="topic-title">CSS Fundamentals</div>
+                        <div class="duration">3 minggu</div>
+                    </div>
+                    <div class="topic-description">
+                        Belajar styling: colors, fonts, box model, flexbox, grid, responsive design. Buat website yang cantik!
+                    </div>
+                    <div class="resources">
+                        <a href="https://flexboxfroggy.com/" class="resource-link" target="_blank">Flexbox Froggy</a>
+                        <a href="https://cssgridgarden.com/" class="resource-link" target="_blank">Grid Garden</a>
+                    </div>
+                </div>
+
+                <div class="topic" onclick="toggleTopic(this)">
+                    <div class="topic-header">
+                        <div class="checkbox" onclick="toggleCheck(event, this)"></div>
+                        <div class="topic-title">JavaScript Basics</div>
+                        <div class="duration">4 minggu</div>
+                    </div>
+                    <div class="topic-description">
+                        Konsep programming: variables, data types, operators, conditions, loops, functions. Ini fondasi semua bahasa programming!
+                    </div>
+                    <div class="resources">
+                        <a href="https://javascript.info/" class="resource-link" target="_blank">JavaScript.info</a>
+                        <a href="https://www.codecademy.com/learn/introduction-to-javascript" class="resource-link" target="_blank">Codecademy</a>
+                    </div>
+                </div>
+
+                <div class="topic" onclick="toggleTopic(this)">
+                    <div class="topic-header">
+                        <div class="checkbox" onclick="toggleCheck(event, this)"></div>
+                        <div class="topic-title">Git & GitHub</div>
+                        <div class="duration">1 minggu</div>
+                    </div>
+                    <div class="topic-description">
+                        Version control: commit, push, pull, branching. Essential untuk semua developer!
+                    </div>
+                    <div class="resources">
+                        <a href="https://try.github.io/" class="resource-link" target="_blank">GitHub Learning</a>
+                    </div>
+                </div>
+
+                <div class="milestone">
+                    <h3>🎯 Milestone 1: Buat Website Portfolio Sederhana</h3>
+                    <p>Project: Website personal dengan HTML, CSS, dan JavaScript sederhana</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Phase 2: Intermediate Web -->
+        <div class="phase">
+            <div class="phase-header">
+                <div class="phase-number">2</div>
+                <div>
+                    <h2>Web Development - Intermediate</h2>
+                    <p>Naik level! (3-4 bulan)</p>
+                </div>
+            </div>
+            <div class="phase-content">
+                <div class="topic" onclick="toggleTopic(this)">
+                    <div class="topic-header">
+                        <div class="checkbox" onclick="toggleCheck(event, this)"></div>
+                        <div class="topic-title">JavaScript Advanced</div>
+                        <div class="duration">4 minggu</div>
+                    </div>
+                    <div class="topic-description">
+                        DOM manipulation, events, async/await, fetch API, ES6+ features. Buat website interaktif!
+                    </div>
+                    <div class="resources">
+                        <a href="https://www.youtube.com/watch?v=PkZNo7MFNFg" class="resource-link" target="_blank">FreeCodeCamp JS</a>
+                    </div>
+                </div>
+
+                <div class="topic" onclick="toggleTopic(this)">
+                    <div class="topic-header">
+                        <div class="checkbox" onclick="toggleCheck(event, this)"></div>
+                        <div class="topic-title">React Fundamentals</div>
+                        <div class="duration">6 minggu</div>
+                    </div>
+                    <div class="topic-description">
+                        Components, props, state, hooks, routing. Framework paling populer untuk frontend!
+                    </div>
+                    <div class="resources">
+                        <a href="https://react.dev/learn" class="resource-link" target="_blank">React Docs</a>
+                        <a href="https://scrimba.com/learn/learnreact" class="resource-link" target="_blank">Scrimba React</a>
+                    </div>
+                </div>
+
+                <div class="topic" onclick="toggleTopic(this)">
+                    <div class="topic-header">
+                        <div class="checkbox" onclick="toggleCheck(event, this)"></div>
+                        <div class="topic-title">PHP Basics</div>
+                        <div class="duration">4 minggu</div>
+                    </div>
+                    <div class="topic-description">
+                        Server-side programming: syntax, variables, forms, MySQL database basics. Backend untuk web kamu!
+                    </div>
+                    <div class="resources">
+                        <a href="https://www.php.net/manual/en/getting-started.php" class="resource-link" target="_blank">PHP Manual</a>
+                        <a href="https://www.w3schools.com/php/" class="resource-link" target="_blank">W3Schools PHP</a>
+                    </div>
+                </div>
+
+                <div class="topic" onclick="toggleTopic(this)">
+                    <div class="topic-header">
+                        <div class="checkbox" onclick="toggleCheck(event, this)"></div>
+                        <div class="topic-title">Database MySQL</div>
+                        <div class="duration">3 minggu</div>
+                    </div>
+                    <div class="topic-description">
+                        CRUD operations, queries, relationships. Simpan dan kelola data aplikasi!
+                    </div>
+                    <div class="resources">
+                        <a href="https://www.mysqltutorial.org/" class="resource-link" target="_blank">MySQL Tutorial</a>
+                    </div>
+                </div>
+
+                <div class="milestone">
+                    <h3>🎯 Milestone 2: Web App Full-Stack Sederhana</h3>
+                    <p>Project: To-do list atau blog dengan React frontend + PHP backend + MySQL</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Phase 3: Mobile Development -->
+        <div class="phase">
+            <div class="phase-header">
+                <div class="phase-number">3</div>
+                <div>
+                    <h2>Mobile Development dengan Flutter</h2>
+                    <p>Buat aplikasi mobile! (3-4 bulan)</p>
+                </div>
+            </div>
+            <div class="phase-content">
+                <div class="topic" onclick="toggleTopic(this)">
+                    <div class="topic-header">
+                        <div class="checkbox" onclick="toggleCheck(event, this)"></div>
+                        <div class="topic-title">Dart Programming</div>
+                        <div class="duration">3 minggu</div>
+                    </div>
+                    <div class="topic-description">
+                        Bahasa untuk Flutter: variables, functions, OOP, null safety. Mirip JavaScript tapi lebih powerful!
+                    </div>
+                    <div class="resources">
+                        <a href="https://dart.dev/guides" class="resource-link" target="_blank">Dart Guides</a>
+                        <a href="https://www.youtube.com/watch?v=Ej_Pcr4uC2Q" class="resource-link" target="_blank">Dart Crash Course</a>
+                    </div>
+                </div>
+
+                <div class="topic" onclick="toggleTopic(this)">
+                    <div class="topic-header">
+                        <div class="checkbox" onclick="toggleCheck(event, this)"></div>
+                        <div class="topic-title">Flutter Basics</div>
+                        <div class="duration">6 minggu</div>
+                    </div>
+                    <div class="topic-description">
+                        Widgets, layouts, navigation, state management. Buat app Android & iOS sekaligus!
+                    </div>
+                    <div class="resources">
+                        <a href="https://flutter.dev/learn" class="resource-link" target="_blank">Flutter Docs</a>
+                        <a href="https://www.youtube.com/watch?v=VPvVD8t02U8" class="resource-link" target="_blank">Flutter Course</a>
+                    </div>
+                </div>
+
+                <div class="topic" onclick="toggleTopic(this)">
+                    <div class="topic-header">
+                        <div class="checkbox" onclick="toggleCheck(event, this)"></div>
+                        <div class="topic-title">Firebase Integration</div>
+                        <div class="duration">3 minggu</div>
+                    </div>
+                    <div class="topic-description">
+                        Backend as a Service: authentication, database, storage. No need server sendiri!
+                    </div>
+                    <div class="resources">
+                        <a href="https://firebase.google.com/docs/flutter/setup" class="resource-link" target="_blank">Firebase Flutter</a>
+                    </div>
+                </div>
+
+                <div class="milestone">
+                    <h3>🎯 Milestone 3: Aplikasi Mobile Full-Featured</h3>
+                    <p>Project: App catatan, expense tracker, atau chat app dengan Flutter + Firebase</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Phase 4: Advanced -->
+        <div class="phase">
+            <div class="phase-header">
+                <div class="phase-number">4</div>
+                <div>
+                    <h2>Advanced & Specialization</h2>
+                    <p>Jadi expert! (Ongoing)</p>
+                </div>
+            </div>
+            <div class="phase-content">
+                <div class="topic" onclick="toggleTopic(this)">
+                    <div class="topic-header">
+                        <div class="checkbox" onclick="toggleCheck(event, this)"></div>
+                        <div class="topic-title">Laravel Framework</div>
+                        <div class="duration">6 minggu</div>
+                    </div>
+                    <div class="topic-description">
+                        PHP framework modern: MVC, routing, Eloquent ORM. Build professional web apps!
+                    </div>
+                    <div class="resources">
+                        <a href="https://laravel.com/docs" class="resource-link" target="_blank">Laravel Docs</a>
+                        <a href="https://laracasts.com/" class="resource-link" target="_blank">Laracasts</a>
+                    </div>
+                </div>
+
+                <div class="topic" onclick="toggleTopic(this)">
+                    <div class="topic-header">
+                        <div class="checkbox" onclick="toggleCheck(event, this)"></div>
+                        <div class="topic-title">API Development</div>
+                        <div class="duration">4 minggu</div>
+                    </div>
+                    <div class="topic-description">
+                        RESTful APIs, authentication, testing. Connect frontend dan backend secara professional!
+                    </div>
+                    <div class="resources">
+                        <a href="https://restfulapi.net/" class="resource-link" target="_blank">REST Tutorial</a>
+                    </div>
+                </div>
+
+                <div class="topic" onclick="toggleTopic(this)">
+                    <div class="topic-header">
+                        <div class="checkbox" onclick="toggleCheck(event, this)"></div>
+                        <div class="topic-title">Advanced Flutter</div>
+                        <div class="duration">6 minggu</div>
+                    </div>
+                    <div class="topic-description">
+                        Advanced state management (Riverpod/Bloc), animations, performance optimization, publishing apps.
+                    </div>
+                    <div class="resources">
+                        <a href="https://docs.flutter.dev/development/data-and-backend/state-mgmt/intro" class="resource-link" target="_blank">State Management</a>
+                    </div>
+                </div>
+
+                <div class="topic" onclick="toggleTopic(this)">
+                    <div class="topic-header">
+                        <div class="checkbox" onclick="toggleCheck(event, this)"></div>
+                        <div class="topic-title">DevOps Basics</div>
+                        <div class="duration">3 minggu</div>
+                    </div>
+                    <div class="topic-description">
+                        Deployment, CI/CD, Docker basics. Bring your apps to production!
+                    </div>
+                    <div class="resources">
+                        <a href="https://www.youtube.com/watch?v=Xrgk023l4lI" class="resource-link" target="_blank">Docker Tutorial</a>
+                    </div>
+                </div>
+
+                <div class="milestone">
+                    <h3>🎯 Milestone 4: Portfolio Project</h3>
+                    <p>Project besar: E-commerce, social media app, atau SaaS product yang bisa di-deploy!</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="tips" style="background: #d1ecf1; border-color: #0c5460;">
+            <h3 style="color: #0c5460;">🌟 Next Steps Setelah Roadmap</h3>
+            <ul style="color: #0c5460;">
+                <li>Contribute ke open source projects di GitHub</li>
+                <li>Ikut coding competitions dan hackathons</li>
+                <li>Build portfolio website dengan semua project kamu</li>
+                <li>Networking di komunitas developer (Discord, Reddit, local meetups)</li>
+                <li>Consider freelancing atau internship untuk pengalaman real-world</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="roadmap.js"></script>
+</body>
+</html>

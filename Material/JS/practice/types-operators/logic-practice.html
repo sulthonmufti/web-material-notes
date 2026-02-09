@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice operator logic</title>
+</head>
+<body>
+    <div class="segment">
+        <div class="segment-header" onclick="toggleSegment(this)">
+            Practice: Logika  && (DAN) dan || (ATAU) <span>+</span>
+        </div>
+        <div class="segment-content">
+            <div class="interactive-demo">
+                <h4>Cek Persyaratan Login</h4>
+                <p>Imajinasi: Anda diminta untuk login dengan ketentuan:</p>
+                <ul>
+                    <li>Email harus ada valid (mengandung @)</li>
+                    <li>Password minimal 6 karakter</li>
+                    <li>Atau kita bisa login via Google (checkbox)</li>
+                </ul>
+
+                <label>Email:</label>
+                <input type="text" id="email" placeholder="Masukkan email">
+                <label>Password:</label>
+                <input type="text" id="password" placeholder="minimal 6 karakter">
+                <label>
+                    <input type="checkbox" id="loginGoogle">
+                    Login menggunakan akun Google (bypass email & password)
+                </label>
+
+                <button onclick="cekPersyaratanLogin()">Cek Bisa Login?</button>
+
+                <div id="hasil-login"></div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="logic-practice.js"></script>
+</body>
+</html>
