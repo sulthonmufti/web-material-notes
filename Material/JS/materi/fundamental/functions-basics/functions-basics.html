@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi JS: Functions Basics</title>
+    <link rel="stylesheet" href="functions-basics.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>JS: Functions Basics</h1>
+        <p>Membungkus Logika Menjadi Mesin Reusable</p>
+    </header>
+
+    <div class="container">
+
+        <div class="segment">
+            <div class="segment-header" onclick="toggleSegment(this)">
+                1. Pengenalan Function <span>+</span>
+            </div>
+            <div class="segment-content">
+                <p>Function adalah blok kode yang dirancang untuk melakukan tugas tertentu. Function baru akan berjalan
+                    ketika "dipanggil" (invoked).</p>
+
+                <div class="term-box">
+                    <span style="font-weight:bold">📖 Istilah Baru: Declaration & Call</span>
+                    <ul>
+                        <li><strong>Declaration:</strong> Mendefinisikan/membuat function.</li>
+                        <li><strong>Call/Invoke:</strong> Menjalankan/memanggil function tersebut.</li>
+                    </ul>
+                </div>
+
+                <pre><code><span class="code-kw">function</span> <span class="code-fn">sapaUser</span>() {
+    console.log(<span class="code-st">"Halo, Selamat Belajar!"</span>);
+}
+
+<span class="code-comment">// Memanggil function</span>
+sapaUser();</code></pre>
+
+            </div>
+        </div>
+
+        <div class="segment">
+            <div class="segment-header" onclick="toggleSegment(this)">
+                2. Parameters & Arguments <span>+</span>
+            </div>
+            <div class="segment-content">
+                <p>Agar function lebih fleksibel, kita bisa mengirimkan data ke dalamnya.</p>
+
+                <div class="term-box">
+                    <span style="font-weight:bold">📖 Istilah: Parameter vs Argument</span>
+                    <ul>
+                        <li><strong>Parameter:</strong> Variabel yang ditulis saat membuat function (seperti "lubang
+                            input").</li>
+                        <li><strong>Argument:</strong> Nilai asli yang dimasukkan saat memanggil function.</li>
+                    </ul>
+                </div>
+
+                <div class="interactive-demo">
+                    <input type="text" id="input-nama" placeholder="Masukkan nama...">
+                    <button onclick="panggilSapaan()">Kirim Argumen</button>
+                    <p id="hasil-sapaan"></p>
+                </div>
+
+                <div class="analysis-box">
+                    <h4>🛠️ Dapur Rekaman: Bedah Input</h4>
+                    <pre><code><span class="code-kw">function</span> <span class="code-fn">greet</span>(nama) { <span class="code-comment">// 'nama' adalah PARAMETER</span>
+    <span class="code-kw">return</span> <span class="code-st">"Halo "</span> + nama;
+}
+
+<span class="code-fn">greet</span>(<span class="code-st">"Budi"</span>); <span class="code-comment">// "Budi" adalah ARGUMEN</span></code></pre>
+                    <p><strong>Proses:</strong> Saat <code>panggilSapaan()</code> dijalankan, ia mengambil teks dari
+                        input dan mengirimnya sebagai "bahan baku" ke dalam parameter function.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="segment">
+            <div class="segment-header" onclick="toggleSegment(this)">
+                3. Return Keyword <span>+</span>
+            </div>
+            <div class="segment-content">
+                <p><code>return</code> digunakan untuk mengeluarkan hasil dari function agar bisa disimpan ke dalam
+                    variabel lain atau digunakan di tempat lain.</p>
+
+                <div class="term-box">
+                    <span style="font-weight:bold">⚠️ Penting: Batas Akhir</span>
+                    Setelah <code>return</code> dijalankan, function akan berhenti. Kode apapun di bawah
+                    <code>return</code> tidak akan pernah dieksekusi.
+                </div>
+
+                <div class="interactive-demo">
+                    <p>Hitung Luas Persegi (Sisi x Sisi):</p>
+                    <input type="number" id="sisi" placeholder="Nilai sisi...">
+                    <button onclick="demoReturn()">Hitung & Ambil Hasil</button>
+                    <p id="hasil-luas"></p>
+                </div>
+
+                <div class="analysis-box">
+                    <h4>🛠️ Dapur Rekaman: Kenapa butuh Return?</h4>
+                    <pre><code><span class="code-kw">function</span> <span class="code-fn">hitungLuas</span>(s) {
+    <span class="code-kw">return</span> s * s;
+}
+
+<span class="code-kw">let</span> hasil = <span class="code-fn">hitungLuas</span>(5); <span class="code-comment">// Nilai 25 sekarang "pulang" dan disimpan di variabel 'hasil'</span></code></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="segment">
+            <div class="segment-header" onclick="toggleSegment(this)">
+                4. Arrow Functions (ES6) <span>+</span>
+            </div>
+            <div class="segment-content">
+                <p>Cara modern dan lebih singkat untuk menulis function. Sangat sering digunakan dalam pengembangan
+                    Frontend saat ini (seperti di React).</p>
+
+                <div class="term-box">
+                    <span style="font-weight:bold">📖 Istilah: Fat Arrow (=>)</span>
+                    Menghilangkan kata kunci <code>function</code> dan menggantinya dengan tanda panah.
+                </div>
+
+                <pre><code><span class="code-comment">// Cara Biasa</span>
+<span class="code-kw">function</span> (a, b) { <span class="code-kw">return</span> a + b; }
+
+<span class="code-comment">// Cara Arrow Function</span>
+<span class="code-kw">const</span> tambah = (a, b) => a + b;</code></pre>
+
+                <div class="analysis-box">
+                    <h4>🛠️ Dapur Rekaman: Kelebihan Arrow Function</h4>
+                    <ul>
+                        <li><strong>Lebih Singkat:</strong> Jika hanya satu baris, tidak perlu kurung kurawal
+                            <code>{}</code> dan tidak perlu kata <code>return</code>.</li>
+                        <li><strong>this Keyword:</strong> Arrow function tidak memiliki <code>this</code> sendiri
+                            (sangat berguna saat menangani event di JavaScript lanjut).</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px;">
+            <a href="../../../index.html" class="btn-back">← Kembali ke Dashboard Utama</a>
+        </div>
+
+    </div>
+
+    <script src="functions-basics.js"></script>
+
+</body>
+
+</html>
