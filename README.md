@@ -1,46 +1,29 @@
 # Web Material Notes
 
+![JavaScript](https://img.shields.io/badge/JavaScript-f7df1e?style=flat&logo=javascript&logoColor=black) ![HTML](https://img.shields.io/badge/HTML-E34F26?style=flat&logo=html5&logoColor=white) ![CSS](https://img.shields.io/badge/CSS-1572B6?style=flat&logo=css3&logoColor=white)
+
 ## Project Description
-Web Material Notes is a comprehensive resource for students and learners, providing easily accessible study materials and notes covering various subjects. The platform aims to facilitate learning by offering structured content that is simple to navigate.
+This repository contains learning material related to front-end development.
 
 ## Features
-- User-friendly interface for easy navigation.
-- Categorized study materials by subject.
-- Search functionality to quickly find notes.
-- Responsive design for access on different devices.
-- GitHub Pages hosting for easy access and sharing.
+- Organized learning materials based on different technologies.
+- Clear folder structure for easy navigation.
 
 ## Structure
-```
-web-material-notes/
-│
-├── index.html
-├── styles/
-│   └── main.css
-├── scripts/
-│   └── app.js
-└── notes/
-    ├── math/
-    ├── science/
-    └── history/
-```
+- **JS/**: JavaScript materials
+- **style/**: CSS stylesheets
+- **Material/**: General materials
+- **Roadmap/**: Learning roadmap
 
 ## Technology Stack
-- HTML5
-- CSS3
 - JavaScript
-- GitHub Pages for hosting
+- HTML
+- CSS
 
 ## Quick Start Guide
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/sulthonmufti/web-material-notes.git
-   ```
-2. Navigate to the project directory:
-   ```bash
-   cd web-material-notes
-   ```
-3. Open `index.html` in your web browser to view the project.
+1. Clone the repository.
+2. Navigate to the desired folder.
+3. Start learning!
 
 ## GitHub Pages Hosting Link
-Visit the project hosted on GitHub Pages: [GitHub Pages Link](https://sulthonmufti.github.io/web-material-notes/)
+[GitHub Pages Link](https://sulthonmufti.github.io/web-material-notes/) (Click to view hosted site)
