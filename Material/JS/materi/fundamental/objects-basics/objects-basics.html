@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Materi JS: Objects Basics</title>
+    <link rel="stylesheet" href="objects-basics.css">
+  </head>
+  <body>
+    <header>
+      <h1>JS: Objects Basics</h1>
+      <p>Mengelompokkan Data Terkait dalam Satu Wadah</p>
+    </header>
+
+    <div class="container">
+      <div class="segment">
+        <div class="segment-header" onclick="toggleSegment(this)">
+          1. Pengenalan Object <span>+</span>
+        </div>
+        <div class="segment-content">
+          <p>
+            Object adalah variabel yang dapat menampung banyak nilai dalam
+            format <strong>key: value</strong>. Jika variabel biasa menyimpan
+            "Budi", maka Object bisa menyimpan "Budi", umur "25", dan pekerjaan
+            "Developer" dalam satu nama.
+          </p>
+
+          <div class="term-box">
+            <span style="font-weight: bold"
+              >📖 Istilah Baru: Property & Value</span
+            >
+            <ul>
+              <li>
+                <strong>Property (Key):</strong> Nama label di dalam object
+                (seperti nama laci).
+              </li>
+              <li><strong>Value:</strong> Isi dari label tersebut.</li>
+            </ul>
+          </div>
+
+          <pre><code><span class="code-kw">const</span> user = {
+    <span class="code-pr">nama</span>: <span class="code-st">"Budi"</span>,
+    <span class="code-pr">umur</span>: <span class="code-nm">25</span>,
+    <span class="code-pr">pekerjaan</span>: <span class="code-st">"Frontend Dev"</span>
+};</code></pre>
+        </div>
+      </div>
+
+      <div class="segment">
+        <div class="segment-header" onclick="toggleSegment(this)">
+          2. Cara Mengakses Data Object <span>+</span>
+        </div>
+        <div class="segment-content">
+          <p>
+            Ada dua cara utama untuk mengambil isi dari sebuah laci (property)
+            di dalam object.
+          </p>
+
+          <div class="term-box">
+            <span style="font-weight: bold"
+              >📖 Istilah: Dot Notation & Bracket Notation</span
+            >
+            <ul>
+              <li>
+                <strong>Dot Notation:</strong> <code>user.nama</code> (Paling
+                sering digunakan).
+              </li>
+              <li>
+                <strong>Bracket Notation:</strong>
+                <code>user["nama"]</code> (Digunakan jika nama properti
+                mengandung spasi atau berupa variabel).
+              </li>
+            </ul>
+          </div>
+
+          <div class="interactive-demo">
+            <button onclick="demoAkses('dot')">Akses pakai Dot (.)</button>
+            <button onclick="demoAkses('bracket')">
+              Akses pakai Bracket ([ ])
+            </button>
+            <p
+              id="hasil-akses"
+              style="margin-top: 10px; font-weight: bold; color: var(--accent)"
+            ></p>
+          </div>
+
+          <div class="analysis-box">
+            <h4>🛠️ Dapur Rekaman: Kenapa ada dua cara?</h4>
+            <p>
+              Gunakan <strong>Dot Notation</strong> untuk kode yang bersih.
+              Gunakan <strong>Bracket Notation</strong> jika Anda ingin
+              mengakses properti secara dinamis (misal: nama laci disimpan dalam
+              variabel lain).
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="segment">
+        <div class="segment-header" onclick="toggleSegment(this)">
+          3. Object Methods <span>+</span>
+        </div>
+        <div class="segment-content">
+          <p>
+            Object tidak hanya bisa menyimpan data, tapi juga bisa memiliki
+            "kemampuan" atau fungsi. Fungsi yang ada di dalam object disebut
+            <strong>Method</strong>.
+          </p>
+
+          <pre><code><span class="code-kw">const</span> mobil = {
+    <span class="code-pr">merk</span>: <span class="code-st">"Toyota"</span>,
+    <span class="code-pr">starter</span>: <span class="code-kw">function</span>() {
+        <span class="code-kw">return</span> <span class="code-st">"Mesin menyala... brumm!"</span>;
+    }
+};</code></pre>
+
+          <div class="interactive-demo">
+            <p>Klik untuk menjalankan method <code>starter()</code>:</p>
+            <button onclick="jalankanMethod()">Starter Mobil</button>
+            <p id="hasil-method"></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="segment">
+        <div class="segment-header" onclick="toggleSegment(this)">
+          4. Mengenal Keyword 'this' <span>+</span>
+        </div>
+        <div class="segment-content">
+          <p>
+            Di dalam sebuah method, keyword <code>this</code> merujuk kepada
+            <strong>Object pemiliknya</strong>. Ini digunakan agar object bisa
+            mengakses datanya sendiri.
+          </p>
+
+          <div class="analysis-box">
+            <h4>🛠️ Dapur Rekaman: Analisis 'this'</h4>
+            <pre><code><span class="code-kw">const</span> orang = {
+    <span class="code-pr">nama</span>: <span class="code-st">"Andi"</span>,
+    <span class="code-pr">sapa</span>: <span class="code-kw">function</span>() {
+        <span class="code-kw">return</span> <span class="code-st">"Halo, nama saya "</span> + <span class="code-kw">this</span>.nama;
+    }
+};</code></pre>
+            <p>
+              <strong>Proses:</strong> <code>this.nama</code> sama saja dengan
+              memanggil <code>orang.nama</code>. JavaScript menggunakan
+              <code>this</code> agar fungsinya tetap bekerja meskipun nama
+              variabel object-nya diganti.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 30px">
+        <a href="../../../index.html" class="btn-back"
+          >← Kembali ke Dashboard Utama</a
+        >
+      </div>
+    </div>
+
+    <script src="objects-basics.js"></script>
+  </body>
+</html>

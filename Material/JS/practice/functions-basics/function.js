@@ -20,7 +20,7 @@ function count(){
 }
 
 function countingResult(number1 , number2){
-    if (number1 === "" && number2 ==="") {
+    if (number1 === "" || number2 ==="") {
         return "Harap isi dulu angka yang ingin dihitung!";
     } else {
         return Number(number1) * Number(number2);
