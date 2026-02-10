@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Materi JS: Arrays Basics</title>
+    <link rel="stylesheet" href="arrays-basics.css">
+  </head>
+  <body>
+    <header>
+      <h1>JS: Arrays Basics</h1>
+      <p>Mengelola Koleksi Data dalam Satu Daftar</p>
+    </header>
+
+    <div class="container">
+      <div class="segment">
+        <div class="segment-header" onclick="toggleSegment(this)">
+          1. Pengenalan Array <span>+</span>
+        </div>
+        <div class="segment-content">
+          <p>
+            Array adalah variabel khusus yang dapat menampung lebih dari satu
+            nilai sekaligus. Data dalam Array disusun secara berurutan
+            menggunakan nomor urut yang disebut <strong>Index</strong>.
+          </p>
+
+          <div class="term-box">
+            <span style="font-weight: bold"
+              >📖 Istilah Baru: Index & Element</span
+            >
+            <ul>
+              <li>
+                <strong>Index:</strong> Nomor urut posisi data (Dimulai dari
+                <strong>0</strong>).
+              </li>
+              <li>
+                <strong>Element:</strong> Nilai atau data yang ada di dalam
+                Array.
+              </li>
+            </ul>
+          </div>
+
+          <pre><code><span class="code-kw">const</span> buah = [<span class="code-st">"Apel"</span>, <span class="code-st">"Jeruk"</span>, <span class="code-st">"Mangga"</span>];
+<span class="code-comment">// Index: 0 = Apel, 1 = Jeruk, 2 = Mangga</span></code></pre>
+        </div>
+      </div>
+
+      <div class="segment">
+        <div class="segment-header" onclick="toggleSegment(this)">
+          2. Mengakses & Mengubah Array <span>+</span>
+        </div>
+        <div class="segment-content">
+          <p>
+            Anda bisa mengambil atau mengubah data spesifik dengan memanggil
+            nomor index-nya menggunakan kurung siku <code>[]</code>.
+          </p>
+
+          <div class="interactive-demo">
+            <p id="tampil-buah">Daftar Buah: ["Apel", "Jeruk", "Mangga"]</p>
+            <button onclick="aksesArray()">Ambil Index [1]</button>
+            <button onclick="ubahArray()">Ubah Index [0] jadi "Melon"</button>
+            <p
+              id="hasil-aksi"
+              style="font-weight: bold; color: var(--accent)"
+            ></p>
+          </div>
+
+          <div class="analysis-box">
+            <h4>🛠️ Dapur Rekaman: Proses Manipulasi</h4>
+            <pre><code><span class="code-kw">let</span> item = buah[<span class="code-nm">1</span>]; <span class="code-comment">// Mengambil "Jeruk"</span>
+buah[<span class="code-nm">0</span>] = <span class="code-st">"Melon"</span>; <span class="code-comment">// Mengganti "Apel" menjadi "Melon"</span></code></pre>
+            <p>
+              <strong>Penting:</strong> Ingatlah bahwa index selalu mulai dari
+              0. Jika Anda punya 3 data, maka index maksimalnya adalah 2.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="segment">
+        <div class="segment-header" onclick="toggleSegment(this)">
+          3. Metode Dasar (Push, Pop, Shift, Unshift) <span>+</span>
+        </div>
+        <div class="segment-content">
+          <p>
+            Metode adalah fungsi bawaan JavaScript untuk memanipulasi daftar
+            data tanpa harus mengubahnya secara manual.
+          </p>
+
+          <table>
+            <tr>
+              <th>Metode</th>
+              <th>Kegunaan</th>
+              <th>Posisi</th>
+            </tr>
+            <tr>
+              <td><code>push()</code></td>
+              <td>Menambah data baru</td>
+              <td>Akhir Array</td>
+            </tr>
+            <tr>
+              <td><code>pop()</code></td>
+              <td>Menghapus data terakhir</td>
+              <td>Akhir Array</td>
+            </tr>
+            <tr>
+              <td><code>unshift()</code></td>
+              <td>Menambah data baru</td>
+              <td>Awal Array</td>
+            </tr>
+            <tr>
+              <td><code>shift()</code></td>
+              <td>Menghapus data pertama</td>
+              <td>Awal Array</td>
+            </tr>
+          </table>
+
+          <div class="interactive-demo">
+            <p>Daftar Nama: <span id="list-nama">["Ali", "Budi"]</span></p>
+            <input type="text" id="input-nama" placeholder="Tambah nama..." />
+            <button onclick="tambahData()">Push (Tambah)</button>
+            <button onclick="hapusData()" style="background: #c0392b">
+              Pop (Hapus)
+            </button>
+          </div>
+
+          <div class="analysis-box">
+            <h4>🛠️ Dapur Rekaman: Analisis Method</h4>
+            <p>
+              <strong>Push & Pop:</strong> Sangat efisien karena JavaScript
+              tidak perlu mengubah nomor index elemen lainnya. Ini sering
+              digunakan untuk fitur <em>Undo/Redo</em> atau riwayat pencarian.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="segment">
+        <div class="segment-header" onclick="toggleSegment(this)">
+          4. Properti Length <span>+</span>
+        </div>
+        <div class="segment-content">
+          <p>
+            Properti <code>length</code> digunakan untuk mengetahui jumlah total
+            elemen di dalam sebuah Array.
+          </p>
+
+          <div class="term-box">
+            <span style="font-weight: bold">💡 Tips: Akses Data Terakhir</span>
+            Karena index mulai dari 0, data terakhir selalu berada di posisi
+            <code>array.length - 1</code>.
+          </div>
+
+          <pre><code><span class="code-kw">const</span> hobi = [<span class="code-st">"Coding"</span>, <span class="code-st">"Gaming"</span>, <span class="code-st">"Reading"</span>];
+console.log(hobi.length); <span class="code-comment">// Hasil: 3</span></code></pre>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 30px">
+        <a href="../../../index.html" class="btn-back"
+          >← Kembali ke Dashboard Utama</a
+        >
+      </div>
+    </div>
+
+    <script src="arrays-basics.js"></script>
+  </body>
+</html>
