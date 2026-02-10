@@ -1,29 +1,55 @@
 # Web Material Notes
 
-![JavaScript](https://img.shields.io/badge/JavaScript-f7df1e?style=flat&logo=javascript&logoColor=black) ![HTML](https://img.shields.io/badge/HTML-E34F26?style=flat&logo=html5&logoColor=white) ![CSS](https://img.shields.io/badge/CSS-1572B6?style=flat&logo=css3&logoColor=white)
+![HTML Badge](https://img.shields.io/badge/HTML-81.4%25-orange)
+![CSS Badge](https://img.shields.io/badge/CSS-11.7%25-blue)
+![JavaScript Badge](https://img.shields.io/badge/JavaScript-6.5%25-yellow)
 
 ## Project Description
-This repository contains learning material related to front-end development.
+Web Material Notes is a comprehensive resource for students and learners, providing easily accessible study materials and notes covering HTML, CSS, and JavaScript. The platform aims to facilitate learning by offering structured content that is simple to navigate, with in-depth materials grouped by skill level for each programming language.
 
 ## Features
-- Organized learning materials based on different technologies.
-- Clear folder structure for easy navigation.
+- User-friendly interface for easy navigation
+- Categorized study materials by programming language (HTML, CSS, JavaScript)
+- In-depth learning materials organized by skill level
+- Structured learning roadmap and curriculum
+- Search functionality to quickly find notes
+- Responsive design for access on different devices
+- GitHub Pages hosting for easy access and sharing
 
 ## Structure
-- **JS/**: JavaScript materials
-- **style/**: CSS stylesheets
-- **Material/**: General materials
-- **Roadmap/**: Learning roadmap
+```
+web-material-notes/
+│
+├── index.html
+├── styles/
+│   └── style.css
+├── JS/
+│   └── script.js
+├── scripts/
+│   └── app.js
+├── Roadmap/
+└── Material/
+    ├── CSS/
+    ├── HTML/
+    └── JS/
+```
 
 ## Technology Stack
+- HTML5
+- CSS3
 - JavaScript
-- HTML
-- CSS
+- GitHub Pages for hosting
 
 ## Quick Start Guide
-1. Clone the repository.
-2. Navigate to the desired folder.
-3. Start learning!
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/sulthonmufti/web-material-notes.git
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd web-material-notes
+   ```
+3. Open `index.html` in your web browser to view the project.
 
 ## GitHub Pages Hosting Link
-[GitHub Pages Link](https://sulthonmufti.github.io/web-material-notes/) (Click to view hosted site)
+Visit the project hosted on GitHub Pages: [GitHub Pages Link](https://sulthonmufti.github.io/web-material-notes/)
