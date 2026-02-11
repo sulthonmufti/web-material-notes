@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi JS: Conditionals</title>
+    <link rel="stylesheet" href="conditionals.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>JS: Conditionals</h1>
+        <p>Membuat Keputusan dalam Kode (Logika Program)</p>
+    </header>
+
+    <div class="container">
+
+        <div class="segment">
+            <div class="segment-header" onclick="toggleSegment(this)">
+                1. Struktur If...Else <span>+</span>
+            </div>
+            <div class="segment-content">
+                <p>Digunakan untuk menjalankan blok kode tertentu hanya jika kondisi bernilai <strong>true</strong>.</p>
+
+                <div class="term-box">
+                    <span style="font-weight:bold">📖 Istilah Baru: Control Flow</span>
+                    Alur jalannya program yang berubah berdasarkan kondisi yang kita tentukan.
+                </div>
+
+
+
+                <div class="interactive-demo">
+                    <p>Masukkan Nilai Ujian (0-100):</p>
+                    <input type="number" id="input-nilai" placeholder="Contoh: 85">
+                    <button onclick="cekNilai()">Cek Kelulusan</button>
+                    <p id="hasil-nilai" style="font-weight:bold; margin-top:10px;"></p>
+                </div>
+
+                <div class="analysis-box">
+                    <h4>🛠️ Dapur Rekaman: Bedah Alur</h4>
+                    <pre><code><span class="code-kw">if</span> (nilai >= <span class="code-nm">75</span>) {
+    <span class="code-comment">// Jalan jika benar</span>
+} <span class="code-kw">else if</span> (nilai >= <span class="code-nm">60</span>) {
+    <span class="code-comment">// Jalan jika kondisi pertama salah, tapi kondisi ini benar</span>
+} <span class="code-kw">else</span> {
+    <span class="code-comment">// Jalan jika semua di atas salah</span>
+}</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="segment">
+            <div class="segment-header" onclick="toggleSegment(this)">
+                2. Switch Statement <span>+</span>
+            </div>
+            <div class="segment-content">
+                <p><code>Switch</code> digunakan ketika Anda memiliki banyak kondisi yang membandingkan <strong>satu
+                        nilai yang sama</strong> dengan banyak pilihan (case). Lebih rapi daripada menulis
+                    <code>else if</code> yang terlalu banyak.</p>
+
+                <div class="term-box">
+                    <span style="font-weight:bold">📖 Istilah: Break & Default</span>
+                    <ul>
+                        <li><strong>Break:</strong> Menghentikan pengecekan case lainnya setelah satu case terpenuhi.
+                        </li>
+                        <li><strong>Default:</strong> Kode cadangan jika tidak ada satupun case yang cocok (seperti
+                            <em>else</em>).</li>
+                    </ul>
+                </div>
+
+                <div class="interactive-demo">
+                    <p>Pilih Warna Tema:</p>
+                    <select id="pilih-warna" onchange="gantiTema()">
+                        <option value="">-- Pilih --</option>
+                        <option value="Merah">Merah</option>
+                        <option value="Biru">Biru</option>
+                        <option value="Hijau">Hijau</option>
+                    </select>
+                    <div id="kotak-warna"
+                        style="width:100px; height:50px; margin-top:10px; border:1px solid #ddd; transition: 0.3s;">
+                    </div>
+                </div>
+
+                <div class="analysis-box">
+                    <h4>🛠️ Dapur Rekaman: Kenapa pakai Switch?</h4>
+                    <pre><code><span class="code-kw">switch</span>(warna) {
+    <span class="code-kw">case</span> <span class="code-st">"Merah"</span>: 
+        background = <span class="code-st">"red"</span>; 
+        <span class="code-kw">break</span>;
+    <span class="code-kw">default</span>: 
+        background = <span class="code-st">"transparent"</span>;
+}</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="segment">
+            <div class="segment-header" onclick="toggleSegment(this)">
+                3. Ternary Operator <span>+</span>
+            </div>
+            <div class="segment-content">
+                <p>Cara super singkat untuk menulis <code>if...else</code> sederhana dalam satu baris saja. Sangat
+                    populer di React JS.</p>
+
+                <div class="term-box">
+                    <span style="font-weight:bold">📖 Istilah: Shorthand Condition</span>
+                    Format: <code>kondisi ? benar : salah;</code>
+                </div>
+
+                <pre><code><span class="code-kw">let</span> status = (umur >= <span class="code-nm">17</span>) ? <span class="code-st">"Dewasa"</span> : <span class="code-st">"Anak-anak"</span>;</code></pre>
+
+                <div class="interactive-demo">
+                    <p>Cek Status Login:</p>
+                    <button onclick="toggleLogin()">Toggle Login</button>
+                    <p id="teks-login">Status: Logout</p>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px;">
+            <a href="../../../index.html" class="btn-back">← Kembali ke Dashboard Utama</a>
+        </div>
+
+    </div>
+
+    <script src="conditionals.js"></script>
+
+</body>
+
+</html>

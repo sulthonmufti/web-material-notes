@@ -25,8 +25,6 @@ web-material-notes/
 │   └── style.css
 ├── JS/
 │   └── script.js
-├── scripts/
-│   └── app.js
 ├── Roadmap/
 └── Material/
     ├── CSS/
