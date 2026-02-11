@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice Array</title>
+    <style>
+        p{margin: 0; padding: 0;}
+        input{margin: 5px 0;}
+    </style>
+</head>
+<body>
+
+    <div class="input-array" style="display: flex; flex-direction: column;">
+        <div class="segment" style="display: inline-block;">    
+            <p>Masukkan Input Array</p>
+            <input type="text" id="index-0" placeholder="data 1">
+            <input type="text" id="index-1" placeholder="data 2">
+            <input type="text" id="index-2" placeholder="data 3">
+            <button id="submit-input" onclick="inputArray()">Submit</button>
+        </div>
+        <div id="show-array" style="margin: 0; padding: 0;"></div>
+    </div>
+
+    <hr>
+
+    <div id="tambah-data"style="display: block;">
+        <div class="tambah" style="display: block;">
+            <div class="segment" style="display: flex; flex-direction: row; gap: 5px;"></div>
+                <p>Menambah dan Mengganti data array;</p>
+                    <input type="number" id="add-index" placeholder="Masukkan index">
+                    <input type="text" id="data-index" placeholder="Masukkan data array">
+                    <button id="submit-input" onclick="addArray()">Submit</button>
+            </div>
+        <p id="caution" style="color: red; width: 400px;"></p>
+        <p id="notification" style="color: rgb(1, 250, 96); width: 400px;"></p>
+        <div id="show" style="margin: 0; padding: 0;"></div>
+    </div>
+
+    <hr>
+
+    <div id="delete-data"style="display: block;">
+        <div class="detele" style="display: block;">
+            <div class="segment" style="display: flex; flex-direction: row; gap: 5px;"></div>
+                <p>Menghapus data array;</p>
+                    <input type="number" id="delete-index" placeholder="Masukkan index">
+                    <button id="submit-input" onclick="deleteArray()">Delete</button>
+            </div>
+        <p id="notification-delete" style="color: red; width: 400px;"></p>
+        <div id="show-delete" style="margin: 0; padding: 0;"></div>
+    </div>
+
+    <script src="array-basics.js"></script>
+    
+</body>
+</html>
