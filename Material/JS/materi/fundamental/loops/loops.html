@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Materi JS: Loops (Perulangan)</title>
+    <link rel="stylesheet" href="loops.css">
+  </head>
+  <body>
+    <header>
+      <h1>JS: Loops (Perulangan)</h1>
+      <p>Mengotomatiskan Tugas yang Berulang</p>
+    </header>
+
+    <div class="container">
+      <div class="segment">
+        <div class="segment-header" onclick="toggleSegment(this)">
+          1. For Loop (Klasik) <span>+</span>
+        </div>
+        <div class="segment-content">
+          <p>
+            <code>For loop</code> digunakan ketika Anda sudah tahu pasti berapa
+            kali blok kode harus dijalankan.
+          </p>
+
+          <div class="term-box">
+            <span style="font-weight: bold"
+              >📖 Istilah Baru: Initialization, Condition, Increment</span
+            >
+            <ul>
+              <li>
+                <strong>Initialization:</strong> Titik mulai (misal:
+                <code>i = 0</code>).
+              </li>
+              <li>
+                <strong>Condition:</strong> Syarat agar terus berjalan (misal:
+                <code>i < 5</code>).
+              </li>
+              <li>
+                <strong>Increment:</strong> Perubahan nilai di setiap putaran
+                (misal: <code>i++</code>).
+              </li>
+            </ul>
+          </div>
+
+          <div class="interactive-demo">
+            <p>Cetak angka 1 sampai N:</p>
+            <input
+              type="number"
+              id="input-for"
+              placeholder="Masukkan angka N"
+            />
+            <button onclick="jalankanFor()">Jalankan For Loop</button>
+            <p id="hasil-for" style="word-wrap: break-word"></p>
+          </div>
+
+          <div class="analysis-box">
+            <h4>🛠️ Dapur Rekaman: Bedah Logika For</h4>
+            <pre><code><span class="code-kw">for</span> (<span class="code-kw">let</span> i = <span class="code-nm">1</span>; i <= n; i++) {
+    <span class="code-comment">// Kode ini diulang selama i masih kurang dari atau sama dengan n</span>
+}</code></pre>
+          </div>
+          <div class="industrial-case">
+            <div class="case-title">🏢 <strong>Case Industri:</strong> Dynamic Pagination Generator</div>
+            <p>Mensimulasikan pembuatan navigasi halaman berdasarkan total data dari database.</p>
+            
+            <div class="interactive-demo">
+                <label>Total Halaman dari Server:</label>
+                <input type="number" id="total-page-input" value="5" min="1" max="10">
+                <button onclick="renderPagination()">Generate Halaman</button>
+                
+                <div class="pagination-container" id="pagination-visual" style="margin-top: 15px;">
+                    </div>
+            </div>
+
+            <div class="analysis-box">
+                <pre><code><span class="code-kw">for</span> (<span class="code-kw">let</span> i = <span class="code-nm">1</span>; i <= total; i++) {
+            container.innerHTML += `<span class="code-st">&lt;button class="page-btn"&gt;${i}&lt;/button&gt;</span>`;
+        }</code></pre>
+            </div>
+        </div>
+
+        </div>
+      </div>
+
+      <div class="segment">
+        <div class="segment-header" onclick="toggleSegment(this)">
+          2. While Loop <span>+</span>
+        </div>
+        <div class="segment-content">
+          <p>
+            <code>While loop</code> terus berjalan selama kondisi yang
+            ditentukan bernilai <strong>true</strong>. Biasanya digunakan jika
+            kita tidak tahu pasti kapan perulangan akan berakhir.
+          </p>
+
+          <div class="term-box">
+            <span style="font-weight: bold">⚠️ Bahaya: Infinite Loop</span>
+            Jika kondisi selalu <code>true</code> dan Anda lupa mengubah nilai
+            variabel di dalam loop, browser Anda akan <em>freeze</em> karena
+            perulangan tidak pernah berhenti.
+          </div>
+
+          <div class="interactive-demo">
+            <p>Kocok Dadu sampai muncul angka 6:</p>
+            <button onclick="kocokDadu()">Kocok Sekarang</button>
+            <p id="hasil-while"></p>
+          </div>
+
+          <div class="analysis-box">
+            <h4>🛠️ Dapur Rekaman: While vs For</h4>
+            <p>
+              Di sini kita tidak tahu butuh berapa kali kocok dadu untuk dapat
+              angka 6. Maka <code>while</code> adalah pilihan tepat.
+            </p>
+            <pre><code><span class="code-kw">while</span> (dadu !== <span class="code-nm">6</span>) {
+    <span class="code-comment">// Kocok lagi...</span>
+}</code></pre>
+          </div>
+          <div class="industrial-case">
+            <div class="case-title">🏢 <strong>Case Industri:</strong> API Retry Mechanism</div>
+            <p>Mensimulasikan sistem yang mencoba <em>reconnect</em> otomatis saat koneksi gagal.</p>
+            
+            <div class="interactive-demo">
+                <button onclick="simulateRetry()">Coba Hubungkan ke Server</button>
+                <div id="retry-log" style="margin-top:10px; font-family: monospace; font-size: 0.9rem;"></div>
+                <div id="status-koneksi" class="status-box" style="margin-top: 10px; display: none;"></div>
+            </div>
+
+            <div class="analysis-box">
+                <pre><code><span class="code-kw">while</span> (!isOnline && attempt < max) {
+            <span class="code-comment">// Coba lagi sampai attempt mencapai batas</span>
+            attempt++;
+        }</code></pre>
+            </div>
+        </div>
+        </div>
+      </div>
+
+      <div class="segment">
+        <div class="segment-header" onclick="toggleSegment(this)">
+          3. For...Of (Modern & Paling Sering Dipakai) <span>+</span>
+        </div>
+        <div class="segment-content">
+          <p>
+            Cara paling mudah untuk mengambil semua data dari sebuah Array tanpa
+            harus memikirkan index.
+          </p>
+
+          <div class="term-box">
+            <span style="font-weight: bold">📖 Istilah: Iteration</span>
+            Proses mengunjungi setiap elemen dalam daftar satu per satu.
+          </div>
+
+          <div class="interactive-demo">
+            <p>
+              Daftar Keranjang Belanja: <code>["Buku", "Pena", "Tas"]</code>
+            </p>
+            <button onclick="tampilkanBelanja()">Render Daftar ke HTML</button>
+            <ul id="list-belanja"></ul>
+          </div>
+
+          <div class="analysis-box">
+            <h4>🛠️ Dapur Rekaman: Proses Rendering UI</h4>
+            <pre><code><span class="code-kw">const</span> barang = [<span class="code-st">"Buku"</span>, <span class="code-st">"Pena"</span>];
+<span class="code-kw">for</span> (<span class="code-kw">let</span> item <span class="code-kw">of</span> barang) {
+    <span class="code-comment">// 'item' otomatis berganti di tiap putaran</span>
+}</code></pre>
+          </div>
+          <div class="industrial-case">
+            <div class="case-title">🏢 <strong>Case Industri:</strong> Rendering Product Feed</div>
+            <p>Mensimulasikan pengambilan data Array of Objects untuk diubah menjadi tampilan UI Store.</p>
+            
+            <div class="interactive-demo">
+                <button onclick="renderProducts()">Muat Produk Toko</button>
+                <div class="product-grid" id="product-visual" style="margin-top: 15px;">
+                    </div>
+            </div>
+
+            <div class="analysis-box">
+                <pre><code><span class="code-kw">for</span> (<span class="code-kw">const</span> p <span class="code-kw">of</span> data) {
+            grid.innerHTML += createCardHTML(p.name, p.price);
+        }</code></pre>
+            </div>
+        </div>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 30px">
+        <a href="../../../index.html" class="btn-back"
+          >← Kembali ke Dashboard Utama</a
+        >
+      </div>
+    </div>
+
+    <script src="loops.js"></script>
+  </body>
+</html>

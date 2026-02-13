@@ -1,0 +1,172 @@
+:root {
+  --primary: #f7df1e;
+  --dark: #222;
+  --light: #f4f4f4;
+  --code-bg: #282c34;
+  --accent: #e67e22;
+}
+body {
+  font-family: "Segoe UI", sans-serif;
+  line-height: 1.6;
+  color: #333;
+  margin: 0;
+  background: var(--light);
+}
+header {
+  background: var(--dark);
+  color: var(--primary);
+  padding: 2rem;
+  text-align: center;
+  border-bottom: 5px solid var(--primary);
+}
+.container {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+.segment {
+  background: white;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.segment-header {
+  background: #fff;
+  padding: 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  border-bottom: 1px solid #eee;
+}
+.segment-header:hover {
+  background: #f9f9f9;
+}
+.segment-content {
+  padding: 20px;
+  display: none;
+  background: #fff;
+}
+.active .segment-content {
+  display: block;
+}
+.active .segment-header {
+  border-bottom: 3px solid var(--primary);
+}
+
+.term-box {
+  background: #fff8f1;
+  border-left: 5px solid var(--accent);
+  padding: 15px;
+  margin: 15px 0;
+  border-radius: 4px;
+}
+pre {
+  background: var(--code-bg);
+  color: #abb2bf;
+  padding: 15px;
+  border-radius: 5px;
+  overflow-x: auto;
+}
+.code-kw {
+  color: #c678dd;
+}
+
+.analysis-box {
+  background: #f8f9fa;
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin-top: 15px;
+  border-radius: 5px;
+}
+.interactive-demo {
+  border: 2px dashed #ccc;
+  padding: 20px;
+  margin: 15px 0;
+  background: #fff;
+}
+.btn-back {
+  background: #e74c3c;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 30px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 20px;
+}
+button {
+  background: var(--dark);
+  color: white;
+  padding: 10px 15px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+}
+
+/* Styling khusus untuk Case Industri */
+.industrial-case {
+    background: #ffffff;
+    border: 2px solid #e0e0e0;
+    padding: 20px;
+    border-radius: 12px;
+    margin-top: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.case-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #2c3e50;
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+}
+
+/* Visual Pagination */
+.pagination-container {
+    display: flex;
+    gap: 8px;
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+.page-btn {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    background: white;
+    cursor: pointer;
+    border-radius: 4px;
+    color: #222;
+}
+.page-btn:hover { background: #f7df1e; }
+
+/* Visual Retry API */
+.status-box {
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+    border: 1px solid #ddd;
+}
+
+/* Visual Product Feed */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 15px;
+}
+.product-card {
+    background: #fff;
+    border: 1px solid #eee;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    transition: transform 0.2s;
+}
+.product-card:hover { transform: translateY(-5px); box-shadow: 0 5px 10px rgba(0,0,0,0.1); }
+.product-img { height: 60px; background: #eee; border-radius: 4px; margin-bottom: 8px; }
