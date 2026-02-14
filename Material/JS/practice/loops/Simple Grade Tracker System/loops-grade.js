@@ -1,0 +1,67 @@
+//simpan data student
+let students = [];
+function addData(){
+    nameStudent = document.getElementById('input-name').value;
+    score = document.getElementById('input-score').value;
+
+    //penulisan (ES5) - buat objectnya dulu trus masukin ke array:
+    const studentObj = {
+        name: nameStudent,
+        score: score
+    }
+
+    //  checking double name
+    const nameValidation = students.find(students => students.name === nameStudent);
+
+    if (nameStudent == "" || score === "") {
+        document.getElementById('caution').innerText = "Masukkan data terlebih dahulu!"
+        document.getElementById('caution').style.color = "red";
+
+    }else if(students.length === 5){
+        document.getElementById('caution').innerText = "Jumlah data telah mencapai maksimum"
+        document.getElementById('caution').style.color = "red";
+
+    }else if(nameValidation){
+        document.getElementById('caution').innerText = "Data sudah ada!"
+        document.getElementById('caution').style.color = "red";
+
+    }else if (0 > score || score > 100) {
+        document.getElementById('caution').innerText = "Nilai tidak valid! rentang nilai 0 - 100"
+        document.getElementById('caution').style.color = "red";
+    }else {
+        //hapus caution kalau sebelumnya ada
+        document.getElementById('caution').innerText = '';
+        document.getElementById('caution').style.color = '';
+
+        //PUSH DATA OBJ KE ARRAY
+        students.push(studentObj);   
+    }
+
+    //kosongin input abis diisi
+    document.getElementById('input-name').value = '';
+    document.getElementById('input-score').value = '';
+    console.table(students);
+
+    //penulisan (ES6) - langsung masukin object ke array (lebih ringkas):
+    // students.push(studentObj = {nameStudent, scoreStudent});
+    // console.table(students); //hasilnya sama
+
+}
+
+
+function reset(){
+
+    let confirmation = confirm("Apakah kamu yakin ingin menghapus semua data siswa?");
+    if (confirmation) { 
+        const panjangArray = students.length;
+        students.length = 0;
+
+        document.getElementById('caution').innerText = `${panjangArray} Data siswa telah dihapus!`
+        document.getElementById('caution').style.color = "orange";
+        console.table(students);
+    } else {
+        alert("Hapus data dibatalkan:)");
+    }
+
+    
+}

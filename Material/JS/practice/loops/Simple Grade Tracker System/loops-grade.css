@@ -1,0 +1,41 @@
+body{
+    font-family: poppins;
+    margin: 0;
+    padding: 20px;
+}
+header{text-align: center;}
+.input-data{
+    box-sizing: border-box;
+    width: 260px;
+}
+.input-form{
+    display: block;
+}
+.input-name, .input-score{
+    /* box-sizing: border-box; */
+    display: flex; 
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+.input-name p, .input-score p{
+    width: 60px;
+    
+}
+.input-name input, .input-score input{
+    border: none;
+    border-bottom: 1px solid black;
+    font-size: 16px;
+}
+/* #caution{ color: red;} */
+.button-action{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+    width: 100%;
+    margin: 5px 0 15px;
+}
+#add-data, #reset{
+    width: 100%;
+}
