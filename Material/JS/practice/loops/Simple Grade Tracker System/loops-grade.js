@@ -44,8 +44,57 @@ function addData(){
 
     //penulisan (ES6) - langsung masukin object ke array (lebih ringkas):
     // students.push(studentObj = {nameStudent, scoreStudent});
-    // console.table(students); //hasilnya sama
+    // console.table(students); //hasilnya sama 
 
+    displayTable();
+}
+
+function displayTable(){
+    let show = document.getElementById('output-data');
+
+    if (students.length === 0) {
+        show.innerHTML = `<p style="color: gray;">Belum ada data siswa!</p>`;
+        return;
+    }
+    let tableHtml =`
+        <table class="student-table">
+                <tr>
+                    <th>No</th>
+                    <th>Nama</th>
+                    <th>Nilai</th>
+                    <th>Grade</th>
+                </tr>`;
+    let nomor = 1;
+    for (let data of students) {
+        
+        if (90 <= data.score) {
+            grade = "A";
+        } else if (80 <= data.score) {
+            grade = "B";
+        }else if (70 <= data.score) {
+            grade = "C";
+        }else if (60 <= data.score) {
+            grade = "D";
+        }else{
+            grade = "E";
+        }
+
+        tableHtml += `
+            <tr>
+                <td>${nomor}</td>
+                <td>${data.name}</td>
+                <td>${data.score}</td>
+                <td>${grade}</td>
+            </tr>`;
+        
+
+        nomor++; //menambahkan counter buat jadi nomor baris table
+        
+        console.info(show);
+    }
+    //tutup table
+    tableHtml += `</table>`;
+    show.innerHTML = tableHtml;
 }
 
 
@@ -56,12 +105,12 @@ function reset(){
         const panjangArray = students.length;
         students.length = 0;
 
+        displayTable();
+
         document.getElementById('caution').innerText = `${panjangArray} Data siswa telah dihapus!`
         document.getElementById('caution').style.color = "orange";
         console.table(students);
     } else {
         alert("Hapus data dibatalkan:)");
     }
-
-    
 }
