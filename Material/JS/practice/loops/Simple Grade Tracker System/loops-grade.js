@@ -2,7 +2,7 @@
 let students = [];
 function addData(){
     nameStudent = document.getElementById('input-name').value;
-    score = document.getElementById('input-score').value;
+    score = parseFloat(document.getElementById('input-score').value);
 
     //penulisan (ES5) - buat objectnya dulu trus masukin ke array:
     const studentObj = {
@@ -47,6 +47,7 @@ function addData(){
     // console.table(students); //hasilnya sama 
 
     displayTable();
+    statistic();
 }
 
 function displayTable(){
@@ -106,6 +107,7 @@ function reset(){
         students.length = 0;
 
         displayTable();
+        statistic();
 
         document.getElementById('caution').innerText = `${panjangArray} Data siswa telah dihapus!`
         document.getElementById('caution').style.color = "orange";
@@ -113,4 +115,56 @@ function reset(){
     } else {
         alert("Hapus data dibatalkan:)");
     }
+}
+
+function statistic(){
+    let statik = document.getElementById('output-statistik');
+    if (students.length === 0) {
+        statik.innerHTML = `
+            <p style="color: gray;">Nilai rata-rata kelas: -</p>
+            <p style="color: gray;">Nilai tertinggi: -</p>
+            <p style="color: gray;">Nilai terendah: -</p>
+            <p style="color: gray;">Total siswa: -</p>`;
+        return;
+    }
+
+    //nilai tertinggi
+    let highScore = students[0].score;
+    let highName = students[0].name;
+    for (let checkGrade = 0; checkGrade < students.length; checkGrade++) {
+        if (highScore <= students[checkGrade].score) {
+            highScore = students[checkGrade].score;
+            highName = students[checkGrade].name;
+        }
+        
+    }
+    //nilai terendah
+    let lowScore = students[0].score;
+    let lowName = students[0].name;
+    for (let checkGrade = 0; checkGrade < students.length; checkGrade++) {
+        if (lowScore >= students[checkGrade].score) {
+            lowScore = students[checkGrade].score;
+            lowName = students[checkGrade].name;
+        }
+        
+    }
+
+    //cari average
+    let total = 0 ;
+    for (let count = 0; count < students.length; count++) {
+        total += students[count].score;
+    }
+    const average = total / students.length;
+
+    //check
+    console.info(`total ${total}`);
+    console.info(`average ${average}`);
+    console.info(`panjang ${students.length}`);
+
+    //output
+    statik.innerHTML = `
+        <p>✓ Nilai rata-rata kelas: ${average}</p>
+        <p>✓ Nilai tertinggi: ${highName}(${highScore})</p>
+        <p>✓ Nilai terendah: ${lowName}(${lowScore})</p>
+        <p>✓ Total siswa: ${students.length}</p>`;
 }
