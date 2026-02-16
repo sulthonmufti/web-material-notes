@@ -4,6 +4,7 @@ body{
     padding: 0;
 
 }
+.container{padding-top: 80px;}
 header{
     height: 80px;
     background-color: rgb(167, 2, 255);
@@ -25,7 +26,7 @@ h3{
 .input-data{
     box-sizing: border-box;
     width: 100%;
-    margin: 30px 0 0;
+    /* margin: 30px 0 0; */
     padding: 20px 20px;
     display: flex;
     flex-direction: column;
@@ -62,7 +63,9 @@ h3{
     border-radius: 5px;
     outline-color: rgb(104, 0, 165);
 }
-
+#caution{
+    text-align: center;
+}
 .button-action{
     display: flex;
     justify-content: space-between;
@@ -87,21 +90,31 @@ h3{
 }
 
 /* table */
-.table-container{
+.table-container, .statistik-container{
+    /* box-sizing: content-box; */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    /* width: 100%;
+    padding: 20px 0; */
+    background-color: rgba(237, 237, 237, 0.653);
+
+    margin: 35px;
+    border-radius: 15px;
+    padding: 0 0 30px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 .table-container p{text-align: center;}
-
 #output-data{
+    width: 100%;
+}
+#table-wrap{
     border: 1px solid rgb(104, 0, 165);
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
     border-radius: 10px;
     padding: 0;
@@ -111,7 +124,6 @@ h3{
     /* border: 2px solid #ddd; */
     border: none;
     border-collapse: collapse;
-    border-radius: 10px;
     overflow: hidden;
     width: 100%;
     margin: 0;
@@ -130,3 +142,34 @@ th{
 }
 tr:nth-child(even){background-color: rgba(137, 43, 226, 0.178);}
 tr:hover{background-color: rgba(137, 43, 226, 0.45);}
+
+@media (min-width: 768px){
+    .container{
+        display: grid;
+        grid-template-columns: repeat(5, 1f);
+        grid-template-rows: repeat(5, 1f);
+        grid-template-areas:
+        "header  header header"
+        "input tabledata tabledata"
+        "input statistik statistik";
+    }
+
+    header{grid-area: header;}
+    .input-data{grid-area: input;}
+    .table-container{grid-area: tabledata;}
+    .statistik-container{grid-area: statistik;}
+    .container{
+        padding-top: 20px;
+        min-height: 100vh;
+    }
+    .input-data{
+        height: 100%;
+    }
+    .button-action{
+        flex-direction: column;
+        justify-content: center;
+    }
+    .statistik-container{
+        margin-top: 0;
+    }
+}
