@@ -186,6 +186,57 @@
         </div>
       </div>
 
+      <div class="segment">
+        <div class="segment-header" onclick="toggleSegment(this)">
+          4. For...In (Iterasi Object) <span>+</span>
+        </div>
+        <div class="segment-content">
+          <p>
+            <code>For...in</code> digunakan untuk mengulang setiap properti (key) di dalam sebuah <strong>Object</strong>.
+          </p>
+
+          <div class="term-box">
+            <span style="font-weight: bold">📖 Istilah: Key & Value Enumeration</span>
+            <ul>
+              <li><strong>Key:</strong> Nama properti (misal: "nama", "harga").</li>
+              <li><strong>Value:</strong> Isi dari properti tersebut (misal: "Budi", 5000).</li>
+            </ul>
+          </div>
+
+          <div class="interactive-demo">
+            <p>Data Profil User di Memori:</p>
+            <div style="background: #eee; padding: 10px; border-radius: 5px; font-family: monospace;">
+              { nama: "Alex", role: "Admin", status: "Aktif" }
+            </div>
+            <button onclick="ekstrakProfil()">Ekstrak Key & Value</button>
+            <ul id="list-profil" style="margin-top: 15px;"></ul>
+          </div>
+
+          <div class="analysis-box">
+            <h4>🛠️ Dapur Rekaman: Bedah Logika For...In</h4>
+            <pre><code><span class="code-kw">const</span> user = { nama: <span class="code-st">"Alex"</span>, role: <span class="code-st">"Admin"</span> };
+
+      <span class="code-kw">for</span> (<span class="code-kw">let</span> key <span class="code-kw">in</span> user) {
+          console.log(key); <span class="code-comment">// Hasil: "nama", "role"</span>
+          console.log(user[key]); <span class="code-comment">// Hasil: "Alex", "Admin"</span>
+      }</code></pre>
+          </div>
+
+          <div class="industrial-case" style="background: #fdf2f2; border: 1px solid #fbd5d5; padding: 15px; border-radius: 8px; margin-top: 15px;">
+              <h4 style="color: #9b2c2c; margin-top: 0;">🏢 Case Industri: Dynamic Table/Form Generator</h4>
+              <p>Di dashboard admin, kita sering menerima data user yang kolomnya berubah-ubah. Developer menggunakan <code>for...in</code> untuk membuat tabel secara otomatis tanpa perlu menulis nama kolom satu per satu.</p>
+              
+              <div style="overflow-x: auto; background: #fff; padding: 10px; border: 1px solid #eee;">
+                  <table border="1" style="width: 100%; border-collapse: collapse; font-size: 0.8rem;">
+                      <tr id="table-header" style="background: #f8f9fa;"></tr>
+                      <tr id="table-body"></tr>
+                  </table>
+              </div>
+              <button onclick="generateTable()" style="margin-top: 10px; font-size: 0.8rem;">Generate Tabel Otomatis</button>
+          </div>
+        </div>
+      </div>
+
       <div style="text-align: center; margin-top: 30px">
         <a href="../../../index.html" class="btn-back"
           >← Kembali ke Dashboard Utama</a

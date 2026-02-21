@@ -21,7 +21,8 @@ function addContact(){
     };
     contact.push(contactObject);
 
-    console.log(contactObject);
+    displayData();
+
     console.table(contact);
 }
 
@@ -44,5 +45,14 @@ function validateInput(contactName, contactEmail, contactNumber){
     }else{
 
         return true; //mengembalikan nilai function jadi true, jadi bisa lanjut dieksekusi masuk ke object di function addContact();
+    }
+}
+
+function displayData(){
+    const display = document.getElementById('table');
+    
+    if (contact.length === 0) {
+        display.innerHTML =  `<p>DATA KOSONG!</p>`;
+        return;
     }
 }

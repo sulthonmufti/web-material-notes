@@ -104,4 +104,50 @@ function renderProducts() {
             </div>
         `;
     }
-}   
+}
+
+// JS untuk Demo Dasar For...In
+function ekstrakProfil() {
+    const user = { nama: "Alex", role: "Admin", status: "Aktif" };
+    const listUI = document.getElementById('list-profil');
+    listUI.innerHTML = "";
+
+    for (let properti in user) {
+        let li = document.createElement('li');
+        // Mengambil nama kunci (properti) dan isinya user[properti]
+        li.innerHTML = `<strong>${properti}:</strong> ${user[properti]}`;
+        listUI.appendChild(li);
+    }
+}
+
+// JS untuk Case Industri (Generate Table)
+function generateTable() {
+    // Simulasi data dari Database
+    const dataUser = { 
+        ID: "USR-001", 
+        Username: "alex_pro", 
+        Email: "alex@mail.com", 
+        Join: "2024-01-10",
+        Level: "Gold"
+    };
+
+    const headerRow = document.getElementById('table-header');
+    const bodyRow = document.getElementById('table-body');
+    
+    headerRow.innerHTML = "";
+    bodyRow.innerHTML = "";
+
+    for (let label in dataUser) {
+        // Buat Header (TH) berdasarkan Nama Key
+        let th = document.createElement('th');
+        th.innerText = label;
+        th.style.padding = "5px";
+        headerRow.appendChild(th);
+
+        // Buat Isi (TD) berdasarkan Value
+        let td = document.createElement('td');
+        td.innerText = dataUser[label];
+        td.style.padding = "5px";
+        bodyRow.appendChild(td);
+    }
+}
