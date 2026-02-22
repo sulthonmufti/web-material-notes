@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi Git: Konsep Dasar</title>
+    <link rel="stylesheet" href="git-concept.css">
+</head>
+<body>
+    <header>
+        <div class="header-title-container">
+            <svg class="git-logo-header" viewBox="0 0 92 92" xmlns="http://www.w3.org/2000/svg">
+                <path d="M90.156 41.965L50.036 1.848a5.918 5.918 0 0 0-8.372 0l-8.328 8.332 10.566 10.566a7.03 7.03 0 0 1 7.23 1.684 7.043 7.043 0 0 1 1.673 7.277l10.183 10.184a7.026 7.026 0 0 1 7.278 1.672 7.04 7.04 0 0 1 0 9.957 7.045 7.045 0 0 1-9.961 0 7.038 7.038 0 0 1-1.532-7.66L49.76 33.444v25.82a7.04 7.04 0 0 1 1.86 1.293 7.04 7.04 0 0 1 0 9.957 7.045 7.045 0 0 1-9.961 0 7.04 7.04 0 0 1 0-9.957 7.064 7.064 0 0 1 2.304-1.532V33.062a7.064 7.064 0 0 1-2.304-1.532 7.044 7.044 0 0 1-1.524-7.689L29.973 13.273 1.844 41.4a5.918 5.918 0 0 0 0 8.372L41.964 90.09a5.918 5.918 0 0 0 8.372 0L90.156 50.337a5.918 5.918 0 0 0 0-8.372"/>
+            </svg>
+            <h1>Git: Core Concepts</h1>
+        </div>
+        <p>Memahami "Mesin Waktu" Pengembangan Software</p>
+    </header>
+
+    <div class="container">
+        <div class="segment">
+            <div class="segment-header" onclick="toggleSegment(this)">
+                1. Apa itu Version Control? (Distributed) <span>+</span>
+            </div>
+            <div class="segment-content">
+                <p>
+                    Git adalah <strong>Distributed Version Control System (VCS)</strong>. Berbeda dengan sistem lama yang terpusat, di Git setiap pengembang memiliki salinan lengkap (mirror) dari seluruh riwayat proyek.
+                </p>
+
+                <div class="term-box">
+                    <span style="font-weight: bold">📖 Istilah Baru: Repository & Distributed</span>
+                    <ul>
+                        <li><strong>Repository (Repo):</strong> Wadah/folder yang diawasi oleh Git.</li>
+                        <li><strong>Distributed:</strong> Database riwayat kode ada di komputer setiap tim, bukan cuma di server pusat.</li>
+                    </ul>
+                </div>
+
+                <div class="interactive-demo">
+                    <p>Simulasi: Apa yang terjadi jika Server Pusat Down?</p>
+                    <div id="visual-vcs" style="display: flex; gap: 20px; justify-content: center; margin: 15px 0;">
+                        <div class="node">Server (Down ❌)</div>
+                        <div class="node">Dev A (Safe ✅)</div>
+                        <div class="node">Dev B (Safe ✅)</div>
+                    </div>
+                    <button onclick="simulasiDistributed()">Cek Keamanan Data</button>
+                    <p id="hasil-vcs"></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="segment">
+            <div class="segment-header" onclick="toggleSegment(this)">
+                2. Arsitektur: Tiga Area Utama Git <span>+</span>
+            </div>
+            <div class="segment-content">
+                <p>
+                    Git bekerja dengan memindahkan data di antara tiga area: <strong>Working Directory</strong>, <strong>Staging Area</strong>, dan <strong>Repository</strong>.
+                </p>
+
+                
+
+                <div class="term-box">
+                    <span style="font-weight: bold">📖 Istilah: Area Kerja</span>
+                    <ul>
+                        <li><strong>Working Directory:</strong> File yang sedang Anda edit (VS Code).</li>
+                        <li><strong>Staging Area:</strong> "Keranjang" untuk memilih perubahan mana yang akan disimpan.</li>
+                        <li><strong>Local Repo:</strong> "Brankas" tempat menyimpan permanen (Commit).</li>
+                    </ul>
+                </div>
+
+                <div class="interactive-demo">
+                    <p>Simulasi Alur Simpan File:</p>
+                    <div class="git-flow-visual">
+                        <div id="step-work" class="flow-box active-flow">Edit File</div>
+                        <div id="step-stage" class="flow-box">Staging Area</div>
+                        <div id="step-repo" class="flow-box">Commited</div>
+                    </div>
+                    <button onclick="nextFlowStep()">Lanjut ke Tahap Berikutnya</button>
+                    <button onclick="resetFlow()">Reset</button>
+                </div>
+
+                <div class="analysis-box">
+                    <h4>🛠️ Bedah Perintah (Sintaks)</h4>
+                    <pre><code><span class="code-comment"># Memindah dari Working ke Staging</span>
+<span class="code-kw">git add</span> nama_file.js
+
+<span class="code-comment"># Memindah dari Staging ke Local Repo</span>
+<span class="code-kw">git commit</span> -m <span class="code-st">"Pesan perubahan"</span></code></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="segment">
+            <div class="segment-header" onclick="toggleSegment(this)">
+                3. Case Industri: Bekerja dalam Tim (Branching) <span>+</span>
+            </div>
+            <div class="segment-content">
+                <div class="industrial-case">
+                    <div class="case-title">🏢 <strong>Case:</strong> Fitur Baru vs Bugfix</div>
+                    <p>Bayangkan Anda sedang membuat fitur "Pembayaran", lalu tiba-tiba ada "Bug Login" yang harus diperbaiki segera. Tanpa Git, kode Anda akan berantakan.</p>
+                    
+                    <div class="interactive-demo">
+                        <p>Simulasi Percabangan (Branching):</p>
+                        
+                        <div id="branch-visual">
+                            <div class="branch-line main-repo">● Main Branch: Produksi (Live)</div>
+                        </div>
+
+                        <div class="button-group" style="margin-top: 20px;">
+                            <button onclick="buatFitur()">Buat Branch Fitur</button>
+                            <button onclick="buatBugfix()">Buat Branch Bugfix</button>
+                            <button onclick="document.getElementById('branch-visual').innerHTML = '<div class=\'branch-line main-repo\'>● Main Branch: Produksi (Live)</div>'" style="background:#e74c3c">Reset</button>
+                        </div>
+                    </div>
+
+                    <div class="analysis-box">
+                        <p>Di industri, kita tidak pernah mengedit kode utama secara langsung. Kita membuat <strong>Branch</strong> agar fitur baru tidak merusak aplikasi yang sedang berjalan.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px">
+            <a href="../../../index.html" class="btn-back">← Kembali ke Dashboard</a>
+        </div>
+    </div>
+
+    <script src="git-concept.js"></script>
+</body>
+</html>

@@ -2,7 +2,8 @@
 const materiData = [
   { nama: "HTML", file: "HTML" },
   { nama: "CSS",  file: "CSS"  },
-  { nama: "JS",   file: "JS"   }
+  { nama: "JS",   file: "JS"   },
+  { nama: "Git",   file: "Git"   }
 ];
 
 const materiSelect = document.getElementById('materi');
