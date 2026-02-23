@@ -77,7 +77,6 @@ function displayData(){
         </tr>
     `;
 
-    let row = 1;
     for (const i of contact) {
         makingTable += `
         <tr>
@@ -96,8 +95,53 @@ function displayData(){
 }
 
 function searchingData(){
+    const resultSearch = document.getElementById('table');
+    
     const search = document.getElementById('searching').value;
+
+    let tableResult = `
+        <table class="table">
+            <tr>
+                <th>No.</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Telephone</th>
+                <th>Create Date</th>
+            </tr>`;
+    
     if (search == "") {
-        
+        tableResult += `<tr><td colspan="5">Silahkan masukkan data terlebih dahulu!</td></tr>`;
+    }else{
+        //cek dulu ada data yang sama engga, +lower case
+        const found = contact.filter(c => c.name.toLowerCase() === search.toLowerCase());
+
+        if (found.length == 0) {
+            tableResult += `
+                <tr>
+                    <td colspan="5">Data tidak ditemukkan!</td>
+                </tr>`;
+            
+            document.getElementById('searching').value = '';
+        }else{
+            //bisa juga pake forEach,for of sama forEach sama-sama buat iterasi array,
+            //bedanya kalo forEach sintaksnya lebih modern (style functional programming), tapi gabisa pake 'break'/'continue', cuman lebih umum dipake di project nyata,:
+            //found.forEach(index => {
+            for (const index of found) {
+
+                tableResult += `
+                    <tr>
+                        <td>${index.id}</td>
+                        <td>${index.name}</td>
+                        <td>${index.email}</td>
+                        <td>${index.telepon}</td>
+                        <td>${index.createAt}</td>
+                    </tr>
+                    `;
+            }
+            document.getElementById('searching').value = '';
+        }
     }
+    tableResult += `</table>`;
+    console.info(tableResult);
+    resultSearch.innerHTML = tableResult;
 }
