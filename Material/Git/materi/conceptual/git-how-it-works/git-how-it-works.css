@@ -1,0 +1,321 @@
+/* Palet Warna Git & GitHub */
+:root {
+    --git-orange: #F05032;
+    --git-dark: #24292e;
+    --git-bg: #f6f8fa;
+    --git-border: #e1e4e8;
+    --git-blue: #0366d6;
+    --git-green: #28a745;
+    --text-main: #2f363d;
+    --code-bg: #1b1f23;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--text-main);
+    margin: 0;
+    background-color: #ffffff;
+}
+
+/* Header Bergaya GitHub Dashboard */
+/* Container untuk Logo + Judul */
+.header-title-container {
+    display: flex;
+    align-items: center; /* Sejajarkan secara vertikal */
+    justify-content: center; /* Letakkan di tengah halaman */
+    gap: 20px; /* Jarak antara logo dan teks */
+    margin-bottom: 10px;
+}
+
+/* Ukuran dan Warna Logo */
+.git-logo-header {
+    width: 60px; 
+    height: 60px;
+    /* Menggunakan variabel warna oranye Git */
+    fill: var(--git-orange); 
+    /* Jika variabel belum terbaca, gunakan hex langsung: fill: #F05032; */
+    
+    /* Tambahkan filter glow agar logo oranye "menyala" di background gelap */
+    filter: drop-shadow(0 0 5px rgba(240, 80, 50, 0.6)); 
+    transition: transform 0.3s ease;
+}
+
+.git-logo-header:hover {
+    transform: rotate(-10deg) scale(1.1); /* Efek sedikit goyang saat di-hover */
+}
+
+.header-title-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px; /* Jarak pas antara logo dan teks */
+    margin-bottom: 5px;
+}
+
+/* Responsive: Jika di layar kecil, kecilkan sedikit logo */
+@media (max-width: 600px) {
+    .git-logo-header {
+        width: 40px;
+        height: 40px;
+    }
+    header h1 {
+        font-size: 1.8rem;
+    }
+}
+header {
+    background: var(--git-dark);
+    color: white;
+    padding: 3rem 1rem;
+    text-align: center;
+    border-bottom: 6px solid var(--git-orange);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    letter-spacing: -1px;
+}
+
+header p {
+    opacity: 0.8;
+    font-weight: 300;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* Kartu Segmen Materi */
+.segment {
+    background: white;
+    margin-bottom: 20px;
+    border: 1px solid var(--git-border);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.segment:hover {
+    box-shadow: 0 8px 24px rgba(149, 157, 165, 0.2);
+}
+
+.segment-header {
+    background: var(--git-bg);
+    padding: 18px 25px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--git-dark);
+}
+
+.segment-header span {
+    background: var(--git-border);
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-family: monospace;
+    transition: 0.3s;
+}
+
+/* Efek Aktif */
+.active .segment-header {
+    background: white;
+    border-bottom: 2px solid var(--git-orange);
+}
+
+.active .segment-header span {
+    transform: rotate(180deg);
+    background: var(--git-orange);
+    color: white;
+}
+
+.segment-content {
+    padding: 30px;
+    display: none;
+    border-top: 1px solid var(--git-border);
+    animation: fadeIn 0.4s ease;
+}
+
+.active .segment-content {
+    display: block;
+}
+
+/* Kotak Istilah (Term Box) */
+.term-box {
+    background: #fff5f2;
+    border-left: 5px solid var(--git-orange);
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 0 8px 8px 0;
+}
+
+.term-box ul {
+    margin-bottom: 0;
+}
+
+/* Interactive Demo Area */
+.interactive-demo {
+    background: #fafbfc;
+    border: 2px dashed var(--git-border);
+    padding: 25px;
+    border-radius: 12px;
+    margin: 25px 0;
+}
+
+/* Git Flow Visual */
+.git-flow-visual {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin: 30px 0;
+}
+
+.flow-box {
+    flex: 1;
+    text-align: center;
+    padding: 15px;
+    border: 2px solid var(--git-border);
+    border-radius: 10px;
+    background: white;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: 0.4s;
+    position: relative;
+}
+
+.flow-box::after {
+    content: "→";
+    position: absolute;
+    right: -12px;
+    color: var(--git-border);
+    font-size: 1.5rem;
+}
+
+.flow-box:last-child::after { content: ""; }
+
+.active-flow {
+    border-color: var(--git-orange);
+    background: #fff5f2;
+    color: var(--git-orange);
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(240, 80, 50, 0.2);
+}
+
+/* Code Block (Terminal Style) */
+pre {
+    background: var(--code-bg);
+    color: #e6edf3;
+    padding: 20px;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+    font-size: 0.9rem;
+    box-shadow: inset 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.code-kw { color: #ff7b72; } /* Perintah */
+.code-st { color: #a5d6ff; } /* String */
+.code-comment { color: #8b949e; font-style: italic; }
+
+/* Buttons */
+button {
+    background-color: var(--git-dark);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+    margin-right: 10px;
+}
+
+button:hover {
+    background-color: #444d56;
+    transform: translateY(-1px);
+}
+
+button:active { transform: translateY(0); }
+
+/* Case Industri Styling */
+.industrial-case {
+    background: white;
+    border: 1px solid var(--git-border);
+    border-top: 4px solid var(--git-blue);
+    padding: 25px;
+    border-radius: 8px;
+}
+
+.case-title {
+    color: var(--git-blue);
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.btn-back {
+    display: inline-block;
+    margin-top: 40px;
+    color: var(--git-blue);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.btn-back:hover { text-decoration: underline; }
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Container visual branch */
+#branch-visual {
+    min-height: 50px;
+    display: flex;
+    flex-direction: column; /* Menyusun branch ke bawah */
+    gap: 10px;
+    margin: 20px 0;
+    padding-left: 20px;
+    border-left: 3px solid var(--git-border);
+}
+
+/* Base style untuk setiap baris branch */
+.branch-line {
+    position: relative; /* Berubah dari absolute ke relative */
+    padding: 8px 15px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: white;
+    width: fit-content;
+    animation: slideIn 0.3s ease-out;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Warna spesifik */
+.main-repo { background: var(--git-dark); }
+.fitur { background: var(--git-blue); }
+.bugfix { background: var(--git-green); } /* Hijau untuk fix biasanya lebih umum */
+
+/* Pastikan tombol selalu di atas dan bisa diklik */
+.interactive-demo button {
+    position: relative;
+    z-index: 10;
+    margin-top: 10px;
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(-20px); }
+    to { opacity: 1; transform: translateX(0); }
+}

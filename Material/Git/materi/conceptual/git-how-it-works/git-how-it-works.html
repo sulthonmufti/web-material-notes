@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git: How It Works</title>
+    <link rel="stylesheet" href="git-how-it-works.css">
+</head>
+<body>
+    <header>
+        <div class="header-title-container">
+            <svg class="git-logo-header" viewBox="0 0 92 92" xmlns="http://www.w3.org/2000/svg">
+                <path d="M90.156 41.965L50.036 1.848a5.918 5.918 0 0 0-8.372 0l-8.328 8.332 10.566 10.566a7.03 7.03 0 0 1 7.23 1.684 7.043 7.043 0 0 1 1.673 7.277l10.183 10.184a7.026 7.026 0 0 1 7.278 1.672 7.04 7.04 0 0 1 0 9.957 7.045 7.045 0 0 1-9.961 0 7.038 7.038 0 0 1-1.532-7.66L49.76 33.444v25.82a7.04 7.04 0 0 1 1.86 1.293 7.04 7.04 0 0 1 0 9.957 7.045 7.045 0 0 1-9.961 0 7.04 7.04 0 0 1 0-9.957 7.064 7.064 0 0 1 2.304-1.532V33.062a7.064 7.064 0 0 1-2.304-1.532 7.044 7.044 0 0 1-1.524-7.689L29.973 13.273 1.844 41.4a5.918 5.918 0 0 0 0 8.372L41.964 90.09a5.918 5.918 0 0 0 8.372 0L90.156 50.337a5.918 5.918 0 0 0 0-8.372"/>
+            </svg>
+            <h1>Git: How It Works</h1>
+        </div>
+        <p>Membedah Mekanisme Snapshot, Hash, dan Data Integrity</p>
+    </header>
+
+    <div class="container">
+        <div class="segment">
+            <div class="segment-header" onclick="toggleSegment(this)">
+                1. Snapshots, Bukan Deltas <span>+</span>
+            </div>
+            <div class="segment-content">
+                <p>Mayoritas sistem VCS lain (seperti SVN) menyimpan data sebagai <strong>Deltas</strong> (daftar perubahan file dari waktu ke waktu). Git berbeda.</p>
+                
+                <div class="term-box">
+                    <strong>📖 Istilah: Snapshot</strong>
+                    <p>Git menganggap datanya sebagai serangkaian potret (snapshot) dari miniatur sistem file. Setiap kali Anda commit, Git memotret semua file Anda saat itu dan menyimpan referensi ke potret tersebut.</p>
+                </div>
+
+                
+
+                <div class="industrial-case">
+                    <div class="case-title">🏢 Case Industri: Kecepatan Checkout</div>
+                    <p>Karena Git menyimpan snapshot, saat Anda pindah branch (checkout), Git tidak perlu menghitung ulang perubahan file satu per satu. Ia tinggal mengganti file di folder Anda dengan versi yang ada di snapshot. Inilah kenapa Git sangat cepat meski proyeknya besar.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="segment">
+            <div class="segment-header" onclick="toggleSegment(this)">
+                2. SHA-1: Identitas Tak Terbantahkan <span>+</span>
+            </div>
+            <div class="segment-content">
+                <p>Bagaimana Git tahu jika sebuah file berubah meski hanya satu spasi? Jawabannya adalah <strong>Hashing</strong>.</p>
+                
+                <div class="term-box">
+                    <strong>📖 Istilah: SHA-1 Hash</strong>
+                    <p>String 40 karakter (contoh: <code>24b9da...</code>) yang dihasilkan dari isi file atau struktur direktori. Jika isi file berubah 1 bit saja, Hash-nya akan berubah total.</p>
+                </div>
+
+                <div class="interactive-demo">
+                    <p>Simulasi Mekanisme Hash:</p>
+                    <input type="text" id="hash-input" oninput="generateSimulatedHash()" placeholder="Ketik sesuatu untuk lihat Hash berubah...">
+                    <div style="margin-top:10px; font-family:monospace; word-break: break-all;">
+                        <strong>Hash ID:</strong> <span id="hash-output" style="color: var(--git-orange);">e04fd...</span>
+                    </div>
+                </div>
+
+                <div class="analysis-box">
+                    <p>Di Git, Anda tidak bisa mengubah isi file tanpa Git mengetahuinya. Ini disebut <strong>Data Integrity</strong>.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="segment">
+            <div class="segment-header" onclick="toggleSegment(this)">
+                3. Alur Kerja: The Three States <span>+</span>
+            </div>
+            <div class="segment-content">
+                <p>Ini adalah siklus hidup file yang paling sering digunakan dalam industri setiap harinya.</p>
+
+                
+
+                <div class="term-box">
+                    <ul>
+                        <li><strong>Committed:</strong> Data sudah tersimpan aman di database lokal (Snapshot).</li>
+                        <li><strong>Modified:</strong> Anda sudah mengubah file tapi belum menyimpannya ke database.</li>
+                        <li><strong>Staged:</strong> Anda menandai file yang dimodifikasi untuk masuk ke snapshot berikutnya.</li>
+                    </ul>
+                </div>
+
+                <div class="analysis-box">
+                    <h4>🛠️ Command yang Digunakan:</h4>
+                    <pre><code><span class="code-comment"># 1. Melihat status file</span>
+<span class="code-kw">git status</span>
+
+<span class="code-comment"># 2. Memindahkan dari Modified ke Staged</span>
+<span class="code-kw">git add</span> .
+
+<span class="code-comment"># 3. Memindahkan dari Staged ke Committed</span>
+<span class="code-kw">git commit</span> -m <span class="code-st">"feat: tambah fitur login"</span></code></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="segment">
+            <div class="segment-header" onclick="toggleSegment(this)">
+                4. Database Lokal: Folder .git <span>+</span>
+            </div>
+            <div class="segment-content">
+                <p>Saat Anda menjalankan <code>git init</code>, sebuah folder tersembunyi bernama <code>.git</code> dibuat. Inilah "otak" dari proyek Anda.</p>
+                
+                <div class="industrial-case">
+                    <div class="case-title">🏢 Case Industri: Backup & Portability</div>
+                    <p>Karena semua "How it works" disimpan di dalam folder <code>.git</code>, Anda bisa meng-copy folder proyek Anda ke flashdisk, dan seluruh riwayat (history) akan ikut terbawa. Git tidak butuh koneksi server untuk melihat log masa lalu.</p>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px">
+            <a href="index.html" class="btn-back">← Kembali ke Dashboard</a>
+        </div>
+    </div>
+
+    <script src="git-how-it-works.js"></script>
+</body>
+</html>
