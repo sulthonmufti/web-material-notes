@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git Architecture: Under the Hood</title>
+    <link rel="stylesheet" href="git-concept.css">
+</head>
+<body>
+    <header>
+        <div class="header-title-container">
+            <svg class="git-logo-header" viewBox="0 0 92 92" xmlns="http://www.w3.org/2000/svg">
+                <path d="M90.156 41.965L50.036 1.848a5.918 5.918 0 0 0-8.372 0l-8.328 8.332 10.566 10.566a7.03 7.03 0 0 1 7.23 1.684 7.043 7.043 0 0 1 1.673 7.277l10.183 10.184a7.026 7.026 0 0 1 7.278 1.672 7.04 7.04 0 0 1 0 9.957 7.045 7.045 0 0 1-9.961 0 7.038 7.038 0 0 1-1.532-7.66L49.76 33.444v25.82a7.04 7.04 0 0 1 1.86 1.293 7.04 7.04 0 0 1 0 9.957 7.045 7.045 0 0 1-9.961 0 7.04 7.04 0 0 1 0-9.957 7.064 7.064 0 0 1 2.304-1.532V33.062a7.064 7.064 0 0 1-2.304-1.532 7.044 7.044 0 0 1-1.524-7.689L29.973 13.273 1.844 41.4a5.918 5.918 0 0 0 0 8.372L41.964 90.09a5.918 5.918 0 0 0 8.372 0L90.156 50.337a5.918 5.918 0 0 0 0-8.372"/>
+            </svg>
+            <h1>Git Architecture</h1>
+        </div>
+        <p>Menjelajahi Struktur Objek dan Folder Rahasia .git</p>
+    </header>
+
+    <div class="container">
+        <div class="segment">
+            <div class="segment-header" onclick="toggleSegment(this)">
+                1. Content-Addressable Storage <span>+</span>
+            </div>
+            <div class="segment-content">
+                <p>Arsitektur utama Git adalah <strong>Content-Addressable Storage</strong>. Artinya, Git tidak mencari file berdasarkan nama (misal: <code>index.html</code>), melainkan berdasarkan <strong>isinya</strong>.</p>
+                
+                <div class="term-box">
+                    <strong>📖 Penjelasan:</strong>
+                    <p>Jika Anda punya 10 file berbeda dengan isi yang 100% sama, Git hanya akan menyimpan <strong>satu objek data</strong>. Ini membuat ukuran penyimpanan sangat efisien.</p>
+                </div>
+
+                <div class="industrial-case">
+                    <div class="case-title">🏢 Case Industri: Duplikasi Aset</div>
+                    <p>Dalam proyek web besar, seringkali ada gambar atau file konfigurasi yang sama di folder berbeda. Karena arsitektur ini, Git tidak akan membengkak ukurannya karena ia tahu isinya sama.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="segment">
+            <div class="segment-header" onclick="toggleSegment(this)">
+                2. The Big Four: Blob, Tree, Commit, Tag <span>+</span>
+            </div>
+            <div class="segment-content">
+                <p>Git menyimpan semuanya dalam 4 tipe objek di folder <code>.git/objects</code>:</p>
+                
+                
+
+                <div class="term-box">
+                    <ul>
+                        <li><strong>Blob (Binary Large Object):</strong> Hanya menyimpan <strong>isi file</strong> (tanpa nama file).</li>
+                        <li><strong>Tree:</strong> Seperti folder. Ia memetakan nama file ke <strong>Blob</strong> dan menyimpan struktur sub-folder.</li>
+                        <li><strong>Commit:</strong> Berisi link ke <strong>Tree</strong> utama, nama penulis, pesan commit, dan link ke commit sebelumnya (parent).</li>
+                        <li><strong>Tag:</strong> Nama alias yang statis untuk sebuah commit (misal: <code>v1.0</code>).</li>
+                    </ul>
+                </div>
+
+                <div class="analysis-box">
+                    <h4>🔍 Contoh Visual di Terminal:</h4>
+                    <p>Kita bisa melihat isi objek menggunakan perintah "low-level" (Plumbing):</p>
+                    <pre><code><span class="code-comment"># Melihat tipe objek dari sebuah Hash</span>
+<span class="code-kw">git cat-file</span> -t 1a2b3c
+
+<span class="code-comment"># Melihat isi objek</span>
+<span class="code-kw">git cat-file</span> -p 1a2b3c</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="segment">
+            <div class="segment-header" onclick="toggleSegment(this)">
+                3. Anatomi Folder .git <span>+</span>
+            </div>
+            <div class="segment-content">
+                <p>Inilah organ dalam Git yang ada di proyek Anda:</p>
+                
+                <table style="width:100%; border-collapse: collapse; margin-top:15px;">
+                    <tr style="background: var(--git-bg);">
+                        <th style="padding:10px; border: 1px solid var(--git-border);">Folder/File</th>
+                        <th style="padding:10px; border: 1px solid var(--git-border);">Fungsi</th>
+                    </tr>
+                    <tr>
+                        <td style="padding:10px; border: 1px solid var(--git-border);"><code>config</code></td>
+                        <td>Pengaturan spesifik proyek ini saja.</td>
+                    </tr>
+                    <tr>
+                        <td style="padding:10px; border: 1px solid var(--git-border);"><code>HEAD</code></td>
+                        <td>File yang menunjuk ke branch yang aktif saat ini.</td>
+                    </tr>
+                    <tr>
+                        <td style="padding:10px; border: 1px solid var(--git-border);"><code>index</code></td>
+                        <td>Tempat Staging Area (berupa file biner).</td>
+                    </tr>
+                    <tr>
+                        <td style="padding:10px; border: 1px solid var(--git-border);"><code>objects/</code></td>
+                        <td>Database semua Blob, Tree, dan Commit Anda.</td>
+                    </tr>
+                    <tr>
+                        <td style="padding:10px; border: 1px solid var(--git-border);"><code>refs/</code></td>
+                        <td>Penyimpan pointer ke branch dan tag.</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="segment">
+            <div class="segment-header" onclick="toggleSegment(this)">
+                4. Bagaimana Branch Bekerja? <span>+</span>
+            </div>
+            <div class="segment-content">
+                <p>Berbeda dengan sistem lain yang meng-copy seluruh folder, di Git, **Branch hanyalah sebuah file teks kecil**.</p>
+                
+                <div class="term-box">
+                    <strong>📖 Konsep Penting:</strong>
+                    <p>Branch <code>main</code> hanyalah file teks yang isinya adalah 40 karakter Hash dari commit terakhir. Saat Anda commit baru, isi file teks ini diperbarui ke Hash yang baru.</p>
+                </div>
+
+                <div class="interactive-demo">
+                    <p><strong>Kenapa Git "Ringan"?</strong></p>
+                    <p>Membuat 1000 branch di Git hanya memakan beberapa Kilobyte memori karena Git hanya membuat 1000 file teks kecil yang menunjuk ke commit.</p>
+                </div>
+
+                <div class="industrial-case">
+                    <div class="case-title">🏢 Case Industri: "Detached HEAD"</div>
+                    <p>Anda mungkin pernah mengalami error ini. Secara arsitektur, ini artinya file <code>HEAD</code> Anda menunjuk langsung ke sebuah <strong>Commit Hash</strong>, bukan ke sebuah <strong>Branch</strong>. Git memperingatkan Anda bahwa jika Anda commit, tidak ada branch yang akan mencatatnya.</p>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px">
+            <a href="index.html" class="btn-back">← Kembali ke Dashboard</a>
+        </div>
+    </div>
+
+    <script src="git-architecture.js"></script>
+</body>
+</html>
