@@ -2,10 +2,9 @@ const materiGitData = {
     // Kategori: CONCEPTUAL & PREPARATION (Wajib: Pahami logika sebelum sintaks)
     conceptual: [
         { nama: "What is Git? (Version Control System)", file: "git-concept" },
-        { nama: "Installation and Preparation", file: "git-install" },
+        { nama: "Git Installation & Environment Setup", file: "git-install" },
         { nama: "How Git Works (Snapshot vs Delta)", file: "git-how-it-works" },
         { nama: "Git Architecture (Working Dir, Staging, Repository)", file: "git-architecture" },
-        { nama: "Git Installation & Environment Setup", file: "git-install" },
         { nama: "Common Git Issues & Best Practices", file: "git-issues-intro" }
     ],
 
