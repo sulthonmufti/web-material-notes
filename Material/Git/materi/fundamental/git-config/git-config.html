@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git Fundamental: git-config</title>
+    <link rel="stylesheet" href="git-config.css">
+</head>
+<body>
+    <header>
+        <div class="header-title-container">
+            <svg class="git-logo-header" viewBox="0 0 92 92" xmlns="http://www.w3.org/2000/svg">
+                <path d="M90.156 41.965L50.036 1.848a5.918 5.918 0 0 0-8.372 0l-8.328 8.332 10.566 10.566a7.03 7.03 0 0 1 7.23 1.684 7.043 7.043 0 0 1 1.673 7.277l10.183 10.184a7.026 7.026 0 0 1 7.278 1.672 7.04 7.04 0 0 1 0 9.957 7.045 7.045 0 0 1-9.961 0 7.038 7.038 0 0 1-1.532-7.66L49.76 33.444v25.82a7.04 7.04 0 0 1 1.86 1.293 7.04 7.04 0 0 1 0 9.957 7.045 7.045 0 0 1-9.961 0 7.04 7.04 0 0 1 0-9.957 7.064 7.064 0 0 1 2.304-1.532V33.062a7.064 7.064 0 0 1-2.304-1.532 7.044 7.044 0 0 1-1.524-7.689L29.973 13.273 1.844 41.4a5.918 5.918 0 0 0 0 8.372L41.964 90.09a5.918 5.918 0 0 0 8.372 0L90.156 50.337a5.918 5.918 0 0 0 0-8.372"/>
+            </svg>
+            <h1>Git Config</h1>
+        </div>
+        <p>Mengatur Identitas dan Personalisasi Lingkungan Kerja Git</p>
+    </header>
+
+    <div class="container">
+        <div class="segment">
+            <div class="segment-header" onclick="toggleSegment(this)">
+                1. Apa itu git-config? <span>+</span>
+            </div>
+            <div class="segment-content">
+                <p><code>git config</code> adalah perintah yang digunakan untuk mengatur bagaimana Git berperilaku di komputer Anda. Ini mencakup segala hal, mulai dari siapa Anda, hingga editor apa yang Anda gunakan untuk menulis pesan commit.</p>
+                
+                <div class="term-box">
+                    <strong>📖 Penjelasan:</strong>
+                    <p>Setiap kali Anda melakukan <strong>commit</strong> (menyimpan perubahan), Git akan menyematkan nama dan email Anda. Tanpa ini, tim Anda tidak akan tahu siapa yang bertanggung jawab atas perubahan kode tersebut.</p>
+                </div>
+                
+                
+
+                <div class="industrial-case">
+                    <div class="case-title">🏢 Case Industri: Akuntabilitas Kode</div>
+                    <p>Di perusahaan besar, server Git (seperti GitLab) seringkali menolak commit jika email pengirim tidak terdaftar dalam database karyawan. Mengonfigurasi email dengan benar adalah syarat mutlak agar pekerjaan Anda bisa diterima.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="segment">
+            <div class="segment-header" onclick="toggleSegment(this)">
+                2. Tingkatan Konfigurasi (Levels) <span>+</span>
+            </div>
+            <div class="segment-content">
+                <p>Git memiliki tiga tempat penyimpanan konfigurasi yang berbeda. Aturan mainnya: <strong>Konfigurasi yang paling spesifik akan menang.</strong></p>
+                
+                <table style="width:100%; border-collapse: collapse; margin: 20px 0;">
+                    <tr style="background: var(--git-bg);">
+                        <th style="padding:10px; border:1px solid var(--git-border);">Level</th>
+                        <th style="padding:10px; border:1px solid var(--git-border);">Cakupan (Scope)</th>
+                        <th style="padding:10px; border:1px solid var(--git-border);">Flag Perintah</th>
+                    </tr>
+                    <tr>
+                        <td><strong>System</strong></td>
+                        <td>Seluruh pengguna di OS komputer ini.</td>
+                        <td><code>--system</code></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Global</strong></td>
+                        <td>Seluruh proyek milik user Anda saat ini.</td>
+                        <td><code>--global</code></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Local</strong></td>
+                        <td>Hanya untuk satu folder proyek tertentu.</td>
+                        <td><code>--local</code></td>
+                    </tr>
+                </table>
+
+                <div class="industrial-case" style="border-top-color: var(--git-blue);">
+                    <div class="case-title">🏢 Case Industri: Kantor vs Pribadi</div>
+                    <p>Anda mungkin menggunakan email kantor secara <strong>Global</strong>, tetapi untuk proyek *side-job* pribadi di folder tertentu, Anda menggunakan <strong>Local</strong> config agar kontribusinya tercatat ke email pribadi Anda.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="segment">
+            <div class="segment-header" onclick="toggleSegment(this)">
+                3. Identitas & Editor <span>+</span>
+            </div>
+            <div class="segment-content">
+                <p>Berikut adalah pengaturan "Starter Pack" yang harus dilakukan setiap kali menginstal Git baru:</p>
+
+                <div class="analysis-box">
+                    <pre><code><span class="code-comment"># 1. Mengatur Nama</span>
+<span class="code-kw">git config</span> --global user.name <span class="code-st">"Budi Santoso"</span>
+
+<span class="code-comment"># 2. Mengatur Email (Sesuai akun GitHub/GitLab)</span>
+<span class="code-kw">git config</span> --global user.email <span class="code-st">"budi@email.com"</span>
+
+<span class="code-comment"># 3. Mengatur VS Code sebagai Default Editor</span>
+<span class="code-kw">git config</span> --global core.editor <span class="code-st">"code --wait"</span></code></pre>
+                </div>
+
+                <div class="interactive-demo">
+                    <h4>🛠️ Generator Konfigurasi</h4>
+                    <p>Masukkan data Anda untuk melihat perintah yang harus diketik di terminal:</p>
+                    <input type="text" id="nameInput" placeholder="Nama Lengkap" oninput="updateConfigGen()">
+                    <input type="email" id="emailInput" placeholder="Email Anda" oninput="updateConfigGen()" style="margin-top:10px;">
+                    <div id="configOutput" style="margin-top:15px; background:#1b1f23; color:#a5d6ff; padding:15px; border-radius:8px; font-family:monospace; min-height:50px;">
+                        Ketik nama dan email di atas...
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="segment">
+            <div class="segment-header" onclick="toggleSegment(this)">
+                4. Cara Cek & Verifikasi <span>+</span>
+            </div>
+            <div class="segment-content">
+                <p>Jangan sampai salah kirim email! Selalu cek konfigurasi Anda sebelum mulai bekerja.</p>
+                
+                <div class="analysis-box">
+                    <pre><code><span class="code-comment"># Melihat semua konfigurasi yang aktif</span>
+<span class="code-kw">git config</span> --list
+
+<span class="code-comment"># Melihat asal file setiap konfigurasi</span>
+<span class="code-kw">git config</span> --list --show-origin
+
+<span class="code-comment"># Hanya cek satu item spesifik</span>
+<span class="code-kw">git config</span> user.email</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px">
+            <a href="index.html" class="btn-back">← Kembali ke Dashboard</a>
+        </div>
+    </div>
+
+    <script src="git-config.js"></script>
+</body>
+</html>
