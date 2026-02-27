@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git Fundamental: git-init</title>
+    <link rel="stylesheet" href="git-init.css">
+</head>
+<body>
+    <header>
+        <div class="header-title-container">
+            <svg class="git-logo-header" viewBox="0 0 92 92" xmlns="http://www.w3.org/2000/svg">
+                <path d="M90.156 41.965L50.036 1.848a5.918 5.918 0 0 0-8.372 0l-8.328 8.332 10.566 10.566a7.03 7.03 0 0 1 7.23 1.684 7.043 7.043 0 0 1 1.673 7.277l10.183 10.184a7.026 7.026 0 0 1 7.278 1.672 7.04 7.04 0 0 1 0 9.957 7.045 7.045 0 0 1-9.961 0 7.038 7.038 0 0 1-1.532-7.66L49.76 33.444v25.82a7.04 7.04 0 0 1 1.86 1.293 7.04 7.04 0 0 1 0 9.957 7.045 7.045 0 0 1-9.961 0 7.04 7.04 0 0 1 0-9.957 7.064 7.064 0 0 1 2.304-1.532V33.062a7.064 7.064 0 0 1-2.304-1.532 7.044 7.044 0 0 1-1.524-7.689L29.973 13.273 1.844 41.4a5.918 5.918 0 0 0 0 8.372L41.964 90.09a5.918 5.918 0 0 0 8.372 0L90.156 50.337a5.918 5.918 0 0 0 0-8.372"/>
+            </svg>
+            <h1>Git Init</h1>
+        </div>
+        <p>Mengubah Folder Biasa Menjadi Repositori Cerdas</p>
+    </header>
+
+    <div class="container">
+        <div class="segment">
+            <div class="segment-header" onclick="toggleSegment(this)">
+                1. Apa itu git-init? <span>+</span>
+            </div>
+            <div class="segment-content">
+                <p><code>git init</code> adalah perintah untuk membuat repositori Git baru. Ini adalah langkah pertama yang Anda lakukan saat memulai proyek baru secara lokal.</p>
+                
+                <div class="term-box">
+                    <strong>📖 Penjelasan:</strong>
+                    <p>Perintah ini menciptakan folder tersembunyi bernama <code>.git</code>. Di dalam folder inilah Git menyimpan semua sejarah, snapshot, dan metadata proyek Anda. Tanpa folder ini, Git tidak bisa melacak perubahan apa pun.</p>
+                </div>
+
+                
+
+                <div class="industrial-case">
+                    <div class="case-title">🏢 Kasus Real: Inisialisasi Proyek Baru</div>
+                    <p>Bayangkan Anda baru saja membuat folder <code>toko-online-v1</code>. Untuk mulai merekam setiap perubahan kode, Anda wajib masuk ke folder tersebut lewat terminal dan mengetik <code>git init</code>.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="segment">
+            <div class="segment-header" onclick="toggleSegment(this)">
+                2. Menjalankan Perintah <span>+</span>
+            </div>
+            <div class="segment-content">
+                <p>Ada dua cara umum untuk menggunakan perintah ini:</p>
+                
+                <div class="analysis-box">
+                    <pre><code><span class="code-comment"># Cara 1: Di dalam folder proyek yang sudah ada</span>
+<span class="code-kw">cd</span> nama-proyek
+<span class="code-kw">git init</span>
+
+<span class="code-comment"># Cara 2: Membuat folder sekaligus inisialisasi</span>
+<span class="code-kw">git init</span> nama-folder-baru</code></pre>
+                </div>
+
+                <div class="interactive-demo">
+                    <h4>🖥️ Simulasi Terminal</h4>
+                    <p>Coba ketik <code>git init</code> di bawah ini:</p>
+                    <div class="terminal-window">
+                        <span class="prompt">C:\Projects\my-app></span>
+                        <input type="text" id="terminalInput" onkeypress="handleTerminal(event)">
+                    </div>
+                    <div id="terminalOutput" class="terminal-output"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="segment">
+            <div class="segment-header" onclick="toggleSegment(this)">
+                3. Efek Tersembunyi <span>+</span>
+            </div>
+            <div class="segment-content">
+                <p>Setelah Anda menjalankan perintah tersebut, Git akan membalas dengan pesan: <em>"Initialized empty Git repository in..."</em></p>
+                
+                <div class="term-box">
+                    <strong>🕵️ Folder .git:</strong>
+                    <p>Folder ini bersifat tersembunyi (hidden). Di Windows atau Mac, Anda mungkin tidak melihatnya secara langsung. Gunakan perintah <code>ls -a</code> (Linux/Mac) atau <code>dir /a</code> (Windows) untuk melihatnya.</p>
+                </div>
+
+                
+
+                <div class="analysis-box">
+                    <p><strong>Peringatan:</strong> Jangan pernah menghapus folder <code>.git</code> kecuali Anda ingin membuang seluruh riwayat versi proyek Anda dan menjadikannya folder biasa lagi.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="segment">
+            <div class="segment-header" onclick="toggleSegment(this)">
+                4. Cabang Utama (Default Branch) <span>+</span>
+            </div>
+            <div class="segment-content">
+                <p>Secara tradisional, Git akan membuat branch pertama bernama <code>master</code>. Namun, standar industri modern kini beralih menggunakan nama <code>main</code>.</p>
+                
+                <div class="industrial-case" style="border-top-color: var(--git-orange);">
+                    <div class="case-title">🏢 Standar Industri Modern</div>
+                    <p>Anda bisa mengatur agar Git selalu menggunakan nama <code>main</code> setiap kali inisialisasi dengan perintah config:</p>
+                    <code>git config --global init.defaultBranch main</code>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px">
+            <a href="index.html" class="btn-back">← Kembali ke Dashboard</a>
+        </div>
+    </div>
+
+    <script src="git-init.js"></script>
+</body>
+</html>
