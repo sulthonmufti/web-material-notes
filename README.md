@@ -1,8 +1,8 @@
 # Web Material Notes
 
-![HTML Badge](https://img.shields.io/badge/HTML-81.4%25-orange)
-![CSS Badge](https://img.shields.io/badge/CSS-11.7%25-blue)
-![JavaScript Badge](https://img.shields.io/badge/JavaScript-6.5%25-yellow)
+![HTML Badge](https://img.shields.io/badge/HTML-74.1%25-orange)
+![CSS Badge](https://img.shields.io/badge/CSS-16.2%25-blue)
+![JavaScript Badge](https://img.shields.io/badge/JavaScript-9.4%25-yellow)
 
 ## Project Description
 Web Material Notes is a comprehensive resource for students and learners, providing easily accessible study materials and notes covering HTML, CSS, and JavaScript. The platform aims to facilitate learning by offering structured content that is simple to navigate, with in-depth materials grouped by skill level for each programming language.
@@ -30,6 +30,7 @@ web-material-notes/
     ├── CSS/
     ├── HTML/
     └── JS/
+    └── Git/
 ```
 
 ## Technology Stack
