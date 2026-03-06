@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git Collaboration: Push & Pull</title>
+    <link rel="stylesheet" href="git-push-pull.css">
+</head>
+<body>
+    <header>
+        <div class="header-title-container">
+            <svg class="git-logo-header" viewBox="0 0 92 92" xmlns="http://www.w3.org/2000/svg">
+                <path d="M90.156 41.965L50.036 1.848a5.918 5.918 0 0 0-8.372 0l-8.328 8.332 10.566 10.566a7.03 7.03 0 0 1 7.23 1.684 7.043 7.043 0 0 1 1.673 7.277l10.183 10.184a7.026 7.026 0 0 1 7.278 1.672 7.04 7.04 0 0 1 0 9.957 7.045 7.045 0 0 1-9.961 0 7.038 7.038 0 0 1-1.532-7.66L49.76 33.444v25.82a7.04 7.04 0 0 1 1.86 1.293 7.04 7.04 0 0 1 0 9.957 7.045 7.045 0 0 1-9.961 0 7.04 7.04 0 0 1 0-9.957 7.064 7.064 0 0 1 2.304-1.532V33.062a7.064 7.064 0 0 1-2.304-1.532 7.044 7.044 0 0 1-1.524-7.689L29.973 13.273 1.844 41.4a5.918 5.918 0 0 0 0 8.372L41.964 90.09a5.918 5.918 0 0 0 8.372 0L90.156 50.337a5.918 5.918 0 0 0 0-8.372"/>
+            </svg>
+            <h1>Push & Pull</h1>
+        </div>
+        <p>Sinkronisasi Kode: Mengirim dan Menjemput Perubahan</p>
+    </header>
+
+    <div class="container">
+        <div class="segment">
+            <div class="segment-header" onclick="toggleSegment(this)">
+                1. git push: Mengunggah Karya <span>+</span>
+            </div>
+            <div class="segment-content">
+                <p><code>git push</code> adalah perintah untuk mengirim commit lokal Anda ke repositori remote (seperti GitHub). Ini adalah cara Anda membagikan hasil kerja kepada tim.</p>
+                
+                <div class="term-box">
+                    <strong>📖 Istilah: Upstream (-u)</strong>
+                    <p>Saat pertama kali push, kita sering menggunakan <code>-u</code> (upstream). Ini seperti "mengingat" pasangan branch lokal dan remote, sehingga kedepannya Anda cukup mengetik <code>git push</code> saja.</p>
+                </div>
+
+                <div class="analysis-box">
+                    <pre><code><span class="code-comment"># Push pertama kali (setup upstream)</span>
+<span class="code-kw">git push</span> -u origin main
+
+<span class="code-comment"># Push selanjutnya</span>
+<span class="code-kw">git push</span></code></pre>
+                </div>
+
+                
+
+                <div class="industrial-case">
+                    <div class="case-title">🏢 Kasus Real: Deployment Otomatis</div>
+                    <p>Di industri modern, melakukan <code>git push</code> ke branch tertentu (misal: <code>production</code>) seringkali memicu sistem <strong>CI/CD</strong> yang secara otomatis mengunggah kode Anda ke server aplikasi (Live).</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="segment">
+            <div class="segment-header" onclick="toggleSegment(this)">
+                2. git pull: Mengambil Update Tim <span>+</span>
+            </div>
+            <div class="segment-content">
+                <p><code>git pull</code> digunakan untuk mengambil perubahan terbaru dari server remote dan langsung menggabungkannya (merge) ke dalam kode lokal Anda.</p>
+                
+                <div class="term-box" style="border-left-color: #0366d6;">
+                    <strong>🔍 Bedanya dengan git fetch?</strong>
+                    <ul>
+                        <li><strong>Fetch:</strong> Hanya melihat/mengunduh info tanpa mengubah kode Anda.</li>
+                        <li><strong>Pull:</strong> Fetch + Merge (Langsung memperbarui file Anda).</li>
+                    </ul>
+                </div>
+
+                
+
+                <div class="analysis-box">
+                    <pre><code><span class="code-kw">git pull</span> origin main</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="segment">
+            <div class="segment-header" onclick="toggleSegment(this)">
+                3. Konflik & "Pull Before Push" <span>+</span>
+            </div>
+            <div class="segment-content">
+                <p>Kenapa Git terkadang menolak push Anda? Biasanya karena ada teman tim yang sudah mengirim kode lebih dulu, dan laptop Anda belum mengetahuinya.</p>
+
+                <div class="industrial-case" style="border-top-color: #d73a49;">
+                    <div class="case-title">⚠️ Aturan Emas: Pull Before Push</div>
+                    <p>Selalu lakukan <code>git pull</code> sebelum memulai kerja atau sebelum melakukan <code>push</code>. Ini meminimalisir terjadinya <strong>Merge Conflict</strong> (bentrokan kode).</p>
+                </div>
+
+                
+
+                <div class="term-box">
+                    <strong>📖 Apa itu Merge Conflict?</strong>
+                    <p>Kondisi di mana dua orang mengubah baris kode yang sama di file yang sama. Git akan bingung mana yang benar dan meminta Anda untuk memilih manual.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="segment">
+            <div class="segment-header" onclick="toggleSegment(this)">
+                4. Lab: Jalur Sinkronisasi <span>+</span>
+            </div>
+            <div class="segment-content">
+                <div class="interactive-demo">
+                    <p>Klik tombol untuk mensimulasikan aliran data:</p>
+                    <div class="sync-visual">
+                        <div class="node" id="localNode">💻 Lokal</div>
+                        <div class="data-path" id="dataPath">---</div>
+                        <div class="node" id="remoteNode">☁️ Remote</div>
+                    </div>
+                    <div class="btn-group" style="margin-top: 20px; text-align: center;">
+                        <button onclick="animateSync('push')">Push ↑</button>
+                        <button onclick="animateSync('pull')">Pull ↓</button>
+                    </div>
+                    <div id="syncStatus" class="terminal-sim" style="margin-top: 15px;">
+                        Siap melakukan sinkronisasi...
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px">
+            <a href="../../../index.html" class="btn-back">← Kembali ke Dashboard</a>
+        </div>
+    </div>
+
+    <script src="git-push-pull.js"></script>
+</body>
+</html>

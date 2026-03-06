@@ -1,0 +1,147 @@
+:root {
+    --git-orange: #F05032;
+    --git-dark: #24292e;
+    --git-bg: #f6f8fa;
+    --git-border: #e1e4e8;
+    --text-main: #2f363d;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    margin: 0;
+    color: var(--text-main);
+}
+
+header {
+    background: var(--git-dark);
+    color: white;
+    padding: 3rem 1rem;
+    text-align: center;
+    border-bottom: 6px solid var(--git-orange);
+}
+
+.header-title-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.git-logo-header {
+    width: 65px;
+    height: 65px;
+    fill: var(--git-orange);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* INTERAKTIF LOGO */
+.git-logo-header:hover {
+    transform: rotate(-10deg) scale(1.1);
+}
+
+.container {
+    max-width: 850px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.segment {
+    border: 1px solid var(--git-border);
+    border-radius: 8px;
+    margin-bottom: 15px;
+    background: white;
+    overflow: hidden;
+}
+
+.segment-header {
+    background: var(--git-bg);
+    padding: 15px 25px;
+    cursor: pointer;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+}
+
+.segment-content {
+    padding: 25px;
+    display: none;
+    animation: fadeIn 0.4s ease;
+}
+
+.active .segment-content { display: block; }
+.active .segment-header { color: var(--git-orange); background: #fff; }
+
+.term-box {
+    background: #fff5f2;
+    border-left: 5px solid var(--git-orange);
+    padding: 15px;
+    margin: 15px 0;
+}
+
+.industrial-case {
+    border: 1px solid var(--git-border);
+    border-top: 4px solid #0366d6;
+    padding: 20px;
+    border-radius: 6px;
+}
+
+.case-title { font-weight: bold; color: #0366d6; margin-bottom: 5px; }
+
+/* Sync Simulation UI */
+.sync-visual {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px;
+    background: #f1f8ff;
+    border-radius: 10px;
+}
+
+.node {
+    padding: 15px 25px;
+    background: white;
+    border: 2px solid var(--git-dark);
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.data-path {
+    font-family: monospace;
+    font-size: 1.5rem;
+    color: #cbd5e0;
+}
+
+.terminal-sim {
+    background: #1b1f23;
+    color: #7ee787;
+    padding: 15px;
+    border-radius: 8px;
+    font-family: monospace;
+}
+
+.btn-group button {
+    background: var(--git-dark);
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 5px;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.btn-group button:hover { background: var(--git-orange); }
+
+pre {
+    background: #1b1f23;
+    color: #a5d6ff;
+    padding: 15px;
+    border-radius: 6px;
+}
+
+.code-kw { color: #ff7b72; }
+.code-comment { color: #8b949e; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
