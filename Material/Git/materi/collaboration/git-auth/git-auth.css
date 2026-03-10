@@ -1,0 +1,126 @@
+:root {
+    --git-orange: #F05032;
+    --git-dark: #24292e;
+    --git-bg: #f6f8fa;
+    --git-border: #e1e4e8;
+    --text-main: #2f363d;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    margin: 0;
+    line-height: 1.6;
+    background-color: #fff;
+}
+
+header {
+    background: var(--git-dark);
+    color: white;
+    padding: 3rem 1rem;
+    text-align: center;
+    border-bottom: 6px solid var(--git-orange);
+}
+
+.header-title-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.git-logo-header {
+    width: 65px;
+    height: 65px;
+    fill: var(--git-orange);
+    transition: 0.3s;
+}
+
+.git-logo-header:hover { transform: scale(1.1) rotate(-5deg); }
+
+.container {
+    max-width: 850px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.segment {
+    border: 1px solid var(--git-border);
+    border-radius: 10px;
+    margin-bottom: 20px;
+    background: white;
+    overflow: hidden;
+}
+
+.segment-header {
+    background: var(--git-bg);
+    padding: 18px 25px;
+    cursor: pointer;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+}
+
+.segment-content {
+    padding: 25px;
+    display: none;
+    border-top: 1px solid var(--git-border);
+    animation: fadeIn 0.4s ease-out;
+}
+
+.active .segment-content { display: block; }
+.active .segment-header { color: var(--git-orange); background: #fff; }
+
+.term-box {
+    background: #f0f7ff;
+    border-left: 5px solid #0366d6;
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 4px;
+}
+
+.industrial-case {
+    border: 1px solid var(--git-border);
+    border-top: 4px solid #28a745;
+    padding: 20px;
+    border-radius: 8px;
+    background: #fcfcfc;
+}
+
+.case-title { font-weight: bold; color: #28a745; margin-bottom: 10px; }
+
+.terminal-sim {
+    background: #1b1f23;
+    color: #e6edf3;
+    padding: 20px;
+    border-radius: 8px;
+    font-family: 'Courier New', monospace;
+    min-height: 60px;
+}
+
+button {
+    background: var(--git-dark);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover { background: var(--git-orange); }
+
+pre {
+    background: #1b1f23;
+    color: #a5d6ff;
+    padding: 15px;
+    border-radius: 8px;
+    overflow-x: auto;
+}
+
+.code-kw { color: #ff7b72; }
+.code-comment { color: #8b949e; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
