@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git Workflow: Mastering Branches</title>
+    <link rel="stylesheet" href="git-branch.css">
+</head>
+<body>
+    <header>
+        <div class="header-title-container">
+            <svg class="git-logo-header" viewBox="0 0 92 92" xmlns="http://www.w3.org/2000/svg">
+                <path d="M90.156 41.965L50.036 1.848a5.918 5.918 0 0 0-8.372 0l-8.328 8.332 10.566 10.566a7.03 7.03 0 0 1 7.23 1.684 7.043 7.043 0 0 1 1.673 7.277l10.183 10.184a7.026 7.026 0 0 1 7.278 1.672 7.04 7.04 0 0 1 0 9.957 7.045 7.045 0 0 1-9.961 0 7.038 7.038 0 0 1-1.532-7.66L49.76 33.444v25.82a7.04 7.04 0 0 1 1.86 1.293 7.04 7.04 0 0 1 0 9.957 7.045 7.045 0 0 1-9.961 0 7.04 7.04 0 0 1 0-9.957 7.064 7.064 0 0 1 2.304-1.532V33.062a7.064 7.064 0 0 1-2.304-1.532 7.044 7.044 0 0 1-1.524-7.689L29.973 13.273 1.844 41.4a5.918 5.918 0 0 0 0 8.372L41.964 90.09a5.918 5.918 0 0 0 8.372 0L90.156 50.337a5.918 5.918 0 0 0 0-8.372"/>
+            </svg>
+            <h1>Git Branching</h1>
+        </div>
+        <p>Bekerja di Jalur Paralel dengan Aman</p>
+    </header>
+
+    <div class="container">
+        <div class="segment">
+            <div class="segment-header" onclick="toggleSegment(this)">
+                1. Apa itu Branch? (Konsep Pointer) <span>+</span>
+            </div>
+            <div class="segment-content">
+                <p>Secara teknis, <strong>Branch</strong> hanyalah sebuah "penunjuk" (pointer) yang ringan menuju salah satu commit. Secara fungsional, ia adalah jalur pengembangan yang terisolasi.</p>
+                
+                <div class="term-box">
+                    <strong>📖 Istilah: HEAD</strong>
+                    <p><code>HEAD</code> adalah penunjuk khusus yang memberi tahu Git di branch mana Anda sedang berdiri saat ini. Jika Anda pindah branch, <code>HEAD</code> ikut pindah.</p>
+                </div>
+
+                
+
+                <div class="industrial-case">
+                    <div class="case-title">🏢 Kasus Real: Fitur Baru vs Bugfix</div>
+                    <p>Bayangkan Anda sedang membuat fitur "Chat", tapi tiba-tiba ada bug parah di halaman "Login". Anda cukup buat branch baru untuk perbaikan bug, selesaikan, lalu kembali ke branch "Chat" tanpa kehilangan progres apa pun.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="segment">
+            <div class="segment-header" onclick="toggleSegment(this)">
+                2. Perintah Dasar Branching <span>+</span>
+            </div>
+            <div class="segment-content">
+                <p>Berikut adalah cara membuat, melihat, dan menghapus jalur kerja Anda:</p>
+                
+                <div class="analysis-box">
+                    <pre><code><span class="code-comment"># Melihat daftar branch (lokal)</span>
+<span class="code-kw">git branch</span>
+
+<span class="code-comment"># Membuat branch baru</span>
+<span class="code-kw">git branch</span> fitur-keren
+
+<span class="code-comment"># Menghapus branch (pastikan sudah di-merge)</span>
+<span class="code-kw">git branch</span> -d fitur-keren
+
+<span class="code-comment"># Memaksa hapus branch yang belum di-merge</span>
+<span class="code-kw">git branch</span> -D fitur-eksperimen</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="segment">
+            <div class="segment-header" onclick="toggleSegment(this)">
+                3. Berpindah Antar Dimensi <span>+</span>
+            </div>
+            <div class="segment-content">
+                <p>Setelah membuat branch, Anda harus "masuk" ke dalamnya untuk mulai bekerja.</p>
+
+                <div class="term-box" style="border-left-color: #0366d6;">
+                    <strong>🔍 Checkout vs Switch</strong>
+                    <p>Dulu kita menggunakan <code>git checkout</code>. Namun, sejak Git versi 2.23, diperkenalkan <code>git switch</code> yang lebih spesifik hanya untuk pindah branch agar tidak membingungkan.</p>
+                </div>
+
+                <div class="analysis-box">
+                    <pre><code><span class="code-comment"># Cara modern untuk pindah branch</span>
+<span class="code-kw">git switch</span> nama-branch
+
+<span class="code-comment"># Membuat branch BARU sekaligus pindah ke sana</span>
+<span class="code-kw">git switch</span> -c fitur-login</code></pre>
+                </div>
+
+                
+            </div>
+        </div>
+
+        <div class="segment">
+            <div class="segment-header" onclick="toggleSegment(this)">
+                4. Standar Industri: Naming & Strategy <span>+</span>
+            </div>
+            <div class="segment-content">
+                <p>Di perusahaan profesional, kita tidak menamai branch sembarangan. Biasanya mengikuti pola <strong>Git Flow</strong>:</p>
+                
+                <div class="term-box">
+                    <ul>
+                        <li><code>main / master</code>: Kode suci yang sudah rilis ke publik (Production).</li>
+                        <li><code>develop</code>: Tempat berkumpulnya semua fitur yang sudah selesai di-test.</li>
+                        <li><code>feature/nama-fitur</code>: Tempat developer membuat fitur baru.</li>
+                        <li><code>hotfix/nama-bug</code>: Perbaikan darurat langsung untuk kode produksi.</li>
+                    </ul>
+                </div>
+
+                
+            </div>
+        </div>
+
+        <div class="segment">
+            <div class="segment-header" onclick="toggleSegment(this)">
+                5. Troubleshooting: Salah Nama & Branch Hilang <span>+</span>
+            </div>
+            <div class="segment-content">
+                <p>Manusia sering melakukan kesalahan. Tenang, Git punya solusinya:</p>
+
+                <div class="industrial-case" style="border-top-color: #d73a49;">
+                    <div class="case-title">🛠️ Kasus: Salah Ketik Nama Branch</div>
+                    <p>Jika Anda typo saat menamai branch yang sedang aktif:</p>
+                    <pre><code><span class="code-kw">git branch</span> -m nama-yang-benar</code></pre>
+                </div>
+
+                <div class="industrial-case" style="border-top-color: #f66a0a; margin-top: 15px;">
+                    <div class="case-title">🛠️ Kasus: Lupa Nama Branch Terakhir</div>
+                    <p>Gunakan perintah ini untuk melihat branch mana yang paling aktif dikerjakan:</p>
+                    <pre><code><span class="code-kw">git branch</span> --sort=-committerdate</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="segment">
+            <div class="segment-header" onclick="toggleSegment(this)">
+                6. Lab: Simulasi Multiverse <span>+</span>
+            </div>
+            <div class="segment-content">
+                <div class="interactive-demo">
+                    <p>Status Saat Ini: <span id="currentBranch" style="font-weight: bold; color: #F05032;">main</span></p>
+                    <div class="branch-map" id="branchMap">
+                        <div class="dot active" title="main"></div>
+                    </div>
+                    <div class="btn-group" style="margin-top: 20px;">
+                        <button onclick="addBranch()">Buat Branch Baru</button>
+                        <button onclick="resetLab()">Reset</button>
+                    </div>
+                    <div id="branchTerminal" class="terminal-sim" style="margin-top: 15px;">
+                        $ git branch<br>* main
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px">
+            <a href="../../../index.html" class="btn-back">← Kembali ke Dashboard</a>
+        </div>
+    </div>
+
+    <script src="git-branch.js"></script>
+</body>
+</html>
