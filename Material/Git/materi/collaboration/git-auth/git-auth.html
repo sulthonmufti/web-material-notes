@@ -54,15 +54,17 @@
                     </ul>
                     <p>Keduanya bekerja seperti gembok dan kunci fisik.</p>
                 </div>
-
                 
-
-                <div class="analysis-box">
-                    <pre><code><span class="code-comment"># Membuat SSH Key baru</span>
-ssh-keygen -t ed25519 -C "email@kamu.com"
-
-<span class="code-comment"># Melihat isi Public Key untuk dicopy ke GitHub</span>
-cat ~/.ssh/id_ed25519.pub</code></pre>
+                <div class="analysis-box interactive-terminal">
+                    <div id="sshTerminal" class="terminal-sim" style="padding: 16px; background: #181C22; color: #d1d5da; border-radius: 8px; font-size: 16px;">
+                        <span style="color: #8b949e;">$</span> <input id="sshInput" type="text" style="background: transparent; border: none; color: #fff; width: 90%;" placeholder="Ketik perintah di sini, misal: ssh-keygen -t ed25519 ..."/>
+                        <div id="sshOutput" style="margin-top: 8px;"></div>
+                    </div>
+                    <div style="font-size: 13px; margin-top:8px; color:#8b949e;">
+                        Contoh: <br>
+                        <code># Membuat SSH Key baru<br>ssh-keygen -t ed25519 -C "email@kamu.com"</code><br>
+                        <code># Melihat isi Public Key<br>cat ~/.ssh/id_ed25519.pub</code>
+                    </div>
                 </div>
             </div>
         </div>
@@ -74,9 +76,15 @@ cat ~/.ssh/id_ed25519.pub</code></pre>
             <div class="segment-content">
                 <p>Bosan dimintai login terus menerus? Git memiliki fitur untuk mengingat kredensial Anda dengan aman di sistem operasi.</p>
 
-                <div class="analysis-box">
-                    <pre><code><span class="code-comment"># Mengaktifkan memori login di Windows/Mac</span>
-<span class="code-kw">git config</span> --global credential.helper manager</code></pre>
+                <div class="analysis-box interactive-terminal">
+                    <div id="gcmTerminal" class="terminal-sim" style="padding: 16px; background: #181C22; color: #d1d5da; border-radius: 8px; font-size: 16px;">
+                        <span style="color: #8b949e;">$</span> <input id="gcmInput" type="text" style="background: transparent; border: none; color: #fff; width: 90%;" placeholder='Ketik: git config --global credential.helper manager'/>
+                        <div id="gcmOutput" style="margin-top: 8px;"></div>
+                    </div>
+                    <div style="font-size: 13px; margin-top:8px; color:#8b949e;">
+                        Contoh: <br>
+                        <code># Mengaktifkan memori login di Windows/Mac<br>git config --global credential.helper manager</code>
+                    </div>
                 </div>
 
                 <div class="industrial-case" style="border-top-color: #28a745;">
