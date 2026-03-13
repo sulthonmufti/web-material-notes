@@ -2,6 +2,7 @@ let contact = [];
 let counter = 0;
 
 displayData();
+showStatistic();
 
 function addContact(){
     const contactName = document.getElementById('form-name').value;
@@ -32,20 +33,24 @@ function addContact(){
     document.getElementById('form-telephone').value = '';
     document.getElementById('notification').innerHTML = '';
 
-    displayData();
-
     console.table(contact);
+
+    displayData();
+    showStatistic();
 }
 
 function validateInput(contactName, contactEmail, contactNumber){
     const emailValidate = contact.find(contact => contact.email === contactEmail);
 
-    if (contactName === "" || contactName.length < 3) {
+    if(contact.length >= 10){
+        document.getElementById('notification').innerHTML = `<p>Data kontak sudah mencapai maksimum 10 data!</p>`;
+        return false;
+    }else if(contactName === "" || contactName.length < 3) {
         document.getElementById('notification').innerHTML = `<p>Input nama tidak valid!</p>`;
         return false; //tidak akan masuk obj
 
-    } else if(!contactEmail.includes('@')){
-        document.getElementById('notification').innerHTML = `<p>Input email harus mengandung (@)!</p>`;
+    } else if(!contactEmail.includes('@') || !contactEmail.includes('.')){
+        document.getElementById('notification').innerHTML = `<p>Input email harus mengandung (@) dan . (dot)!</p>`;
         return false;
     }else if (contactNumber.length < 1 || contactNumber.length > 13) {
         document.getElementById('notification').innerHTML = `<p>Panjang nomor telepon 10-13 karakter!</p>`;
@@ -144,4 +149,29 @@ function searchingData(){
     tableResult += `</table>`;
     console.info(tableResult);
     resultSearch.innerHTML = tableResult;
+
+}
+
+function showStatistic(){
+    const statistic = document.getElementById('output-statistic');
+
+    if(contact.length == 0){
+        statistic.innerHTML = `<p>DATA KOSONG!</p>`;
+        return;
+    }
+
+    //sorting data by date
+    const sortedByDate = [...contact].sort(
+        (a, b) => new Date(a.createAt) - new Date(b.createAt)
+    );
+
+    const oldest = sortedByDate[0]; //kontak terlama
+    const newest = sortedByDate[sortedByDate.length - 1]; //kontak terbaru
+
+    statistic.innerHTML = `
+        <p>Total kontak: ${contact.length}</p>
+        <p>Kontak terbaru: ${newest.name} (${newest.createAt.slice(0,10)})</p>
+        <p>Kontak terlama: ${oldest.name} (${oldest.createAt.slice(0,10)})</p>
+        `;
+
 }
