@@ -52,7 +52,7 @@ function validateInput(contactName, contactEmail, contactNumber){
     } else if(!contactEmail.includes('@') || !contactEmail.includes('.')){
         document.getElementById('notification').innerHTML = `<p>Input email harus mengandung (@) dan . (dot)!</p>`;
         return false;
-    }else if (contactNumber.length < 1 || contactNumber.length > 13) {
+    }else if (contactNumber.length < 10 || contactNumber.length > 13) {
         document.getElementById('notification').innerHTML = `<p>Panjang nomor telepon 10-13 karakter!</p>`;
         return false;
     }else if (emailValidate) {
@@ -79,6 +79,7 @@ function displayData(){
             <th>Telephone</th>
             <th>Number</th>
             <th>Create Date</th>
+            <th>Action</th>
         </tr>
     `;
 
@@ -90,6 +91,7 @@ function displayData(){
             <td>${i.email}</td>
             <td>${i.telepon}</td>
             <td>${i.createAt}</td>
+            <td><button onclick="deleteData(${i.id})"=>Delete</button</td>
         </tr>
         `;
         console.info(display);
@@ -112,13 +114,20 @@ function searchingData(){
                 <th>Email</th>
                 <th>Telephone</th>
                 <th>Create Date</th>
+                <th>Action</th>
             </tr>`;
     
     if (search == "") {
         tableResult += `<tr><td colspan="5">Silahkan masukkan data terlebih dahulu!</td></tr>`;
     }else{
-        //cek dulu ada data yang sama engga, +lower case
-        const found = contact.filter(c => c.name.toLowerCase() === search.toLowerCase());
+        //trim() buang spasi depan/blakang, untuk case sensitice includes()
+        const searchLower = search.toLowerCase().trim();
+        console.log(search);
+
+        //cek dulu ada data yang sama engga, +lower case, +case sensitive
+        const found = contact.filter(
+            c => c.name.toLowerCase().includes(searchLower)
+        );
 
         if (found.length == 0) {
             tableResult += `
@@ -140,6 +149,7 @@ function searchingData(){
                         <td>${index.email}</td>
                         <td>${index.telepon}</td>
                         <td>${index.createAt}</td>
+                        <td><button onclick="deleteData(${index.id})"=>Delete</button</td>
                     </tr>
                     `;
             }
@@ -173,5 +183,23 @@ function showStatistic(){
         <p>Kontak terbaru: ${newest.name} (${newest.createAt.slice(0,10)})</p>
         <p>Kontak terlama: ${oldest.name} (${oldest.createAt.slice(0,10)})</p>
         `;
+}
 
+function deleteData(id){
+
+    if (confirm("Are you sure want to delete this data?") == true) {
+        //cari data yang punya id sama kaya parameter
+        const index = contact.findIndex(
+            c => c.id === id
+        );
+
+        if (index !== -1) {
+            contact.splice(index, 1); //hapus 1 element di posisi index
+            displayData();
+            showStatistic();
+        }
+    }else{
+        alert("Data batal dihapus:D");
+        return;
+    }
 }
