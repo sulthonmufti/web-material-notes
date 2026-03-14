@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi JS: DOM Intro</title>
+    <link rel="stylesheet" href="dom-intro.css">
+</head>
+<body>
+    <header>
+        <div class="header-title-container">
+            <svg class="js-logo-header" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 32v448h448V32H0zm243.8 349.4c0 43.6-25.6 63.5-62.9 63.5-33.7 0-53.2-17.4-63.2-38.5l34.3-20.7c6.6 11.7 12.6 21.6 27.1 21.6 13.8 0 22.6-5.4 22.6-26.5V237.7h42.1v143.7zm99.6 63.5c-39.1 0-64.4-18.6-76.7-43l34.3-19.8c9 14.7 20.8 25.6 41.5 25.6 17.4 0 28.6-8.7 28.6-20.8 0-14.4-11.4-19.5-30.7-28l-10.5-4.5c-30.4-12.9-50.5-29.2-50.5-63.5 0-31.6 24.1-55.6 61.6-55.6 26.8 0 46 9.3 59.8 33.7L368 290c-7.2-12.9-15-18-27.1-18-12.3 0-20.1 7.8-20.1 18 0 12.6 7.8 17.7 25.9 25.6l10.5 4.5c35.8 15.3 55.9 31 55.9 66.2 0 37.8-29.8 58.6-69.7 58.6z"/>
+            </svg>
+            <h1>DOM Intro</h1>
+        </div>
+        <p>Jembatan Antara Logika JavaScript dan Tampilan HTML</p>
+    </header>
+
+    <div class="container">
+        <div class="segment">
+            <div class="segment-header" onclick="toggleSegment(this)">
+                1. Apa itu DOM? (The Concept) <span>+</span>
+            </div>
+            <div class="segment-content">
+                <p>
+                    <strong>DOM (Document Object Model)</strong> adalah representasi struktur halaman web dalam bentuk "Pohon" (Tree). Saat browser memuat HTML, ia mengubah setiap tag menjadi <em>Object</em> yang bisa "disentuh" oleh JavaScript.
+                </p>
+
+                <div class="term-box">
+                    <span style="font-weight: bold">📖 Istilah Baru: API & Tree Structure</span>
+                    <ul>
+                        <li><strong>API:</strong> Cara JS berkomunikasi dengan elemen browser.</li>
+                        <li><strong>Tree Structure:</strong> Susunan bertingkat dari <code>html</code> -> <code>body</code> -> <code>div</code>.</li>
+                    </ul>
+                </div>
+
+                
+
+                <div class="industrial-case">
+                    <h4>🏢 Case Industri: Live Update Data</h4>
+                    <p>DOM memungkinkan aplikasi seperti <em>Live Score</em> atau <em>Stock Market</em> memperbarui angka di layar secara instan tanpa perlu memuat ulang (refresh) seluruh halaman.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="segment">
+            <div class="segment-header" onclick="toggleSegment(this)">
+                2. Menyeleksi Elemen (DOM Selection) <span>+</span>
+            </div>
+            <div class="segment-content">
+                <p>Untuk mengubah isi web, Anda harus "menemukan" elemennya dulu. Ini seperti mencari alamat sebelum mengirim paket.</p>
+
+                <div class="term-box">
+                    <span style="font-weight: bold">📖 Istilah Baru: Query & Selector</span>
+                    <ul>
+                        <li><strong>Query:</strong> Perintah pencarian elemen.</li>
+                        <li><strong>Selector:</strong> Nama ID, Class, atau Tag yang dicari.</li>
+                    </ul>
+                </div>
+
+                <div class="interactive-demo">
+                    <h3 id="teks-demo">Halo, Saya Elemen Target!</h3>
+                    <button onclick="ubahTeks()">Pilih & Ubah Teks</button>
+                    <p id="hasil-seleksi" style="font-style: italic; color: #2980b9; margin-top: 10px;"></p>
+                </div>
+
+                <div class="analysis-box">
+                    <h4>🛠️ Dapur Rekaman: Bedah Kode</h4>
+                    <pre><code><span class="code-kw">const</span> judul = document.getElementById(<span class="code-st">"teks-demo"</span>);
+<span class="code-comment">// document adalah gerbang utama menuju DOM</span></code></pre>
+                </div>
+
+                <div class="industrial-case">
+                    <h4>🏢 Case Industri: Validasi Form</h4>
+                    <p>Saat user klik tombol "Submit", developer menggunakan <code>querySelector</code> untuk mengambil nilai dari input email dan mengeceknya secara otomatis.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="segment">
+            <div class="segment-header" onclick="toggleSegment(this)">
+                3. Manipulasi Isi & Gaya <span>+</span>
+            </div>
+            <div class="segment-content">
+                <p>Setelah elemen ditemukan, kita bisa mengubah isinya (<code>innerHTML</code>) atau gayanya (<code>style</code>).</p>
+
+                <div class="interactive-demo">
+                    <div id="kotak-warna" class="preview-box">Preview Box</div>
+                    <button onclick="gantiWarna()">Ubah Ke Mode Dark</button>
+                    <button onclick="resetWarna()" style="background: #7f8c8d;">Reset</button>
+                </div>
+
+                <div class="analysis-box">
+                    <h4>🛠️ Dapur Rekaman: Bedah Logika</h4>
+                    <pre><code>elemen.style.backgroundColor = <span class="code-st">"#222"</span>;
+elemen.innerText = <span class="code-st">"Teks Berubah!"</span>;</code></pre>
+                </div>
+
+                
+
+                <div class="industrial-case">
+                    <h4>🏢 Case Industri: Dark Mode Toggle</h4>
+                    <p>Fitur Dark Mode bekerja dengan memanipulasi <code>classList</code> atau properti <code>style</code> pada elemen <code>body</code> saat tombol diklik.</p>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px">
+            <a href="../../../index.html" class="btn-back">← Kembali ke Dashboard Utama</a>
+        </div>
+    </div>
+
+    <script src="dom-intro.js"></script>
+</body>
+</html>
