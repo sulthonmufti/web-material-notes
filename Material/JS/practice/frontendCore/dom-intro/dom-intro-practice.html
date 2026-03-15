@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice: DOM Intro - Study Case</title>
+    <link rel="stylesheet" href="dom-intro-practice.css">
+</head>
+<body>
+    <header>
+        <h1>Practice: DOM Intro</h1>
+        <p>Implementasikan materi <strong>Seleksi Elemen</strong>, <strong>Manipulasi Teks</strong>, dan <strong>Manipulasi Gaya</strong> di file <code>dom-intro-practice.js</code></p>
+    </header>
+
+    <div class="container">
+        <!-- ========== INSTRUKSI ========== -->
+        <section class="card instruksi">
+            <h2>📋 Instruksi Study Case</h2>
+            <p>Buka file <strong>dom-intro-practice.js</strong>. Isi setiap function sesuai keterangan di bawah. Gunakan:</p>
+            <ul>
+                <li><code>document.getElementById("id-elemen")</code> untuk seleksi by ID</li>
+                <li><code>elemen.innerText</code> atau <code>elemen.innerHTML</code> untuk mengubah teks</li>
+                <li><code>elemen.style.sifatCSS</code> untuk mengubah gaya (misal: backgroundColor, color)</li>
+                <li><code>elemen.classList.toggle("nama-class")</code> untuk menambah/menghapus class</li>
+                <li><code>inputElement.value</code> untuk membaca isi input</li>
+            </ul>
+        </section>
+
+        <!-- ========== TUGAS 1: Counter ========== -->
+        <section class="card">
+            <h2>1. Penghitung Klik</h2>
+            <p class="tugas-desc">Isi function <code>tambahCounter()</code> dan <code>resetCounter()</code>: seleksi elemen <code>#counter-value</code>, ubah <code>innerText</code>-nya sesuai nilai counter (naik saat +, jadi 0 saat reset).</p>
+            <div class="demo-box">
+                <p>Jumlah klik: <span id="counter-value">0</span></p>
+                <button onclick="tambahCounter()">+ Tambah</button>
+                <button onclick="resetCounter()">Reset</button>
+            </div>
+        </section>
+
+        <!-- ========== TUGAS 2: Tampilkan Nama ========== -->
+        <section class="card">
+            <h2>2. Kartu Profil</h2>
+            <p class="tugas-desc">Isi function <code>tampilkanNama()</code>: ambil nilai dari <code>#input-nama</code> (properti <code>.value</code>), lalu tampilkan ke <code>#output-nama</code> dengan <code>innerText</code> (misal: "Halo, [nama]!").</p>
+            <div class="demo-box">
+                <label>Nama: <input type="text" id="input-nama" placeholder="Ketik nama..."></label>
+                <button onclick="tampilkanNama()">Tampilkan</button>
+                <div id="output-nama" class="output-box">Hasil muncul di sini.</div>
+            </div>
+        </section>
+
+        <!-- ========== TUGAS 3: Ubah Warna Kotak ========== -->
+        <section class="card">
+            <h2>3. Ubah Warna Kotak</h2>
+            <p class="tugas-desc">Isi function <code>warnaMerah()</code>, <code>warnaHijau()</code>, <code>warnaDefault()</code>: seleksi <code>#kotak-demo</code>, ubah <code>style.backgroundColor</code>, <code>style.color</code>, dan <code>innerText</code> sesuai tombol yang diklik.</p>
+            <div class="demo-box">
+                <div id="kotak-demo" class="preview-kotak">Ubah warnaku</div>
+                <button onclick="warnaMerah()">Merah</button>
+                <button onclick="warnaHijau()">Hijau</button>
+                <button onclick="warnaDefault()">Default</button>
+            </div>
+        </section>
+
+        <!-- ========== TUGAS 4: Toggle Dark Mode ========== -->
+        <section class="card">
+            <h2>4. Toggle Dark Mode</h2>
+            <p class="tugas-desc">Isi function <code>toggleDarkMode()</code>: pada <code>document.body</code> panggil <code>classList.toggle("dark-mode")</code>. Ubah teks tombol <code>#btn-theme</code> dan <code>#status-theme</code> agar menampilkan mode saat ini (Terang/Gelap).</p>
+            <div class="demo-box">
+                <button id="btn-theme" onclick="toggleDarkMode()">Aktifkan Dark Mode</button>
+                <p id="status-theme">Mode: Terang</p>
+            </div>
+        </section>
+    </div>
+
+    <script src="dom-intro-practice.js"></script>
+</body>
+</html>
