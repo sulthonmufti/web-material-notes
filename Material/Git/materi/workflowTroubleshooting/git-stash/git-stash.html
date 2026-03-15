@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git Workflow: Mastering Git Stash</title>
+    <link rel="stylesheet" href="git-stash.css">
+</head>
+<body>
+    <header>
+        <div class="header-title-container">
+            <svg class="git-logo-header" viewBox="0 0 92 92" xmlns="http://www.w3.org/2000/svg">
+                <path d="M90.156 41.965L50.036 1.848a5.918 5.918 0 0 0-8.372 0l-8.328 8.332 10.566 10.566a7.03 7.03 0 0 1 7.23 1.684 7.043 7.043 0 0 1 1.673 7.277l10.183 10.184a7.026 7.026 0 0 1 7.278 1.672 7.04 7.04 0 0 1 0 9.957 7.045 7.045 0 0 1-9.961 0 7.038 7.038 0 0 1-1.532-7.66L49.76 33.444v25.82a7.04 7.04 0 0 1 1.86 1.293 7.04 7.04 0 0 1 0 9.957 7.045 7.045 0 0 1-9.961 0 7.04 7.04 0 0 1 0-9.957 7.064 7.064 0 0 1 2.304-1.532V33.062a7.064 7.064 0 0 1-2.304-1.532 7.044 7.044 0 0 1-1.524-7.689L29.973 13.273 1.844 41.4a5.918 5.918 0 0 0 0 8.372L41.964 90.09a5.918 5.918 0 0 0 8.372 0L90.156 50.337a5.918 5.918 0 0 0 0-8.372"/>
+            </svg>
+            <h1>git stash</h1>
+        </div>
+        <p>Menyimpan Pekerjaan Sementara Tanpa Commit</p>
+    </header>
+
+    <div class="container">
+        <div class="segment">
+            <div class="segment-header" onclick="toggleSegment(this)">
+                1. Apa itu git-stash? <span>+</span>
+            </div>
+            <div class="segment-content">
+                <p><code>git stash</code> mengambil perubahan yang belum di-commit (baik yang sudah di-stage maupun belum) dan menyimpannya di tumpukan internal (stack) untuk sementara, sehingga Working Directory Anda kembali bersih.</p>
+                
+                <div class="term-box">
+                    <strong>📖 Istilah: Dirty Working Tree</strong>
+                    <p>Kondisi di mana ada file yang telah dimodifikasi tetapi belum disimpan dalam sebuah commit. Git seringkali menolak pindah branch dalam kondisi ini untuk mencegah kehilangan data.</p>
+                </div>
+
+                
+
+                <div class="industrial-case">
+                    <div class="case-title">🏢 Kasus Real: Interupsi Mendadak</div>
+                    <p>Anda sedang membangun fitur API yang kompleks. Tiba-tiba klien menemukan bug tampilan. Anda harus pindah ke branch <code>hotfix</code>, tapi pekerjaan API Anda belum siap di-commit. Gunakan <code>git stash</code>, bereskan bug, lalu kembalikan pekerjaan API tadi.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="segment">
+            <div class="segment-header" onclick="toggleSegment(this)">
+                2. Menyimpan & Mengambil (Basic) <span>+</span>
+            </div>
+            <div class="segment-content">
+                <p>Dua perintah utama yang akan paling sering Anda gunakan:</p>
+                
+                <div class="analysis-box">
+                    <pre><code><span class="code-comment"># Menyimpan perubahan ke dalam stash</span>
+<span class="code-kw">git stash</span>
+
+<span class="code-comment"># Mengambil kembali perubahan terakhir dan menghapusnya dari stash</span>
+<span class="code-kw">git stash pop</span></code></pre>
+                </div>
+
+                <div class="term-box" style="border-left-color: #0366d6;">
+                    <strong>🔍 Pop vs Apply</strong>
+                    <p><code>pop</code> mengambil data dan menghapusnya dari daftar laci. Sedangkan <code>apply</code> mengambil data tapi tetap meninggalkan salinannya di dalam laci (lebih aman).</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="segment">
+            <div class="segment-header" onclick="toggleSegment(this)">
+                3. Mengelola Banyak Stash <span>+</span>
+            </div>
+            <div class="segment-content">
+                <p>Anda bisa menyimpan banyak pekerjaan sekaligus. Git akan mengaturnya seperti tumpukan buku.</p>
+
+                <div class="analysis-box">
+                    <pre><code><span class="code-comment"># Menyimpan dengan pesan agar tidak bingung</span>
+<span class="code-kw">git stash push</span> -m "progres fitur login"
+
+<span class="code-comment"># Melihat daftar semua stash yang tersimpan</span>
+<span class="code-kw">git stash list</span>
+
+<span class="code-comment"># Mengambil stash spesifik berdasarkan indeks</span>
+<span class="code-kw">git stash apply</span> stash@{0}</code></pre>
+                </div>
+
+                
+            </div>
+        </div>
+
+        <div class="segment">
+            <div class="segment-header" onclick="toggleSegment(this)">
+                4. Membersihkan Laci <span>+</span>
+            </div>
+            <div class="segment-content">
+                <p>Jika stash sudah tidak diperlukan, jangan biarkan menumpuk karena akan membingungkan.</p>
+
+                <div class="analysis-box">
+                    <pre><code><span class="code-comment"># Menghapus satu stash tertentu</span>
+<span class="code-kw">git stash drop</span> stash@{1}
+
+<span class="code-comment"># Menghapus SELURUH stash yang pernah dibuat</span>
+<span class="code-kw">git stash clear</span></code></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="segment">
+            <div class="segment-header" onclick="toggleSegment(this)">
+                5. Lab: Simulasi Laci Git <span>+</span>
+            </div>
+            <div class="segment-content">
+                <div class="interactive-demo">
+                    <p>Simulasikan alur kerja Stash di bawah ini:</p>
+                    <div id="stashTerminal" class="terminal-sim">
+                        $ git status<br>
+                        Changes not staged for commit: 'index.html' (modified)
+                    </div>
+                    <div class="btn-group" style="margin-top: 15px;">
+                        <button onclick="runStashAction('stash')">Git Stash (Simpan)</button>
+                        <button onclick="runStashAction('pop')">Git Stash Pop (Kembalikan)</button>
+                    </div>
+                    <p id="stashStatus" style="margin-top: 10px; font-style: italic; color: #586069;"></p>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px">
+            <a href="../../../index.html" class="btn-back">← Kembali ke Dashboard</a>
+        </div>
+    </div>
+
+    <script src="git-stash.js"></script>
+</body>
+</html>
