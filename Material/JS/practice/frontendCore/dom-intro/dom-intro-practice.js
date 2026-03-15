@@ -29,19 +29,30 @@ function resetCounter() {
 function tampilkanNama() {
     // TODO: getElementById("input-nama"), baca .value
     // TODO: getElementById("output-nama"), set innerText misal "Halo, [nama]!"
+
+    const name = document.getElementById('input-nama').value;
+    document.getElementById('output-nama').innerText = `Halo ${name}!`;
 }
 
 // ========== 3. UBAH WARNA KOTAK ==========
 function warnaMerah() {
     // TODO: seleksi #kotak-demo, set style.backgroundColor dan style.color, ubah innerText
+    const demoBackground = document.getElementById('kotak-demo').style.backgroundColor = "red";
+    const demoColor = document.getElementById('kotak-demo').style.color = "white";
 }
 
 function warnaHijau() {
     // TODO: seleksi #kotak-demo, set style backgroundColor hijau, color white, innerText
+    //const demo =  document.getElementById('kotak-demo').value;
+
+    const demoBackground = document.getElementById('kotak-demo').style.backgroundColor = "green";
+    const demoColor = document.getElementById('kotak-demo').style.color = "white";
 }
 
 function warnaDefault() {
     // TODO: kembalikan #kotak-demo ke warna awal (bg white, color #333, innerText "Ubah warnaku")
+    const demoBackground = document.getElementById('kotak-demo').style.backgroundColor = "white";
+    const demoColor = document.getElementById('kotak-demo').style.color = "#333";
 }
 
 // ========== 4. TOGGLE DARK MODE ==========
@@ -50,4 +61,24 @@ function toggleDarkMode() {
     // TODO: ubah teks #btn-theme (misal "Aktifkan Dark Mode" / "Aktifkan Light Mode")
     // TODO: ubah teks #status-theme (misal "Mode: Terang" / "Mode: Gelap")
     // Hint: cek document.body.classList.contains("dark-mode") untuk tahu state saat ini
+
+    const dark = document.body.classList.toggle('dark-mode');
+
+    //pakai ternary operator
+    document.getElementById('btn-theme').innerText = dark ? 'Aktifkan Light Mode' : 'Aktifkan Dark Mode';
+    document.getElementById('status-theme').innerText = dark ? 'Mode: Terang' : 'Mode: Gelap';
+
+    //bisa juga gini:
+    //const dark = document.body.classList.toggle('dark-mode');
+    // const btnTheme = document.getElementById('btn-theme');
+    // const statusTheme = document.getElementById('status-theme');
+    
+    // if (dark) {
+    //     btnTheme.textContent = 'Aktifkan Light Mode';
+    //     statusTheme.textContent = 'Mode: Gelap';
+    // } else {
+    //     btnTheme.textContent = 'Aktifkan Dark Mode';
+    //     statusTheme.textContent = 'Mode: Terang';
+    //}
+
 }
