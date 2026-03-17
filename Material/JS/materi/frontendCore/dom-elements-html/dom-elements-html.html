@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi JS: DOM Elements</title>
+    <link rel="stylesheet" href="dom-elements-html.css">
+</head>
+<body>
+    <header>
+        <div class="header-title-container">
+            <svg class="js-logo-header" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 32v448h448V32H0zm243.8 349.4c0 43.6-25.6 63.5-62.9 63.5-33.7 0-53.2-17.4-63.2-38.5l34.3-20.7c6.6 11.7 12.6 21.6 27.1 21.6 13.8 0 22.6-5.4 22.6-26.5V237.7h42.1v143.7zm99.6 63.5c-39.1 0-64.4-18.6-76.7-43l34.3-19.8c9 14.7 20.8 25.6 41.5 25.6 17.4 0 28.6-8.7 28.6-20.8 0-14.4-11.4-19.5-30.7-28l-10.5-4.5c-30.4-12.9-50.5-29.2-50.5-63.5 0-31.6 24.1-55.6 61.6-55.6 26.8 0 46 9.3 59.8 33.7L368 290c-7.2-12.9-15-18-27.1-18-12.3 0-20.1 7.8-20.1 18 0 12.6 7.8 17.7 25.9 25.6l10.5 4.5c35.8 15.3 55.9 31 55.9 66.2 0 37.8-29.8 58.6-69.7 58.6z"/>
+            </svg>
+            <h1>DOM Elements</h1>
+        </div>
+        <p>Menciptakan, Menghapus, dan Mengelola Atribut HTML melalui JavaScript</p>
+    </header>
+
+    <div class="container">
+        <div class="segment">
+            <div class="segment-header" onclick="toggleSegment(this)">
+                1. Membuat Elemen Baru (createElement) <span>+</span>
+            </div>
+            <div class="segment-content">
+                <p>JavaScript memungkinkan kita menciptakan tag HTML baru secara dinamis tanpa harus menulisnya di file .html.</p>
+                
+                <div class="term-box">
+                    <span style="font-weight: bold">📖 Istilah Baru: Create & Append</span>
+                    <ul>
+                        <li><strong>createElement:</strong> Perintah untuk "melahirkan" elemen baru di memori.</li>
+                        <li><strong>appendChild:</strong> Menempelkan elemen yang sudah dibuat ke dalam halaman web (sebagai anak terakhir).</li>
+                    </ul>
+                </div>
+
+                <div class="interactive-demo">
+                    <div id="list-container" class="preview-list">
+                        <p style="color: #999;">List kosong...</p>
+                    </div>
+                    <button onclick="tambahItem()">Tambah Item Baru</button>
+                </div>
+
+                
+
+                <div class="analysis-box">
+                    <pre><code><span class="code-kw">const</span> baru = document.createElement(<span class="code-st">"li"</span>);
+baru.innerText = <span class="code-st">"Item Baru"</span>;
+parent.appendChild(baru);</code></pre>
+                </div>
+
+                <div class="industrial-case">
+                    <h4>🏢 Case Industri: Infinite Scroll / Feed</h4>
+                    <p>Saat Anda men-scroll media sosial dan muncul postingan baru, JavaScript menggunakan <code>createElement</code> untuk membuat "kartu" postingan tersebut secara otomatis.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="segment">
+            <div class="segment-header" onclick="toggleSegment(this)">
+                2. Menghapus Elemen (remove) <span>+</span>
+            </div>
+            <div class="segment-content">
+                <p>Sama seperti membuat, kita juga bisa membuang elemen yang sudah tidak diperlukan dari halaman web.</p>
+                
+                <div class="term-box">
+                    <span style="font-weight: bold">📖 Istilah Baru: Garbage Collection</span>
+                    Menghapus elemen dari DOM membantu browser menghemat memori karena elemen tersebut tidak lagi diproses.
+                </div>
+
+                <div class="interactive-demo">
+                    <div id="alert-box" class="alert-preview">
+                        ⚠️ Ada pesan penting untuk Anda! 
+                        <button onclick="hapusAlert()" style="background: #e74c3c; margin-left: 10px;">Hapus</button>
+                    </div>
+                </div>
+
+                <div class="analysis-box">
+                    <pre><code><span class="code-kw">const</span> target = document.querySelector(<span class="code-st">".alert"</span>);
+target.remove(); <span class="code-comment">// Elemen hilang seketika</span></code></pre>
+                </div>
+
+                <div class="industrial-case">
+                    <h4>🏢 Case Industri: Dismissible Alerts</h4>
+                    <p>Digunakan pada fitur notifikasi atau iklan "pop-up" di mana user bisa menekan tombol (X) untuk menghilangkan elemen tersebut secara permanen dari layar.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="segment">
+            <div class="segment-header" onclick="toggleSegment(this)">
+                3. Atribut & Properti (setAttribute) <span>+</span>
+            </div>
+            <div class="segment-content">
+                <p>Atribut adalah informasi tambahan pada tag (seperti <code>src</code> pada img, <code>href</code> pada a, atau <code>type</code> pada input).</p>
+
+                <div class="term-box">
+                    <span style="font-weight: bold">📖 Istilah Baru: Getter & Setter</span>
+                    <ul>
+                        <li><strong>getAttribute:</strong> Mengambil nilai atribut (Membaca).</li>
+                        <li><strong>setAttribute:</strong> Mengubah atau menambah atribut (Menulis).</li>
+                    </ul>
+                </div>
+
+                <div class="interactive-demo">
+                    <input type="password" id="input-pass" placeholder="Ketik password...">
+                    <button onclick="togglePassword()">Lihat/Sembunyikan</button>
+                </div>
+
+                
+
+                <div class="industrial-case">
+                    <h4>🏢 Case Industri: Toggle Password Visibility</h4>
+                    <p>Fitur ikon mata pada kolom password bekerja dengan mengubah atribut <code>type="password"</code> menjadi <code>type="text"</code> menggunakan JavaScript.</p>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px">
+            <a href="../../../index.html" class="btn-back">← Kembali ke Dashboard Utama</a>
+        </div>
+    </div>
+
+    <script src="dom-elements-html.js"></script>
+</body>
+</html>

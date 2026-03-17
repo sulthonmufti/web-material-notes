@@ -1,0 +1,167 @@
+:root {
+    --primary: #f7df1e;
+    --dark: #222;
+    --light: #f4f4f4;
+    --code-bg: #282c34;
+    --accent: #2980b9;
+  }
+  
+  body {
+    font-family: "Segoe UI", sans-serif;
+    line-height: 1.6;
+    color: #333;
+    margin: 0;
+    background: var(--light);
+  }
+  
+  header {
+    background: var(--dark);
+    color: var(--primary);
+    padding: 3rem 1rem;
+    text-align: center;
+    border-bottom: 6px solid var(--primary);
+  }
+  
+  .header-title-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  /* Logo JS Sesuai Permintaan */
+  .js-logo-header {
+    width: 65px;
+    height: 65px;
+    fill: var(--primary);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    filter: drop-shadow(0 0 8px rgba(247, 223, 30, 0.4));
+  }
+  
+  .js-logo-header:hover {
+    transform: rotate(-10deg) scale(1.1);
+  }
+  
+  header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    letter-spacing: -1px;
+  }
+  
+  .container {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+  }
+  
+  /* Accordion Style */
+  .segment {
+    background: white;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  }
+  
+  .segment-header {
+    background: #fff;
+    padding: 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+  }
+  
+  .segment-content {
+    padding: 25px;
+    display: none;
+    background: #fff;
+    border-top: 1px solid #eee;
+  }
+  
+  .active .segment-content { display: block; }
+  .active .segment-header { background: #fffef0; border-bottom: 3px solid var(--primary); }
+  
+  /* Boxes */
+  .term-box {
+    background: #fff9db;
+    border-left: 5px solid var(--primary);
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 4px;
+  }
+  
+  .industrial-case {
+    background: #f0f7ff;
+    border: 1px solid #d0e7ff;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 20px;
+  }
+  
+  .analysis-box {
+    background: #f8f9fa;
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-top: 15px;
+  }
+  
+  /* Code */
+  pre {
+    background: var(--code-bg);
+    color: #abb2bf;
+    padding: 15px;
+    border-radius: 8px;
+    overflow-x: auto;
+  }
+  
+  .code-kw { color: #c678dd; }
+  .code-st { color: #98c379; }
+  .code-comment { color: #5c6370; font-style: italic; }
+  
+  /* Interactive Previews */
+  .interactive-demo {
+    border: 2px dashed #ccc;
+    padding: 20px;
+    margin: 20px 0;
+    text-align: center;
+    border-radius: 8px;
+  }
+  
+  .preview-list {
+    background: #f9f9f9;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    min-height: 40px;
+  }
+  
+  .alert-preview {
+    background: #fcf3cf;
+    padding: 15px;
+    border: 1px solid #f1c40f;
+    border-radius: 5px;
+    display: inline-block;
+  }
+  
+  .btn-back {
+    background: #e74c3c;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 30px;
+    text-decoration: none;
+    display: inline-block;
+  }
+  
+  button {
+    background: var(--dark);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+  
+  button:hover { transform: scale(1.05); }
