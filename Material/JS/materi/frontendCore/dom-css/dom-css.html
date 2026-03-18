@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi JS: DOM CSS</title>
+    <link rel="stylesheet" href="dom-css.css">
+</head>
+<body>
+    <header>
+        <div class="header-title-container">
+            <svg class="js-logo-header" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 32v448h448V32H0zm243.8 349.4c0 43.6-25.6 63.5-62.9 63.5-33.7 0-53.2-17.4-63.2-38.5l34.3-20.7c6.6 11.7 12.6 21.6 27.1 21.6 13.8 0 22.6-5.4 22.6-26.5V237.7h42.1v143.7zm99.6 63.5c-39.1 0-64.4-18.6-76.7-43l34.3-19.8c9 14.7 20.8 25.6 41.5 25.6 17.4 0 28.6-8.7 28.6-20.8 0-14.4-11.4-19.5-30.7-28l-10.5-4.5c-30.4-12.9-50.5-29.2-50.5-63.5 0-31.6 24.1-55.6 61.6-55.6 26.8 0 46 9.3 59.8 33.7L368 290c-7.2-12.9-15-18-27.1-18-12.3 0-20.1 7.8-20.1 18 0 12.6 7.8 17.7 25.9 25.6l10.5 4.5c35.8 15.3 55.9 31 55.9 66.2 0 37.8-29.8 58.6-69.7 58.6z"/>
+            </svg>
+            <h1>DOM CSS</h1>
+        </div>
+        <p>Mengontrol Estetika dan Visual Halaman secara Programatik</p>
+    </header>
+
+    <div class="container">
+        <div class="segment">
+            <div class="segment-header" onclick="toggleSegment(this)">
+                1. Manipulasi Inline Style (element.style) <span>+</span>
+            </div>
+            <div class="segment-content">
+                <p>Cara paling langsung untuk mengubah CSS adalah melalui properti <code>style</code>. Ini akan menulis gaya langsung ke dalam atribut <code>style=""</code> di tag HTML.</p>
+                
+                <div class="term-box">
+                    <span style="font-weight: bold">📖 Istilah: CamelCase naming</span>
+                    <p>Di CSS kita menulis <code>background-color</code>, tapi di JS kita menggunakan <strong>camelCase</strong>: <code>backgroundColor</code>.</p>
+                </div>
+
+                <div class="interactive-demo">
+                    <div id="box-inline" class="demo-box">Kotak Target</div>
+                    <button onclick="changeStyle()">Ubah Warna & Lebar</button>
+                    <button onclick="resetInline()" style="background: #7f8c8d;">Reset</button>
+                </div>
+
+                <div class="analysis-box">
+                    <h4>🛠️ Dapur Rekaman: Bedah Kode</h4>
+                    <pre><code><span class="code-kw">const</span> box = document.getElementById(<span class="code-st">"box"</span>);
+box.style.backgroundColor = <span class="code-st">"coral"</span>;
+box.style.borderRadius = <span class="code-st">"50%"</span>;</code></pre>
+                </div>
+
+                <div class="industrial-case">
+                    <h4>🏢 Case Industri: Dynamic Progress Bar</h4>
+                    <p>Inline style sangat berguna untuk elemen yang nilainya berubah terus-menerus berdasarkan data, seperti <em>loading bar</em> atau presentase <em>upload</em> file.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="segment">
+            <div class="segment-header" onclick="toggleSegment(this)">
+                2. Manipulasi Class (classList) <span>+</span>
+            </div>
+            <div class="segment-content">
+                <p>Ini adalah <strong>Best Practice</strong> di industri. Alih-alih mengubah gaya satu per satu, kita cukup menambah atau menghapus "Nama Kelas" yang sudah kita siapkan di CSS.</p>
+                
+                <div class="term-box">
+                    <span style="font-weight: bold">📖 Istilah: Token List Methods</span>
+                    <ul>
+                        <li><strong>add():</strong> Menambah kelas baru.</li>
+                        <li><strong>remove():</strong> Menghapus kelas.</li>
+                        <li><strong>toggle():</strong> Otomatis tambah jika tidak ada, hapus jika sudah ada (seperti saklar lampu).</li>
+                    </ul>
+                </div>
+
+                <div class="interactive-demo">
+                    <div id="card-status" class="status-card">Status: Netral</div>
+                    <button onclick="setSuccess()">Set Success</button>
+                    <button onclick="setError()">Set Error</button>
+                    <button onclick="toggleHighlight()" style="background: var(--accent);">Toggle Highlight</button>
+                </div>
+
+                
+
+                <div class="analysis-box">
+                    <h4>🛠️ Dapur Rekaman: Bedah Logika</h4>
+                    <pre><code><span class="code-comment">// Cara profesional mengelola state</span>
+elemen.classList.add(<span class="code-st">"active"</span>);
+elemen.classList.toggle(<span class="code-st">"dark-mode"</span>);</code></pre>
+                </div>
+
+                <div class="industrial-case">
+                    <h4>🏢 Case Industri: UI State Management</h4>
+                    <p>Digunakan untuk mengubah tampilan UI saat terjadi error (kotak input jadi merah) atau saat user mengaktifkan <em>Dark Mode</em> di seluruh aplikasi.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="segment">
+            <div class="segment-header" onclick="toggleSegment(this)">
+                3. Membaca Gaya (getComputedStyle) <span>+</span>
+            </div>
+            <div class="segment-content">
+                <p>Kadang kita perlu tahu berapa ukuran atau warna elemen yang sebenarnya diterapkan oleh browser (bukan yang kita tulis di inline style).</p>
+
+                <div class="term-box">
+                    <span style="font-weight: bold">📖 Istilah: Read-Only Values</span>
+                    <code>getComputedStyle</code> bersifat <em>read-only</em>. Anda bisa membaca nilainya, tapi tidak bisa mengubahnya langsung dari sini.
+                </div>
+
+                <div class="interactive-demo">
+                    <p id="info-teks">Klik tombol untuk mengecek warna teks ini!</p>
+                    <button onclick="checkStyle()">Cek Warna (RGB)</button>
+                    <p id="hasil-cek" style="font-weight: bold; margin-top: 10px;"></p>
+                </div>
+
+                <div class="analysis-box">
+                    <h4>🛠️ Dapur Rekaman: Cara Mengakses</h4>
+                    <pre><code><span class="code-kw">const</span> gaya = window.getComputedStyle(elemen);
+console.log(gaya.color); <span class="code-comment">// Mengembalikan nilai RGB asli</span></code></pre>
+                </div>
+
+                <div class="industrial-case">
+                    <h4>🏢 Case Industri: Responsive Check</h4>
+                    <p>Developer menggunakan ini untuk mengecek apakah elemen tertentu sedang tersembunyi (display: none) sebelum menjalankan animasi tertentu agar tidak terjadi error visual.</p>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px">
+            <a href="../../../index.html" class="btn-back">← Kembali ke Dashboard Utama</a>
+        </div>
+    </div>
+
+    <script src="dom-css.js"></script>
+</body>
+</html>
