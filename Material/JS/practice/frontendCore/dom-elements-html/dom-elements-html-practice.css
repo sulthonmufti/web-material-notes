@@ -1,0 +1,133 @@
+:root {
+    --primary: #2980b9;
+    --dark: #2c3e50;
+    --light: #ecf0f1;
+    --border: #bdc3c7;
+}
+
+body {
+    font-family: "Segoe UI", sans-serif;
+    line-height: 1.6;
+    color: #333;
+    margin: 0;
+    background: var(--light);
+}
+
+header {
+    background: var(--dark);
+    color: white;
+    padding: 1.5rem 1rem;
+    text-align: center;
+}
+
+header h1 { margin: 0; font-size: 1.6rem; }
+header p { margin: 0.5rem 0 0; font-size: 0.95rem; opacity: 0.9; }
+
+.container {
+    max-width: 720px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1.25rem;
+}
+
+.card h2 {
+    margin-top: 0;
+    font-size: 1.15rem;
+}
+
+.instruksi {
+    border-left: 4px solid var(--primary);
+}
+
+.instruksi code {
+    background: #e8f4fc;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.tugas-desc {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 1rem;
+}
+
+.tugas-desc code {
+    background: #f4f4f4;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.demo-box {
+    background: #f8f9fa;
+    border: 2px dashed var(--border);
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.preview-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 0 0 0.75rem 0;
+}
+
+.preview-list li {
+    padding: 4px 6px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+.alert-box {
+    background: #fcf3cf;
+    border: 1px solid #f1c40f;
+    padding: 10px 12px;
+    border-radius: 6px;
+    display: inline-block;
+}
+
+.btn-danger {
+    background: #e74c3c;
+    margin-left: 8px;
+}
+
+button {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    margin: 4px 4px 0 0;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+input[type="password"] {
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    font-size: 0.95rem;
+}
+
+.img-preview {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto 0.75rem auto;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+}
+
+.btn-group {
+    text-align: center;
+}
+

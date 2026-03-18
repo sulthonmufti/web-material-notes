@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice: DOM Elements & HTML</title>
+    <link rel="stylesheet" href="dom-elements-html-practice.css">
+</head>
+<body>
+    <header>
+        <h1>Practice: DOM Elements & HTML</h1>
+        <p>Latihan <strong>createElement</strong>, <strong>remove</strong>, dan <strong>setAttribute/getAttribute</strong> berdasarkan materi DOM Elements.</p>
+    </header>
+
+    <div class="container">
+        <!-- ========== INSTRUKSI UMUM ========== -->
+        <section class="card instruksi">
+            <h2>📋 Instruksi Practice</h2>
+            <p>Buka file <strong>dom-elements-html-practice.js</strong> dan isi function sesuai tugas di bawah. Gunakan:</p>
+            <ul>
+                <li><code>document.createElement()</code> untuk membuat elemen baru</li>
+                <li><code>parent.appendChild(child)</code> untuk menempelkan elemen</li>
+                <li><code>elemen.remove()</code> untuk menghapus elemen dari DOM</li>
+                <li><code>getAttribute()</code> dan <code>setAttribute()</code> untuk membaca/mengubah atribut</li>
+            </ul>
+        </section>
+
+        <!-- ========== TUGAS 1: Dynamic List dengan createElement & appendChild ========== -->
+        <section class="card">
+            <h2>1. Tambah Item ke List</h2>
+            <p class="tugas-desc">
+                Isi function <code>tambahItemList()</code> dan <code>hapusSemuaItem()</code> di JS:
+                <br>- Saat tombol <strong>Tambah Item</strong> diklik, buat elemen <code>&lt;li&gt;</code> baru berisi teks <em>"Item ke-[nomor]"</em> dan tambahkan ke <code>#practice-list</code>.
+                <br>- Saat tombol <strong>Hapus Semua</strong> diklik, kosongkan semua anak di <code>#practice-list</code>.
+            </p>
+            <div class="demo-box">
+                <ul id="practice-list" class="preview-list">
+                    <!-- Item latihan akan muncul di sini -->
+                </ul>
+                <button onclick="tambahItemList()">Tambah Item</button>
+                <button onclick="hapusSemuaItem()">Hapus Semua</button>
+            </div>
+        </section>
+
+        <!-- ========== TUGAS 2: Dismissible Alert dengan remove() ========== -->
+        <section class="card">
+            <h2>2. Dismissible Alert</h2>
+            <p class="tugas-desc">
+                Isi function <code>tutupAlert()</code>:
+                <br>- Seleksi elemen dengan id <code>alert-latihan</code> dan panggil <code>.remove()</code> agar box hilang dari halaman.
+            </p>
+            <div class="demo-box">
+                <div id="alert-latihan" class="alert-box">
+                    ⚠️ Ini adalah alert latihan. Klik tombol untuk menghapusku dari DOM.
+                    <button class="btn-danger" onclick="tutupAlert()">Tutup</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== TUGAS 3: Toggle Password dengan getAttribute & setAttribute ========== -->
+        <section class="card">
+            <h2>3. Toggle Password Visibility</h2>
+            <p class="tugas-desc">
+                Isi function <code>togglePasswordPractice()</code>:
+                <br>- Seleksi input <code>#password-practice</code>, baca atribut <code>type</code> dengan <code>getAttribute()</code>.
+                <br>- Jika <code>type="password"</code> ubah menjadi <code>text</code>, kalau tidak ubah kembali jadi <code>password</code> menggunakan <code>setAttribute()</code>.
+            </p>
+            <div class="demo-box">
+                <input type="password" id="password-practice" placeholder="Ketik password...">
+                <button onclick="togglePasswordPractice()">Lihat / Sembunyikan</button>
+            </div>
+        </section>
+
+        <!-- ========== TUGAS 4: Ubah Gambar dengan setAttribute(src) ========== -->
+        <section class="card">
+            <h2>4. Ganti Gambar dengan setAttribute</h2>
+            <p class="tugas-desc">
+                Isi function <code>gantiGambar(mode)</code>:
+                <br>- Seleksi <code>#gambar-preview</code>, lalu gunakan <code>setAttribute('src', '...')</code> dan <code>setAttribute('alt', '...')</code> untuk mengganti gambar berdasarkan parameter <code>mode</code> (<code>'siang'</code> atau <code>'malam'</code>).
+            </p>
+            <div class="demo-box">
+                <img id="gambar-preview" src="https://via.placeholder.com/200x100?text=Default" alt="Gambar default" class="img-preview">
+                <div class="btn-group">
+                    <button onclick="gantiGambar('siang')">Gambar Siang</button>
+                    <button onclick="gantiGambar('malam')">Gambar Malam</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="dom-elements-html-practice.js"></script>
+</body>
+</html>
+
