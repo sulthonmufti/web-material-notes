@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi JS: DOM Events</title>
+    <link rel="stylesheet" href="dom-events.css">
+</head>
+<body>
+    <header>
+        <div class="header-title-container">
+            <svg class="js-logo-header" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 32v448h448V32H0zm243.8 349.4c0 43.6-25.6 63.5-62.9 63.5-33.7 0-53.2-17.4-63.2-38.5l34.3-20.7c6.6 11.7 12.6 21.6 27.1 21.6 13.8 0 22.6-5.4 22.6-26.5V237.7h42.1v143.7zm99.6 63.5c-39.1 0-64.4-18.6-76.7-43l34.3-19.8c9 14.7 20.8 25.6 41.5 25.6 17.4 0 28.6-8.7 28.6-20.8 0-14.4-11.4-19.5-30.7-28l-10.5-4.5c-30.4-12.9-50.5-29.2-50.5-63.5 0-31.6 24.1-55.6 61.6-55.6 26.8 0 46 9.3 59.8 33.7L368 290c-7.2-12.9-15-18-27.1-18-12.3 0-20.1 7.8-20.1 18 0 12.6 7.8 17.7 25.9 25.6l10.5 4.5c35.8 15.3 55.9 31 55.9 66.2 0 37.8-29.8 58.6-69.7 58.6z"/>
+            </svg>
+            <h1>DOM Events</h1>
+        </div>
+        <p>Menghidupkan Antarmuka dengan Respon Interaksi Pengguna</p>
+    </header>
+
+    <div class="container">
+        <div class="segment">
+            <div class="segment-header" onclick="toggleSegment(this)">
+                1. Mendengarkan Interaksi (addEventListener) <span>+</span>
+            </div>
+            <div class="segment-content">
+                <p><code>addEventListener</code> adalah cara standar industri untuk menyuruh JavaScript "menunggu" sampai sesuatu terjadi pada elemen tertentu.</p>
+                
+                <div class="term-box">
+                    <span style="font-weight: bold">📖 Istilah: Event Listener & Callback</span>
+                    <ul>
+                        <li><strong>Event Listener:</strong> Alat pemantau yang dipasang pada elemen.</li>
+                        <li><strong>Callback Function:</strong> Blok kode yang dijalankan HANYA SAAT kejadian (event) terjadi.</li>
+                    </ul>
+                </div>
+
+                
+
+                <div class="interactive-demo">
+                    <div id="click-box" class="demo-box">Klik Saya!</div>
+                    <p>Total Klik: <span id="click-count">0</span></p>
+                </div>
+
+                <div class="analysis-box">
+                    <h4>🛠️ Dapur Rekaman: Penulisan Kode</h4>
+                    <pre><code><span class="code-kw">const</span> tombol = document.getElementById(<span class="code-st">"btn"</span>);
+tombol.addEventListener(<span class="code-st">"click"</span>, <span class="code-kw">function</span>() {
+    console.log(<span class="code-st">"Tombol ditekan!"</span>);
+});</code></pre>
+                </div>
+
+                <div class="industrial-case">
+                    <h4>🏢 Case Industri: Tracking Analitik</h4>
+                    <p>Perusahaan e-commerce menggunakan *Event Listeners* untuk mencatat tombol mana saja yang paling sering diklik pengguna guna menganalisis perilaku belanja (User Behavior).</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="segment">
+            <div class="segment-header" onclick="toggleSegment(this)">
+                2. Jenis-jenis Event (Mouse, Keyboard, Input) <span>+</span>
+            </div>
+            <div class="segment-content">
+                <p>JavaScript bisa mendeteksi hampir semua gerakan pengguna. Berikut adalah yang paling sering digunakan:</p>
+                
+                <table class="event-table">
+                    <tr><th>Kategori</th><th>Event</th><th>Kejadian</th></tr>
+                    <tr><td>Mouse</td><td><code>mouseenter</code></td><td>Kursor masuk ke area elemen</td></tr>
+                    <tr><td>Keyboard</td><td><code>keydown</code></td><td>Tombol keyboard ditekan</td></tr>
+                    <tr><td>Form</td><td><code>submit</code></td><td>Formulir dikirim</td></tr>
+                    <tr><td>Input</td><td><code>change</code></td><td>Nilai input berubah</td></tr>
+                </table>
+
+                <div class="interactive-demo">
+                    <input type="text" id="input-visualizer" placeholder="Ketik sesuatu di sini...">
+                    <div id="key-display" class="key-badge">Tunggu input...</div>
+                </div>
+
+                <div class="industrial-case">
+                    <h4>🏢 Case Industri: Search Autocomplete</h4>
+                    <p>Google Search menggunakan event <code>input</code> atau <code>keyup</code> untuk langsung menampilkan saran pencarian saat Anda baru mengetik satu huruf.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="segment">
+            <div class="segment-header" onclick="toggleSegment(this)">
+                3. Event Object & preventDefault <span>+</span>
+            </div>
+            <div class="segment-content">
+                <p>Setiap event terjadi, JavaScript mengirimkan sebuah "Paket Data" berisi informasi lengkap tentang kejadian tersebut (seperti koordinat mouse atau tombol yang ditekan).</p>
+
+                <div class="term-box">
+                    <span style="font-weight: bold">📖 Istilah: Event Object (e)</span>
+                    Objek otomatis yang berisi properti seperti <code>target</code> (siapa yang diklik) dan <code>preventDefault()</code> (menghentikan perilaku bawaan browser).
+                </div>
+
+                <div class="interactive-demo">
+                    <form id="my-form">
+                        <input type="text" placeholder="Wajib diisi..." required>
+                        <button type="submit">Kirim Form</button>
+                    </form>
+                    <p id="form-status" style="margin-top:10px; color: var(--error);"></p>
+                </div>
+
+                <div class="analysis-box">
+                    <h4>🛠️ Dapur Rekaman: Menghentikan Refresh</h4>
+                    <pre><code>form.addEventListener(<span class="code-st">"submit"</span>, <span class="code-kw">function</span>(e) {
+    e.preventDefault(); <span class="code-comment">// Mencegah halaman reload</span>
+    console.log(<span class="code-st">"Data diproses via AJAX!"</span>);
+});</code></pre>
+                </div>
+
+                <div class="industrial-case">
+                    <h4>🏢 Case Industri: Single Page Application (SPA)</h4>
+                    <p>Aplikasi seperti Instagram atau Facebook menggunakan <code>e.preventDefault()</code> pada link navigasi agar berpindah halaman terasa instan tanpa perlu memuat ulang seluruh aset website.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="segment">
+            <div class="segment-header" onclick="toggleSegment(this)">
+                4. Event Bubbling & Delegation <span>+</span>
+            </div>
+            <div class="segment-content">
+                <p><strong>Event Bubbling</strong> adalah fenomena di mana sebuah event "merambat" naik dari elemen terdalam ke elemen terluar (seperti gelembung air).</p>
+
+                
+
+                <div class="term-box">
+                    <span style="font-weight: bold">💡 Strategi: Event Delegation</span>
+                    Daripada memasang listener ke 100 item list satu per satu, kita cukup pasang 1 listener pada parent-nya. Ini jauh lebih efisien untuk memori.
+                </div>
+
+                <div class="interactive-demo">
+                    <ul id="parent-list" class="styled-list">
+                        <li>Item 1 (Klik Saya)</li>
+                        <li>Item 2 (Klik Saya)</li>
+                        <li>Item 3 (Klik Saya)</li>
+                    </ul>
+                    <p id="delegation-result" style="font-weight: bold; color: var(--accent);"></p>
+                </div>
+
+                <div class="analysis-box">
+                    <h4>🛠️ Dapur Rekaman: Delegasi</h4>
+                    <pre><code>parent.addEventListener(<span class="code-st">"click"</span>, <span class="code-kw">function</span>(e) {
+    <span class="code-kw">if</span>(e.target.tagName === <span class="code-st">"LI"</span>) {
+        e.target.style.color = <span class="code-st">"red"</span>;
+    }
+});</code></pre>
+                </div>
+
+                <div class="industrial-case">
+                    <h4>🏢 Case Industri: Dynamic List (To-Do List)</h4>
+                    <p>Saat membuat aplikasi To-Do List, Anda tidak tahu berapa banyak tugas yang akan dibuat user. *Event Delegation* memastikan tugas yang baru saja dibuat tetap bisa diklik/dihapus tanpa perlu pasang listener baru.</p>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px">
+            <a href="../../../index.html" class="btn-back">← Kembali ke Dashboard Utama</a>
+        </div>
+    </div>
+
+    <script src="dom-events.js"></script>
+</body>
+</html>
