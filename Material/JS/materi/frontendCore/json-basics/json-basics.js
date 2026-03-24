@@ -48,7 +48,7 @@ function runParse() {
 }
 
 /**
- * TIPS UNTUK SULTHON:
+ * TIPS:
  * Dalam JSON, urutan key tidak dijamin tetap sama saat diparse.
  * Jangan pernah meletakkan fungsi (function) di dalam JSON karena 
  * fungsi akan hilang saat di-stringify. JSON hanya untuk DATA.
