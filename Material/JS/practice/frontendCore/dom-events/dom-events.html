@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Practice (Menengah): DOM Events</title>
+  <link rel="stylesheet" href="dom-events-practice.css" />
+</head>
+<body>
+  <header>
+    <h1>Practice (Menengah): DOM Events</h1>
+    <p>Latihan: <code>addEventListener</code>, <code>event object</code>, <code>preventDefault</code>, <code>delegation</code>, bubbling, dan <code>stopPropagation</code>.</p>
+  </header>
+
+  <main class="container">
+    <section class="card instruksi">
+      <h2>📌 Study Case</h2>
+      <ul>
+        <li><strong>Mini To‑Do</strong> (delegation): tambah item, toggle selesai, hapus item, keyboard shortcut.</li>
+        <li><strong>Form Feedback</strong> (preventDefault): validasi sederhana + live counter karakter.</li>
+        <li><strong>Propagation Lab</strong> (bubbling): lihat urutan event + coba <code>stopPropagation()</code>.</li>
+      </ul>
+      <p class="hint">Semua log interaksi akan muncul di panel <strong>Event Log</strong>.</p>
+    </section>
+
+    <!-- ===================== 1) MINI TODO (Event Delegation) ===================== -->
+    <section class="card">
+      <h2>1) Mini To‑Do (Event Delegation)</h2>
+      <p class="hint">
+        Target: pasang <strong>1 listener</strong> di <code>#todo-list</code>.
+        Klik teks untuk toggle selesai. Klik tombol hapus untuk delete.
+      </p>
+
+      <div class="row">
+        <input id="todo-input" type="text" placeholder="Ketik tugas... (Enter untuk tambah)" />
+        <button id="todo-add" type="button">Tambah</button>
+      </div>
+
+      <div class="row small">
+        <label><input id="only-active" type="checkbox" /> Tampilkan hanya yang belum selesai</label>
+        <button id="clear-done" type="button" class="btn-ghost">Hapus yang selesai</button>
+      </div>
+
+      <ul id="todo-list" class="todo-list" aria-label="Daftar todo"></ul>
+
+      <p class="meta">
+        Shortcut: <kbd>Enter</kbd> tambah, <kbd>Esc</kbd> clear input, <kbd>Ctrl</kbd>+<kbd>/</kbd> fokus input.
+      </p>
+    </section>
+
+    <!-- ===================== 2) FORM (preventDefault + event object) ===================== -->
+    <section class="card">
+      <h2>2) Form Feedback (preventDefault)</h2>
+      <p class="hint">
+        Target: tangkap event <code>submit</code>, panggil <code>e.preventDefault()</code>, lalu validasi & tampilkan status.
+        Gunakan event <code>input</code> untuk live counter.
+      </p>
+
+      <form id="feedback-form">
+        <label class="field">
+          <span>Nama</span>
+          <input id="fb-name" type="text" placeholder="Minimal 3 karakter" />
+        </label>
+
+        <label class="field">
+          <span>Pesan</span>
+          <textarea id="fb-message" rows="4" placeholder="Minimal 10 karakter (maks 120)"></textarea>
+          <div class="counter">
+            <span id="msg-count">0</span>/120
+          </div>
+        </label>
+
+        <div class="row">
+          <button id="fb-submit" type="submit">Kirim</button>
+          <button id="fb-reset" type="button" class="btn-ghost">Reset</button>
+        </div>
+
+        <p id="fb-status" class="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <!-- ===================== 3) PROPAGATION LAB (bubbling + stopPropagation) ===================== -->
+    <section class="card">
+      <h2>3) Propagation Lab (Bubbling)</h2>
+      <p class="hint">
+        Klik kotak di dalam. Perhatikan urutan event yang tercatat di Event Log.
+        Centang <strong>Stop propagation</strong> untuk menghentikan bubbling dari inner ke outer.
+      </p>
+
+      <div class="row small">
+        <label><input id="stop-prop" type="checkbox" /> Stop propagation saat klik inner</label>
+      </div>
+
+      <div id="outer-box" class="box outer">
+        OUTER
+        <div id="middle-box" class="box middle">
+          MIDDLE
+          <button id="inner-btn" type="button" class="box inner">INNER (klik saya)</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== EVENT LOG ===================== -->
+    <section class="card">
+      <div class="log-header">
+        <h2>Event Log</h2>
+        <div class="row small">
+          <button id="log-clear" type="button" class="btn-ghost">Clear Log</button>
+        </div>
+      </div>
+      <ol id="event-log" class="log"></ol>
+    </section>
+  </main>
+
+  <script src="dom-events-practice.js"></script>
+</body>
+</html>
+
