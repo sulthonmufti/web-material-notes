@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi JS: API Fetch Masterclass</title>
+    <link rel="stylesheet" href="api-fetch.css">
+</head>
+<body>
+    <header>
+        <div class="header-title-container">
+            <svg class="js-logo-header" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 32v448h448V32H0zm243.8 349.4c0 43.6-25.6 63.5-62.9 63.5-33.7 0-53.2-17.4-63.2-38.5l34.3-20.7c6.6 11.7 12.6 21.6 27.1 21.6 13.8 0 22.6-5.4 22.6-26.5V237.7h42.1v143.7zm99.6 63.5c-39.1 0-64.4-18.6-76.7-43l34.3-19.8c9 14.7 20.8 25.6 41.5 25.6 17.4 0 28.6-8.7 28.6-20.8 0-14.4-11.4-19.5-30.7-28l-10.5-4.5c-30.4-12.9-50.5-29.2-50.5-63.5 0-31.6 24.1-55.6 61.6-55.6 26.8 0 46 9.3 59.8 33.7L368 290c-7.2-12.9-15-18-27.1-18-12.3 0-20.1 7.8-20.1 18 0 12.6 7.8 17.7 25.9 25.6l10.5 4.5c35.8 15.3 55.9 31 55.9 66.2 0 37.8-29.8 58.6-69.7 58.6z"/>
+            </svg>
+            <h1>API Fetch Masterclass</h1>
+        </div>
+        <p>Menghubungkan Frontend dengan Dunia Luar melalui Network Request</p>
+    </header>
+
+    <div class="container">
+        <div class="segment">
+            <div class="segment-header" onclick="toggleSegment(this)">
+                1. Apa itu Fetch API? (Request & Response) <span>+</span>
+            </div>
+            <div class="segment-content">
+                <p><strong>Fetch API</strong> adalah antarmuka modern JavaScript untuk mengambil sumber daya (data) dari jaringan secara asinkron. Ini menggantikan metode lama (XMLHttpRequest).</p>
+                
+                <div class="term-box">
+                    <strong>📖 Istilah Baru: Endpoint</strong>
+                    <p>Alamat URL spesifik (seperti <code>/api/users</code>) yang disediakan oleh server untuk kita akses datanya.</p>
+                </div>
+
+                <div class="interactive-demo">
+                    <h5>Demo Dasar: Basic GET Request</h5>
+                    <div id="status-fetch-basic" class="status-box">Menunggu instruksi...</div>
+                    <button onclick="simulasiFetchDasar()">Kirim Request Ke Server</button>
+                </div>
+
+                <div class="analysis-box">
+                    <h5>Analisis Kode Dasar:</h5>
+                    <pre><code><span class="code-kw">fetch</span>(<span class="code-st">'https://api.example.com/data'</span>)
+  .then(response => response.json()) <span class="code-comment">// Mengubah response jadi objek JS</span>
+  .then(data => console.log(data)); <span class="code-comment">// Mengolah data</span></code></pre>
+                </div>
+
+                <div class="industrial-case">
+                    <h4>🏢 Case Industri: User Profile Dashboard</h4>
+                    <p>Saat user masuk ke dashboard, frontend melakukan fetch ke endpoint profil untuk menampilkan nama dan foto user.</p>
+                    
+                    <div class="case-visual-demo">
+                        <h5>Visual Case: Fetch User Data</h5>
+                        <div id="user-card-container" class="case-visual-box">
+                            <p>Klik tombol untuk memuat profil...</p>
+                        </div>
+                        <button onclick="simulateUserProfileFetch()">Get Profile Data</button>
+                    </div>
+
+                    <div class="analysis-box">
+                        <h5>Analisis Kode Case:</h5>
+                        <pre><code><span class="code-kw">async function</span> loadUser() {
+    <span class="code-kw">const</span> res = <span class="code-kw">await</span> fetch(USER_API);
+    <span class="code-kw">const</span> user = <span class="code-kw">await</span> res.json();
+    renderProfile(user); <span class="code-comment">// Update UI dengan data server</span>
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="segment">
+            <div class="segment-header" onclick="toggleSegment(this)">
+                2. Mengirim Data (HTTP POST) <span>+</span>
+            </div>
+            <div class="segment-content">
+                <p>Jika <strong>GET</strong> digunakan untuk mengambil data, <strong>POST</strong> digunakan untuk mengirim data ke server (seperti membuat akun baru atau mengirim pesan).</p>
+                
+                <div class="term-box">
+                    <strong>📖 Istilah Baru: Request Body</strong>
+                    <p>Wadah tempat data kita diletakkan saat dikirim ke server, biasanya dalam format JSON.</p>
+                </div>
+
+                <div class="interactive-demo">
+                    <h5>Demo Dasar: POST Simulation</h5>
+                    <div id="status-post-basic" class="status-box">Data belum dikirim...</div>
+                    <button onclick="simulasiPostDasar()">Kirim Data Testing</button>
+                </div>
+
+                <div class="analysis-box">
+                    <h5>Analisis Kode Dasar:</h5>
+                    <pre><code><span class="code-kw">fetch</span>(url, {
+    method: <span class="code-st">'POST'</span>,
+    headers: { <span class="code-st">'Content-Type'</span>: <span class="code-st">'application/json'</span> },
+    body: JSON.stringify({ name: <span class="code-st">'Sulthon'</span> }) <span class="code-comment">// Data diconvert ke String</span>
+});</code></pre>
+                </div>
+
+                <div class="industrial-case">
+                    <h4>🏢 Case Industri: Sistem Registrasi / Post Komentar</h4>
+                    <p>User mengisi form, lalu data tersebut "dibungkus" dan dikirim ke database melalui method POST.</p>
+                    
+                    <div class="case-visual-demo">
+                        <h5>Visual Case: Add New Product</h5>
+                        <div class="login-mini-form">
+                            <input type="text" id="prod-name" placeholder="Nama Produk...">
+                            <button onclick="simulateAddProduct()">Tambah Produk</button>
+                        </div>
+                        <div id="post-log" class="log-screen">> Awaiting action...</div>
+                    </div>
+
+                    <div class="analysis-box">
+                        <h5>Analisis Kode Case:</h5>
+                        <pre><code><span class="code-kw">const</span> response = <span class="code-kw">await</span> fetch(API, {
+    method: <span class="code-st">'POST'</span>,
+    body: JSON.stringify(productData)
+});
+<span class="code-kw">if</span> (response.ok) alert(<span class="code-st">"Produk Tersimpan!"</span>);</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="segment">
+            <div class="segment-header" onclick="toggleSegment(this)">
+                3. Menangani Error & HTTP Status <span>+</span>
+            </div>
+            <div class="segment-content">
+                <p>Tidak semua fetch berhasil. Server memberikan kode status (seperti 404 atau 500) untuk memberi tahu apa yang terjadi.</p>
+                
+                <div class="term-box">
+                    <strong>📖 Istilah Baru: HTTP Status Code</strong>
+                    <p><strong>200:</strong> OK, <strong>404:</strong> Not Found (URL salah), <strong>500:</strong> Server Error (Server rusak).</p>
+                </div>
+
+                <div class="interactive-demo">
+                    <h5>Demo Dasar: Status Checker</h5>
+                    <div id="status-error-box" class="status-box">Pilih skenario...</div>
+                    <button onclick="checkStatus(200)">Cek 200 OK</button>
+                    <button onclick="checkStatus(404)" style="background:var(--error); color:white">Cek 404 Error</button>
+                </div>
+
+                <div class="analysis-box">
+                    <h5>Analisis Kode Dasar:</h5>
+                    <pre><code><span class="code-kw">if</span> (!response.ok) {
+    <span class="code-kw">throw new</span> Error(<span class="code-st">"Gagal mengambil data: "</span> + response.status);
+}</code></pre>
+                </div>
+
+                <div class="industrial-case">
+                    <h4>🏢 Case Industri: Global Notification System (Toast)</h4>
+                    <p>Jika API down, sistem harus memberikan notifikasi visual (Toast) kepada user agar mereka tidak bingung mengapa aplikasi tidak merespon.</p>
+                    
+                    <div class="case-visual-demo">
+                        <h5>Visual Case: Error Toast Simulation</h5>
+                        <div id="toast-container" style="height: 50px; font-weight: bold"></div>
+                        <button onclick="simulateApiError()">Trigger API Error (500)</button>
+                    </div>
+
+                    <div class="analysis-box">
+                        <h5>Analisis Kode Case:</h5>
+                        <pre><code><span class="code-kw">try</span> {
+    <span class="code-kw">const</span> data = <span class="code-kw">await</span> fetchAPI();
+} <span class="code-kw">catch</span> (err) {
+    showToast(<span class="code-st">"Maaf, server kami sedang gangguan"</span>);
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px">
+            <a href="../../../index.html" class="btn-back">← Selesai Mempelajari API Fetch</a>
+        </div>
+    </div>
+
+    <script src="api-fetch.js"></script>
+</body>
+</html>
