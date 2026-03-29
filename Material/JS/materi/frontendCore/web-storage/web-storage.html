@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi JS: Web Storage Masterclass</title>
+    <link rel="stylesheet" href="web-storage.css">
+</head>
+<body>
+    <header>
+        <div class="header-title-container">
+            <svg class="js-logo-header" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 32v448h448V32H0zm243.8 349.4c0 43.6-25.6 63.5-62.9 63.5-33.7 0-53.2-17.4-63.2-38.5l34.3-20.7c6.6 11.7 12.6 21.6 27.1 21.6 13.8 0 22.6-5.4 22.6-26.5V237.7h42.1v143.7zm99.6 63.5c-39.1 0-64.4-18.6-76.7-43l34.3-19.8c9 14.7 20.8 25.6 41.5 25.6 17.4 0 28.6-8.7 28.6-20.8 0-14.4-11.4-19.5-30.7-28l-10.5-4.5c-30.4-12.9-50.5-29.2-50.5-63.5 0-31.6 24.1-55.6 61.6-55.6 26.8 0 46 9.3 59.8 33.7L368 290c-7.2-12.9-15-18-27.1-18-12.3 0-20.1 7.8-20.1 18 0 12.6 7.8 17.7 25.9 25.6l10.5 4.5c35.8 15.3 55.9 31 55.9 66.2 0 37.8-29.8 58.6-69.7 58.6z"/>
+            </svg>
+            <h1>Web Storage Masterclass</h1>
+        </div>
+        <p>Menyimpan Data User secara Lokal untuk Experience yang Lebih Cepat</p>
+    </header>
+
+    <div class="container">
+        <div class="segment">
+            <div class="segment-header" onclick="toggleSegment(this)">
+                1. Local Storage (Permanen) <span>+</span>
+            </div>
+            <div class="segment-content">
+                <p><strong>LocalStorage</strong> adalah tempat penyimpanan di browser yang datanya <strong>tidak akan hilang</strong> meskipun browser ditutup atau komputer dimatikan.</p>
+                
+                <div class="term-box">
+                    <strong>📖 Istilah Baru: Persistence</strong>
+                    <p>Kondisi di mana data tetap terjaga/tersimpan dalam jangka waktu lama meskipun aplikasi dihentikan.</p>
+                </div>
+
+                <div class="interactive-demo">
+                    <h5>Demo Dasar: Simpan Nama</h5>
+                    <div id="status-local" class="status-box">Halo, Tamu!</div>
+                    <input type="text" id="input-nama" placeholder="Ketik namamu...">
+                    <button onclick="saveLocal()">Simpan ke Browser</button>
+                    <button onclick="clearLocal()" style="background:var(--error); color:white">Hapus</button>
+                </div>
+
+                <div class="analysis-box">
+                    <h5>Analisis Kode Dasar:</h5>
+                    <pre><code><span class="code-kw">localStorage</span>.setItem(<span class="code-st">'user'</span>, <span class="code-st">'Sulthon'</span>); <span class="code-comment">// Simpan</span>
+<span class="code-kw">const</span> name = <span class="code-kw">localStorage</span>.getItem(<span class="code-st">'user'</span>); <span class="code-comment">// Ambil</span></code></pre>
+                </div>
+
+                <div class="industrial-case">
+                    <h4>🏢 Case Industri: Dark Mode Preference</h4>
+                    <p>Pernah buka website yang otomatis ingat pilihan Dark Mode kamu? Itu menggunakan LocalStorage agar user tidak perlu klik tombol setiap ganti halaman.</p>
+                    
+                    <div class="case-visual-demo" id="theme-preview">
+                        <h5>Visual Case: Theme Switcher</h5>
+                        <p>Status: <span id="theme-text">Light Mode</span></p>
+                        <button onclick="toggleTheme()">Ganti & Simpan Preferensi</button>
+                    </div>
+
+                    <div class="analysis-box">
+                        <h5>Analisis Kode Case:</h5>
+                        <pre><code><span class="code-comment">// Cek saat halaman dimuat</span>
+<span class="code-kw">const</span> currentTheme = <span class="code-kw">localStorage</span>.getItem(<span class="code-st">'theme'</span>);
+<span class="code-kw">if</span> (currentTheme === <span class="code-st">'dark'</span>) applyDark();</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="segment">
+            <div class="segment-header" onclick="toggleSegment(this)">
+                2. Session Storage (Temporer) <span>+</span>
+            </div>
+            <div class="segment-content">
+                <p><strong>SessionStorage</strong> mirip dengan LocalStorage, tapi datanya akan <strong>otomatis terhapus</strong> begitu tab browser ditutup.</p>
+                
+                <div class="term-box">
+                    <strong>📖 Istilah Baru: Volatile Storage</strong>
+                    <p>Penyimpanan yang bersifat sementara dan akan hilang jika sumber daya (tab/sesi) dihentikan.</p>
+                </div>
+
+                <div class="interactive-demo">
+                    <h5>Demo Dasar: Skor Sementara</h5>
+                    <div id="status-session" class="status-box">Skor Sesi Ini: 0</div>
+                    <button onclick="addSessionScore()">Tambah Skor (+10)</button>
+                    <p><small>*Coba refresh halaman (skor tetap), lalu coba tutup tab & buka lagi (skor reset).</small></p>
+                </div>
+
+                <div class="analysis-box">
+                    <h5>Analisis Kode Dasar:</h5>
+                    <pre><code><span class="code-kw">sessionStorage</span>.setItem(<span class="code-st">'score'</span>, <span class="code-st">'50'</span>); <span class="code-comment">// Hanya bertahan di tab ini</span></code></pre>
+                </div>
+
+                <div class="industrial-case">
+                    <h4>🏢 Case Industri: Multi-Step Form (Checkout)</h4>
+                    <p>Digunakan untuk menyimpan input user di Step 1 (Alamat) agar tidak hilang saat user lanjut ke Step 2 (Pembayaran), namun data bersih kembali setelah transaksi selesai.</p>
+                    
+                    <div class="case-visual-demo">
+                        <h5>Visual Case: Wizard Form Memory</h5>
+                        <div id="wizard-log" class="log-screen">> Belum ada data input...</div>
+                        <input type="text" id="wizard-input" placeholder="Isi alamat...">
+                        <button onclick="saveWizard()">Simpan Progress Sesi</button>
+                    </div>
+
+                    <div class="analysis-box">
+                        <h5>Analisis Kode Case:</h5>
+                        <pre><code><span class="code-kw">sessionStorage</span>.setItem(<span class="code-st">'checkout_step1'</span>, JSON.stringify(data));</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="segment">
+            <div class="segment-header" onclick="toggleSegment(this)">
+                3. Menyimpan Objek (JSON Serialization) <span>+</span>
+            </div>
+            <div class="segment-content">
+                <p>Web Storage hanya bisa menyimpan <strong>String</strong>. Untuk menyimpan objek atau array (seperti data user Laravel), kita harus mengubahnya jadi teks dulu.</p>
+                
+                <div class="term-box">
+                    <strong>📖 Istilah Baru: Stringify & Parse</strong>
+                    <p><strong>Stringify:</strong> Objek $\rightarrow$ Teks. <strong>Parse:</strong> Teks $\rightarrow$ Objek.</p>
+                </div>
+
+                <div class="interactive-demo">
+                    <h5>Demo Dasar: Object Storage</h5>
+                    <div id="status-json" class="status-box">Data: Kosong</div>
+                    <button onclick="saveObject()">Simpan Objek {id: 1, dev: "Sulthon"}</button>
+                </div>
+
+                <div class="analysis-box">
+                    <h5>Analisis Kode Dasar:</h5>
+                    <pre><code><span class="code-comment">// Salah: localStorage.setItem('obj', myObj); -> [object Object]</span>
+<span class="code-comment">// Benar:</span>
+<span class="code-kw">localStorage</span>.setItem(<span class="code-st">'obj'</span>, <span class="code-kw">JSON</span>.stringify(myObj));</code></pre>
+                </div>
+
+                <div class="industrial-case">
+                    <h4>🏢 Case Industri: Offline Shopping Cart</h4>
+                    <p>Menyimpan daftar produk yang dipilih user ke dalam array of objects agar saat internet mati, daftar belanjaan mereka tidak hilang.</p>
+                    
+                    <div class="case-visual-demo">
+                        <h5>Visual Case: Cart State Persistence</h5>
+                        <ul id="cart-list" style="text-align: left; list-style: none; padding: 0">
+                            <li>🛒 Keranjang kosong</li>
+                        </ul>
+                        <button onclick="addToCart('Mouse Gaming')">+ Mouse</button>
+                        <button onclick="addToCart('Keyboard Mech')">+ Keyboard</button>
+                    </div>
+
+                    <div class="analysis-box">
+                        <h5>Analisis Kode Case:</h5>
+                        <pre><code><span class="code-kw">const</span> cart = <span class="code-kw">JSON</span>.parse(<span class="code-kw">localStorage</span>.getItem(<span class="code-st">'cart'</span>)) || [];
+cart.push(newItem);
+<span class="code-kw">localStorage</span>.setItem(<span class="code-st">'cart'</span>, <span class="code-kw">JSON</span>.stringify(cart));</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px">
+            <a href="../../../index.html" class="btn-back">← Selesai Mempelajari Web Storage</a>
+        </div>
+    </div>
+
+    <script src="web-storage.js"></script>
+</body>
+</html>
