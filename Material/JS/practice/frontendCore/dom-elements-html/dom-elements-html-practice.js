@@ -17,12 +17,24 @@ function tambahItemList() {
     // 3. Isi teks: "Item ke-[counterItem]"
     // 4. appendChild ke ul
     // 5. Naikkan nilai counterItem
+
+    const container = document.getElementById('practice-list');
+
+    const li = document.createElement('li');
+    li.innerText = "Item ke-" +counterItem;
+
+    container.appendChild(li);
+    counterItem++;
 }
 
 function hapusSemuaItem() {
     // TODO:
     // Kosongkan semua anak dari #practice-list
     // (boleh pakai innerHTML = "" atau loop removeChild)
+
+    const container = document.getElementById('practice-list');
+    counterItem = 1;
+    container.innerHTML = "";
 }
 
 // ========== 2. DISMISSIBLE ALERT (remove) ==========
@@ -30,6 +42,12 @@ function tutupAlert() {
     // TODO:
     // 1. Seleksi elemen dengan id "alert-latihan"
     // 2. Panggil .remove() agar alert hilang dari halaman
+
+    const deleteAlert = document.getElementById('alert-latihan');
+    if (deleteAlert) {
+        deleteAlert.remove();
+        alert("Data dihapus dari sistem!");
+    }
 }
 
 // ========== 3. TOGGLE PASSWORD (getAttribute + setAttribute) ==========
