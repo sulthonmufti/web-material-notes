@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Practice: DOM CSS — Study Case</title>
+  <style>
+    :root {
+      --bg: #f4f4f4;
+      --card: #fff;
+      --dark: #222;
+      --primary: #f7df1e;
+      --success: #2ecc71;
+      --error: #e74c3c;
+      --muted: #666;
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: "Segoe UI", system-ui, sans-serif;
+      line-height: 1.55;
+      margin: 0;
+      background: var(--bg);
+      color: #333;
+    }
+    header {
+      background: var(--dark);
+      color: var(--primary);
+      padding: 1.75rem 1.25rem;
+      text-align: center;
+      border-bottom: 5px solid var(--primary);
+    }
+    header h1 { margin: 0 0 0.35rem; font-size: 1.45rem; }
+    header p { margin: 0; opacity: 0.95; font-size: 0.95rem; }
+    .container { max-width: 720px; margin: 0 auto; padding: 1.25rem; }
+    .card {
+      background: var(--card);
+      border-radius: 12px;
+      padding: 1.25rem 1.35rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+    }
+    .card h2 { margin: 0 0 0.65rem; font-size: 1.1rem; }
+    .instruksi ul { margin: 0.5rem 0 0; padding-left: 1.25rem; }
+    .hint {
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin: 0.5rem 0 0;
+    }
+    code {
+      font-family: ui-monospace, Consolas, monospace;
+      font-size: 0.9em;
+      background: #eee;
+      padding: 0.12em 0.35em;
+      border-radius: 4px;
+    }
+    .demo {
+      border: 2px dashed #ddd;
+      border-radius: 10px;
+      padding: 1rem;
+      margin-top: 0.75rem;
+      background: #fafafa;
+      text-align: center;
+    }
+    button {
+      background: var(--dark);
+      color: #fff;
+      border: none;
+      padding: 0.5rem 0.9rem;
+      border-radius: 6px;
+      cursor: pointer;
+      margin: 0.25rem;
+      font-size: 0.9rem;
+    }
+    button:hover { opacity: 0.92; }
+    button.secondary { background: #7f8c8d; }
+    /* Progress track (lebar penuh); isi batang via JS: inline style pada #progress-fill) */
+    .progress-track {
+      height: 14px;
+      background: #e0e0e0;
+      border-radius: 999px;
+      overflow: hidden;
+      margin: 0.75rem auto;
+      max-width: 320px;
+    }
+    #progress-fill {
+      height: 100%;
+      width: 0%;
+      background: #3498db;
+      border-radius: 999px;
+      transition: width 0.35s ease;
+    }
+    /* Kartu tugas: state lewat class (bukan inline) */
+    #task-card {
+      padding: 1rem;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+      margin: 0.75rem auto;
+      max-width: 360px;
+      transition: box-shadow 0.25s, border-color 0.25s, background 0.25s;
+    }
+    .task-neutral {
+      background: #fff;
+      color: #333;
+      border-color: #ccc;
+    }
+    .task-success {
+      background: var(--success);
+      color: #fff;
+      border-color: #27ae60;
+    }
+    .task-error {
+      background: var(--error);
+      color: #fff;
+      border-color: #c0392b;
+    }
+    .task-urgent {
+      box-shadow: 0 0 0 4px var(--primary), 0 6px 20px rgba(0,0,0,0.12);
+    }
+    #task-title {
+      font-weight: 700;
+      font-size: 1.05rem;
+      margin: 0 0 0.35rem;
+    }
+    #computed-output {
+      font-weight: 600;
+      margin-top: 0.65rem;
+      min-height: 1.4em;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Practice: DOM CSS</h1>
+    <p>Study case mengikuti materi <strong>inline style</strong>, <strong>classList</strong>, dan <strong>getComputedStyle</strong>. Isi tubuh function di <code>&lt;script&gt;</code> bawah halaman.</p>
+  </header>
+
+  <main class="container">
+    <section class="card instruksi">
+      <h2>Study case: kartu tugas + progress</h2>
+      <p>Bayangkan satu fitur kecil di dashboard: batang progres upload (nilai dinamis), kartu status tugas (sukses/gagal), dan tombol untuk membaca gaya yang benar-benar dipakai browser pada judul.</p>
+      <ul>
+        <li><strong>Bagian 1</strong> — ubah lebar/warna batang dengan <code>element.style</code> (ingat <em>camelCase</em>, mis. <code>backgroundColor</code>, <code>width</code>).</li>
+        <li><strong>Bagian 2</strong> — kelola tampilan kartu dengan <code>classList.add</code> / <code>remove</code> / <code>toggle</code> pada class yang sudah didefinisikan di <code>&lt;style&gt;</code>.</li>
+        <li><strong>Bagian 3</strong> — baca gaya terkomputasi dengan <code>window.getComputedStyle(el)</code>, lalu tampilkan ke <code>#computed-output</code>.</li>
+      </ul>
+      <p class="hint">Referensi implementasi contoh ada di materi: <code>Material/JS/materi/frontendCore/dom-css/</code></p>
+    </section>
+
+    <!-- ========== 1) INLINE STYLE (element.style) ========== -->
+    <section class="card">
+      <h2>1) Batang progress (inline style)</h2>
+      <p class="hint">Target elemen: <code>#progress-fill</code>. Set <code>style.width</code> sebagai persen (string, mis. <code>"50%"</code>) dan opsional ubah <code>style.backgroundColor</code>.</p>
+      <div class="demo">
+        <div class="progress-track" aria-hidden="true">
+          <div id="progress-fill"></div>
+        </div>
+        <button type="button" onclick="setProgress25()">25%</button>
+        <button type="button" onclick="setProgress75()">75%</button>
+        <button type="button" onclick="resetProgressBar()" class="secondary">Reset batang</button>
+      </div>
+    </section>
+
+    <!-- ========== 2) classList ========== -->
+    <section class="card">
+      <h2>2) Status kartu tugas (classList)</h2>
+      <p class="hint">
+        Elemen: <code>#task-card</code>. Class state: <code>task-neutral</code>, <code>task-success</code>, <code>task-error</code> (hanya satu state aktif).
+        Class opsional: <code>task-urgent</code> — pakai <code>toggle</code>.
+        Update juga teks <code>#task-card-label</code> agar sesuai status.
+      </p>
+      <div class="demo">
+        <div id="task-card" class="task-neutral">
+          <p id="task-title">Judul tugas contoh</p>
+          <p id="task-card-label">Status: netral</p>
+        </div>
+        <button type="button" onclick="setTaskNeutral()">Netral</button>
+        <button type="button" onclick="setTaskSuccess()">Sukses</button>
+        <button type="button" onclick="setTaskError()">Error</button>
+        <button type="button" onclick="toggleTaskUrgent()">Toggle urgent</button>
+      </div>
+    </section>
+
+    <!-- ========== 3) getComputedStyle ========== -->
+    <section class="card">
+      <h2>3) Baca gaya terkomputasi</h2>
+      <p class="hint">Baca misalnya <code>color</code> dan <code>fontSize</code> dari <code>#task-title</code> setelah state kartu berubah, lalu isi <code>#computed-output</code> (boleh pakai <code>innerText</code>).</p>
+      <div class="demo">
+        <button type="button" onclick="showTitleComputedStyles()">Baca gaya judul</button>
+        <p id="computed-output" aria-live="polite"></p>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    /**
+     * Practice: DOM CSS — isi tubuh function di bawah ini.
+     * Materi: inline style, classList, getComputedStyle.
+     */
+
+    // ----- 1) Inline style: #progress-fill -----
+    function setProgress25() {
+      // TODO: seleksi #progress-fill, set style.width ke "25%", sesuaikan warna jika mau
+    }
+
+    function setProgress75() {
+      // TODO: set style.width ke "75%"
+    }
+
+    function resetProgressBar() {
+      // TODO: kembalikan width (mis. "0%") dan/atau reset backgroundColor; bisa pakai el.style.property = "" per properti
+    }
+
+    // ----- 2) classList: #task-card + teks #task-card-label -----
+    function setTaskNeutral() {
+      // TODO: hapus task-success & task-error, pastikan task-neutral ada; perbarui #task-card-label
+    }
+
+    function setTaskSuccess() {
+      // TODO: state sukses (task-success), bukan error/netral; perbarui label
+    }
+
+    function setTaskError() {
+      // TODO: state error (task-error); perbarui label
+    }
+
+    function toggleTaskUrgent() {
+      // TODO: classList.toggle("task-urgent") pada #task-card
+    }
+
+    // ----- 3) getComputedStyle: #task-title → #computed-output -----
+    function showTitleComputedStyles() {
+      // TODO: const gaya = window.getComputedStyle(...); tampilkan color & fontSize di #computed-output
+    }
+  </script>
+</body>
+</html>
